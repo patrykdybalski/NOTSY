@@ -25,6 +25,24 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
+      bottomNavigationBar: BottomNavigationBar(items: const [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.mood),
+          label: 'hi',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.mood),
+          label: 'hi',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.mood),
+          label: 'hi',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.mood),
+          label: 'hi',
+        )
+      ]),
     );
   }
 }
