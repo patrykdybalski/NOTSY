@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
-   LoginPage({
+  LoginPage({
     super.key,
   });
   final emailController = TextEditingController();
@@ -13,7 +13,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  
+  var errorMessage = '';
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +35,7 @@ class _LoginPageState extends State<LoginPage> {
                 hintText: 'Hasło',
               ),
             ),
+            Text(errorMessage),
             ElevatedButton(
               onPressed: () async {
                 try {
@@ -43,9 +44,10 @@ class _LoginPageState extends State<LoginPage> {
                     password: widget.passwordController.text,
                   );
                 } catch (error) {
-
+                  setState(() {
+                    errorMessage = error.toString();
+                  });
                 }
-                
               },
               child: const Text('Zaloguj się'),
             ),
