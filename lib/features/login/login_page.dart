@@ -91,6 +91,13 @@ class _LoginPageState extends State<LoginPage> {
         ),
         Text(errorMessage),
         ElevatedButton(
+          style: ButtonStyle(
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(35),
+              ),
+            ),
+          ),
           onPressed: () async {
             if (isCreatingAccount == true) {
               try {
