@@ -21,110 +21,128 @@ class _LoginPageState extends State<LoginPage> {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: Column(children: [
-        Container(
-          height: h * 0.2,
-          width: w,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(
-                'images/login.png',
-              ),
-              fit: BoxFit.cover,
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(
+              'images/loginpageimage.png',
             ),
+            fit: BoxFit.cover,
           ),
         ),
-        Container(
-          margin: const EdgeInsets.only(
-            left: 20,
-            right: 20,
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Container(
+            height: 60,
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                isCreatingAccount == true ? 'Zarejestruj się' : 'Cześć',
-                style: const TextStyle(
-                  fontSize: 45,
-                  fontWeight: FontWeight.bold,
+          Container(
+            margin: const EdgeInsets.only(
+              left: 20,
+              right: 20,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  isCreatingAccount == true ? 'Zarejestruj się' : 'Cześć',
+                  style: const TextStyle(
+                    fontSize: 45,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(isCreatingAccount == true
+                    ? 'Zarejestruj się'
+                    : 'Zaloguj się na swoje konto'),
+                const SizedBox(
+                  height: 15,
+                ),
+                TextFieldLogin(widget: widget),
+                const SizedBox(
+                  height: 20,
+                ),
+                TextFieldPassword(widget: widget),
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                TextButton(
+                  onPressed: () {},
+                  child: const Text(
+                    'Nie pamiętam hasła :/',
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Text(errorMessage),
+          ElevatedButton(
+            style: ButtonStyle(
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(35),
                 ),
               ),
-              Text(isCreatingAccount == true
-                  ? 'Zarejestruj się'
-                  : 'Zaloguj się na swoje konto'),
-              const SizedBox(
-                height: 15,
-              ),
-              TextFieldLogin(widget: widget),
-              const SizedBox(
-                height: 20,
-              ),
-              TextFieldPassword(widget: widget),
-            ],
-          ),
-        ),
-        Text(errorMessage),
-        ElevatedButton(
-          style: ButtonStyle(
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(35),
-              ),
             ),
-          ),
-          onPressed: () async {
-            if (isCreatingAccount == true) {
-              try {
-                await FirebaseAuth.instance.createUserWithEmailAndPassword(
-                  email: widget.emailController.text,
-                  password: widget.passwordController.text,
-                );
-              } catch (error) {
-                setState(() {
-                  errorMessage = error.toString();
-                });
+            onPressed: () async {
+              if (isCreatingAccount == true) {
+                try {
+                  await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                    email: widget.emailController.text,
+                    password: widget.passwordController.text,
+                  );
+                } catch (error) {
+                  setState(() {
+                    errorMessage = error.toString();
+                  });
+                }
+              } else {
+                try {
+                  await FirebaseAuth.instance.signInWithEmailAndPassword(
+                    email: widget.emailController.text,
+                    password: widget.passwordController.text,
+                  );
+                } catch (error) {
+                  setState(() {
+                    errorMessage = error.toString();
+                  });
+                }
               }
-            } else {
-              try {
-                await FirebaseAuth.instance.signInWithEmailAndPassword(
-                  email: widget.emailController.text,
-                  password: widget.passwordController.text,
-                );
-              } catch (error) {
+            },
+            child: Text(
+                isCreatingAccount == true ? 'Zarejestruj się' : 'Zaloguj się '),
+          ),
+          if (isCreatingAccount == false) ...[
+            TextButton(
+              onPressed: () {
                 setState(() {
-                  errorMessage = error.toString();
+                  isCreatingAccount = true;
                 });
-              }
-            }
-          },
-          child: Text(
-              isCreatingAccount == true ? 'Zarejestruj się' : 'Zaloguj się '),
-        ),
-        if (isCreatingAccount == false) ...[
-          TextButton(
-            onPressed: () {
-              setState(() {
-                isCreatingAccount = true;
-              });
-            },
-            child: const Text(
-              'Utwórz konto',
+              },
+              child: const Text(
+                'Utwórz konto',
+              ),
             ),
-          ),
-        ],
-        if (isCreatingAccount == true) ...[
-          TextButton(
-            onPressed: () {
-              setState(() {
-                isCreatingAccount = false;
-              });
-            },
-            child: const Text(
-              'Masz już konto?',
+          ],
+          if (isCreatingAccount == true) ...[
+            TextButton(
+              onPressed: () {
+                setState(() {
+                  isCreatingAccount = false;
+                });
+              },
+              child: const Text(
+                'Masz już konto?',
+              ),
             ),
-          ),
-        ]
-      ]),
+          ]
+        ]),
+      ),
     );
   }
 }
@@ -158,7 +176,7 @@ class TextFieldPassword extends StatelessWidget {
             filled: true,
             hintText: 'Hasło',
             prefixIcon: const Icon(Icons.key),
-            fillColor: Colors.white,
+            fillColor: Colors.grey.shade100,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(35),
               borderSide: BorderSide.none,
@@ -198,7 +216,7 @@ class TextFieldLogin extends StatelessWidget {
           filled: true,
           hintText: 'E-mail',
           prefixIcon: const Icon(Icons.email),
-          fillColor: Colors.white,
+          fillColor: Colors.grey.shade100,
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(35),
             borderSide: BorderSide.none,
