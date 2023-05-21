@@ -55,37 +55,11 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(
                 height: 15,
               ),
-              TextField(
-                controller: widget.emailController,
-                keyboardType: TextInputType.text,
-                style: const TextStyle(color: Colors.black),
-                decoration: InputDecoration(
-                  filled: true,
-                  hintText: 'E-mail',
-                  prefixIcon: const Icon(Icons.email),
-                  fillColor: Colors.red,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(35),
-                    borderSide: BorderSide.none,
-                  ),
-                ),
-              ),
+              TextFieldLogin(widget: widget),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
-              TextField(
-                controller: widget.passwordController,
-                keyboardType: TextInputType.text,
-                decoration: InputDecoration(
-                    filled: true,
-                    hintText: 'Hasło',
-                    prefixIcon: const Icon(Icons.key),
-                    fillColor: Colors.red,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(35),
-                      borderSide: BorderSide.none,
-                    )),
-              ),
+              TextFieldPassword(widget: widget),
             ],
           ),
         ),
@@ -151,6 +125,86 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ]
       ]),
+    );
+  }
+}
+
+class TextFieldPassword extends StatelessWidget {
+  const TextFieldPassword({
+    super.key,
+    required this.widget,
+  });
+
+  final LoginPage widget;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(35),
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 2,
+              spreadRadius: 2,
+              offset: const Offset(1.5, 1.5),
+              color: Colors.grey.withOpacity(0.2),
+            )
+          ]),
+      child: TextField(
+        controller: widget.passwordController,
+        keyboardType: TextInputType.text,
+        decoration: InputDecoration(
+            filled: true,
+            hintText: 'Hasło',
+            prefixIcon: const Icon(Icons.key),
+            fillColor: Colors.white,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(35),
+              borderSide: BorderSide.none,
+            )),
+      ),
+    );
+  }
+}
+
+class TextFieldLogin extends StatelessWidget {
+  const TextFieldLogin({
+    super.key,
+    required this.widget,
+  });
+
+  final LoginPage widget;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(35),
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 2,
+              spreadRadius: 2,
+              offset: const Offset(1.5, 1.5),
+              color: Colors.grey.withOpacity(0.2),
+            )
+          ]),
+      child: TextField(
+        controller: widget.emailController,
+        keyboardType: TextInputType.text,
+        style: const TextStyle(color: Colors.black),
+        decoration: InputDecoration(
+          filled: true,
+          hintText: 'E-mail',
+          prefixIcon: const Icon(Icons.email),
+          fillColor: Colors.white,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(35),
+            borderSide: BorderSide.none,
+          ),
+        ),
+      ),
     );
   }
 }
