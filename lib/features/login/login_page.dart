@@ -18,132 +18,162 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    double w = MediaQuery.of(context).size.width;
-    double h = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(
-              'images/loginpageimage.png',
-            ),
-            fit: BoxFit.cover,
+        body: Container(
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Color.fromARGB(255, 230, 242, 255),
+            Color.fromARGB(255, 211, 235, 232),
+          ],
+        ),
+      ),
+      child: SafeArea(
+        child: Center(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(children: [
+              Container(
+                decoration: const BoxDecoration(),
+                height: 200,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    CircleAvatar(
+                      backgroundColor: Colors.blue,
+                      backgroundImage: AssetImage('images/logologin.png'),
+                      radius: 70,
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 35,
+              ),
+              Container(
+                margin: const EdgeInsets.only(
+                  left: 20,
+                  right: 20,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      isCreatingAccount == true
+                          ? 'Zarejestruj się'
+                          : 'Zaloguj się',
+                      style: const TextStyle(fontSize: 35),
+                    ),
+                    const SizedBox(
+                      height: 25,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.7),
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Column(
+                        children: [
+                          TextFieldLogin(widget: widget),
+                          TextFieldPassword(widget: widget),
+                          const SizedBox(
+                            height: 1,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(20, 0, 10, 0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                TextButton(
+                                  onPressed: () {},
+                                  child: const Text(
+                                    'Nie pamiętasz hasła?',
+                                    style: TextStyle(color: Colors.grey),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 60, vertical: 10),
+                            ),
+                            onPressed: () async {
+                              if (isCreatingAccount == true) {
+                                try {
+                                  await FirebaseAuth.instance
+                                      .createUserWithEmailAndPassword(
+                                    email: widget.emailController.text,
+                                    password: widget.passwordController.text,
+                                  );
+                                } catch (error) {
+                                  setState(() {
+                                    errorMessage = error.toString();
+                                  });
+                                }
+                              } else {
+                                try {
+                                  await FirebaseAuth.instance
+                                      .signInWithEmailAndPassword(
+                                    email: widget.emailController.text,
+                                    password: widget.passwordController.text,
+                                  );
+                                } catch (error) {
+                                  setState(() {
+                                    errorMessage = error.toString();
+                                  });
+                                }
+                              }
+                            },
+                            child: Text(isCreatingAccount == true
+                                ? 'Zarejestruj się'
+                                : 'Zaloguj się '),
+                          ),
+                          if (isCreatingAccount == false) ...[
+                            TextButton(
+                              onPressed: () {
+                                setState(() {
+                                  isCreatingAccount = true;
+                                });
+                              },
+                              child: const Text(
+                                'Utwórz konto',
+                              ),
+                            ),
+                          ],
+                          if (isCreatingAccount == true) ...[
+                            TextButton(
+                              onPressed: () {
+                                setState(() {
+                                  isCreatingAccount = false;
+                                });
+                              },
+                              child: const Text(
+                                'Masz już konto?',
+                              ),
+                            ),
+                          ],
+                          const SizedBox(
+                            height: 10,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Text(errorMessage),
+            ]),
           ),
         ),
-        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Container(
-            height: 60,
-          ),
-          Container(
-            margin: const EdgeInsets.only(
-              left: 20,
-              right: 20,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  isCreatingAccount == true ? 'Zarejestruj się' : 'Cześć',
-                  style: const TextStyle(
-                    fontSize: 45,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(isCreatingAccount == true
-                    ? 'Zarejestruj się'
-                    : 'Zaloguj się na swoje konto'),
-                const SizedBox(
-                  height: 15,
-                ),
-                TextFieldLogin(widget: widget),
-                const SizedBox(
-                  height: 20,
-                ),
-                TextFieldPassword(widget: widget),
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    'Nie pamiętam hasła :/',
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Text(errorMessage),
-          ElevatedButton(
-            style: ButtonStyle(
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(35),
-                ),
-              ),
-            ),
-            onPressed: () async {
-              if (isCreatingAccount == true) {
-                try {
-                  await FirebaseAuth.instance.createUserWithEmailAndPassword(
-                    email: widget.emailController.text,
-                    password: widget.passwordController.text,
-                  );
-                } catch (error) {
-                  setState(() {
-                    errorMessage = error.toString();
-                  });
-                }
-              } else {
-                try {
-                  await FirebaseAuth.instance.signInWithEmailAndPassword(
-                    email: widget.emailController.text,
-                    password: widget.passwordController.text,
-                  );
-                } catch (error) {
-                  setState(() {
-                    errorMessage = error.toString();
-                  });
-                }
-              }
-            },
-            child: Text(
-                isCreatingAccount == true ? 'Zarejestruj się' : 'Zaloguj się '),
-          ),
-          if (isCreatingAccount == false) ...[
-            TextButton(
-              onPressed: () {
-                setState(() {
-                  isCreatingAccount = true;
-                });
-              },
-              child: const Text(
-                'Utwórz konto',
-              ),
-            ),
-          ],
-          if (isCreatingAccount == true) ...[
-            TextButton(
-              onPressed: () {
-                setState(() {
-                  isCreatingAccount = false;
-                });
-              },
-              child: const Text(
-                'Masz już konto?',
-              ),
-            ),
-          ]
-        ]),
       ),
-    );
+    ));
   }
 }
 
@@ -157,30 +187,33 @@ class TextFieldPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(35),
-          boxShadow: [
-            BoxShadow(
-              blurRadius: 2,
-              spreadRadius: 2,
-              offset: const Offset(1.5, 1.5),
-              color: Colors.grey.withOpacity(0.2),
-            )
-          ]),
-      child: TextField(
-        controller: widget.passwordController,
-        keyboardType: TextInputType.text,
-        decoration: InputDecoration(
-            filled: true,
-            hintText: 'Hasło',
-            prefixIcon: const Icon(Icons.key),
-            fillColor: Colors.grey.shade100,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(35),
-              borderSide: BorderSide.none,
-            )),
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(15, 5, 15, 0),
+      child: Container(
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: [
+              BoxShadow(
+                blurRadius: 2,
+                spreadRadius: 2,
+                offset: const Offset(1.5, 1.5),
+                color: Colors.grey.withOpacity(0.2),
+              )
+            ]),
+        child: TextField(
+          controller: widget.passwordController,
+          keyboardType: TextInputType.text,
+          decoration: InputDecoration(
+              filled: true,
+              hintText: 'Hasło',
+              prefixIcon: const Icon(Icons.key),
+              fillColor: Colors.white,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide.none,
+              )),
+        ),
       ),
     );
   }
@@ -196,30 +229,33 @@ class TextFieldLogin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(35),
-          boxShadow: [
-            BoxShadow(
-              blurRadius: 2,
-              spreadRadius: 2,
-              offset: const Offset(1.5, 1.5),
-              color: Colors.grey.withOpacity(0.2),
-            )
-          ]),
-      child: TextField(
-        controller: widget.emailController,
-        keyboardType: TextInputType.text,
-        style: const TextStyle(color: Colors.black),
-        decoration: InputDecoration(
-          filled: true,
-          hintText: 'E-mail',
-          prefixIcon: const Icon(Icons.email),
-          fillColor: Colors.grey.shade100,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(35),
-            borderSide: BorderSide.none,
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(15, 20, 15, 10),
+      child: Container(
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: [
+              BoxShadow(
+                blurRadius: 2,
+                spreadRadius: 2,
+                offset: const Offset(1.5, 1.5),
+                color: Colors.grey.withOpacity(0.2),
+              )
+            ]),
+        child: TextField(
+          controller: widget.emailController,
+          keyboardType: TextInputType.text,
+          style: const TextStyle(color: Colors.black),
+          decoration: InputDecoration(
+            filled: true,
+            hintText: 'E-mail',
+            prefixIcon: const Icon(Icons.email),
+            fillColor: Colors.white,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide.none,
+            ),
           ),
         ),
       ),
