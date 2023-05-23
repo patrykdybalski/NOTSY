@@ -28,7 +28,7 @@ class RootPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => RootCubit(),
+        create: (context) => RootCubit()..start(),
         child: BlocBuilder<RootCubit, RootState>(builder: (context, state) {
           if (state.errorMessage.isNotEmpty) {
             return Center(
