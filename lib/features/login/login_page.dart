@@ -21,12 +21,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
         body: Container(
       decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            Color.fromARGB(255, 230, 242, 255),
-            Color.fromARGB(255, 211, 235, 232),
-          ],
-        ),
+        color: Color(0xfff6f3f0),
       ),
       child: SafeArea(
         child: Center(
@@ -34,17 +29,11 @@ class _LoginPageState extends State<LoginPage> {
             scrollDirection: Axis.vertical,
             child: Column(children: [
               Container(
-                decoration: const BoxDecoration(),
                 height: 200,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    CircleAvatar(
-                      backgroundColor: Colors.blue,
-                      backgroundImage: AssetImage('images/logologin.png'),
-                      radius: 70,
-                    ),
-                  ],
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('images/login_page_logo.png'),
+                  ),
                 ),
               ),
               const SizedBox(
@@ -62,7 +51,8 @@ class _LoginPageState extends State<LoginPage> {
                       isCreatingAccount == true
                           ? 'Zarejestruj się'
                           : 'Zaloguj się',
-                      style: const TextStyle(fontSize: 35),
+                      style: const TextStyle(
+                          fontSize: 35, fontStyle: FontStyle.italic),
                     ),
                     const SizedBox(
                       height: 25,
