@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({
@@ -32,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
                 height: 200,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('images/login_page_logo.png'),
+                    image: AssetImage('images/logo_login_page.png'),
                   ),
                 ),
               ),
@@ -51,8 +52,10 @@ class _LoginPageState extends State<LoginPage> {
                       isCreatingAccount == true
                           ? 'Zarejestruj się'
                           : 'Zaloguj się',
-                      style: const TextStyle(
-                          fontSize: 35, fontStyle: FontStyle.italic),
+                      style: GoogleFonts.dosis(
+                        fontSize: 35,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                     const SizedBox(
                       height: 25,
@@ -85,6 +88,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
+                              backgroundColor: const Color(0xff7fab72),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10.0),
                               ),
@@ -124,6 +128,8 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           if (isCreatingAccount == false) ...[
                             TextButton(
+                              style: TextButton.styleFrom(
+                                  foregroundColor: const Color(0xff7fab72)),
                               onPressed: () {
                                 setState(() {
                                   isCreatingAccount = true;
