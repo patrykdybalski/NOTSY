@@ -20,158 +20,168 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<RootCubit, RootState>(
-      listener: (context, state) {
-        if (errorMessage.isNotEmpty) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                errorMessage,
+    return BlocProvider(
+      create: (context) => RootCubit(),
+      child: BlocListener<RootCubit, RootState>(
+        listener: (context, state) {
+          if (state.errorMessage.isNotEmpty) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.errorMessage),
+                backgroundColor: Colors.red.shade300,
               ),
-              backgroundColor: Colors.red.shade300,
-            ),
-          );
-        }
-      },
-      child: Scaffold(
-          body: Container(
-        decoration: const BoxDecoration(
-          color: Color(0xfff6f3f0),
-        ),
-        child: SafeArea(
-          child: Center(
-            child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Column(children: [
-                Container(
-                  height: 200,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('images/logo_login_page.png'),
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 35,
-                ),
-                Container(
-                  margin: const EdgeInsets.only(
-                    left: 20,
-                    right: 20,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        isCreatingAccount == true
-                            ? 'Zarejestruj się'
-                            : 'Zaloguj się',
-                        style: GoogleFonts.dosis(
-                          fontSize: 35,
-                          fontWeight: FontWeight.w600,
+            );
+          }
+        },
+        child: BlocBuilder<RootCubit, RootState>(
+          builder: (context, state) {
+            return Scaffold(
+                body: Container(
+              decoration: const BoxDecoration(
+                color: Color(0xfff6f3f0),
+              ),
+              child: SafeArea(
+                child: Center(
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Column(children: [
+                      Container(
+                        height: 200,
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            image: AssetImage('images/logo_login_page.png'),
+                          ),
                         ),
                       ),
                       const SizedBox(
-                        height: 25,
+                        height: 35,
                       ),
                       Container(
-                        decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.7),
-                            borderRadius: BorderRadius.circular(20)),
+                        margin: const EdgeInsets.only(
+                          left: 20,
+                          right: 20,
+                        ),
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            TextFieldLogin(widget: widget),
-                            TextFieldPassword(widget: widget),
-                            const SizedBox(
-                              height: 1,
+                            Text(
+                              isCreatingAccount == true
+                                  ? 'Zarejestruj się'
+                                  : 'Zaloguj się',
+                              style: GoogleFonts.dosis(
+                                fontSize: 35,
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(20, 0, 10, 0),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
+                            const SizedBox(
+                              height: 25,
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                  color: Colors.white.withOpacity(0.7),
+                                  borderRadius: BorderRadius.circular(20)),
+                              child: Column(
                                 children: [
-                                  TextButton(
-                                    onPressed: () {},
-                                    child: const Text(
-                                      'Nie pamiętasz hasła?',
-                                      style: TextStyle(color: Colors.grey),
+                                  TextFieldLogin(widget: widget),
+                                  TextFieldPassword(widget: widget),
+                                  const SizedBox(
+                                    height: 1,
+                                  ),
+                                  Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(20, 0, 10, 0),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        TextButton(
+                                          onPressed: () {},
+                                          child: const Text(
+                                            'Nie pamiętasz hasła?',
+                                            style:
+                                                TextStyle(color: Colors.grey),
+                                          ),
+                                        ),
+                                      ],
                                     ),
+                                  ),
+                                  ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: const Color(0xff7fab72),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10.0),
+                                      ),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 60, vertical: 10),
+                                    ),
+                                    onPressed: () async {
+                                      if (isCreatingAccount == true) {
+                                        context.read<RootCubit>().createUser(
+                                              email:
+                                                  widget.emailController.text,
+                                              password: widget
+                                                  .passwordController.text,
+                                            );
+                                      } else {
+                                        context.read<RootCubit>().signIn(
+                                              email:
+                                                  widget.emailController.text,
+                                              password: widget
+                                                  .passwordController.text,
+                                            );
+                                      }
+                                    },
+                                    child: Text(isCreatingAccount == true
+                                        ? 'Zarejestruj się'
+                                        : 'Zaloguj się '),
+                                  ),
+                                  if (isCreatingAccount == false) ...[
+                                    TextButton(
+                                      style: TextButton.styleFrom(
+                                          foregroundColor:
+                                              const Color(0xff7fab72)),
+                                      onPressed: () {
+                                        setState(() {
+                                          isCreatingAccount = true;
+                                        });
+                                      },
+                                      child: const Text(
+                                        'Utwórz konto',
+                                      ),
+                                    ),
+                                  ],
+                                  if (isCreatingAccount == true) ...[
+                                    TextButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          isCreatingAccount = false;
+                                        });
+                                      },
+                                      child: const Text(
+                                        'Masz już konto?',
+                                      ),
+                                    ),
+                                  ],
+                                  const SizedBox(
+                                    height: 10,
                                   ),
                                 ],
                               ),
                             ),
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xff7fab72),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                ),
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 60, vertical: 10),
-                              ),
-                              onPressed: () async {
-                                if (isCreatingAccount == true) {
-                                  context.read<RootCubit>().createUser(
-                                        email: widget.emailController.text,
-                                        password:
-                                            widget.passwordController.text,
-                                      );
-                                } else {
-                                  context.read<RootCubit>().signIn(
-                                        email: widget.emailController.text,
-                                        password:
-                                            widget.passwordController.text,
-                                      );
-                                }
-                              },
-                              child: Text(isCreatingAccount == true
-                                  ? 'Zarejestruj się'
-                                  : 'Zaloguj się '),
-                            ),
-                            if (isCreatingAccount == false) ...[
-                              TextButton(
-                                style: TextButton.styleFrom(
-                                    foregroundColor: const Color(0xff7fab72)),
-                                onPressed: () {
-                                  setState(() {
-                                    isCreatingAccount = true;
-                                  });
-                                },
-                                child: const Text(
-                                  'Utwórz konto',
-                                ),
-                              ),
-                            ],
-                            if (isCreatingAccount == true) ...[
-                              TextButton(
-                                onPressed: () {
-                                  setState(() {
-                                    isCreatingAccount = false;
-                                  });
-                                },
-                                child: const Text(
-                                  'Masz już konto?',
-                                ),
-                              ),
-                            ],
-                            const SizedBox(
-                              height: 10,
-                            ),
                           ],
                         ),
                       ),
-                    ],
+                      const SizedBox(
+                        height: 10,
+                      ),
+                    ]),
                   ),
                 ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Text(errorMessage),
-              ]),
-            ),
-          ),
+              ),
+            ));
+          },
         ),
-      )),
+      ),
     );
   }
 }
