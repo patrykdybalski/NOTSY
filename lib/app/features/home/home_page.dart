@@ -1,5 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:primary_school/app/features/page/first_page/first_page.dart';
+import 'package:primary_school/app/features/page/fourth_page/fourth_page.dart';
+import 'package:primary_school/app/features/page/second_page/second_page.dart';
+import 'package:primary_school/app/features/page/third_page/third_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -16,32 +19,29 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xfff6f3f0),
       appBar: AppBar(
-        title: const Text('asyeteujuint'),
+        title: const Text('Kocham Ewe'),
+        backgroundColor: const Color(0xff7fab72),
       ),
       body: Builder(builder: (context) {
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'niezalogowany',
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                await FirebaseAuth.instance.signOut();
-              },
-              child: const Text(
-                'Wyloguj',
-              ),
-            ),
-          ],
-        );
+        if (currentIndex == 0) {
+          return const FirstPage();
+        }
+        if (currentIndex == 1) {
+          return const SecondPage();
+        }
+        if (currentIndex == 2) {
+          return const ThirdPage();
+        }
+
+        return const FourthPage();
       }),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
-        onTap: (value) {
+        onTap: (newIndex) {
           setState(() {
-            currentIndex = value;
+            currentIndex = newIndex;
           });
         },
         type: BottomNavigationBarType.fixed,
