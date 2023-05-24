@@ -3,6 +3,7 @@ import 'package:primary_school/app/features/page/first_page/first_page.dart';
 import 'package:primary_school/app/features/page/fourth_page/fourth_page.dart';
 import 'package:primary_school/app/features/page/second_page/second_page.dart';
 import 'package:primary_school/app/features/page/third_page/third_page.dart';
+import 'package:primary_school/app/features/page/user_page/user_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -23,30 +24,40 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text('Kocham Ewe'),
         backgroundColor: const Color(0xff7fab72),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const UserPage()));
+              },
+              icon: const Icon(Icons.person))
+        ],
       ),
-      body: Builder(builder: (context) {
-        if (currentIndex == 0) {
-          return const FirstPage();
-        }
-        if (currentIndex == 1) {
-          return const SecondPage();
-        }
-        if (currentIndex == 2) {
-          return const ThirdPage();
-        }
+      body: Builder(
+        builder: (context) {
+          if (currentIndex == 0) {
+            return const FirstPage();
+          }
+          if (currentIndex == 1) {
+            return const SecondPage();
+          }
+          if (currentIndex == 2) {
+            return const ThirdPage();
+          }
 
-        return const FourthPage();
-      }),
+          return const FourthPage();
+        },
+      ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.white,
+        selectedItemColor: const Color(0xff7fab72),
         currentIndex: currentIndex,
         onTap: (newIndex) {
           setState(() {
             currentIndex = newIndex;
           });
         },
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.white,
-        selectedItemColor: const Color(0xff7fab72),
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.calendar_month_outlined),
