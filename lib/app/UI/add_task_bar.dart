@@ -60,8 +60,8 @@ class AddTaskPage extends StatelessWidget {
                   right: 20,
                 ),
                 child: Column(
-                  children: [
-                    const Text(
+                  children: const [
+                    Text(
                       'tytuł',
                     ),
                   ],
