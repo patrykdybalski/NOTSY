@@ -22,8 +22,12 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: const Color(0xfff6f3f0),
       appBar: AppBar(
-        title: const Text('Kocham Ewe'),
+        title: const Text('Room Assistant'),
         backgroundColor: const Color(0xff7fab72),
+        leading: IconButton(
+          icon: const Icon(Icons.menu),
+          onPressed: () {},
+        ),
         actions: [
           IconButton(
               onPressed: () {

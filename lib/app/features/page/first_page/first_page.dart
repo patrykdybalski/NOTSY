@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
+import 'package:primary_school/app/UI/add_task_bar.dart';
 
 class FirstPage extends StatefulWidget {
   const FirstPage({super.key});
@@ -17,6 +18,38 @@ class _FirstPageState extends State<FirstPage> {
     return Scaffold(
       body: Center(
         child: Column(children: [
+          Container(
+            margin: const EdgeInsets.only(
+              left: 20,
+              top: 15,
+            ),
+            child: DatePicker(
+              DateTime.now(),
+              height: 100,
+              width: 80,
+              initialSelectedDate: DateTime.now(),
+              selectionColor: Colors.blueGrey,
+              dayTextStyle: GoogleFonts.lato(
+                textStyle: const TextStyle(
+                  overflow: TextOverflow.ellipsis,
+                  fontSize: 13,
+                ),
+              ),
+              dateTextStyle: GoogleFonts.lato(
+                textStyle: const TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+              monthTextStyle: GoogleFonts.lato(
+                textStyle: const TextStyle(
+                  fontSize: 10,
+                ),
+              ),
+              onDateChange: (date) {
+                _selectedDate = date;
+              },
+            ),
+          ),
           Container(
             margin: const EdgeInsets.only(
               left: 20,
@@ -50,7 +83,13 @@ class _FirstPageState extends State<FirstPage> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const AddTaskPage(),
+                      ),
+                    );
+                  },
                   child: Container(
                     width: 100,
                     height: 60,
@@ -65,46 +104,11 @@ class _FirstPageState extends State<FirstPage> {
             ),
           ),
           const ItemContainer(),
-          Container(
-            margin: const EdgeInsets.only(
-              left: 20,
-              top: 15,
-            ),
-            child: DatePicker(
-              DateTime.now(),
-              height: 100,
-              width: 80,
-              initialSelectedDate: DateTime.now(),
-              selectionColor: Colors.blueGrey,
-              dayTextStyle: GoogleFonts.lato(
-                textStyle: const TextStyle(
-                  overflow: TextOverflow.ellipsis,
-                  fontSize: 13,
-                ),
-              ),
-              dateTextStyle: GoogleFonts.lato(
-                textStyle: const TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-              monthTextStyle: GoogleFonts.lato(
-                textStyle: const TextStyle(
-                  fontSize: 10,
-                ),
-              ),
-              onDateChange: (date) {
-                _selectedDate = date;
-              },
-            ),
-          ),
         ]),
       ),
     );
   }
 }
-
-
-
 
 class ItemContainer extends StatelessWidget {
   const ItemContainer({

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:primary_school/app/cubit/root_cubit.dart';
 import 'package:primary_school/app/features/home/home_page.dart';
+
 import 'package:primary_school/app/features/login/login_page.dart';
 
 class MyApp extends StatelessWidget {
@@ -46,7 +48,7 @@ class RootPage extends StatelessWidget {
           if (user == null) {
             return LoginPage();
           }
-          return  const HomePage();
+          return const HomePage();
         }));
   }
 }
