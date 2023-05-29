@@ -86,7 +86,7 @@ class _FirstPageState extends State<FirstPage> {
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => const AddTaskPage(),
+                        builder: (context) => const AddTaskBarPage(),
                       ),
                     );
                   },

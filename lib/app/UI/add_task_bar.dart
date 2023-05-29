@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:primary_school/app/features/TabBarPages/add_task_page.dart';
 
-class AddTaskPage extends StatelessWidget {
-  const AddTaskPage({super.key});
+class AddTaskBarPage extends StatelessWidget {
+  const AddTaskBarPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -52,21 +53,7 @@ class AddTaskPage extends StatelessWidget {
           ),
           body: TabBarView(
             children: [
-              Scaffold(
-                  body: Container(
-                padding: const EdgeInsets.only(
-                  left: 20,
-                  top: 10,
-                  right: 20,
-                ),
-                child: Column(
-                  children: const [
-                    Text(
-                      'tytuł',
-                    ),
-                  ],
-                ),
-              )),
+              AddTaskPage(),
               Scaffold(
                 body: Container(
                   child: const Center(
