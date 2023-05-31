@@ -53,7 +53,7 @@ class AddTaskBarPage extends StatelessWidget {
           ),
           body: TabBarView(
             children: [
-              AddTaskPage(),
+              const AddTaskPage(),
               Scaffold(
                 body: Container(
                   child: const Center(
