@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ThirdPage extends StatelessWidget {
-  const ThirdPage({super.key});
+class ExpensesPage extends StatelessWidget {
+  const ExpensesPage({super.key});
 
   @override
   Widget build(BuildContext context) {

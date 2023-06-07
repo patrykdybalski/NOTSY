@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:primary_school/features/home/pages/first_page/first_page.dart';
-import 'package:primary_school/features/home/pages/fourth_page/fourth_page.dart';
-import 'package:primary_school/features/home/pages/second_page/second_page.dart';
-import 'package:primary_school/features/home/pages/third_page/third_page.dart';
+import 'package:primary_school/features/add/add_task_bar.dart';
+import 'package:primary_school/features/home/pages/calendar_page/calendar_page.dart';
+import 'package:primary_school/features/home/pages/expenses_page/expenses_page.dart';
+import 'package:primary_school/features/home/pages/notes_page/notes_page.dart';
+
 import 'package:primary_school/features/home/pages/user_page/user_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -22,34 +23,47 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: const Color(0xfff6f3f0),
       appBar: AppBar(
-        title: const Text('Room Assistant'),
-        backgroundColor: const Color(0xff7fab72),
+        title: const Text('Smart Assistant'),
+        centerTitle: true,
+        backgroundColor: const Color.fromARGB(255, 145, 140, 140),
         leading: IconButton(
           icon: const Icon(Icons.menu),
           onPressed: () {},
         ),
         actions: [
           IconButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const UserPage()));
-              },
-              icon: const Icon(Icons.person))
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const UserPage(),
+                ),
+              );
+            },
+            icon: const Icon(
+              Icons.person,
+            ),
+          ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => const AddTaskBarPage(),
+            ),
+          );
+        },
+        child: const Icon(Icons.add),
       ),
       body: Builder(
         builder: (context) {
           if (currentIndex == 0) {
-            return const FirstPage();
+            return const CalendarPage();
           }
           if (currentIndex == 1) {
-            return const SecondPage();
+            return const ExpensesPage();
           }
-          if (currentIndex == 2) {
-            return const ThirdPage();
-          }
-
-          return const FourthPage();
+          return const NotesPage();
         },
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -64,20 +78,22 @@ class _HomePageState extends State<HomePage> {
         },
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_month_outlined),
+            icon: Icon(
+              Icons.calendar_month_outlined,
+            ),
             label: 'Plany',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.attach_money_outlined),
-            label: 'Wydatki',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.health_and_safety_outlined),
-            label: 'Zdrowie',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.note_add_sharp),
+            icon: Icon(
+              Icons.notes_outlined,
+            ),
             label: 'Notatki',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.attach_money_outlined,
+            ),
+            label: 'Wydatki',
           ),
         ],
       ),

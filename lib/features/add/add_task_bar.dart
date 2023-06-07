@@ -7,80 +7,78 @@ class AddTaskBarPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: 3,
       child: Scaffold(
-          appBar: AppBar(
-            title: const Text('appbar'),
-            actions: [
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.accessibility_rounded,
+        appBar: AppBar(
+          title: const Text('Dodaj:'),
+          centerTitle: true,
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Color.fromARGB(255, 145, 140, 140),
+                  Color.fromARGB(255, 145, 140, 140),
+                ],
+              ),
+            ),
+          ),
+          bottom: const TabBar(
+            indicatorColor: Colors.green,
+            unselectedLabelColor: Colors.black,
+            dividerColor: Colors.yellow,
+            labelColor: Colors.amber,
+            labelStyle: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+            tabs: [
+              Tab(
+                height: 50,
+                child: Text(
+                  'Zaplanuj',
+                ),
+              ),
+              Tab(
+                height: 50,
+                child: Text(
+                  'Notatka',
+                ),
+              ),
+              Tab(
+                height: 50,
+                child: Text(
+                  'Wydatek',
                 ),
               ),
             ],
-            flexibleSpace: Container(
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    Colors.grey,
-                    Colors.black,
-                  ],
+          ),
+        ),
+        body: TabBarView(
+          children: [
+            const AddTaskPage(),
+            Scaffold(
+              body: Container(
+                decoration: const BoxDecoration(),
+                child: const Center(
+                  child: Text(
+                    'dziala2',
+                  ),
                 ),
               ),
             ),
-            bottom: const TabBar(
-                indicatorColor: Colors.yellow,
-                unselectedLabelColor: Colors.blue,
-                tabs: [
-                  Tab(
-                    icon: Icon(Icons.one_k),
-                    text: 'Dodaj plan',
-                  ),
-                  Tab(
-                    icon: Icon(Icons.one_k),
-                    text: 'Dodaj plan',
-                  ),
-                  Tab(
-                    icon: Icon(Icons.one_k),
-                    text: 'Dodaj plan',
-                  ),
-                  Tab(
-                    icon: Icon(Icons.one_k),
-                    text: 'Dodaj plan',
-                  ),
-                ]),
-          ),
-          body: TabBarView(
-            children: [
-              const AddTaskPage(),
-              Scaffold(
-                body: Container(
-                  decoration: const BoxDecoration(),
-                  child: const Center(
-                    child: Text('dziala2'),
+            Scaffold(
+              backgroundColor: Colors.red,
+              body: Container(
+                decoration: const BoxDecoration(),
+                child: const Center(
+                  child: Text(
+                    'dziala3',
                   ),
                 ),
               ),
-              Scaffold(
-                backgroundColor: Colors.red,
-                body: Container(
-                  decoration: const BoxDecoration(),
-                  child: const Center(
-                    child: Text('dziala3'),
-                  ),
-                ),
-              ),
-              Scaffold(
-                body: Container(
-                  decoration: const BoxDecoration(),
-                  child: const Center(
-                    child: Text('dziala4'),
-                  ),
-                ),
-              ),
-            ],
-          )),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
