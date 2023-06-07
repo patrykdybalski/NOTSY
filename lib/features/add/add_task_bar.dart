@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:primary_school/app/features/TabBarPages/add_task_page.dart';
+import 'package:primary_school/features/TabBarPages/add_task_page.dart';
 
 class AddTaskBarPage extends StatelessWidget {
   const AddTaskBarPage({super.key});
@@ -56,6 +56,7 @@ class AddTaskBarPage extends StatelessWidget {
               const AddTaskPage(),
               Scaffold(
                 body: Container(
+                  decoration: const BoxDecoration(),
                   child: const Center(
                     child: Text('dziala2'),
                   ),
@@ -64,6 +65,7 @@ class AddTaskBarPage extends StatelessWidget {
               Scaffold(
                 backgroundColor: Colors.red,
                 body: Container(
+                  decoration: const BoxDecoration(),
                   child: const Center(
                     child: Text('dziala3'),
                   ),
@@ -71,6 +73,7 @@ class AddTaskBarPage extends StatelessWidget {
               ),
               Scaffold(
                 body: Container(
+                  decoration: const BoxDecoration(),
                   child: const Center(
                     child: Text('dziala4'),
                   ),

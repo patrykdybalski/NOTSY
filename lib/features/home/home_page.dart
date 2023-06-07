@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:primary_school/app/features/page/first_page/first_page.dart';
-import 'package:primary_school/app/features/page/fourth_page/fourth_page.dart';
-import 'package:primary_school/app/features/page/second_page/second_page.dart';
-import 'package:primary_school/app/features/page/third_page/third_page.dart';
-import 'package:primary_school/app/features/page/user_page/user_page.dart';
+import 'package:primary_school/features/home/pages/first_page/first_page.dart';
+import 'package:primary_school/features/home/pages/fourth_page/fourth_page.dart';
+import 'package:primary_school/features/home/pages/second_page/second_page.dart';
+import 'package:primary_school/features/home/pages/third_page/third_page.dart';
+import 'package:primary_school/features/home/pages/user_page/user_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({

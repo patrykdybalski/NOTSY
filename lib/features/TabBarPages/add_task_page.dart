@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:primary_school/models/input_field.dart';
+import 'package:primary_school/domain/models/input_field.dart';
 import 'package:intl/intl.dart';
 
 class AddTaskPage extends StatefulWidget {
@@ -17,7 +17,7 @@ class _AddTaskPageState extends State<AddTaskPage> {
   String _startTime = DateFormat('hh:mm a').format(DateTime.now()).toString();
 
   String _endTime = '9:30';
-  int _selectedRemind = 5;
+  final int _selectedRemind = 5;
   List<int> remindList = [
     5,
     10,
@@ -94,18 +94,6 @@ class _AddTaskPageState extends State<AddTaskPage> {
               MyInputFields(
                 title: 'Przypomnienie',
                 hint: '$_selectedRemind minut wcześniej',
-                widget: DropdownButton(
-                  onChanged: () {},
-                  icon: const Icon(
-                    Icons.keyboard_arrow_down,
-                    color: Colors.grey,
-                  ),
-                  iconSize: 43,
-                  elevation: 4,
-                  items: [
-                    
-                  ],
-                ),
               ),
             ],
           ),
@@ -115,33 +103,30 @@ class _AddTaskPageState extends State<AddTaskPage> {
   }
 
   _getDateFromUser() async {
-    DateTime? _pickerDate = await showDatePicker(
+    DateTime? pickerDate = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
       firstDate: DateTime(2023),
       lastDate: DateTime(2035),
     );
-    if (_pickerDate != null) {
+    if (pickerDate != null) {
       setState(() {
-        _selectedDateNow = _pickerDate;
+        _selectedDateNow = pickerDate;
       });
-    } else {
-      print('error');
-    }
+    } else {}
   }
 
   _getTimeFromUser({required bool isStartTime}) async {
     var pickedTime = await _showTimePicker();
-    String _formatedTime = pickedTime.format(context);
+    String formatedTime = pickedTime.format();
     if (pickedTime == null) {
-      print('time canceled ');
     } else if (isStartTime == true) {
       setState(() {
-        _startTime = _formatedTime;
+        _startTime = formatedTime;
       });
     } else if (isStartTime == false) {
       setState(() {
-        _endTime = _formatedTime;
+        _endTime = formatedTime;
       });
     }
   }

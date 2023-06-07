@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:date_picker_timeline/date_picker_timeline.dart';
-import 'package:primary_school/app/UI/add_task_bar.dart';
+import 'package:intl/intl.dart';
+
+import 'package:primary_school/features/add/add_task_bar.dart';
 
 class FirstPage extends StatefulWidget {
   const FirstPage({super.key});
@@ -10,8 +11,6 @@ class FirstPage extends StatefulWidget {
   State<FirstPage> createState() => _FirstPageState();
 }
 
-DateTime _selectedDate = DateTime.now();
-
 class _FirstPageState extends State<FirstPage> {
   @override
   Widget build(BuildContext context) {
@@ -19,35 +18,28 @@ class _FirstPageState extends State<FirstPage> {
       body: Center(
         child: Column(children: [
           Container(
-            margin: const EdgeInsets.only(
-              left: 20,
-              top: 15,
-            ),
-            child: DatePicker(
-              DateTime.now(),
-              height: 100,
-              width: 80,
-              initialSelectedDate: DateTime.now(),
-              selectionColor: Colors.blueGrey,
-              dayTextStyle: GoogleFonts.lato(
-                textStyle: const TextStyle(
-                  overflow: TextOverflow.ellipsis,
-                  fontSize: 13,
+            decoration: const BoxDecoration(),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  DateFormat.yMMMMd().format(
+                    DateTime.now(),
+                  ),
+                  style: GoogleFonts.lato(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey,
+                  ),
                 ),
-              ),
-              dateTextStyle: GoogleFonts.lato(
-                textStyle: const TextStyle(
-                  fontSize: 20,
+                Text(
+                  'Today',
+                  style: GoogleFonts.lato(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
-              monthTextStyle: GoogleFonts.lato(
-                textStyle: const TextStyle(
-                  fontSize: 10,
-                ),
-              ),
-              onDateChange: (date) {
-                _selectedDate = date;
-              },
+              ],
             ),
           ),
           Container(
