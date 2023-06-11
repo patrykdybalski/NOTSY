@@ -10,7 +10,7 @@ class CalendarPage extends StatefulWidget {
 
 class _CalendarPageState extends State<CalendarPage> {
   CalendarFormat calendarFormat = CalendarFormat.month;
-  DateTime _selectedDay = DateTime.now();
+  DateTime todayDay = DateTime.now();
   DateTime _focusedDay = DateTime.now();
 
   @override
@@ -89,7 +89,7 @@ class _CalendarPageState extends State<CalendarPage> {
             onDaySelected: (date, events) {
               setState(
                 () {
-                  print(date.toIso8601String());
+                  _focusedDay = date;
                 },
               );
             },
@@ -132,9 +132,7 @@ class _CalendarPageState extends State<CalendarPage> {
                 );
               },
             ),
-            selectedDayPredicate: (day) {
-              return isSameDay(_selectedDay, day);
-            },
+
             onPageChanged: (focusedDay) {
               _focusedDay = focusedDay;
             },
@@ -151,3 +149,5 @@ class _CalendarPageState extends State<CalendarPage> {
     );
   }
 }
+
+//selectedDayPredicate: (day) { return isSameDay(todayDay, day);},
