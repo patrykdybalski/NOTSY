@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:primary_school/features/add/add_task_bar.dart';
+
 import 'package:primary_school/features/home/pages/calendar_page/calendar_page.dart';
 import 'package:primary_school/features/home/pages/expenses_page/expenses_page.dart';
 import 'package:primary_school/features/home/pages/notes_page/notes_page.dart';
@@ -21,7 +21,8 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xfff6f3f0),
+      backgroundColor: Colors.red,
+      // backgroundColor: const Color(0xfff6f3f0),
       appBar: AppBar(
         title: const Text('Smart Assistant'),
         centerTitle: true,
@@ -44,16 +45,6 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => const AddTaskBarPage(),
-            ),
-          );
-        },
-        child: const Icon(Icons.add),
       ),
       body: Builder(
         builder: (context) {
@@ -100,3 +91,14 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+// floatingActionButton: FloatingActionButton(
+//         onPressed: () {
+//           Navigator.of(context).push(
+//             MaterialPageRoute(
+//               builder: (context) => const AddTaskBarPage(),
+//             ),
+//           );
+//         },
+//         child: const Icon(Icons.add),
+//       ),
