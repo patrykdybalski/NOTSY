@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text('Smart Assistant'),
         centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 145, 140, 140),
+        backgroundColor: Color(0xff060109),
         leading: IconButton(
           icon: const Icon(Icons.menu),
           onPressed: () {},
@@ -41,8 +41,11 @@ class _HomePageState extends State<HomePage> {
               );
             },
             icon: const Icon(
-              Icons.person,
+              Icons.add_circle_outline_outlined,
+              size: 35,
+              color: Color(0xff01D68E),
             ),
+            padding: const EdgeInsets.only(right: 5),
           ),
         ],
       ),
@@ -59,8 +62,9 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.white,
-        selectedItemColor: const Color(0xff7fab72),
+        backgroundColor: Color(0xff060109),
+        selectedItemColor: Color(0xff01D68E),
+        unselectedItemColor: Colors.white,
         currentIndex: currentIndex,
         onTap: (newIndex) {
           setState(() {

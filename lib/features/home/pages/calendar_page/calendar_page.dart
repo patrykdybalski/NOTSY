@@ -37,14 +37,16 @@ class _CalendarPageState extends State<CalendarPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(38, 50, 56, 1),
+      backgroundColor: Color(0xff060109),
+      // backgroundColor: const Color.fromRGBO(38, 50, 56, 1),
       body: ListView(
         children: [
           Padding(
             padding: const EdgeInsets.all(5.0),
             child: Container(
               decoration: const BoxDecoration(
-                  color: Color.fromRGBO(38, 50, 56, 1),
+                  // color: Color.fromRGBO(38, 50, 56, 1),
+                  color: Color(0xff060109),
                   borderRadius: BorderRadius.all(Radius.circular(12.0))),
               child: TableCalendar(
                 focusedDay: focusedDay,
@@ -195,8 +197,8 @@ class _CalendarPageState extends State<CalendarPage> {
         fontSize: 20,
       ),
       isTodayHighlighted: true,
-      selectedDecoration: BoxDecoration(
-        color: Colors.orange.shade100,
+      selectedDecoration: const BoxDecoration(
+        color: Color(0xff01D68E),
         shape: BoxShape.circle,
       ),
       selectedTextStyle: const TextStyle(
@@ -218,7 +220,7 @@ class _CalendarPageState extends State<CalendarPage> {
         fontSize: 20,
       ),
       rowDecoration: BoxDecoration(
-        color: const Color.fromRGBO(38, 50, 56, 1),
+        color: Color(0xff060109),
         borderRadius: BorderRadius.circular(12),
       ),
     );
@@ -227,7 +229,7 @@ class _CalendarPageState extends State<CalendarPage> {
   DaysOfWeekStyle daysOfWeekStyle() {
     return DaysOfWeekStyle(
       decoration: BoxDecoration(
-        color: Colors.blueGrey.shade900,
+        color: Color(0xff060109),
       ),
       weekdayStyle: const TextStyle(
         color: Colors.white60,
