@@ -16,8 +16,8 @@ class _CalendarPageState extends State<CalendarPage> {
   DateTime selectedDay = DateTime.now();
   DateTime focusedDay = DateTime.now();
   late Map<DateTime, List<EventModel>> selectedEvents;
-  TextEditingController eventController = TextEditingController();
-  TextEditingController selectedDayController = TextEditingController();
+  TextEditingController eventNameController = TextEditingController();
+  TextEditingController eventDescriptionController = TextEditingController();
 
   @override
   void initState() {
@@ -31,7 +31,7 @@ class _CalendarPageState extends State<CalendarPage> {
 
   @override
   void dispose() {
-    eventController.dispose();
+    eventNameController.dispose();
     super.dispose();
   }
 
@@ -176,22 +176,22 @@ class _CalendarPageState extends State<CalendarPage> {
             ),
           ),
           onPressed: () {
-            if (eventController.text.isEmpty) {
+            if (eventNameController.text.isEmpty) {
             } else {
               if (selectedEvents[selectedDay] != null) {
                 selectedEvents[selectedDay]?.add(EventModel(
-                    title: eventController.text,
-                    subtitle: selectedDayController.text));
+                    title: eventNameController.text,
+                    subtitle: eventDescriptionController.text));
               } else {
                 selectedEvents[selectedDay] = [
                   EventModel(
-                      title: eventController.text,
-                      subtitle: selectedDayController.text)
+                      title: eventNameController.text,
+                      subtitle: eventDescriptionController.text)
                 ];
               }
             }
             Navigator.of(context).pop();
-            eventController.clear();
+            eventNameController.clear();
             setState(() {});
             return;
           },
@@ -226,7 +226,7 @@ class _CalendarPageState extends State<CalendarPage> {
               child: Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: TextFormField(
-                  controller: eventController,
+                  controller: eventNameController,
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
@@ -271,7 +271,7 @@ class _CalendarPageState extends State<CalendarPage> {
               child: Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: TextFormField(
-                  controller: eventController,
+                  controller: eventDescriptionController,
                   style: const TextStyle(
                     color: Colors.white,
                   ),
