@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:primary_school/domain/models/input_field.dart';
 
 import 'package:primary_school/features/home/pages/calendar_page/event.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -68,7 +69,7 @@ class _CalendarPageState extends State<CalendarPage> {
             child: Container(
               decoration: const BoxDecoration(
                   // color: Color.fromRGBO(38, 50, 56, 1),
-                  color:  Color(0xff0c1020),
+                  color: Color(0xff0c1020),
                   borderRadius: BorderRadius.all(Radius.circular(12.0))),
               child: TableCalendar(
                 focusedDay: focusedDay,
@@ -132,79 +133,237 @@ class _CalendarPageState extends State<CalendarPage> {
 
   _showDialog() {
     showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: const Text('Dodaj event'),
-            content: Column(
-              children: [
-                Container(
-                  height: 52,
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.grey,
-                      width: 1.0,
-                    ),
-                    borderRadius: BorderRadius.circular(15),
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          scrollable: true,
+          titlePadding: const EdgeInsets.all(1),
+          contentPadding: const EdgeInsets.all(10),
+          backgroundColor: const Color(0xff0c1020),
+          title: title(),
+          content: content(),
+        );
+      },
+    );
+  }
+
+  title() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        TextButton(
+          child: const Text(
+            'Anuluj',
+            style: TextStyle(
+              color: Color.fromARGB(181, 255, 139, 128),
+            ),
+          ),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+        const Icon(
+          Icons.add_task_rounded,
+          color: Colors.white,
+          semanticLabel: 'dodaj wydarzenie',
+          size: 30,
+        ),
+        TextButton(
+          child: const Text(
+            'Dodaj',
+            style: TextStyle(
+              color: Color(0xff01D68E),
+            ),
+          ),
+          onPressed: () {
+            if (eventController.text.isEmpty) {
+            } else {
+              if (selectedEvents[selectedDay] != null) {
+                selectedEvents[selectedDay]?.add(EventModel(
+                    title: eventController.text,
+                    subtitle: selectedDayController.text));
+              } else {
+                selectedEvents[selectedDay] = [
+                  EventModel(
+                      title: eventController.text,
+                      subtitle: selectedDayController.text)
+                ];
+              }
+            }
+            Navigator.of(context).pop();
+            eventController.clear();
+            setState(() {});
+            return;
+          },
+        ),
+      ],
+    );
+  }
+
+  content() {
+    return Column(children: [
+      Container(
+        decoration: const BoxDecoration(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Tytuł',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 15,
+              ),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            Container(
+              height: 50,
+              decoration: BoxDecoration(
+                color: const Color(0xff3C4056),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: TextFormField(
+                  controller: eventController,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
-                  child: TextFormField(
-                    controller: eventController,
-                    autofocus: false,
-                    decoration: const InputDecoration(
-                      hintText: 'dziala',
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
+                  decoration: const InputDecoration(
+                    hintText: 'Wpisz tytuł:',
+                    hintStyle: TextStyle(
+                      color: Colors.white60,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      const SizedBox(
+        height: 20,
+      ),
+      Container(
+        decoration: const BoxDecoration(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Opis',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 15,
+              ),
+            ),
+            const SizedBox(
+              height: 5,
+            ),
+            Container(
+              height: 150,
+              decoration: BoxDecoration(
+                color: const Color(0xff3C4056),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: TextFormField(
+                  controller: eventController,
+                  style: const TextStyle(
+                    color: Colors.white,
+                  ),
+                  decoration: const InputDecoration(
+                    hintText: 'Dodaj opis eventu',
+                    hintStyle: TextStyle(
+                      color: Colors.white60,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Container(
+              decoration: const BoxDecoration(),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Wybrana data',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: const Color(0xff3C4056),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: TextFormField(
+                        style: const TextStyle(
                           color: Colors.white,
-                          width: 0,
+                        ),
+                        decoration: const InputDecoration(
+                          hintText: 'Wtorek, 23 Czerwca',
+                          hintStyle: TextStyle(
+                            color: Colors.white60,
+                            fontWeight: FontWeight.normal,
+                          ),
                         ),
                       ),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: Colors.white,
-                          width: 0,
-                        ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: MyInputFields(
+                    title: 'Początek',
+                    hint: '12:00',
+                    widget: IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.access_time_rounded,
+                        color: Colors.grey,
                       ),
                     ),
                   ),
                 ),
-                TextFormField(
-                  controller: selectedDayController,
-                )
+                const SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: MyInputFields(
+                    title: 'Koniec',
+                    hint: '13:00',
+                    widget: IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.access_time_rounded,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
-            actions: [
-              TextButton(
-                child: const Text('Anuluj'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-              TextButton(
-                child: const Text('OK'),
-                onPressed: () {
-                  if (eventController.text.isEmpty) {
-                  } else {
-                    if (selectedEvents[selectedDay] != null) {
-                      selectedEvents[selectedDay]?.add(EventModel(
-                          title: eventController.text,
-                          subtitle: selectedDayController.text));
-                    } else {
-                      selectedEvents[selectedDay] = [
-                        EventModel(
-                            title: eventController.text,
-                            subtitle: selectedDayController.text)
-                      ];
-                    }
-                  }
-                  Navigator.of(context).pop();
-                  eventController.clear();
-                  setState(() {});
-                  return;
-                },
-              ),
-            ],
-          );
-        });
+          ],
+        ),
+      ),
+    ]);
   }
 
   CalendarStyle calendarStyle() {

@@ -25,6 +25,9 @@ class MyInputFields extends StatelessWidget {
         children: [
           Text(
             title,
+            style: const TextStyle(
+              color: Colors.white,
+            ),
           ),
           Container(
             height: 52,
@@ -33,7 +36,7 @@ class MyInputFields extends StatelessWidget {
                 color: Colors.grey,
                 width: 1.0,
               ),
-              borderRadius: BorderRadius.circular(15),
+              borderRadius: BorderRadius.circular(12),
             ),
             child: Padding(
               padding: const EdgeInsets.only(left: 8.0, right: 10),
@@ -46,6 +49,9 @@ class MyInputFields extends StatelessWidget {
                       controller: controller,
                       decoration: InputDecoration(
                         hintText: hint,
+                        hintStyle: const TextStyle(
+                          color: Colors.white,
+                        ),
                         focusedBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(
                             color: Colors.white,
