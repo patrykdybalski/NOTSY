@@ -4,8 +4,6 @@ import 'package:primary_school/features/home/pages/calendar_page/calendar_page.d
 import 'package:primary_school/features/home/pages/expenses_page/expenses_page.dart';
 import 'package:primary_school/features/home/pages/notes_page/notes_page.dart';
 
-import 'package:primary_school/features/home/pages/user_page/user_page.dart';
-
 class HomePage extends StatefulWidget {
   const HomePage({
     super.key,
@@ -23,32 +21,32 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.red,
       // backgroundColor: const Color(0xfff6f3f0),
-      appBar: AppBar(
-        title: const Text('Smart Assistant'),
-        centerTitle: true,
-        backgroundColor: Color(0xff060109),
-        leading: IconButton(
-          icon: const Icon(Icons.menu),
-          onPressed: () {},
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const UserPage(),
-                ),
-              );
-            },
-            icon: const Icon(
-              Icons.add_circle_outline_outlined,
-              size: 35,
-              color: Color(0xff01D68E),
-            ),
-            padding: const EdgeInsets.only(right: 5),
-          ),
-        ],
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Smart Assistant'),
+      //   centerTitle: true,
+      //   backgroundColor: Color(0xff060109),
+      //   leading: IconButton(
+      //     icon: const Icon(Icons.menu),
+      //     onPressed: () {},
+      //   ),
+      //   actions: [
+      //     IconButton(
+      //       onPressed: () {
+      //         Navigator.of(context).push(
+      //           MaterialPageRoute(
+      //             builder: (context) => const UserPage(),
+      //           ),
+      //         );
+      //       },
+      //       icon: const Icon(
+      //         Icons.add_circle_outline_outlined,
+      //         size: 35,
+      //         color: Color(0xff01D68E),
+      //       ),
+      //       padding: const EdgeInsets.only(right: 5),
+      //     ),
+      //   ],
+      // ),
       body: Builder(
         builder: (context) {
           if (currentIndex == 0) {
@@ -62,8 +60,8 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Color(0xff060109),
-        selectedItemColor: Color(0xff01D68E),
+        backgroundColor: const Color(0xff171b2e),
+        selectedItemColor: const Color(0xff01D68E),
         unselectedItemColor: Colors.white,
         currentIndex: currentIndex,
         onTap: (newIndex) {

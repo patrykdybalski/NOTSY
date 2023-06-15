@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+
 import 'package:primary_school/features/home/pages/calendar_page/event.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -37,7 +37,29 @@ class _CalendarPageState extends State<CalendarPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff060109),
+      appBar: AppBar(
+        title: const Text('Kalendarz'),
+        centerTitle: true,
+        backgroundColor: const Color(0xff0c1020),
+        leading: IconButton(
+          icon: const Icon(Icons.menu),
+          onPressed: () {},
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              _showDialog();
+            },
+            icon: const Icon(
+              Icons.add_circle_outline_outlined,
+              size: 35,
+              color: Color(0xff01D68E),
+            ),
+            padding: const EdgeInsets.only(right: 5),
+          ),
+        ],
+      ),
+      backgroundColor: const Color(0xff0c1020),
       // backgroundColor: const Color.fromRGBO(38, 50, 56, 1),
       body: ListView(
         children: [
@@ -46,7 +68,7 @@ class _CalendarPageState extends State<CalendarPage> {
             child: Container(
               decoration: const BoxDecoration(
                   // color: Color.fromRGBO(38, 50, 56, 1),
-                  color: Color(0xff060109),
+                  color:  Color(0xff0c1020),
                   borderRadius: BorderRadius.all(Radius.circular(12.0))),
               child: TableCalendar(
                 focusedDay: focusedDay,
@@ -91,7 +113,10 @@ class _CalendarPageState extends State<CalendarPage> {
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
-                    color: Colors.grey,
+                    gradient: LinearGradient(colors: [
+                      const Color(0xff01D68E),
+                      Colors.blueGrey.shade300,
+                    ], begin: Alignment.topRight, end: Alignment.bottomLeft),
                   ),
                   child: ListTile(
                     title: (Text(event.title)),
@@ -101,12 +126,6 @@ class _CalendarPageState extends State<CalendarPage> {
                 ),
               ))
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _showDialog();
-        },
-        child: const Text('Add Event'),
       ),
     );
   }
@@ -211,7 +230,7 @@ class _CalendarPageState extends State<CalendarPage> {
       todayTextStyle: const TextStyle(
         fontSize: 20,
       ),
-      weekendTextStyle: TextStyle(
+      weekendTextStyle: const TextStyle(
         color: Color.fromARGB(181, 255, 139, 128),
         fontSize: 20,
       ),
@@ -220,18 +239,18 @@ class _CalendarPageState extends State<CalendarPage> {
         fontSize: 20,
       ),
       rowDecoration: BoxDecoration(
-        color: Color(0xff060109),
+        color: const Color(0xff0c1020),
         borderRadius: BorderRadius.circular(12),
       ),
     );
   }
 
   DaysOfWeekStyle daysOfWeekStyle() {
-    return DaysOfWeekStyle(
+    return const DaysOfWeekStyle(
       decoration: BoxDecoration(
-        color: Color(0xff060109),
+        color: Color(0xff0c1020),
       ),
-      weekdayStyle: const TextStyle(
+      weekdayStyle: TextStyle(
         color: Colors.white60,
         fontSize: 12,
       ),
