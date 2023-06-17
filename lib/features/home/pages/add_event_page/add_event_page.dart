@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
 
@@ -21,7 +22,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
     return selectedEvents[day] ?? [];
   }
 
-var valueOne = false;
+  var valueOne = false;
   var valueTwo = false;
 
   @override
@@ -29,6 +30,9 @@ var valueOne = false;
     eventNameController.dispose();
     super.dispose();
   }
+
+  var title = '';
+  var subtitle = '';
 
   @override
   Widget build(BuildContext context) {
@@ -59,24 +63,11 @@ var valueOne = false;
               ),
             ),
             onPressed: () {
-              if (eventNameController.text.isEmpty) {
-              } else {
-                if (selectedEvents[selectedDay] != null) {
-                  selectedEvents[selectedDay]?.add(EventModel(
-                      title: eventNameController.text,
-                      subtitle: eventDescriptionController.text));
-                } else {
-                  selectedEvents[selectedDay] = [
-                    EventModel(
-                        title: eventNameController.text,
-                        subtitle: eventDescriptionController.text)
-                  ];
-                }
-              }
-              Navigator.of(context).pop();
-              eventNameController.clear();
-              setState(() {});
-              return;
+              FirebaseFirestore.instance.collection('calendarItems').add({
+                'title': title,
+                'subtitle': subtitle,
+                'selectedDay': 123,
+              });
             },
           ),
         ],
@@ -86,6 +77,11 @@ var valueOne = false;
           padding: const EdgeInsets.all(8.0),
           child: Column(children: [
             TextFormField(
+              onChanged: (newValue) {
+                setState(() {
+                  title = newValue;
+                });
+              },
               autofocus: true,
               cursorColor: Colors.white10,
               cursorRadius: const Radius.circular(12),
@@ -133,6 +129,11 @@ var valueOne = false;
                       ),
                     ),
                     TextFormField(
+                      onChanged: (newValue) {
+                        setState(() {
+                          subtitle = newValue;
+                        });
+                      },
                       cursorColor: Colors.white10,
                       cursorRadius: const Radius.circular(12),
                       controller: eventDescriptionController,
