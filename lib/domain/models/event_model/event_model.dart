@@ -1,9 +1,14 @@
 class EventModel {
+  EventModel({
+    required this.title,
+    required this.subtitle,
+    required this.selectedDay,
+  });
   final String title;
   final String subtitle;
-  EventModel({required this.title, required this.subtitle});
-  @override
-  String toString() {
-    return title;
+  final DateTime selectedDay;
+
+  String selectedDayFormatted() {
+    return 'example';
   }
 }

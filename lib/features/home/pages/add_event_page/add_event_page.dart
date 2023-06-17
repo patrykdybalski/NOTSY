@@ -21,7 +21,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
     return selectedEvents[day] ?? [];
   }
 
-  var valueOne = false;
+var valueOne = false;
   var valueTwo = false;
 
   @override
