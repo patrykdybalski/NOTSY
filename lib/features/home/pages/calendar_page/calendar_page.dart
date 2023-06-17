@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
@@ -72,62 +71,54 @@ class _CalendarPageState extends State<CalendarPage> {
 
             return ListView(
               children: [
-                for (final calendarItem in calendarItems) ...[
-                  Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        color: Color(0xff0c1020),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(12.0),
-                        ),
+                TableCalendar(
+                  focusedDay: focusedDay,
+                  firstDay: DateTime(2022),
+                  lastDay: DateTime(2030),
+                  calendarFormat: calendarFormat,
+                  startingDayOfWeek: StartingDayOfWeek.monday,
+                  daysOfWeekVisible: true,
+                  daysOfWeekHeight: 30,
+                  rowHeight: 60,
+                  headerStyle: headerStyle(),
+                  calendarStyle: calendarStyle(),
+                  daysOfWeekStyle: daysOfWeekStyle(),
+                  eventLoader: _getEventsfromDay,
+                  onFormatChanged: (format) {
+                    setState(
+                      () {
+                        calendarFormat = format;
+                      },
+                    );
+                  },
+                  onPageChanged: (focusedDay) {
+                    focusedDay = focusedDay;
+                  },
+                  onDaySelected: (selectDay, focusDay) {
+                    setState(
+                      () {
+                        selectedDay = selectDay;
+                        focusedDay = focusDay;
+                      },
+                    );
+                  },
+                  selectedDayPredicate: (day) {
+                    return isSameDay(selectedDay, day);
+                  },
+                ),
+                Column(
+                  children: [
+                    for (final calendarItem in calendarItems) ...[
+                      EventWidget(
+                        calendarItem['title'],
+                        calendarItem['subtitle'],
                       ),
-                      child: TableCalendar(
-                        focusedDay: focusedDay,
-                        firstDay: DateTime(2022),
-                        lastDay: DateTime(2030),
-                        calendarFormat: calendarFormat,
-                        startingDayOfWeek: StartingDayOfWeek.monday,
-                        daysOfWeekVisible: true,
-                        daysOfWeekHeight: 30,
-                        rowHeight: 60,
-                        headerStyle: headerStyle(),
-                        calendarStyle: calendarStyle(),
-                        daysOfWeekStyle: daysOfWeekStyle(),
-                        eventLoader: _getEventsfromDay,
-                        onFormatChanged: (format) {
-                          setState(
-                            () {
-                              calendarFormat = format;
-                            },
-                          );
-                        },
-                        onPageChanged: (focusedDay) {
-                          focusedDay = focusedDay;
-                        },
-                        onDaySelected: (selectDay, focusDay) {
-                          setState(
-                            () {
-                              selectedDay = selectDay;
-                              focusedDay = focusDay;
-                            },
-                          );
-                        },
-                        selectedDayPredicate: (day) {
-                          return isSameDay(selectedDay, day);
-                        },
-                      ),
-                    ),
-                  ),
-                  ..._getEventsfromDay(selectedDay)
-                      .map((EventModel event) => Column(
-                            children: [
-                              Text(calendarItem['title']),
-                              Text(calendarItem['subtitle']),
-                              Text(calendarItem['selectedDay'].toString()),
-                            ],
-                          )),
-                ],
+                      const SizedBox(
+                        height: 10,
+                      )
+                    ],
+                  ],
+                )
               ],
             );
           },
@@ -135,6 +126,17 @@ class _CalendarPageState extends State<CalendarPage> {
       ),
     );
   }
+
+  // for (final calendarItem in calendarItems) ...[
+  //                   ..._getEventsfromDay(selectedDay)
+  //                   .map((EventModel event) => Column(
+  //                         children: [
+  //                           Text(calendarItem['title']),
+  //                           Text(calendarItem['subtitle']),
+  //                           Text(calendarItem['selectedDay'].toString()),
+  //                         ],
+  //                       ),),
+  //                 ]
 
   _showDialog() {
     showDialog(
@@ -224,6 +226,44 @@ class _CalendarPageState extends State<CalendarPage> {
           color: Colors.blueGrey.shade300,
           border: const Border.fromBorderSide(BorderSide()),
           borderRadius: const BorderRadius.all(Radius.circular(12.0))),
+    );
+  }
+}
+
+class EventWidget extends StatelessWidget {
+  const EventWidget(
+    this.title,
+    this.subtitle, {
+    super.key,
+  });
+  final String title;
+  final String subtitle;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 300,
+      height: 100,
+      decoration: BoxDecoration(
+        color: Colors.amber,
+        borderRadius: BorderRadius.circular(13),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: TextStyle(
+                color: Colors.red,
+              ),
+            ),
+            Text(subtitle),
+            Text(subtitle),
+          ],
+        ),
+      ),
     );
   }
 }

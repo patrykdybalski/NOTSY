@@ -17,7 +17,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
   TextEditingController eventNameController = TextEditingController();
   TextEditingController eventDescriptionController = TextEditingController();
   late Map<DateTime, List<EventModel>> selectedEvents;
-  DateTime selectedDay = DateTime.now();
+  String selectedDay = '';
   List<EventModel> _getEventsfromDay(DateTime day) {
     return selectedEvents[day] ?? [];
   }
@@ -66,7 +66,6 @@ class _AddEventDialogState extends State<AddEventDialog> {
               FirebaseFirestore.instance.collection('calendarItems').add({
                 'title': title,
                 'subtitle': subtitle,
-                'selectedDay': 123,
               });
             },
           ),
