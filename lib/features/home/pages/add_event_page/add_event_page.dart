@@ -103,7 +103,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
                 fillColor: Colors.white10,
               ),
               keyboardType: TextInputType.text,
-              maxLength: 40,
+              maxLength: 45,
               maxLines: 1,
             ),
             const SizedBox(

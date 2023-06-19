@@ -241,27 +241,94 @@ class EventWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 300,
-      height: 100,
-      decoration: BoxDecoration(
-        color: Colors.amber,
-        borderRadius: BorderRadius.circular(13),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              title,
-              style: TextStyle(
-                color: Colors.red,
-              ),
+    return Padding(
+      padding: EdgeInsets.all(5.0),
+      // child: Container(
+      //   decoration: BoxDecoration(
+      //     color: Color.fromARGB(103, 245, 245, 245),
+      //     borderRadius: BorderRadius.circular(13),
+      //   ),
+      //   child: Column(
+      //     crossAxisAlignment: CrossAxisAlignment.start,
+      //     children: [
+      //       Row(
+      //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //         children: [
+      //           Padding(
+      //             padding: const EdgeInsets.all(4.0),
+      //             child: Container(
+      //               width: 230,
+      //               child: Column(
+      //                 children: [
+      //                   Text(
+      //                     title,
+      //                     style: const TextStyle(
+      //                       color: Colors.black,
+      //                       fontSize: 15,
+      //                       fontWeight: FontWeight.w500,
+      //                     ),
+      //                   ),
+      //                   const Divider(
+      //                     color: Colors.black,
+      //                   ),
+      //                   Text(subtitle)
+      //                 ],
+      //               ),
+      //             ),
+      //           ),
+      //           Container(
+      //               width: 85,
+      //               height: 70,
+      //               decoration: BoxDecoration(
+      //                 color: Colors.blueAccent.shade400,
+      //                 borderRadius: BorderRadius.circular(13),
+      //               ),
+      //               child: Column(
+      //                 crossAxisAlignment: CrossAxisAlignment.center,
+      //                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      //                 children: [
+      //                   Text('20 września'),
+      //                   Text('17:00 - 18:00'),
+      //                 ],
+      //               )),
+      //         ],
+      //       ),
+      //     ],
+      //   ),
+      // ),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(13),
+          color: Colors.blueGrey.shade700,
+        ),
+        child: ExpansionTile(
+          title: Text(
+            title,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w500,
             ),
-            Text(subtitle),
-            Text(subtitle),
-          ],
+          ),
+          trailing: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              Text(
+                '16:45',
+                style: TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              Text(
+                '17:24',
+                style: TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ),
+          children: [Text(subtitle)],
         ),
       ),
     );
