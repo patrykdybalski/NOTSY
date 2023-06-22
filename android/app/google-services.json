@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "185638894182",
+    "project_id": "smart-assistant-2701",
+    "storage_bucket": "smart-assistant-2701.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:185638894182:android:752637e5419ad58ec78ba7",
+        "android_client_info": {
+          "package_name": "com.patrykdybalski.primary_school"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "185638894182-2el7gtodp571edlnvih4fhf5l2jr7o54.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwOdjl1V2a_PRAqFy5DqURr7KGOMzufTA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "185638894182-2el7gtodp571edlnvih4fhf5l2jr7o54.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
