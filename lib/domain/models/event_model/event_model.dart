@@ -13,4 +13,9 @@ class EventModel {
   String selectedDayFormatted() {
     return 'example';
   }
+
+  List<EventModel> eventLoader(DateTime day) {
+    return eventLoader(day);
+  }
+  
 }
