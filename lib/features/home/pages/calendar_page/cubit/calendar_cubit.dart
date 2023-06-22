@@ -1,18 +1,19 @@
 import 'dart:async';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:primary_school/domain/models/event_model/event_model.dart';
 part 'calendar_state.dart';
 
 class CalendarCubit extends Cubit<CalendarState> {
   CalendarCubit()
-      : super(const CalendarState(
-          calendarItems: [],
-          isLoading: false,
-          errorMessage: '',
-        ));
+      : super(
+          const CalendarState(
+            calendarItems: [],
+            isLoading: false,
+            errorMessage: '',
+          ),
+        );
 
   StreamSubscription? _streamSubscription;
 
@@ -29,9 +30,19 @@ class CalendarCubit extends Cubit<CalendarState> {
         .collection('calendarItems')
         .snapshots()
         .listen((data) {
+      final eventModels = data.docs.map(
+        (doc) {
+          return EventModel(
+            title: doc['title'],
+            subtitle: doc['subtitle'],
+            selectedDay: (doc['selectedDay'] as Timestamp).toDate(),
+            id: doc.id,
+          );
+        },
+      ).toList();
       emit(
         CalendarState(
-          calendarItems: data.docs,
+          calendarItems: eventModels,
           isLoading: false,
           errorMessage: '',
         ),

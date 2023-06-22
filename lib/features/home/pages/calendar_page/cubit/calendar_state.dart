@@ -7,7 +7,7 @@ class CalendarState {
     required this.isLoading,
     required this.errorMessage,
   });
-  final List<QueryDocumentSnapshot<Map<String, dynamic>>> calendarItems;
+  final List<EventModel> calendarItems;
   final bool isLoading;
   final String errorMessage;
 }

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
-import 'package:primary_school/features/home/pages/add_event_page/add_event_page.dart';
+import 'package:primary_school/features/home/pages/add_event_dialog/add_event_dialog.dart';
 import 'package:primary_school/features/home/pages/calendar_page/cubit/calendar_cubit.dart';
+import 'package:primary_school/features/home/pages/calendar_page/widgets/event_widget.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class CalendarPage extends StatefulWidget {
@@ -16,16 +17,7 @@ class _CalendarPageState extends State<CalendarPage> {
   CalendarFormat calendarFormat = CalendarFormat.month;
   DateTime selectedDay = DateTime.now();
   DateTime focusedDay = DateTime.now();
-  late Map<DateTime, List<EventModel>> selectedEvents;
-  List<EventModel> _getEventsfromDay(DateTime day) {
-    return selectedEvents[day] ?? [];
-  }
-
-  @override
-  void initState() {
-    selectedEvents = {};
-    super.initState();
-  }
+  List<dynamic> Function(DateTime)? selectedEvents;
 
   @override
   Widget build(BuildContext context) {
@@ -67,51 +59,47 @@ class _CalendarPageState extends State<CalendarPage> {
             if (state.isLoading) {
               return const CircularProgressIndicator();
             }
-            final calendarItems = state.calendarItems;
+            final eventModels = state.calendarItems;
 
             return ListView(
               children: [
-                TableCalendar(
-                  focusedDay: focusedDay,
-                  firstDay: DateTime(2022),
-                  lastDay: DateTime(2030),
-                  calendarFormat: calendarFormat,
-                  startingDayOfWeek: StartingDayOfWeek.monday,
-                  daysOfWeekVisible: true,
-                  daysOfWeekHeight: 30,
-                  rowHeight: 60,
-                  headerStyle: headerStyle(),
-                  calendarStyle: calendarStyle(),
-                  daysOfWeekStyle: daysOfWeekStyle(),
-                  eventLoader: _getEventsfromDay,
-                  onFormatChanged: (format) {
-                    setState(
-                      () {
-                        calendarFormat = format;
-                      },
-                    );
-                  },
-                  onPageChanged: (focusedDay) {
-                    focusedDay = focusedDay;
-                  },
-                  onDaySelected: (selectDay, focusDay) {
-                    setState(
-                      () {
-                        selectedDay = selectDay;
-                        focusedDay = focusDay;
-                      },
-                    );
-                  },
-                  selectedDayPredicate: (day) {
-                    return isSameDay(selectedDay, day);
-                  },
-                ),
+                // TableCalendar(
+                //   focusedDay: focusedDay,
+                //   firstDay: DateTime(2022),
+                //   lastDay: DateTime(2030),
+                //   calendarFormat: calendarFormat,
+                //   startingDayOfWeek: StartingDayOfWeek.monday,
+                //   daysOfWeekVisible: true,
+                //   daysOfWeekHeight: 30,
+                //   rowHeight: 60,
+                //   headerStyle: headerStyle(),
+                //   calendarStyle: calendarStyle(),
+                //   daysOfWeekStyle: daysOfWeekStyle(),
+                //   eventLoader: selectedEvents,
+                //   onFormatChanged: (format) {
+                //     setState(
+                //       () {
+                //         calendarFormat = format;
+                //       },
+                //     );
+                //   },
+                //   onPageChanged: (focusedDay) {
+                //     focusedDay = focusedDay;
+                //   },
+                //   onDaySelected: (date, events) {
+                //     setState(
+                //       () {},
+                //     );
+                //   },
+                //   selectedDayPredicate: (day) {
+                //     return isSameDay(selectedDay, day);
+                //   },
+                // ),
                 Column(
                   children: [
-                    for (final calendarItem in calendarItems) ...[
+                    for (final eventModel in eventModels) ...[
                       EventWidget(
-                        calendarItem['title'],
-                        calendarItem['subtitle'],
+                        eventModel: eventModel,
                       ),
                       const SizedBox(
                         height: 10,
@@ -126,17 +114,6 @@ class _CalendarPageState extends State<CalendarPage> {
       ),
     );
   }
-
-  // for (final calendarItem in calendarItems) ...[
-  //                   ..._getEventsfromDay(selectedDay)
-  //                   .map((EventModel event) => Column(
-  //                         children: [
-  //                           Text(calendarItem['title']),
-  //                           Text(calendarItem['subtitle']),
-  //                           Text(calendarItem['selectedDay'].toString()),
-  //                         ],
-  //                       ),),
-  //                 ]
 
   _showDialog() {
     showDialog(
@@ -226,111 +203,6 @@ class _CalendarPageState extends State<CalendarPage> {
           color: Colors.blueGrey.shade300,
           border: const Border.fromBorderSide(BorderSide()),
           borderRadius: const BorderRadius.all(Radius.circular(12.0))),
-    );
-  }
-}
-
-class EventWidget extends StatelessWidget {
-  const EventWidget(
-    this.title,
-    this.subtitle, {
-    super.key,
-  });
-  final String title;
-  final String subtitle;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(5.0),
-      // child: Container(
-      //   decoration: BoxDecoration(
-      //     color: Color.fromARGB(103, 245, 245, 245),
-      //     borderRadius: BorderRadius.circular(13),
-      //   ),
-      //   child: Column(
-      //     crossAxisAlignment: CrossAxisAlignment.start,
-      //     children: [
-      //       Row(
-      //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //         children: [
-      //           Padding(
-      //             padding: const EdgeInsets.all(4.0),
-      //             child: Container(
-      //               width: 230,
-      //               child: Column(
-      //                 children: [
-      //                   Text(
-      //                     title,
-      //                     style: const TextStyle(
-      //                       color: Colors.black,
-      //                       fontSize: 15,
-      //                       fontWeight: FontWeight.w500,
-      //                     ),
-      //                   ),
-      //                   const Divider(
-      //                     color: Colors.black,
-      //                   ),
-      //                   Text(subtitle)
-      //                 ],
-      //               ),
-      //             ),
-      //           ),
-      //           Container(
-      //               width: 85,
-      //               height: 70,
-      //               decoration: BoxDecoration(
-      //                 color: Colors.blueAccent.shade400,
-      //                 borderRadius: BorderRadius.circular(13),
-      //               ),
-      //               child: Column(
-      //                 crossAxisAlignment: CrossAxisAlignment.center,
-      //                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      //                 children: [
-      //                   Text('20 września'),
-      //                   Text('17:00 - 18:00'),
-      //                 ],
-      //               )),
-      //         ],
-      //       ),
-      //     ],
-      //   ),
-      // ),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(13),
-          color: Colors.blueGrey.shade700,
-        ),
-        child: ExpansionTile(
-          title: Text(
-            title,
-            style: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          trailing: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Text(
-                '16:45',
-                style: TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              Text(
-                '17:24',
-                style: TextStyle(
-                  fontSize: 17,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ],
-          ),
-          children: [Text(subtitle)],
-        ),
-      ),
     );
   }
 }
