@@ -40,6 +40,10 @@ dependencies:
   firebase_auth: ^4.6.1
   flutter_bloc: ^8.1.2
   google_fonts: ^4.0.4
+  intl: ^0.18.1
+  table_calendar: ^3.0.9
+  shared_preferences: ^2.1.2
+ 
 
 dev_dependencies:
   flutter_test:
