@@ -20,73 +20,80 @@ class _AddEventDialogState extends State<AddEventDialog> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AddEventCubit(),
-      child: BlocBuilder<AddEventCubit, AddEventState>(
-        builder: (context, state) {
-          return Container(
-            color: Colors.amberAccent,
-            width: 250,
-            height: 300,
-            child: AlertDialog(
-              scrollable: true,
-              titlePadding: const EdgeInsets.all(1),
-              contentPadding: const EdgeInsets.all(10),
-              backgroundColor: const Color(0xff0c1020),
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  TextButton(
-                    child: const Text(
-                      'Anuluj',
-                      style: TextStyle(
-                        color: Color.fromARGB(181, 255, 139, 128),
-                      ),
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                  TextButton(
-                    child: const Text(
-                      'Dodaj',
-                      style: TextStyle(
-                        color: Color(0xff01D68E),
-                      ),
-                    ),
-                    onPressed: () {
-                      context
-                          .read<AddEventCubit>()
-                          .add(_title!, _subtitle!, _selectedDay!);
-                    },
-                  ),
-                ],
-              ),
-              content: ContentDialog(
-                onTitleChanged: (newValue) {
-                  setState(
-                    () {
-                      _title = newValue;
-                    },
-                  );
-                },
-                onSubtitleChanged: (newValue) {
-                  setState(
-                    () {
-                      _subtitle = newValue;
-                    },
-                  );
-                },
-                onDayChanged: (newValue) {
-                  setState(
-                    () {
-                      _selectedDay = newValue;
-                    },
-                  );
-                },
-                selectedDateFormatted: _selectedDay?.toIso8601String(),
-              ),
-            ),
-          );
+      child: BlocListener<AddEventCubit, AddEventState>(
+        listener: (context, state) {
+          if (state.saved) {
+            Navigator.of(context).pop();
+          }
         },
+        child: BlocBuilder<AddEventCubit, AddEventState>(
+          builder: (context, state) {
+            return Container(
+              color: Colors.amberAccent,
+              width: 250,
+              height: 300,
+              child: AlertDialog(
+                scrollable: true,
+                titlePadding: const EdgeInsets.all(1),
+                contentPadding: const EdgeInsets.all(10),
+                backgroundColor: const Color(0xff0c1020),
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextButton(
+                      child: const Text(
+                        'Anuluj',
+                        style: TextStyle(
+                          color: Color.fromARGB(181, 255, 139, 128),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                    TextButton(
+                      child: const Text(
+                        'Dodaj',
+                        style: TextStyle(
+                          color: Color(0xff01D68E),
+                        ),
+                      ),
+                      onPressed: () {
+                        context
+                            .read<AddEventCubit>()
+                            .add(_title!, _subtitle!, _selectedDay!);
+                      },
+                    ),
+                  ],
+                ),
+                content: ContentDialog(
+                  onTitleChanged: (newValue) {
+                    setState(
+                      () {
+                        _title = newValue;
+                      },
+                    );
+                  },
+                  onSubtitleChanged: (newValue) {
+                    setState(
+                      () {
+                        _subtitle = newValue;
+                      },
+                    );
+                  },
+                  onDayChanged: (newValue) {
+                    setState(
+                      () {
+                        _selectedDay = newValue;
+                      },
+                    );
+                  },
+                  selectedDateFormatted: _selectedDay?.toIso8601String(),
+                ),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
