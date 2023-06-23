@@ -1,14 +1,15 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:primary_school/domain/repositories/events_repository.dart';
 
 part 'add_event_state.dart';
 
 class AddEventCubit extends Cubit<AddEventState> {
-  AddEventCubit()
+  AddEventCubit(this._eventsRepository)
       : super(
           const AddEventState(),
         );
+  final EventsRepository _eventsRepository;
 
   Future<void> add(
     String title,
@@ -16,13 +17,7 @@ class AddEventCubit extends Cubit<AddEventState> {
     DateTime selectedDay,
   ) async {
     try {
-      await FirebaseFirestore.instance.collection('calendarItems').add(
-        {
-          'title': title,
-          'subtitle': subtitle,
-          'selectedDay': selectedDay,
-        },
-      );
+      await _eventsRepository.add(title, subtitle, selectedDay);
       emit(
         const AddEventState(saved: true),
       );
@@ -33,5 +28,9 @@ class AddEventCubit extends Cubit<AddEventState> {
         ),
       );
     }
+  }
+
+  String selectedDayFormatted() {
+    return 'example';
   }
 }

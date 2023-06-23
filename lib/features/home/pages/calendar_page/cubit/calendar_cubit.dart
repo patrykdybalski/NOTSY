@@ -1,12 +1,13 @@
 import 'dart:async';
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
+import 'package:primary_school/domain/repositories/events_repository.dart';
 part 'calendar_state.dart';
 
 class CalendarCubit extends Cubit<CalendarState> {
-  CalendarCubit()
+  CalendarCubit(this._eventsRepository)
       : super(
           const CalendarState(
             calendarItems: [],
@@ -14,6 +15,7 @@ class CalendarCubit extends Cubit<CalendarState> {
             errorMessage: '',
           ),
         );
+  final EventsRepository _eventsRepository;
 
   StreamSubscription? _streamSubscription;
 
@@ -26,37 +28,40 @@ class CalendarCubit extends Cubit<CalendarState> {
       ),
     );
 
-    _streamSubscription = FirebaseFirestore.instance
-        .collection('calendarItems')
-        .snapshots()
-        .listen((data) {
-      final eventModels = data.docs.map(
-        (doc) {
-          return EventModel(
-            title: doc['title'],
-            subtitle: doc['subtitle'],
-            selectedDay: (doc['selectedDay'] as Timestamp).toDate(),
-            id: doc.id,
-          );
-        },
-      ).toList();
+    _streamSubscription = _eventsRepository.getEventsStream().listen((data) {
       emit(
         CalendarState(
-          calendarItems: eventModels,
+          calendarItems: data,
           isLoading: false,
           errorMessage: '',
         ),
       );
     })
-      ..onError((error) {
-        emit(
-          CalendarState(
-            calendarItems: const [],
-            isLoading: false,
-            errorMessage: error.toString(),
-          ),
-        );
-      });
+      ..onError(
+        (error) {
+          emit(
+            CalendarState(
+              calendarItems: const [],
+              isLoading: false,
+              errorMessage: error.toString(),
+            ),
+          );
+        },
+      );
+  }
+
+  Future<void> remove({required String documentID}) async {
+    try {
+      await _eventsRepository.delete(id: documentID);
+    } catch (error) {
+      emit(
+        CalendarState(
+          calendarItems: const [],
+          isLoading: false,
+          errorMessage: error.toString(),
+        ),
+      );
+    }
   }
 
   @override
