@@ -48,7 +48,7 @@ class EventWidget extends StatelessWidget {
           children: [
             Text(eventModel.subtitle),
             Text(
-              eventModel.selectedDay.toString(),
+              eventModel.selectedDayFormatted(),
             )
           ],
         ),

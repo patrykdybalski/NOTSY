@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 class EventModel {
   EventModel({
     required this.title,
@@ -11,11 +13,10 @@ class EventModel {
   final String id;
 
   String selectedDayFormatted() {
-    return 'example';
+   return  DateFormat.MMMMEEEEd().format(selectedDay);
   }
 
   List<EventModel> eventLoader(DateTime day) {
     return eventLoader(day);
   }
-  
 }
