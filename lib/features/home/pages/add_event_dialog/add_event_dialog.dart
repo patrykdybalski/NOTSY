@@ -25,6 +25,14 @@ class _AddEventDialogState extends State<AddEventDialog> {
           if (state.saved) {
             Navigator.of(context).pop();
           }
+          if (state.errorMessage.isNotEmpty) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.errorMessage),
+                backgroundColor: Colors.red,
+              ),
+            );
+          }
         },
         child: BlocBuilder<AddEventCubit, AddEventState>(
           builder: (context, state) {
@@ -52,17 +60,21 @@ class _AddEventDialogState extends State<AddEventDialog> {
                       },
                     ),
                     TextButton(
+                      onPressed: _title == null ||
+                              _subtitle == null ||
+                              _selectedDay == null
+                          ? null
+                          : () {
+                              context
+                                  .read<AddEventCubit>()
+                                  .add(_title!, _subtitle!, _selectedDay!);
+                            },
                       child: const Text(
                         'Dodaj',
                         style: TextStyle(
                           color: Color(0xff01D68E),
                         ),
                       ),
-                      onPressed: () {
-                        context
-                            .read<AddEventCubit>()
-                            .add(_title!, _subtitle!, _selectedDay!);
-                      },
                     ),
                   ],
                 ),
