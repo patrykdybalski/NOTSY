@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:primary_school/constans/colors.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class CalendarWidget extends StatefulWidget {
@@ -11,7 +12,7 @@ class CalendarWidget extends StatefulWidget {
 class _CalendarWidgetState extends State<CalendarWidget> {
   CalendarFormat calendarFormat = CalendarFormat.month;
 
-  final DateTime selectedDay = DateTime.now();
+  DateTime selectedDay = DateTime.now();
 
   DateTime focusedDay = DateTime.now();
 
@@ -26,12 +27,11 @@ class _CalendarWidgetState extends State<CalendarWidget> {
       calendarFormat: calendarFormat,
       startingDayOfWeek: StartingDayOfWeek.monday,
       daysOfWeekVisible: true,
-      daysOfWeekHeight: 30,
-      rowHeight: 60,
+      daysOfWeekHeight: 15,
+      rowHeight: 40,
       headerStyle: headerStyle(),
       calendarStyle: calendarStyle(),
       daysOfWeekStyle: daysOfWeekStyle(),
-      eventLoader: eventLoader,
       onFormatChanged: (format) {
         setState(
           () {
@@ -42,50 +42,57 @@ class _CalendarWidgetState extends State<CalendarWidget> {
       onPageChanged: (focusedDay) {
         focusedDay = focusedDay;
       },
-      onDaySelected: (date, events) {
-        setState(
-          () {},
-        );
-      },
       selectedDayPredicate: (day) {
         return isSameDay(selectedDay, day);
+      },
+      onDaySelected: (selectedDayy, focusedDayy) {
+        setState(
+          () {
+            selectedDay = selectedDayy;
+            focusedDay = focusedDayy;
+          },
+        );
       },
     );
   }
 
   CalendarStyle calendarStyle() {
     return CalendarStyle(
-      canMarkersOverflow: true,
       outsideDaysVisible: false,
       isTodayHighlighted: true,
       outsideTextStyle: const TextStyle(
         color: Colors.black54,
-        fontSize: 20,
+        fontSize: 15,
       ),
-      selectedDecoration: const BoxDecoration(
-        color: Color(0xff01D68E),
+      selectedDecoration: BoxDecoration(
         shape: BoxShape.circle,
+        border: Border.all(width: 1, color: Colors.white38),
       ),
       selectedTextStyle: const TextStyle(
-        fontSize: 20,
+        fontSize: 15,
+        color: AppColors.selectedDayColor,
       ),
       todayDecoration: BoxDecoration(
-        color: Colors.blueGrey.shade300,
-        shape: BoxShape.circle,
+        shape: BoxShape.rectangle,
+        border: Border.all(
+          width: 1,
+          color: Colors.white38,
+        ),
       ),
       todayTextStyle: const TextStyle(
-        fontSize: 20,
+        fontSize: 15,
+        color: AppColors.dayColor,
       ),
       weekendTextStyle: const TextStyle(
         color: Color.fromARGB(181, 255, 139, 128),
-        fontSize: 20,
+        fontSize: 15,
       ),
       defaultTextStyle: const TextStyle(
         color: Colors.white60,
-        fontSize: 20,
+        fontSize: 15,
       ),
       rowDecoration: BoxDecoration(
-        color: const Color(0xff0c1020),
+        color: AppColors.primaryColor,
         borderRadius: BorderRadius.circular(12),
       ),
     );
@@ -94,14 +101,14 @@ class _CalendarWidgetState extends State<CalendarWidget> {
   DaysOfWeekStyle daysOfWeekStyle() {
     return const DaysOfWeekStyle(
       decoration: BoxDecoration(
-        color: Color(0xff0c1020),
+        color: AppColors.primaryColor,
       ),
       weekdayStyle: TextStyle(
-        color: Colors.white60,
+        color: AppColors.dayColor,
         fontSize: 12,
       ),
       weekendStyle: TextStyle(
-        color: Color.fromARGB(181, 255, 139, 128),
+        color: AppColors.weekendColor,
         fontSize: 12,
       ),
     );

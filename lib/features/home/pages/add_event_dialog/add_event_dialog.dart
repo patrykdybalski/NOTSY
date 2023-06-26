@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/domain/repositories/events_repository.dart';
 import 'package:primary_school/features/home/pages/add_event_dialog/cubit/add_event_cubit.dart';
 
@@ -39,84 +40,81 @@ class _AddEventDialogState extends State<AddEventDialog> {
         },
         child: BlocBuilder<AddEventCubit, AddEventState>(
           builder: (context, state) {
-            return Container(
-              color: Colors.amberAccent,
-              width: 250,
-              height: 300,
-              child: AlertDialog(
-                scrollable: true,
-                titlePadding: const EdgeInsets.all(1),
-                contentPadding: const EdgeInsets.all(10),
-                backgroundColor: const Color(0xff0c1020),
-                title: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextButton(
-                      child: const Text(
-                        'Anuluj',
-                        style: TextStyle(
-                          color: Color.fromARGB(181, 255, 139, 128),
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                    TextButton(
-                      onPressed: _title == null ||
-                              _subtitle == null ||
-                              _selectedDay == null
-                          ? null
-                          : () {
-                              context.read<AddEventCubit>().add(
-                                    _title!,
-                                    _subtitle!,
-                                    _selectedDay!,
-                                    _selectedTime!,
-                                  );
-                            },
-                      child: const Text(
-                        'Dodaj',
-                        style: TextStyle(
-                          color: Color(0xff01D68E),
-                        ),
+            return AlertDialog(
+              scrollable: true,
+              titlePadding: const EdgeInsets.all(1),
+              contentPadding: const EdgeInsets.all(10),
+              backgroundColor: AppColors.primaryColor,
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  TextButton(
+                    child: const Text(
+                      'Anuluj',
+                      style: TextStyle(
+                        color: Color.fromARGB(181, 255, 139, 128),
                       ),
                     ),
-                  ],
-                ),
-                content: _ContentDialog(
-                  onTitleChanged: (newValue) {
-                    setState(
-                      () {
-                        _title = newValue;
-                      },
-                    );
-                  },
-                  onSubtitleChanged: (newValue) {
-                    setState(
-                      () {
-                        _subtitle = newValue;
-                      },
-                    );
-                  },
-                  onDayChanged: (newValue) {
-                    setState(
-                      () {
-                        _selectedDay = newValue;
-                      },
-                    );
-                  },
-                  onTimeChanged: (newValue) {
-                    setState(() {
-                      _selectedTime = newValue;
-                    });
-                  },
-                  selectedTimeFormatted:
-                      _selectedTime == null ? null : '$_selectedTime',
-                  selectedDateFormatted: _selectedDay == null
-                      ? null
-                      : DateFormat.MMMEd().format(_selectedDay!),
-                ),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  TextButton(
+                    onPressed: _title == null ||
+                            _subtitle == null ||
+                            _selectedDay == null ||
+                            _selectedTime == null
+                        ? null
+                        : () {
+                            context.read<AddEventCubit>().add(
+                                  _title!,
+                                  _subtitle!,
+                                  _selectedDay!,
+                                  _selectedTime!,
+                                );
+                          },
+                    child: const Text(
+                      'Dodaj',
+                      style: TextStyle(
+                        color: Color(0xff01D68E),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              content: _ContentDialog(
+                onTitleChanged: (newValue) {
+                  setState(
+                    () {
+                      _title = newValue;
+                    },
+                  );
+                },
+                onSubtitleChanged: (newValue) {
+                  setState(
+                    () {
+                      _subtitle = newValue;
+                    },
+                  );
+                },
+                onDayChanged: (newValue) {
+                  setState(
+                    () {
+                      _selectedDay = newValue;
+                    },
+                  );
+                },
+                onTimeChanged: (newValue) {
+                  setState(() {
+                    _selectedTime = newValue;
+                  });
+                },
+                selectedTimeFormatted: _selectedTime == null
+                    ? null
+                    : DateFormat.Hm().format(_selectedTime!),
+                selectedDateFormatted: _selectedDay == null
+                    ? null
+                    : DateFormat.yMMMMEEEEd().format(_selectedDay!),
               ),
             );
           },

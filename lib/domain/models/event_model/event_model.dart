@@ -18,6 +18,10 @@ class EventModel {
     return DateFormat.MMMMEEEEd().format(selectedDay);
   }
 
+  String selectedTimeFormatted() {
+    return DateFormat.Hm().format(selectedTime);
+  }
+
   List<EventModel> eventLoader(DateTime day) {
     return eventLoader(day);
   }
