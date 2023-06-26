@@ -11,7 +11,7 @@ class CalendarWidget extends StatefulWidget {
 class _CalendarWidgetState extends State<CalendarWidget> {
   CalendarFormat calendarFormat = CalendarFormat.month;
 
-  DateTime selectedDay = DateTime.now();
+  final DateTime selectedDay = DateTime.now();
 
   DateTime focusedDay = DateTime.now();
 

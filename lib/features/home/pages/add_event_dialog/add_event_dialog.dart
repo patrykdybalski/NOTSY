@@ -17,6 +17,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
   String? _title;
   String? _subtitle;
   DateTime? _selectedDay;
+  DateTime? _selectedTime;
 
   @override
   Widget build(BuildContext context) {
@@ -67,9 +68,12 @@ class _AddEventDialogState extends State<AddEventDialog> {
                               _selectedDay == null
                           ? null
                           : () {
-                              context
-                                  .read<AddEventCubit>()
-                                  .add(_title!, _subtitle!, _selectedDay!);
+                              context.read<AddEventCubit>().add(
+                                    _title!,
+                                    _subtitle!,
+                                    _selectedDay!,
+                                    _selectedTime!,
+                                  );
                             },
                       child: const Text(
                         'Dodaj',
@@ -102,6 +106,13 @@ class _AddEventDialogState extends State<AddEventDialog> {
                       },
                     );
                   },
+                  onTimeChanged: (newValue) {
+                    setState(() {
+                      _selectedTime = newValue;
+                    });
+                  },
+                  selectedTimeFormatted:
+                      _selectedTime == null ? null : '$_selectedTime',
                   selectedDateFormatted: _selectedDay == null
                       ? null
                       : DateFormat.MMMEd().format(_selectedDay!),
@@ -121,13 +132,17 @@ class _ContentDialog extends StatelessWidget {
     required this.onTitleChanged,
     required this.onSubtitleChanged,
     required this.onDayChanged,
+    required this.onTimeChanged,
+    required this.selectedTimeFormatted,
     required this.selectedDateFormatted,
   }) : super(key: key);
 
   final Function(String) onTitleChanged;
   final Function(String) onSubtitleChanged;
   final Function(DateTime?) onDayChanged;
+  final Function(DateTime?) onTimeChanged;
   final String? selectedDateFormatted;
+  final String? selectedTimeFormatted;
 
   @override
   Widget build(BuildContext context) {
@@ -218,9 +233,27 @@ class _ContentDialog extends StatelessWidget {
               onDayChanged(selectedDate);
             },
             child: Text(
-              selectedDateFormatted ?? 'Wybierz datę',
+              selectedDateFormatted ?? 'Wybierz dzień',
             ),
-          )
+          ),
+          ElevatedButton(
+            child: Text(
+              selectedTimeFormatted ?? 'Dodaj godzinę',
+            ),
+            onPressed: () async {
+              TimeOfDay? selectedTime = await showTimePicker(
+                context: context,
+                initialTime: TimeOfDay.now(),
+              );
+
+              if (selectedTime != null) {
+                DateTime now = DateTime.now();
+                DateTime dateTime = DateTime(now.year, now.month, now.day,
+                    selectedTime.hour, selectedTime.minute);
+                onTimeChanged(dateTime);
+              }
+            },
+          ),
         ],
       ),
     );

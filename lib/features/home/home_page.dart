@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
       body: Builder(
         builder: (context) {
           if (currentIndex == 0) {
-            return const CalendarPage();
+            return  const CalendarPage();
           }
           if (currentIndex == 1) {
             return const NotesPage();

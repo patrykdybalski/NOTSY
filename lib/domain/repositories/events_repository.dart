@@ -13,6 +13,7 @@ class EventsRepository {
             title: doc['title'],
             subtitle: doc['subtitle'],
             selectedDay: (doc['selectedDay'] as Timestamp).toDate(),
+            selectedTime: (doc['selectedTime'] as Timestamp).toDate(),
             id: doc.id,
           );
         },
@@ -31,12 +32,14 @@ class EventsRepository {
     String title,
     String subtitle,
     DateTime selectedDay,
+    DateTime selectedTime,
   ) async {
     await FirebaseFirestore.instance.collection('calendarItems').add(
       {
         'title': title,
         'subtitle': subtitle,
         'selectedDay': selectedDay,
+        'selectedTime': selectedTime,
       },
     );
   }

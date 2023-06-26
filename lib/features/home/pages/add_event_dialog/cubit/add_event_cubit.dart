@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/domain/repositories/events_repository.dart';
 
@@ -15,9 +15,15 @@ class AddEventCubit extends Cubit<AddEventState> {
     String title,
     String subtitle,
     DateTime selectedDay,
+    DateTime selectedTime,
   ) async {
     try {
-      await _eventsRepository.add(title, subtitle, selectedDay);
+      await _eventsRepository.add(
+        title,
+        subtitle,
+        selectedDay,
+        selectedTime,
+      );
       emit(
         const AddEventState(saved: true),
       );
@@ -28,9 +34,5 @@ class AddEventCubit extends Cubit<AddEventState> {
         ),
       );
     }
-  }
-
-  String selectedDayFormatted() {
-    return 'example';
   }
 }

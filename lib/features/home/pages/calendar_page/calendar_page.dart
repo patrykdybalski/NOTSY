@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:primary_school/domain/repositories/events_repository.dart';
 import 'package:primary_school/features/home/pages/add_event_dialog/add_event_dialog.dart';
 import 'package:primary_school/features/home/pages/calendar_page/cubit/calendar_cubit.dart';
@@ -7,7 +8,9 @@ import 'package:primary_school/features/home/pages/calendar_page/widgets/calenda
 import 'package:primary_school/features/home/pages/calendar_page/widgets/event_widget.dart';
 
 class CalendarPage extends StatefulWidget {
-  const CalendarPage({super.key});
+  const CalendarPage({
+    super.key,
+  });
 
   @override
   State<CalendarPage> createState() => _CalendarPageState();
@@ -63,6 +66,32 @@ class _CalendarPageState extends State<CalendarPage> {
             return ListView(
               children: [
                 const CalendarWidget(),
+                const SizedBox(
+                  height: 20,
+                ),
+                TextButton(
+                  onPressed: () {
+                    _showDialog();
+                  },
+                  style: TextButton.styleFrom(
+                      foregroundColor: const Color(0xff7fab72),
+                      side: const BorderSide(
+                        color: Colors.yellow,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(13),
+                      )),
+                  child: const Text(
+                    'Dodaj wydarzenie',
+                    style: TextStyle(
+                      fontSize: 25,
+                      letterSpacing: 4,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
                 Column(
                   children: [
                     for (final eventModel in eventModels) ...[
