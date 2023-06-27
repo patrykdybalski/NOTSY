@@ -27,13 +27,13 @@ class _CalendarPageState extends State<CalendarPage> {
           'Kalendarz',
           style: TextStyle(
             letterSpacing: 2,
-            color: Colors.white70,
+            color: AppColors.accentColor,
           ),
         ),
         centerTitle: true,
         backgroundColor: AppColors.primaryColor,
         leading: IconButton(
-          color: Colors.white70,
+          color: AppColors.accentColor,
           icon: const Icon(Icons.menu),
           onPressed: () {},
         ),
@@ -42,7 +42,7 @@ class _CalendarPageState extends State<CalendarPage> {
             icon: const Icon(
               Icons.add_circle_outline_outlined,
               size: 35,
-              color: AppColors.secondaryColor,
+              color: AppColors.accentColor,
             ),
             padding: const EdgeInsets.only(right: 5),
             onPressed: () {
@@ -74,29 +74,6 @@ class _CalendarPageState extends State<CalendarPage> {
                 const CalendarWidget(),
                 const SizedBox(
                   height: 10,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 60, right: 60),
-                  child: TextButton(
-                    onPressed: () {
-                      _showDialog();
-                    },
-                    style: TextButton.styleFrom(
-                        foregroundColor: const Color(0xff7fab72),
-                        side: const BorderSide(
-                          color: Colors.yellow,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(13),
-                        )),
-                    child: const Text(
-                      'Dodaj wydarzenie',
-                      style: TextStyle(
-                        fontSize: 15,
-                        letterSpacing: 1,
-                      ),
-                    ),
-                  ),
                 ),
                 const SizedBox(
                   height: 10,

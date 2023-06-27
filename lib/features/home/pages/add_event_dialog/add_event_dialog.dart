@@ -52,7 +52,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
                     child: const Text(
                       'Anuluj',
                       style: TextStyle(
-                        color: Color.fromARGB(181, 255, 139, 128),
+                        color: AppColors.redColor,
                       ),
                     ),
                     onPressed: () {
@@ -114,7 +114,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
                     : DateFormat.Hm().format(_selectedTime!),
                 selectedDateFormatted: _selectedDay == null
                     ? null
-                    : DateFormat.yMMMMEEEEd().format(_selectedDay!),
+                    : DateFormat.yMd().format(_selectedDay!),
               ),
             );
           },
@@ -155,12 +155,12 @@ class _ContentDialog extends StatelessWidget {
             cursorRadius: const Radius.circular(12),
             style: const TextStyle(
               fontWeight: FontWeight.bold,
-              color: Color.fromARGB(255, 212, 209, 209),
+              color: AppColors.dayColor,
             ),
             decoration: InputDecoration(
               labelText: 'Temat',
               labelStyle: const TextStyle(
-                color: Colors.white60,
+                color: AppColors.dayColor,
                 fontSize: 18,
               ),
               border: UnderlineInputBorder(
@@ -190,7 +190,7 @@ class _ContentDialog extends StatelessWidget {
                   const Text(
                     'Szczegółowy opis',
                     style: TextStyle(
-                      color: Colors.white60,
+                      color: AppColors.dayColor,
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
                     ),
@@ -200,7 +200,7 @@ class _ContentDialog extends StatelessWidget {
                     cursorColor: Colors.white10,
                     cursorRadius: const Radius.circular(12),
                     style: const TextStyle(
-                      color: Colors.white,
+                      color: AppColors.dayColor,
                     ),
                     decoration: InputDecoration(
                       border: UnderlineInputBorder(
@@ -218,39 +218,44 @@ class _ContentDialog extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          ElevatedButton(
-            onPressed: () async {
-              final selectedDate = await showDatePicker(
-                context: context,
-                initialDate: DateTime.now(),
-                firstDate: DateTime.now(),
-                lastDate: DateTime.now().add(
-                  const Duration(days: 365 * 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              ElevatedButton(
+                onPressed: () async {
+                  final selectedDate = await showDatePicker(
+                    context: context,
+                    initialDate: DateTime.now(),
+                    firstDate: DateTime.now(),
+                    lastDate: DateTime.now().add(
+                      const Duration(days: 365 * 10),
+                    ),
+                  );
+                  onDayChanged(selectedDate);
+                },
+                child: Text(
+                  selectedDateFormatted ?? 'Wybierz dzień',
                 ),
-              );
-              onDayChanged(selectedDate);
-            },
-            child: Text(
-              selectedDateFormatted ?? 'Wybierz dzień',
-            ),
-          ),
-          ElevatedButton(
-            child: Text(
-              selectedTimeFormatted ?? 'Dodaj godzinę',
-            ),
-            onPressed: () async {
-              TimeOfDay? selectedTime = await showTimePicker(
-                context: context,
-                initialTime: TimeOfDay.now(),
-              );
+              ),
+              ElevatedButton(
+                child: Text(
+                  selectedTimeFormatted ?? 'Dodaj godzinę',
+                ),
+                onPressed: () async {
+                  TimeOfDay? selectedTime = await showTimePicker(
+                    context: context,
+                    initialTime: TimeOfDay.now(),
+                  );
 
-              if (selectedTime != null) {
-                DateTime now = DateTime.now();
-                DateTime dateTime = DateTime(now.year, now.month, now.day,
-                    selectedTime.hour, selectedTime.minute);
-                onTimeChanged(dateTime);
-              }
-            },
+                  if (selectedTime != null) {
+                    DateTime now = DateTime.now();
+                    DateTime dateTime = DateTime(now.year, now.month, now.day,
+                        selectedTime.hour, selectedTime.minute);
+                    onTimeChanged(dateTime);
+                  }
+                },
+              ),
+            ],
           ),
         ],
       ),

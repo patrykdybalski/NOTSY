@@ -15,7 +15,7 @@ class EventModel {
   final String id;
 
   String selectedDayFormatted() {
-    return DateFormat.MMMMEEEEd().format(selectedDay);
+    return DateFormat.Md().format(selectedDay);
   }
 
   String selectedTimeFormatted() {

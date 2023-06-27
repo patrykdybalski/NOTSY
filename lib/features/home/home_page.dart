@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:primary_school/constans/colors.dart';
 
 import 'package:primary_school/features/home/pages/calendar_page/calendar_page.dart';
 import 'package:primary_school/features/home/pages/expenses_page/expenses_page.dart';
@@ -22,7 +23,7 @@ class _HomePageState extends State<HomePage> {
       body: Builder(
         builder: (context) {
           if (currentIndex == 0) {
-            return  const CalendarPage();
+            return const CalendarPage();
           }
           if (currentIndex == 1) {
             return const NotesPage();
@@ -32,8 +33,8 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        backgroundColor: const Color(0xff171b2e),
-        selectedItemColor: const Color(0xff01D68E),
+        backgroundColor: AppColors.primaryColor,
+        selectedItemColor: AppColors.secondaryColor,
         unselectedItemColor: Colors.white,
         currentIndex: currentIndex,
         onTap: (newIndex) {

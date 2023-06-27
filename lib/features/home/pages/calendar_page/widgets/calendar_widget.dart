@@ -66,17 +66,20 @@ class _CalendarWidgetState extends State<CalendarWidget> {
       ),
       selectedDecoration: BoxDecoration(
         shape: BoxShape.circle,
-        border: Border.all(width: 1, color: Colors.white38),
+        border: Border.all(
+          width: 1,
+          color: AppColors.accentColor,
+        ),
       ),
       selectedTextStyle: const TextStyle(
         fontSize: 15,
         color: AppColors.selectedDayColor,
       ),
       todayDecoration: BoxDecoration(
-        shape: BoxShape.rectangle,
+        shape: BoxShape.circle,
         border: Border.all(
           width: 1,
-          color: Colors.white38,
+          color: AppColors.accentColor,
         ),
       ),
       todayTextStyle: const TextStyle(
@@ -84,11 +87,11 @@ class _CalendarWidgetState extends State<CalendarWidget> {
         color: AppColors.dayColor,
       ),
       weekendTextStyle: const TextStyle(
-        color: Color.fromARGB(181, 255, 139, 128),
+        color: AppColors.redColor,
         fontSize: 15,
       ),
       defaultTextStyle: const TextStyle(
-        color: Colors.white60,
+        color: AppColors.dayColor,
         fontSize: 15,
       ),
       rowDecoration: BoxDecoration(
@@ -108,38 +111,38 @@ class _CalendarWidgetState extends State<CalendarWidget> {
         fontSize: 12,
       ),
       weekendStyle: TextStyle(
-        color: AppColors.weekendColor,
+        color: AppColors.redColor,
         fontSize: 12,
       ),
     );
   }
 
   HeaderStyle headerStyle() {
-    return HeaderStyle(
+    return const HeaderStyle(
       titleTextStyle: TextStyle(
         fontWeight: FontWeight.bold,
         fontSize: 18,
-        color: Colors.blueGrey.shade300,
+        color: AppColors.accentColor,
       ),
       titleCentered: true,
-      headerPadding: const EdgeInsets.all(1),
+      headerPadding: EdgeInsets.all(1),
       leftChevronIcon: Icon(
         Icons.chevron_left_outlined,
         size: 30,
-        color: Colors.blueGrey.shade300,
+        color: AppColors.accentColor,
       ),
       rightChevronIcon: Icon(
         Icons.chevron_right_outlined,
         size: 30,
-        color: Colors.blueGrey.shade300,
+        color: AppColors.accentColor,
       ),
-      formatButtonTextStyle: const TextStyle(
+      formatButtonTextStyle: TextStyle(
         fontWeight: FontWeight.bold,
       ),
       formatButtonDecoration: BoxDecoration(
-          color: Colors.blueGrey.shade300,
-          border: const Border.fromBorderSide(BorderSide()),
-          borderRadius: const BorderRadius.all(Radius.circular(12.0))),
+          color: AppColors.accentColor,
+          border: Border.fromBorderSide(BorderSide()),
+          borderRadius: BorderRadius.all(Radius.circular(12.0))),
     );
   }
 }
