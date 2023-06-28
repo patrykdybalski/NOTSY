@@ -17,11 +17,6 @@ class _CalendarWidgetState extends State<CalendarWidget> {
   DateTime focusedDay = DateTime.now();
 
   List<dynamic> Function(DateTime)? eventLoader;
-  TextStyle _buildDayTextStyle(DateTime saturday, DateTime sunday) {
-    return const TextStyle(
-      color: Colors.red,
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
