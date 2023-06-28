@@ -17,11 +17,17 @@ class _CalendarWidgetState extends State<CalendarWidget> {
   DateTime focusedDay = DateTime.now();
 
   List<dynamic> Function(DateTime)? eventLoader;
+  TextStyle _buildDayTextStyle(DateTime saturday, DateTime sunday) {
+    return const TextStyle(
+      color: Colors.red,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return TableCalendar(
       focusedDay: focusedDay,
+      weekendDays: const [DateTime.saturday, DateTime.sunday],
       firstDay: DateTime(2022),
       lastDay: DateTime(2030),
       calendarFormat: calendarFormat,
@@ -59,22 +65,30 @@ class _CalendarWidgetState extends State<CalendarWidget> {
   CalendarStyle calendarStyle() {
     return CalendarStyle(
       outsideDaysVisible: false,
-      isTodayHighlighted: true,
       outsideTextStyle: const TextStyle(
         color: Colors.black54,
         fontSize: 15,
       ),
-      selectedDecoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border: Border.all(
-          width: 1,
-          color: AppColors.accentColor,
+      defaultTextStyle: const TextStyle(
+        color: Color.fromRGBO(234, 232, 227, 1.0),
+      ),
+      selectedDecoration: const BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Color(0xFFF7BA2B),
+            Color(0xFFEA5358),
+          ],
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
         ),
+        shape: BoxShape.circle,
       ),
       selectedTextStyle: const TextStyle(
         fontSize: 15,
-        color: AppColors.selectedDayColor,
+        fontWeight: FontWeight.bold,
+        color: Color.fromRGBO(234, 232, 227, 1.0),
       ),
+      isTodayHighlighted: true,
       todayDecoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(
@@ -88,11 +102,6 @@ class _CalendarWidgetState extends State<CalendarWidget> {
       ),
       weekendTextStyle: const TextStyle(
         color: AppColors.redColor,
-        fontSize: 15,
-      ),
-      defaultTextStyle: const TextStyle(
-        color: AppColors.dayColor,
-        fontSize: 15,
       ),
       rowDecoration: BoxDecoration(
         color: AppColors.primaryColor,
@@ -140,9 +149,12 @@ class _CalendarWidgetState extends State<CalendarWidget> {
         fontWeight: FontWeight.bold,
       ),
       formatButtonDecoration: BoxDecoration(
-          color: AppColors.accentColor,
-          border: Border.fromBorderSide(BorderSide()),
-          borderRadius: BorderRadius.all(Radius.circular(12.0))),
+        color: AppColors.accentColor,
+        border: Border.fromBorderSide(BorderSide()),
+        borderRadius: BorderRadius.all(
+          Radius.circular(12.0),
+        ),
+      ),
     );
   }
 }

@@ -43,10 +43,10 @@ class EventWidget extends StatelessWidget {
             leading: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.access_time),
+                const Icon(Icons.access_time),
                 Text(
                   eventModel.selectedTimeFormatted(),
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     color: AppColors.dayColor,
                   ),
@@ -77,7 +77,7 @@ class EventWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(20.0),
                 child: Text(
                   eventModel.subtitle,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: AppColors.dayColor,
                   ),
                 ),
