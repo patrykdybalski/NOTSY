@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:primary_school/constans/colors.dart';
+import 'package:primary_school/domain/models/event_model/event_model.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class CalendarWidget extends StatefulWidget {
-  const CalendarWidget({super.key});
+  const CalendarWidget({
+    super.key,
+  });
 
   @override
   State<CalendarWidget> createState() => _CalendarWidgetState();
@@ -11,12 +15,18 @@ class CalendarWidget extends StatefulWidget {
 
 class _CalendarWidgetState extends State<CalendarWidget> {
   CalendarFormat calendarFormat = CalendarFormat.month;
-
   DateTime selectedDay = DateTime.now();
-
   DateTime focusedDay = DateTime.now();
 
-  List<dynamic> Function(DateTime)? eventLoader;
+  List<EventModel> events = [];
+
+  List<EventModel> eventLoader(DateTime day) {
+    return events.where((event) => event.selectedDay == day).toList();
+  }
+
+  List<EventModel> eventLoadeer(DateTime day) {
+    return eventLoader(day);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +43,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
       headerStyle: headerStyle(),
       calendarStyle: calendarStyle(),
       daysOfWeekStyle: daysOfWeekStyle(),
+      eventLoader: eventLoadeer,
       onFormatChanged: (format) {
         setState(
           () {
@@ -122,32 +133,40 @@ class _CalendarWidgetState extends State<CalendarWidget> {
   }
 
   HeaderStyle headerStyle() {
-    return const HeaderStyle(
-      titleTextStyle: TextStyle(
+    return HeaderStyle(
+      titleTextFormatter: (date, locale) {
+        return DateFormat.yMMMMd(locale).format(date);
+      },
+      titleTextStyle: const TextStyle(
         fontWeight: FontWeight.bold,
         fontSize: 18,
         color: AppColors.accentColor,
       ),
-      titleCentered: true,
-      headerPadding: EdgeInsets.all(1),
-      leftChevronIcon: Icon(
+      titleCentered: false,
+      headerPadding: const EdgeInsets.all(1),
+      leftChevronIcon: const Icon(
         Icons.chevron_left_outlined,
         size: 30,
         color: AppColors.accentColor,
       ),
-      rightChevronIcon: Icon(
+      rightChevronIcon: const Icon(
         Icons.chevron_right_outlined,
         size: 30,
         color: AppColors.accentColor,
       ),
-      formatButtonTextStyle: TextStyle(
+      formatButtonShowsNext: false,
+      formatButtonPadding: EdgeInsets.all(1),
+      formatButtonTextStyle: const TextStyle(
         fontWeight: FontWeight.bold,
+        color: AppColors.dayColor,
       ),
-      formatButtonDecoration: BoxDecoration(
-        color: AppColors.accentColor,
-        border: Border.fromBorderSide(BorderSide()),
+      formatButtonDecoration: const BoxDecoration(
+        color: AppColors.primaryColor,
+        border: Border.fromBorderSide(BorderSide(
+          color: AppColors.dayColor,
+        )),
         borderRadius: BorderRadius.all(
-          Radius.circular(12.0),
+          Radius.circular(6),
         ),
       ),
     );

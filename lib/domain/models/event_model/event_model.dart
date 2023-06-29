@@ -25,4 +25,9 @@ class EventModel {
   List<EventModel> eventLoader(DateTime day) {
     return eventLoader(day);
   }
+
+  List<EventModel> eventLoaderr(DateTime day) {
+    final List<EventModel> events = [];
+    return events.where((event) => event.selectedDay == day).toList();
+  }
 }

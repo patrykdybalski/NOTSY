@@ -181,6 +181,10 @@ class _ContentDialog extends StatelessWidget {
             decoration: BoxDecoration(
               color: Colors.white10,
               borderRadius: BorderRadius.circular(12),
+              border: Border.all(
+                width: 1,
+                color: Colors.white,
+              ),
             ),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
@@ -218,44 +222,80 @@ class _ContentDialog extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              ElevatedButton(
-                onPressed: () async {
-                  final selectedDate = await showDatePicker(
-                    context: context,
-                    initialDate: DateTime.now(),
-                    firstDate: DateTime.now(),
-                    lastDate: DateTime.now().add(
-                      const Duration(days: 365 * 10),
-                    ),
-                  );
-                  onDayChanged(selectedDate);
-                },
-                child: Text(
-                  selectedDateFormatted ?? 'Wybierz dzień',
+          ElevatedButton.icon(
+            label: Text(
+              selectedDateFormatted ?? 'Wybierz dzień',
+              style: const TextStyle(
+                color: AppColors.accentColor,
+              ),
+            ),
+            icon: const Icon(
+              Icons.calendar_month_outlined,
+              color: AppColors.accentColor,
+            ),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: AppColors.primaryColor, // Kolor tła przycisku
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(
+                    8.0), // Opcjonalnie: zaokrąglenie rogów przycisku
+              ),
+              side: const BorderSide(
+                color: AppColors.secondaryColor,
+                width: 2,
+              ),
+              elevation: 3,
+              shadowColor: AppColors.redColor,
+            ),
+            onPressed: () async {
+              final selectedDate = await showDatePicker(
+                context: context,
+                initialDate: DateTime.now(),
+                firstDate: DateTime.now(),
+                lastDate: DateTime.now().add(
+                  const Duration(days: 365 * 10),
+                ),
+              );
+              onDayChanged(selectedDate);
+            },
+          ),
+          ElevatedButton.icon(
+            label: Text(
+              selectedTimeFormatted ?? 'Dodaj godzinę',
+              style: const TextStyle(
+                color: AppColors.accentColor,
+              ),
+            ),
+            icon: const Icon(
+              Icons.more_time_rounded,
+              color: AppColors.accentColor,
+            ),
+            style: ElevatedButton.styleFrom(
+              backgroundColor: AppColors.primaryColor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(
+                  8.0,
                 ),
               ),
-              ElevatedButton(
-                child: Text(
-                  selectedTimeFormatted ?? 'Dodaj godzinę',
-                ),
-                onPressed: () async {
-                  TimeOfDay? selectedTime = await showTimePicker(
-                    context: context,
-                    initialTime: TimeOfDay.now(),
-                  );
+              side: const BorderSide(
+                color: AppColors.redColor,
+                width: 2,
+              ),
+              elevation: 3,
+              shadowColor: AppColors.secondaryColor,
+            ),
+            onPressed: () async {
+              TimeOfDay? selectedTime = await showTimePicker(
+                context: context,
+                initialTime: TimeOfDay.now(),
+              );
 
-                  if (selectedTime != null) {
-                    DateTime now = DateTime.now();
-                    DateTime dateTime = DateTime(now.year, now.month, now.day,
-                        selectedTime.hour, selectedTime.minute);
-                    onTimeChanged(dateTime);
-                  }
-                },
-              ),
-            ],
+              if (selectedTime != null) {
+                DateTime now = DateTime.now();
+                DateTime dateTime = DateTime(now.year, now.month, now.day,
+                    selectedTime.hour, selectedTime.minute);
+                onTimeChanged(dateTime);
+              }
+            },
           ),
         ],
       ),
