@@ -43,23 +43,22 @@ class _AddEventDialogState extends State<AddEventDialog> {
             return AlertDialog(
               scrollable: true,
               titlePadding: const EdgeInsets.all(1),
-              contentPadding: const EdgeInsets.all(10),
+              contentPadding: const EdgeInsets.all(5),
               backgroundColor: AppColors.primaryColor,
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  TextButton(
-                    child: const Text(
-                      'Anuluj',
-                      style: TextStyle(
-                        color: AppColors.redColor,
-                      ),
+                  IconButton(
+                    icon: const Icon(
+                      Icons.arrow_circle_left_outlined,
+                      color: AppColors.redColor,
+                      size: 30,
                     ),
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
                   ),
-                  TextButton(
+                  IconButton(
                     onPressed: _title == null ||
                             _subtitle == null ||
                             _selectedDay == null ||
@@ -73,11 +72,10 @@ class _AddEventDialogState extends State<AddEventDialog> {
                                   _selectedTime!,
                                 );
                           },
-                    child: const Text(
-                      'Dodaj',
-                      style: TextStyle(
-                        color: Color(0xff01D68E),
-                      ),
+                    icon: const Icon(
+                      Icons.add_circle_outline_sharp,
+                      color: AppColors.greenColor,
+                      size: 30,
                     ),
                   ),
                 ],
@@ -149,6 +147,7 @@ class _ContentDialog extends StatelessWidget {
       child: Column(
         children: [
           TextFormField(
+            textAlign: TextAlign.justify,
             onChanged: onTitleChanged,
             autofocus: true,
             cursorColor: Colors.white10,
@@ -163,61 +162,59 @@ class _ContentDialog extends StatelessWidget {
                 color: AppColors.dayColor,
                 fontSize: 18,
               ),
-              border: UnderlineInputBorder(
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(
+                    color: AppColors.dayColor,
+                    width: 2,
+                  )),
+              enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide.none,
+                borderSide: const BorderSide(
+                  color: AppColors.dayColor,
+                ),
               ),
               filled: true,
               fillColor: Colors.white10,
             ),
             keyboardType: TextInputType.text,
-            maxLength: 45,
-            maxLines: 1,
+            maxLength: 50,
+            maxLines: 2,
+            minLines: 1,
           ),
           const SizedBox(
             height: 10,
           ),
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.white10,
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(
-                width: 1,
-                color: Colors.white,
+          TextFormField(
+            onChanged: onSubtitleChanged,
+            cursorColor: Colors.white10,
+            cursorRadius: const Radius.circular(12),
+            style: const TextStyle(
+              color: AppColors.dayColor,
+            ),
+            decoration: InputDecoration(
+              enabled: true,
+              labelText: 'Opis',
+              labelStyle: const TextStyle(
+                color: AppColors.dayColor,
+                fontSize: 18,
+              ),
+              focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(
+                    color: AppColors.dayColor,
+                    width: 2,
+                  )),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: const BorderSide(
+                  color: AppColors.dayColor,
+                ),
               ),
             ),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text(
-                    'Szczegółowy opis',
-                    style: TextStyle(
-                      color: AppColors.dayColor,
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  TextFormField(
-                    onChanged: onSubtitleChanged,
-                    cursorColor: Colors.white10,
-                    cursorRadius: const Radius.circular(12),
-                    style: const TextStyle(
-                      color: AppColors.dayColor,
-                    ),
-                    decoration: InputDecoration(
-                      border: UnderlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                    ),
-                    keyboardType: TextInputType.text,
-                    maxLines: 4,
-                  ),
-                ],
-              ),
-            ),
+            keyboardType: TextInputType.text,
+            maxLines: 10,
+            minLines: 1,
           ),
           const SizedBox(
             height: 20,

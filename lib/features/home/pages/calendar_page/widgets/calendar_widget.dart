@@ -155,16 +155,19 @@ class _CalendarWidgetState extends State<CalendarWidget> {
         color: AppColors.accentColor,
       ),
       formatButtonShowsNext: false,
-      formatButtonPadding: EdgeInsets.all(1),
+      formatButtonPadding: const EdgeInsets.all(1),
       formatButtonTextStyle: const TextStyle(
         fontWeight: FontWeight.bold,
         color: AppColors.dayColor,
       ),
       formatButtonDecoration: const BoxDecoration(
         color: AppColors.primaryColor,
-        border: Border.fromBorderSide(BorderSide(
-          color: AppColors.dayColor,
-        )),
+        border: Border.fromBorderSide(
+          BorderSide(
+            color: AppColors.dayColor,
+            width: 0.5,
+          ),
+        ),
         borderRadius: BorderRadius.all(
           Radius.circular(6),
         ),
