@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:primary_school/constans/colors.dart';
+import 'package:primary_school/domain/models/event_model/event_model.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class CalendarWidget extends StatefulWidget {
-  const CalendarWidget({super.key});
+  const CalendarWidget({
+    super.key,
+  });
 
   @override
   State<CalendarWidget> createState() => _CalendarWidgetState();
@@ -10,28 +15,35 @@ class CalendarWidget extends StatefulWidget {
 
 class _CalendarWidgetState extends State<CalendarWidget> {
   CalendarFormat calendarFormat = CalendarFormat.month;
-
   DateTime selectedDay = DateTime.now();
-
   DateTime focusedDay = DateTime.now();
 
-  List<dynamic> Function(DateTime)? eventLoader;
+  List<EventModel> events = [];
+
+  List<EventModel> eventLoader(DateTime day) {
+    return events.where((event) => event.selectedDay == day).toList();
+  }
+
+  List<EventModel> eventLoadeer(DateTime day) {
+    return eventLoader(day);
+  }
 
   @override
   Widget build(BuildContext context) {
     return TableCalendar(
       focusedDay: focusedDay,
+      weekendDays: const [DateTime.saturday, DateTime.sunday],
       firstDay: DateTime(2022),
       lastDay: DateTime(2030),
       calendarFormat: calendarFormat,
       startingDayOfWeek: StartingDayOfWeek.monday,
       daysOfWeekVisible: true,
-      daysOfWeekHeight: 30,
-      rowHeight: 60,
+      daysOfWeekHeight: 15,
+      rowHeight: 40,
       headerStyle: headerStyle(),
       calendarStyle: calendarStyle(),
       daysOfWeekStyle: daysOfWeekStyle(),
-      eventLoader: eventLoader,
+      eventLoader: eventLoadeer,
       onFormatChanged: (format) {
         setState(
           () {
@@ -42,50 +54,63 @@ class _CalendarWidgetState extends State<CalendarWidget> {
       onPageChanged: (focusedDay) {
         focusedDay = focusedDay;
       },
-      onDaySelected: (date, events) {
-        setState(
-          () {},
-        );
-      },
       selectedDayPredicate: (day) {
         return isSameDay(selectedDay, day);
+      },
+      onDaySelected: (selectedDayy, focusedDayy) {
+        setState(
+          () {
+            selectedDay = selectedDayy;
+            focusedDay = focusedDayy;
+          },
+        );
       },
     );
   }
 
   CalendarStyle calendarStyle() {
     return CalendarStyle(
-      canMarkersOverflow: true,
       outsideDaysVisible: false,
-      isTodayHighlighted: true,
       outsideTextStyle: const TextStyle(
         color: Colors.black54,
-        fontSize: 20,
+        fontSize: 15,
+      ),
+      defaultTextStyle: const TextStyle(
+        color: Color.fromRGBO(234, 232, 227, 1.0),
       ),
       selectedDecoration: const BoxDecoration(
-        color: Color(0xff01D68E),
+        gradient: LinearGradient(
+          colors: [
+            Color(0xFFF7BA2B),
+            Color(0xFFEA5358),
+          ],
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+        ),
         shape: BoxShape.circle,
       ),
       selectedTextStyle: const TextStyle(
-        fontSize: 20,
+        fontSize: 15,
+        fontWeight: FontWeight.bold,
+        color: Color.fromRGBO(234, 232, 227, 1.0),
       ),
+      isTodayHighlighted: true,
       todayDecoration: BoxDecoration(
-        color: Colors.blueGrey.shade300,
         shape: BoxShape.circle,
+        border: Border.all(
+          width: 1,
+          color: AppColors.accentColor,
+        ),
       ),
       todayTextStyle: const TextStyle(
-        fontSize: 20,
+        fontSize: 15,
+        color: AppColors.dayColor,
       ),
       weekendTextStyle: const TextStyle(
-        color: Color.fromARGB(181, 255, 139, 128),
-        fontSize: 20,
-      ),
-      defaultTextStyle: const TextStyle(
-        color: Colors.white60,
-        fontSize: 20,
+        color: AppColors.redColor,
       ),
       rowDecoration: BoxDecoration(
-        color: const Color(0xff0c1020),
+        color: AppColors.primaryColor,
         borderRadius: BorderRadius.circular(12),
       ),
     );
@@ -94,14 +119,14 @@ class _CalendarWidgetState extends State<CalendarWidget> {
   DaysOfWeekStyle daysOfWeekStyle() {
     return const DaysOfWeekStyle(
       decoration: BoxDecoration(
-        color: Color(0xff0c1020),
+        color: AppColors.primaryColor,
       ),
       weekdayStyle: TextStyle(
-        color: Colors.white60,
+        color: AppColors.dayColor,
         fontSize: 12,
       ),
       weekendStyle: TextStyle(
-        color: Color.fromARGB(181, 255, 139, 128),
+        color: AppColors.redColor,
         fontSize: 12,
       ),
     );
@@ -109,30 +134,44 @@ class _CalendarWidgetState extends State<CalendarWidget> {
 
   HeaderStyle headerStyle() {
     return HeaderStyle(
-      titleTextStyle: TextStyle(
+      titleTextFormatter: (date, locale) {
+        return DateFormat.yMMMMd(locale).format(date);
+      },
+      titleTextStyle: const TextStyle(
         fontWeight: FontWeight.bold,
         fontSize: 18,
-        color: Colors.blueGrey.shade300,
+        color: AppColors.accentColor,
       ),
-      titleCentered: true,
+      titleCentered: false,
       headerPadding: const EdgeInsets.all(1),
-      leftChevronIcon: Icon(
+      leftChevronIcon: const Icon(
         Icons.chevron_left_outlined,
         size: 30,
-        color: Colors.blueGrey.shade300,
+        color: AppColors.accentColor,
       ),
-      rightChevronIcon: Icon(
+      rightChevronIcon: const Icon(
         Icons.chevron_right_outlined,
         size: 30,
-        color: Colors.blueGrey.shade300,
+        color: AppColors.accentColor,
       ),
+      formatButtonShowsNext: false,
+      formatButtonPadding: const EdgeInsets.all(1),
       formatButtonTextStyle: const TextStyle(
         fontWeight: FontWeight.bold,
+        color: AppColors.dayColor,
       ),
-      formatButtonDecoration: BoxDecoration(
-          color: Colors.blueGrey.shade300,
-          border: const Border.fromBorderSide(BorderSide()),
-          borderRadius: const BorderRadius.all(Radius.circular(12.0))),
+      formatButtonDecoration: const BoxDecoration(
+        color: AppColors.primaryColor,
+        border: Border.fromBorderSide(
+          BorderSide(
+            color: AppColors.dayColor,
+            width: 0.5,
+          ),
+        ),
+        borderRadius: BorderRadius.all(
+          Radius.circular(6),
+        ),
+      ),
     );
   }
 }
