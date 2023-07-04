@@ -33,7 +33,8 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        backgroundColor: AppColors.primaryColor,
+        elevation: 10,
+        backgroundColor: const Color.fromARGB(130, 46, 38, 41),
         selectedItemColor: AppColors.secondaryColor,
         unselectedItemColor: Colors.white,
         currentIndex: currentIndex,
@@ -44,6 +45,7 @@ class _HomePageState extends State<HomePage> {
         },
         items: const [
           BottomNavigationBarItem(
+            backgroundColor: Colors.red,
             icon: Icon(
               Icons.calendar_month_outlined,
             ),
