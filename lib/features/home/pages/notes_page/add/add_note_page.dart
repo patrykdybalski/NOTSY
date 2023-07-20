@@ -17,40 +17,47 @@ class _AddNotePageState extends State<AddNotePage> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AddNoteCubit(),
-      child: BlocBuilder<AddNoteCubit, AddNoteState>(
-        builder: (context, state) {
-          return Scaffold(
-            appBar: AppBar(
-              title: const Text('dodaj notatkę'),
-              actions: [
-                IconButton(
-                    onPressed: _title == null || _subtitle == null
-                        ? null
-                        : () {
-                            context.read<AddNoteCubit>().add(
-                                  _title!,
-                                  _subtitle!,
-                                );
-                          },
-                    icon: const Icon(
-                      Icons.check,
-                    )),
-              ],
-            ),
-            body: _AddNotePageBody(
-              onTitleChanged: (newValue) {
-                setState(() {
-                  _title = newValue;
-                });
-              },
-              onSubtitleChange: (newValue) {
-                setState(() {
-                  _subtitle = newValue;
-                });
-              },
-            ),
-          );
+      child: BlocListener<AddNoteCubit, AddNoteState>(
+        listener: (context, state) {
+          if (state.saved) {
+            Navigator.of(context).pop();
+          }
         },
+        child: BlocBuilder<AddNoteCubit, AddNoteState>(
+          builder: (context, state) {
+            return Scaffold(
+              appBar: AppBar(
+                title: const Text('dodaj notatkę'),
+                actions: [
+                  IconButton(
+                      onPressed: _title == null || _subtitle == null
+                          ? null
+                          : () {
+                              context.read<AddNoteCubit>().add(
+                                    _title!,
+                                    _subtitle!,
+                                  );
+                            },
+                      icon: const Icon(
+                        Icons.check,
+                      )),
+                ],
+              ),
+              body: _AddNotePageBody(
+                onTitleChanged: (newValue) {
+                  setState(() {
+                    _title = newValue;
+                  });
+                },
+                onSubtitleChange: (newValue) {
+                  setState(() {
+                    _subtitle = newValue;
+                  });
+                },
+              ),
+            );
+          },
+        ),
       ),
     );
   }
