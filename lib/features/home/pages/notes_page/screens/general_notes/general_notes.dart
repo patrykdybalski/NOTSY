@@ -17,7 +17,7 @@ class _GeneralNotesState extends State<GeneralNotes> {
     return Scaffold(
       backgroundColor: const Color(0xff0c1020),
       body: BlocProvider(
-        create: (context) => NoteCubit(),
+        create: (context) => NoteCubit()..start(),
         child: BlocBuilder<NoteCubit, NoteState>(
           builder: (context, state) {
             final noteModels = state.noteItems;

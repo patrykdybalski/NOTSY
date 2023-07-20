@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:primary_school/features/home/pages/notes_page/add/add_note_page.dart';
 import 'package:primary_school/features/home/pages/notes_page/screens/detailed_notes/detailed_notes.dart';
 import 'package:primary_school/features/home/pages/notes_page/screens/general_notes/general_notes.dart';
-import 'package:primary_school/features/home/pages/notes_page/screens/password_screen/password_screen.dart';
-
-import 'package:primary_school/features/home/pages/notes_page/screens/private_notes/private_notes.dart';
 
 class NotesPage extends StatefulWidget {
   const NotesPage({Key? key}) : super(key: key);
@@ -44,57 +42,11 @@ class _NotesPageState extends State<NotesPage>
         ),
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.add_circle_outline_outlined,
-              size: 35,
-              color: Color(0xff2693f9),
-            ),
-            padding: const EdgeInsets.only(right: 5),
-          ),
-          IconButton(
             onPressed: () {
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    title: const Text('Utwórz hasło'),
-                    content: TextField(
-                      onChanged: (value) {
-                        setState(() {
-                          password = value;
-                        });
-                      },
-                      obscureText: true,
-                      maxLength: 4,
-                      keyboardType: TextInputType.number,
-                      style: const TextStyle(fontSize: 20),
-                      textAlign: TextAlign.center,
-                      decoration: const InputDecoration(
-                        hintText: '****',
-                        counterText: '',
-                      ),
-                    ),
-                    actions: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: const Text('Anuluj'),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                          setState(() {
-                            isPasswordRequired = true;
-                          });
-                        },
-                        child: const Text('Zatwierdź'),
-                      ),
-                    ],
-                  );
-                },
-              );
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const AddNotePage(),
+                fullscreenDialog: true,
+              ));
             },
             icon: const Icon(
               Icons.add_circle_outline_outlined,
@@ -126,12 +78,9 @@ class _NotesPageState extends State<NotesPage>
       ),
       body: TabBarView(
         controller: tabController,
-        children: [
-          const GeneralNotes(),
-          const DetailedNotesScreen(),
-          isPasswordRequired
-              ? const PasswordScreen()
-              : const PrivateNotesScreen(),
+        children: const [
+          GeneralNotes(),
+          DetailedNotesScreen(),
         ],
       ),
     );
