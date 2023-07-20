@@ -22,6 +22,14 @@ class _AddNotePageState extends State<AddNotePage> {
           if (state.saved) {
             Navigator.of(context).pop();
           }
+          if (state.errorMessage.isNotEmpty) {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text(
+                state.errorMessage,
+              ),
+              backgroundColor: Colors.red,
+            ));
+          }
         },
         child: BlocBuilder<AddNoteCubit, AddNoteState>(
           builder: (context, state) {
