@@ -2,12 +2,12 @@ part of 'calendar_cubit.dart';
 
 @immutable
 class CalendarState {
-  const CalendarState({
-    required this.calendarItems,
-    required this.isLoading,
-    required this.errorMessage,
-  });
+  const CalendarState(
+    {this.calendarItems = const [],
+    this.status = Status.initial,
+    this.errorMessage,}
+  );
   final List<EventModel> calendarItems;
-  final bool isLoading;
-  final String errorMessage;
+  final Status status;
+  final String? errorMessage;
 }

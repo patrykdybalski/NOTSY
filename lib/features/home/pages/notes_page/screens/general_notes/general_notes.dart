@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/core/enums.dart';
+import 'package:primary_school/domain/models/note_model/note_model.dart';
 import 'package:primary_school/features/home/pages/notes_page/cubit/note_cubit.dart';
 
 class GeneralNotes extends StatefulWidget {
@@ -19,6 +20,7 @@ class _GeneralNotesState extends State<GeneralNotes> {
         create: (context) => NoteCubit(),
         child: BlocBuilder<NoteCubit, NoteState>(
           builder: (context, state) {
+            final noteModels = state.noteItems;
             switch (state.status) {
               case Status.initial:
                 return const Center(
@@ -34,13 +36,11 @@ class _GeneralNotesState extends State<GeneralNotes> {
                     crossAxisCount: 2,
                   ),
                   scrollDirection: Axis.vertical,
-                  
                   children: [
-                    for (final document in state.documents) ...[
-                      const NoteItem(
-                          title: 'title',
-                          subtitle:
-                              'subtitle please make a video  fin java for android'),
+                    for (final noteModel in noteModels) ...[
+                      NoteItem(
+                        noteModel: noteModel,
+                      ),
                     ],
                   ],
                 );
@@ -63,12 +63,11 @@ class _GeneralNotesState extends State<GeneralNotes> {
 
 class NoteItem extends StatelessWidget {
   const NoteItem({
-    required this.title,
-    required this.subtitle,
+    required this.noteModel,
     super.key,
   });
-  final String title;
-  final String subtitle;
+
+  final NoteModel noteModel;
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +99,7 @@ class NoteItem extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  title,
+                  noteModel.title,
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -123,7 +122,7 @@ class NoteItem extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Text(
-                  subtitle,
+                  noteModel.subtitle,
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.w300,

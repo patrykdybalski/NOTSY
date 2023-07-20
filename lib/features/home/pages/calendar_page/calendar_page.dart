@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:primary_school/app/core/enums.dart';
 import 'package:primary_school/constans/colors.dart';
 
 import 'package:primary_school/domain/repositories/events_repository.dart';
@@ -23,6 +24,8 @@ class _CalendarPageState extends State<CalendarPage> {
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
       appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: AppColors.primaryColor,
         title: const Text(
           'Kalendarz',
           style: TextStyle(
@@ -30,8 +33,6 @@ class _CalendarPageState extends State<CalendarPage> {
             color: AppColors.accentColor,
           ),
         ),
-        centerTitle: true,
-        backgroundColor: AppColors.primaryColor,
         leading: IconButton(
           color: AppColors.accentColor,
           icon: const Icon(Icons.menu),
@@ -57,87 +58,45 @@ class _CalendarPageState extends State<CalendarPage> {
         )..start(),
         child: BlocBuilder<CalendarCubit, CalendarState>(
           builder: (context, state) {
-            if (state.errorMessage.isNotEmpty) {
-              return Center(
-                child: Text(
-                  'Coś  poszło nie tak: ${state.errorMessage}',
-                ),
-              );
-            }
-            if (state.isLoading) {
-              return const CircularProgressIndicator();
-            }
             final eventModels = state.calendarItems;
+            switch (state.status) {
+              case Status.initial:
+                return const Center(
+                  child: Text('Initial state'),
+                );
+              case Status.loading:
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
 
-            return ListView(
-              children: [
-                const CalendarWidget(
-                 
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: 20.0,
-                    right: 20,
-                  ),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Colors.grey,
-                              blurRadius: 10,
-                              offset: Offset(0, 0),
-                            ),
-                          ],
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 10.0),
-                        child: Material(
-                          color: Colors.blue,
-                          borderRadius: BorderRadius.circular(10),
-                          child: InkWell(
-                            borderRadius: BorderRadius.circular(20),
-                            onTap: () {
-                              // Logika po naciśnięciu przycisku
-                            },
-                            child: const Padding(
-                              padding: EdgeInsets.all(10),
-                              child: Icon(
-                                Icons.search,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Column(
+              case Status.success:
+                return ListView(
                   children: [
-                    for (final eventModel in eventModels) ...[
-                      EventWidget(
-                        eventModel: eventModel,
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      )
-                    ],
+                    const CalendarWidget(),
+                    Column(
+                      children: [
+                        for (final eventModel in eventModels) ...[
+                          EventWidget(
+                            eventModel: eventModel,
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          )
+                        ],
+                      ],
+                    )
                   ],
-                )
-              ],
-            );
+                );
+              case Status.error:
+                return Center(
+                  child: Text(
+                    state.errorMessage ?? 'Unknown error',
+                    style: const TextStyle(
+                      color: Colors.red,
+                    ),
+                  ),
+                );
+            }
           },
         ),
       ),

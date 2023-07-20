@@ -10,7 +10,7 @@ part 'note_state.dart';
 class NoteCubit extends Cubit<NoteState> {
   NoteCubit()
       : super(const NoteState(
-          documents: [],
+          noteItems: [],
           status: Status.initial,
           errorMessage: '',
         ));
@@ -38,7 +38,7 @@ class NoteCubit extends Cubit<NoteState> {
       ).toList();
       emit(
         NoteState(
-          documents: noteModels,
+          noteItems: noteModels,
           status: Status.success,
         ),
       );
