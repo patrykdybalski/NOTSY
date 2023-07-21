@@ -32,7 +32,7 @@ class _GeneralNotesState extends State<GeneralNotes> {
                 );
               case Status.success:
                 return GridView(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate:  const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                   ),
                   scrollDirection: Axis.vertical,
@@ -77,40 +77,42 @@ class NoteItem extends StatelessWidget {
         right: 5.0,
         top: 8.0,
       ),
-      child: Column(
+      child: ListView(
         children: [
           Container(
-            width: 180,
-            height: 25,
             decoration: BoxDecoration(
                 borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(12),
-                  topRight: Radius.circular(12),
-                  bottomLeft: Radius.circular(0),
-                  bottomRight: Radius.circular(0),
+                  topLeft: Radius.circular(6),
+                  topRight: Radius.circular(6),
+                  bottomLeft: Radius.circular(6),
+                  bottomRight: Radius.circular(6),
                 ),
                 border: Border.all(
                   color: Colors.white30,
                 )),
             child: Padding(
               padding: const EdgeInsets.symmetric(
-                horizontal: 8.0,
-                vertical: 4,
+                horizontal: 16.0,
+                vertical: 8,
               ),
-              child: Center(
-                child: Text(
-                  noteModel.title,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      noteModel.title,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
-                ),
+                ],
               ),
             ),
           ),
           Expanded(
             child: Container(
-              width: 180,
+              width: 150,
               decoration: BoxDecoration(
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(0),
