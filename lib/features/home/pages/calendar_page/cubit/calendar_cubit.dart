@@ -35,7 +35,6 @@ class CalendarCubit extends Cubit<CalendarState> {
         (error) {
           emit(
             CalendarState(
-              calendarItems: const [],
               status: Status.error,
               errorMessage: error.toString(),
             ),

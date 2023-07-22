@@ -76,8 +76,30 @@ class _CalendarPageState extends State<CalendarPage> {
                     Column(
                       children: [
                         for (final eventModel in eventModels) ...[
-                          EventWidget(
-                            eventModel: eventModel,
+                          Dismissible(
+                            key: ValueKey(eventModel.id),
+                            background: const DecoratedBox(
+                              decoration:
+                                  BoxDecoration(color: AppColors.redColor),
+                              child: Align(
+                                alignment: Alignment.centerRight,
+                                child: Icon(
+                                  Icons.delete,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            confirmDismiss: (direction) async {
+                              return direction == DismissDirection.endToStart;
+                            },
+                            onDismissed: (direction) {
+                              context
+                                  .read<CalendarCubit>()
+                                  .remove(documentID: eventModel.id);
+                            },
+                            child: EventWidget(
+                              eventModel: eventModel,
+                            ),
                           ),
                           const SizedBox(
                             height: 10,

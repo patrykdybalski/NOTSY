@@ -23,7 +23,7 @@ class EventsRepository {
 
   Future<void> delete({required String id}) async {
     await FirebaseFirestore.instance
-        .collection('calendarEvents')
+        .collection('calendarItems')
         .doc(id)
         .delete();
   }
