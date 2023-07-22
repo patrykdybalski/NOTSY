@@ -17,7 +17,7 @@ class _NotesPageState extends State<NotesPage>
   @override
   void initState() {
     super.initState();
-    tabController = TabController(length: 3, vsync: this);
+    tabController = TabController(length: 2, vsync: this);
   }
 
   @override
@@ -74,7 +74,6 @@ class _NotesPageState extends State<NotesPage>
             tabs: const [
               Text('Krótkie'),
               Text('Szczegółowe'),
-              Text('Prywatne'),
             ],
             onTap: (index) {
               if (index == 2) {
