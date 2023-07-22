@@ -92,63 +92,57 @@ class _NoteItemState extends State<NoteItem> {
       child: Column(
         children: [
           Container(
+            height: 200,
             width: 175,
             decoration: BoxDecoration(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(12),
-                  topRight: Radius.circular(12),
-                  bottomLeft: Radius.circular(0),
-                  bottomRight: Radius.circular(0),
-                ),
-                border: Border.all(
-                  color: AppColors.secondaryColor,
-                  width: 0.3,
-                )),
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(12),
+                topRight: Radius.circular(12),
+                bottomLeft: Radius.circular(12),
+                bottomRight: Radius.circular(0),
+              ),
+              border: Border.all(
+                color: AppColors.secondaryColor,
+                width: 0.3,
+              ),
+            ),
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 12.0,
                 vertical: 6,
               ),
-              child: Row(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          widget.noteModel.title,
+                          style: const TextStyle(
+                            color: AppColors.accentColor,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const Divider(
+                    color: AppColors.redColor,
+                    thickness: 0.3,
+                    height: 7,
+                  ),
                   Expanded(
                     child: Text(
-                      widget.noteModel.title,
+                      widget.noteModel.subtitle,
+                      overflow: TextOverflow.fade,
                       style: const TextStyle(
                         color: AppColors.accentColor,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w300,
                       ),
                     ),
                   ),
                 ],
-              ),
-            ),
-          ),
-          Expanded(
-            child: Container(
-              width: 175,
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(0),
-                  topRight: Radius.circular(0),
-                  bottomLeft: Radius.circular(12),
-                  bottomRight: Radius.circular(12),
-                ),
-                border: Border.all(
-                  color: AppColors.secondaryColor,
-                  width: 0.1,
-                ),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Text(
-                  widget.noteModel.subtitle,
-                  overflow: TextOverflow.fade,
-                  style: const TextStyle(
-                    color: AppColors.accentColor,
-                    fontWeight: FontWeight.w300,
-                  ),
-                ),
               ),
             ),
           ),

@@ -43,7 +43,7 @@ class _CalendarPageState extends State<CalendarPage> {
             icon: const Icon(
               Icons.add_circle_outline_outlined,
               size: 35,
-              color: AppColors.accentColor,
+              color: AppColors.redColor,
             ),
             padding: const EdgeInsets.only(right: 5),
             onPressed: () {

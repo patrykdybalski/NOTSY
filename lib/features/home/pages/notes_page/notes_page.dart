@@ -43,7 +43,10 @@ class _NotesPageState extends State<NotesPage>
         centerTitle: true,
         backgroundColor: AppColors.primaryColor,
         leading: IconButton(
-          icon: const Icon(Icons.menu),
+          icon: const Icon(
+            Icons.menu,
+            color: AppColors.accentColor,
+          ),
           onPressed: () {},
         ),
         actions: [
@@ -57,16 +60,17 @@ class _NotesPageState extends State<NotesPage>
             icon: const Icon(
               Icons.add_circle_outline_outlined,
               size: 35,
-              color: Color(0xff2693f9),
+              color: AppColors.redColor,
             ),
             padding: const EdgeInsets.only(right: 5),
           ),
         ],
         bottom: TabBar(
+            isScrollable: false,
             controller: tabController,
             labelPadding: const EdgeInsets.all(10),
             labelColor: AppColors.accentColor,
-            indicatorColor: AppColors.accentColor,
+            indicatorColor: AppColors.redColor,
             tabs: const [
               Text('Krótkie'),
               Text('Szczegółowe'),

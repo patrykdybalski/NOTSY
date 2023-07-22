@@ -58,26 +58,6 @@ class _AddEventDialogState extends State<AddEventDialog> {
                       Navigator.of(context).pop();
                     },
                   ),
-                  IconButton(
-                    onPressed: _title == null ||
-                            _subtitle == null ||
-                            _selectedDay == null ||
-                            _selectedTime == null
-                        ? null
-                        : () {
-                            context.read<AddEventCubit>().add(
-                                  _title!,
-                                  _subtitle!,
-                                  _selectedDay!,
-                                  _selectedTime!,
-                                );
-                          },
-                    icon: const Icon(
-                      Icons.add_circle_outline_sharp,
-                      color: AppColors.greenColor,
-                      size: 30,
-                    ),
-                  ),
                 ],
               ),
               content: _ContentDialog(
@@ -114,6 +94,31 @@ class _AddEventDialogState extends State<AddEventDialog> {
                     ? null
                     : DateFormat.yMd().format(_selectedDay!),
               ),
+              actions: [
+                TextButton(
+                  onPressed: _title == null ||
+                          _subtitle == null ||
+                          _selectedDay == null ||
+                          _selectedTime == null
+                      ? null
+                      : () {
+                          context.read<AddEventCubit>().add(
+                                _title!,
+                                _subtitle!,
+                                _selectedDay!,
+                                _selectedTime!,
+                              );
+                        },
+                  child: const Text(
+                    'Zapisz',
+                    style: TextStyle(
+                      color: AppColors.redColor,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+              ],
             );
           },
         ),

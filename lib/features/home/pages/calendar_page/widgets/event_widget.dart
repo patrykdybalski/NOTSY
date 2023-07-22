@@ -30,7 +30,7 @@ class _EventWidgetState extends State<EventWidget> {
           borderRadius: BorderRadius.circular(16.0),
           side: const BorderSide(
             color: AppColors.redColor,
-            width: 2.0,
+            width: 0.5,
           ),
         ),
         leading: Column(
