@@ -87,6 +87,8 @@ class _AddNotePageBody extends StatelessWidget {
       children: [
         TextField(
           onChanged: onTitleChanged,
+          minLines: 1,
+          maxLines: 2,
         ),
         TextField(
           onChanged: onSubtitleChange,

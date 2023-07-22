@@ -153,7 +153,6 @@ class _ContentDialog extends StatelessWidget {
             cursorColor: Colors.white10,
             cursorRadius: const Radius.circular(12),
             style: const TextStyle(
-              fontWeight: FontWeight.bold,
               color: AppColors.dayColor,
             ),
             decoration: InputDecoration(
@@ -166,7 +165,7 @@ class _ContentDialog extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                   borderSide: const BorderSide(
                     color: AppColors.dayColor,
-                    width: 2,
+                    width: 1.5,
                   )),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
@@ -203,7 +202,7 @@ class _ContentDialog extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                   borderSide: const BorderSide(
                     color: AppColors.dayColor,
-                    width: 2,
+                    width: 1.5,
                   )),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
@@ -234,14 +233,15 @@ class _ContentDialog extends StatelessWidget {
               backgroundColor: AppColors.primaryColor, // Kolor tła przycisku
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(
-                    8.0), // Opcjonalnie: zaokrąglenie rogów przycisku
+                  8.0,
+                ), // Opcjonalnie: zaokrąglenie rogów przycisku
               ),
               side: const BorderSide(
                 color: AppColors.secondaryColor,
-                width: 2,
+                width: 1,
               ),
-              elevation: 3,
-              shadowColor: AppColors.redColor,
+              elevation: 1.5,
+              shadowColor: AppColors.accentColor,
             ),
             onPressed: () async {
               final selectedDate = await showDatePicker(
@@ -274,11 +274,11 @@ class _ContentDialog extends StatelessWidget {
                 ),
               ),
               side: const BorderSide(
-                color: AppColors.redColor,
-                width: 2,
+                color: AppColors.secondaryColor,
+                width: 1,
               ),
-              elevation: 3,
-              shadowColor: AppColors.secondaryColor,
+              elevation: 1.5,
+              shadowColor: AppColors.accentColor,
             ),
             onPressed: () async {
               TimeOfDay? selectedTime = await showTimePicker(

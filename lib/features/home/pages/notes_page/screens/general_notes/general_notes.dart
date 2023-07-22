@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/core/enums.dart';
+import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
 import 'package:primary_school/features/home/pages/notes_page/cubit/note_cubit.dart';
+import 'package:primary_school/features/home/pages/notes_page/screens/note_reader_screen/note_reader_screen.dart';
 
 class GeneralNotes extends StatefulWidget {
   const GeneralNotes({super.key});
@@ -15,7 +17,7 @@ class _GeneralNotesState extends State<GeneralNotes> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff0c1020),
+      backgroundColor: AppColors.primaryColor,
       body: BlocProvider(
         create: (context) => NoteCubit()..start(),
         child: BlocBuilder<NoteCubit, NoteState>(
@@ -32,10 +34,15 @@ class _GeneralNotesState extends State<GeneralNotes> {
                 );
               case Status.success:
                 return GridView(
-                  gridDelegate:  const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                  ),
+                  reverse: false,
+                  padding: const EdgeInsets.all(10),
                   scrollDirection: Axis.vertical,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 15,
+                    crossAxisSpacing: 15,
+                    childAspectRatio: 0.8,
+                  ),
                   children: [
                     for (final noteModel in noteModels) ...[
                       NoteItem(
@@ -61,7 +68,7 @@ class _GeneralNotesState extends State<GeneralNotes> {
   }
 }
 
-class NoteItem extends StatelessWidget {
+class NoteItem extends StatefulWidget {
   const NoteItem({
     required this.noteModel,
     super.key,
@@ -70,38 +77,45 @@ class NoteItem extends StatelessWidget {
   final NoteModel noteModel;
 
   @override
+  State<NoteItem> createState() => _NoteItemState();
+}
+
+class _NoteItemState extends State<NoteItem> {
+  @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        left: 5.0,
-        right: 5.0,
-        top: 8.0,
-      ),
-      child: ListView(
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) =>
+                NoteReaderScreen(noteModel: widget.noteModel)));
+      },
+      child: Column(
         children: [
           Container(
+            width: 175,
             decoration: BoxDecoration(
                 borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(6),
-                  topRight: Radius.circular(6),
-                  bottomLeft: Radius.circular(6),
-                  bottomRight: Radius.circular(6),
+                  topLeft: Radius.circular(12),
+                  topRight: Radius.circular(12),
+                  bottomLeft: Radius.circular(0),
+                  bottomRight: Radius.circular(0),
                 ),
                 border: Border.all(
-                  color: Colors.white30,
+                  color: AppColors.secondaryColor,
+                  width: 0.3,
                 )),
             child: Padding(
               padding: const EdgeInsets.symmetric(
-                horizontal: 16.0,
-                vertical: 8,
+                horizontal: 12.0,
+                vertical: 6,
               ),
               child: Row(
                 children: [
                   Expanded(
                     child: Text(
-                      noteModel.title,
+                      widget.noteModel.title,
                       style: const TextStyle(
-                        color: Colors.white,
+                        color: AppColors.accentColor,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -112,21 +126,26 @@ class NoteItem extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              width: 150,
+              width: 175,
               decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(0),
-                    topRight: Radius.circular(0),
-                    bottomLeft: Radius.circular(12),
-                    bottomRight: Radius.circular(12),
-                  ),
-                  border: Border.all(color: Colors.white30, width: 0.5)),
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(0),
+                  topRight: Radius.circular(0),
+                  bottomLeft: Radius.circular(12),
+                  bottomRight: Radius.circular(12),
+                ),
+                border: Border.all(
+                  color: AppColors.secondaryColor,
+                  width: 0.1,
+                ),
+              ),
               child: Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Text(
-                  noteModel.subtitle,
+                  widget.noteModel.subtitle,
+                  overflow: TextOverflow.fade,
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: AppColors.accentColor,
                     fontWeight: FontWeight.w300,
                   ),
                 ),

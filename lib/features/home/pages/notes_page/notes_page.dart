@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/features/home/pages/notes_page/add/add_note_page.dart';
 import 'package:primary_school/features/home/pages/notes_page/screens/detailed_notes/detailed_notes.dart';
 import 'package:primary_school/features/home/pages/notes_page/screens/general_notes/general_notes.dart';
@@ -31,11 +32,16 @@ class _NotesPageState extends State<NotesPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff0c1020),
+      backgroundColor: AppColors.primaryColor,
       appBar: AppBar(
-        title: const Text('Notatnik'),
+        title: const Text(
+          'Notatnik',
+          style: TextStyle(
+            color: AppColors.accentColor,
+          ),
+        ),
         centerTitle: true,
-        backgroundColor: const Color(0xff0c1020),
+        backgroundColor: AppColors.primaryColor,
         leading: IconButton(
           icon: const Icon(Icons.menu),
           onPressed: () {},
@@ -59,6 +65,8 @@ class _NotesPageState extends State<NotesPage>
         bottom: TabBar(
             controller: tabController,
             labelPadding: const EdgeInsets.all(10),
+            labelColor: AppColors.accentColor,
+            indicatorColor: AppColors.accentColor,
             tabs: const [
               Text('Krótkie'),
               Text('Szczegółowe'),

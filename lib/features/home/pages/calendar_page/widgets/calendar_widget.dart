@@ -76,13 +76,14 @@ class _CalendarWidgetState extends State<CalendarWidget> {
         fontSize: 15,
       ),
       defaultTextStyle: const TextStyle(
-        color: Color.fromRGBO(234, 232, 227, 1.0),
+        color: AppColors.dayColor,
       ),
       selectedDecoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            Color(0xFFF7BA2B),
-            Color(0xFFEA5358),
+            AppColors.primaryColor,
+            Color(0xFF006633),
+            AppColors.primaryColor,
           ],
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,
@@ -155,7 +156,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
         color: AppColors.accentColor,
       ),
       formatButtonShowsNext: false,
-      formatButtonPadding: const EdgeInsets.all(1),
+      formatButtonPadding: const EdgeInsets.all(5),
       formatButtonTextStyle: const TextStyle(
         fontWeight: FontWeight.bold,
         color: AppColors.dayColor,
