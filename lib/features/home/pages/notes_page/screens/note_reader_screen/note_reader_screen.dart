@@ -17,11 +17,13 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: AppColors.primaryColor,
         elevation: 0.6,
         shadowColor: Colors.black,
         title: Expanded(
           child: RichText(
+            maxLines: 3,
             text: TextSpan(
               text: widget.noteModel.title.toString(),
               style: const TextStyle(
@@ -32,12 +34,36 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: AppColors.accentColor,
-        child: const Icon(
-          Icons.mode_edit_outline_outlined,
-        ),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          FloatingActionButton(
+            onPressed: () {},
+            backgroundColor: AppColors.primaryColor,
+            child: const Icon(
+              Icons.delete_forever_outlined,
+              color: AppColors.redColor,
+            ),
+          ),
+          FloatingActionButton(
+            onPressed: () {},
+            backgroundColor: AppColors.primaryColor,
+            child: const Icon(
+              Icons.mode_edit_outline_outlined,
+              color: AppColors.accentColor,
+            ),
+          ),
+          FloatingActionButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            backgroundColor: AppColors.primaryColor,
+            child: const Icon(
+              Icons.keyboard_return_outlined,
+              color: AppColors.secondaryColor,
+            ),
+          ),
+        ],
       ),
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterFloat,
@@ -48,8 +74,7 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
           top: 8,
           bottom: 10,
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView(
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -79,11 +104,14 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
             const SizedBox(
               height: 30,
             ),
-            Text(
-              widget.noteModel.subtitle,
-              style: const TextStyle(
-                color: AppColors.accentColor,
-                fontWeight: FontWeight.w300,
+            Expanded(
+              child: Text(
+                widget.noteModel.subtitle,
+                style: const TextStyle(
+                  color: AppColors.accentColor,
+                  fontWeight: FontWeight.w300,
+                  fontSize: 20,
+                ),
               ),
             ),
           ],
