@@ -17,10 +17,14 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
       appBar: AppBar(
-        backgroundColor: AppColors.primaryColor,
-        elevation: 0.4,
-        shadowColor: Colors.black,
-      ),
+          backgroundColor: AppColors.primaryColor,
+          elevation: 0.4,
+          shadowColor: Colors.black,
+          title: FittedBox(
+            fit: BoxFit.fitHeight,
+            child: Text(
+                'To test tego czy an appbarze pojawią się doskolane dopasowane słowa'),
+          )),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
