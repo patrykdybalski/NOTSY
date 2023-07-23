@@ -99,7 +99,7 @@ class _NoteItemState extends State<NoteItem> {
                 topLeft: Radius.circular(12),
                 topRight: Radius.circular(12),
                 bottomLeft: Radius.circular(12),
-                bottomRight: Radius.circular(0),
+                bottomRight: Radius.circular(12),
               ),
               border: Border.all(
                 color: AppColors.secondaryColor,
@@ -139,6 +139,7 @@ class _NoteItemState extends State<NoteItem> {
                       style: const TextStyle(
                         color: AppColors.accentColor,
                         fontWeight: FontWeight.w300,
+                        fontSize: 12,
                       ),
                     ),
                   ),

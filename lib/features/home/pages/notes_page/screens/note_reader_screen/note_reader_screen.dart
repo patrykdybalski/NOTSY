@@ -32,6 +32,15 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: AppColors.accentColor,
+        child: const Icon(
+          Icons.mode_edit_outline_outlined,
+        ),
+      ),
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterFloat,
       body: Padding(
         padding: const EdgeInsets.only(
           left: 15.0,

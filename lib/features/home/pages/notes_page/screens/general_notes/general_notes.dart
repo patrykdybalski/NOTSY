@@ -99,7 +99,7 @@ class _NoteItemState extends State<NoteItem> {
                 topLeft: Radius.circular(12),
                 topRight: Radius.circular(12),
                 bottomLeft: Radius.circular(12),
-                bottomRight: Radius.circular(0),
+                bottomRight: Radius.circular(12),
               ),
               border: Border.all(
                 color: AppColors.secondaryColor,
@@ -133,12 +133,20 @@ class _NoteItemState extends State<NoteItem> {
                     height: 7,
                   ),
                   Expanded(
-                    child: Text(
-                      widget.noteModel.subtitle,
-                      overflow: TextOverflow.fade,
-                      style: const TextStyle(
-                        color: AppColors.accentColor,
-                        fontWeight: FontWeight.w300,
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        left: 0.0,
+                        right: 2.0,
+                        top: 4.0,
+                      ),
+                      child: Text(
+                        widget.noteModel.subtitle,
+                        overflow: TextOverflow.fade,
+                        style: const TextStyle(
+                          color: AppColors.accentColor,
+                          fontWeight: FontWeight.w300,
+                          fontSize: 12,
+                        ),
                       ),
                     ),
                   ),
