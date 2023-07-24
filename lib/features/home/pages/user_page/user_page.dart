@@ -10,9 +10,9 @@ class UserPage extends StatelessWidget {
           title: const Text('Panel użytkownika'),
           backgroundColor: const Color(0xff7fab72),
         ),
-        body: Column(
+        body: const Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               Text(
                 'niezalogowany',
               ),

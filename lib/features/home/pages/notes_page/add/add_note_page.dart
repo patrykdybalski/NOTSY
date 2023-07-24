@@ -159,54 +159,59 @@ class _AddNotePageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        left: 15.0,
-        right: 10.0,
-        top: 8.0,
+    return Container(
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(
+              'images/note_card.png.jpg'), // Ścieżka do twojego obrazu
+          fit: BoxFit.cover, // Rozciągnij obraz, aby wypełnić całe tło
+        ),
       ),
-      child: ListView(
-        children: [
-          TextField(
-            onChanged: onTitleChanged,
-            minLines: 1,
-            maxLines: 2,
-            maxLength: 120,
-            style: const TextStyle(
-              color: AppColors.accentColor,
-              fontWeight: FontWeight.w700,
-            ),
-            decoration: const InputDecoration(
-              counterText: '',
-              hintText: 'Tytuł',
-              border: UnderlineInputBorder(
-                borderSide:
-                    BorderSide(color: AppColors.accentColor, width: 1.0),
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: ListView(
+          children: [
+            TextField(
+              onChanged: onTitleChanged,
+              minLines: 1,
+              maxLines: 2,
+              maxLength: 120,
+              style: const TextStyle(
+                color: AppColors.accentColor,
+                fontWeight: FontWeight.w700,
               ),
-              focusedBorder: UnderlineInputBorder(
-                borderSide:
-                    BorderSide(color: AppColors.accentColor, width: 1.0),
+              decoration: const InputDecoration(
+                counterText: '',
+                hintText: 'Tytuł',
+                border: UnderlineInputBorder(
+                  borderSide:
+                      BorderSide(color: AppColors.accentColor, width: 1.0),
+                ),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide:
+                      BorderSide(color: AppColors.accentColor, width: 1.0),
+                ),
               ),
             ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          TextFormField(
-            onChanged: onSubtitleChange,
-            minLines: 1,
-            maxLines: 200,
-            style: const TextStyle(
-              color: AppColors.accentColor,
-              fontWeight: FontWeight.w300,
-              fontSize: 20,
+            const SizedBox(
+              height: 20,
             ),
-            decoration: const InputDecoration(
-              hintText: 'Opis',
-              border: InputBorder.none,
-            ),
-          )
-        ],
+            TextFormField(
+              onChanged: onSubtitleChange,
+              minLines: 1,
+              maxLines: 200,
+              style: const TextStyle(
+                color: AppColors.accentColor,
+                fontWeight: FontWeight.w300,
+                fontSize: 20,
+              ),
+              decoration: const InputDecoration(
+                hintText: 'Wpisz treść notatki',
+                border: InputBorder.none,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

@@ -76,11 +76,11 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
         ),
         child: ListView(
           children: [
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Column(
-                  children: const [
+                  children: [
                     Text(
                       'Utworzenie  23/07/2023',
                       style: TextStyle(
