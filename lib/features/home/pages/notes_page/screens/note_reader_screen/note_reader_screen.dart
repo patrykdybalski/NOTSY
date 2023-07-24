@@ -21,6 +21,14 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
         backgroundColor: AppColors.primaryColor,
         elevation: 0.6,
         shadowColor: Colors.black,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('images/note_card.png.jpg'),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
         title: Expanded(
           child: RichText(
             maxLines: 3,
@@ -67,54 +75,57 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
       ),
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterFloat,
-      body: Padding(
-        padding: const EdgeInsets.only(
-          left: 15.0,
-          right: 10,
-          top: 8,
-          bottom: 10,
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('images/note_card.png.jpg'),
+            fit: BoxFit.cover,
+          ),
         ),
-        child: ListView(
-          children: [
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Column(
-                  children: [
-                    Text(
-                      'Utworzenie  23/07/2023',
-                      style: TextStyle(
-                        color: AppColors.secondaryColor,
-                        fontWeight: FontWeight.w300,
-                        fontSize: 9,
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: ListView(
+            children: [
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Column(
+                    children: [
+                      Text(
+                        'Utworzenie  23/07/2023',
+                        style: TextStyle(
+                          color: AppColors.secondaryColor,
+                          fontWeight: FontWeight.w300,
+                          fontSize: 9,
+                        ),
                       ),
-                    ),
-                    Text(
-                      'Aktualizacja 23/07/2023',
-                      style: TextStyle(
-                        color: AppColors.secondaryColor,
-                        fontWeight: FontWeight.w300,
-                        fontSize: 9,
+                      Text(
+                        'Aktualizacja 23/07/2023',
+                        style: TextStyle(
+                          color: AppColors.secondaryColor,
+                          fontWeight: FontWeight.w300,
+                          fontSize: 9,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            Expanded(
-              child: Text(
-                widget.noteModel.subtitle,
-                style: const TextStyle(
-                  color: AppColors.accentColor,
-                  fontWeight: FontWeight.w300,
-                  fontSize: 20,
+                    ],
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Expanded(
+                child: Text(
+                  widget.noteModel.subtitle,
+                  style: const TextStyle(
+                    color: AppColors.accentColor,
+                    fontWeight: FontWeight.w300,
+                    fontSize: 20,
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
