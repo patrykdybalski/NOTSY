@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:primary_school/constans/colors.dart';
-import 'package:primary_school/domain/repositories/events_repository.dart';
+import 'package:primary_school/domain/repositories/calendar/events_repository.dart';
 import 'package:primary_school/features/home/pages/add_event_dialog/cubit/add_event_cubit.dart';
 
 class AddEventDialog extends StatefulWidget {

@@ -24,4 +24,17 @@ class AddNoteCubit extends Cubit<AddNoteState> {
       ));
     }
   }
+
+  Future<void> remove(String id) async {
+    try {
+      await FirebaseFirestore.instance.collection('noteItems').doc(id).delete();
+      emit(AddNoteState());
+    } catch (error) {
+      emit(
+        AddNoteState(
+          errorMessage: error.toString(),
+        ),
+      );
+    }
+  }
 }

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/core/enums.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
+import 'package:primary_school/domain/repositories/note/note_repository.dart';
 import 'package:primary_school/features/home/pages/notes_page/cubit/note_cubit.dart';
 import 'package:primary_school/features/home/pages/notes_page/screens/note_reader_screen/note_reader_screen.dart';
 
@@ -19,7 +20,7 @@ class _DetailedNotesScreenState extends State<DetailedNotesScreen> {
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
       body: BlocProvider(
-        create: (context) => NoteCubit()..start(),
+        create: (context) => NoteCubit(NoteRepository())..start(),
         child: BlocBuilder<NoteCubit, NoteState>(
           builder: (context, state) {
             final noteModels = state.noteItems;
@@ -95,15 +96,31 @@ class _NoteItemState extends State<NoteItem> {
             height: 200,
             width: 175,
             decoration: BoxDecoration(
+              image: const DecorationImage(
+                image: AssetImage(
+                  'images/note_card.png.jpg',
+                ),
+                fit: BoxFit.cover,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.shade500,
+                  spreadRadius: 1,
+                  blurRadius: 15,
+                  offset: const Offset(1, 1), // Przesunięcie cienia w dół
+                ),
+                const BoxShadow(
+                  color: Colors.white,
+                  spreadRadius: 1,
+                  blurRadius: 15,
+                  offset: Offset(-1, -1), // Przesunięcie cienia w dół
+                ),
+              ],
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(12),
                 topRight: Radius.circular(12),
                 bottomLeft: Radius.circular(12),
                 bottomRight: Radius.circular(12),
-              ),
-              border: Border.all(
-                color: AppColors.secondaryColor,
-                width: 0.3,
               ),
             ),
             child: Padding(
@@ -120,7 +137,7 @@ class _NoteItemState extends State<NoteItem> {
                         child: Text(
                           widget.noteModel.title,
                           style: const TextStyle(
-                            color: AppColors.accentColor,
+                            color: Colors.black,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -137,7 +154,7 @@ class _NoteItemState extends State<NoteItem> {
                       widget.noteModel.subtitle,
                       overflow: TextOverflow.fade,
                       style: const TextStyle(
-                        color: AppColors.accentColor,
+                        color: Colors.black,
                         fontWeight: FontWeight.w300,
                         fontSize: 12,
                       ),

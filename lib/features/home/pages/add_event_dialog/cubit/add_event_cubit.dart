@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:primary_school/domain/repositories/events_repository.dart';
+import 'package:primary_school/domain/repositories/calendar/events_repository.dart';
 
 part 'add_event_state.dart';
 

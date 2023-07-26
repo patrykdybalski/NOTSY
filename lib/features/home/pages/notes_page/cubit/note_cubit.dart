@@ -1,20 +1,20 @@
 import 'dart:async';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/core/enums.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
+import 'package:primary_school/domain/repositories/note/note_repository.dart';
 part 'note_state.dart';
 
 class NoteCubit extends Cubit<NoteState> {
-  NoteCubit()
+  NoteCubit(this._noteRepository)
       : super(const NoteState(
           noteItems: [],
           status: Status.initial,
           errorMessage: '',
         ));
-
+  final NoteRepository _noteRepository;
   StreamSubscription? _streamSubscription;
 
   Future<void> start() async {
@@ -23,22 +23,10 @@ class NoteCubit extends Cubit<NoteState> {
         status: Status.loading,
       ),
     );
-    _streamSubscription = FirebaseFirestore.instance
-        .collection('noteItems')
-        .snapshots()
-        .listen((notes) {
-      final noteModels = notes.docs.map(
-        (doc) {
-          return NoteModel(
-            title: doc['title'],
-            subtitle: doc['subtitle'],
-            id: doc.id,
-          );
-        },
-      ).toList();
+    _streamSubscription = _noteRepository.getNotesStream().listen((data) {
       emit(
         NoteState(
-          noteItems: noteModels,
+          noteItems: data,
           status: Status.success,
         ),
       );

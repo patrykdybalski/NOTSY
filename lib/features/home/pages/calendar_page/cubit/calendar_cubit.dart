@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/core/enums.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
-import 'package:primary_school/domain/repositories/events_repository.dart';
+import 'package:primary_school/domain/repositories/calendar/events_repository.dart';
 part 'calendar_state.dart';
 
 class CalendarCubit extends Cubit<CalendarState> {

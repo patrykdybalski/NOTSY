@@ -35,9 +35,10 @@ class _NotesPageState extends State<NotesPage>
       backgroundColor: AppColors.primaryColor,
       appBar: AppBar(
         title: const Text(
-          'Notatnik',
+          'Notatki',
           style: TextStyle(
             color: AppColors.accentColor,
+            letterSpacing: 2,
           ),
         ),
         centerTitle: true,
@@ -69,8 +70,16 @@ class _NotesPageState extends State<NotesPage>
             isScrollable: false,
             controller: tabController,
             labelPadding: const EdgeInsets.all(10),
-            labelColor: AppColors.accentColor,
             indicatorColor: AppColors.redColor,
+            labelColor: AppColors.accentColor,
+            unselectedLabelStyle: const TextStyle(
+              fontSize: 15,
+            ),
+            labelStyle: const TextStyle(
+              color: AppColors.accentColor,
+              fontSize: 15,
+              fontWeight: FontWeight.bold,
+            ),
             tabs: const [
               Text('Krótkie'),
               Text('Szczegółowe'),

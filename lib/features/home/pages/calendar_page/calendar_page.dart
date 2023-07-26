@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/core/enums.dart';
 import 'package:primary_school/constans/colors.dart';
 
-import 'package:primary_school/domain/repositories/events_repository.dart';
+import 'package:primary_school/domain/repositories/calendar/events_repository.dart';
 import 'package:primary_school/features/home/pages/add_event_dialog/add_event_dialog.dart';
 import 'package:primary_school/features/home/pages/calendar_page/cubit/calendar_cubit.dart';
 import 'package:primary_school/features/home/pages/calendar_page/widgets/calendar_widget.dart';

@@ -22,7 +22,7 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
         elevation: 0.6,
         shadowColor: Colors.black,
         flexibleSpace: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('images/note_card.png.jpg'),
               fit: BoxFit.cover,
@@ -35,7 +35,7 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
             text: TextSpan(
               text: widget.noteModel.title.toString(),
               style: const TextStyle(
-                color: AppColors.accentColor,
+                color: Colors.black,
                 fontWeight: FontWeight.w700,
               ),
             ),
@@ -96,7 +96,7 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
                         style: TextStyle(
                           color: AppColors.secondaryColor,
                           fontWeight: FontWeight.w300,
-                          fontSize: 9,
+                          fontSize: 11,
                         ),
                       ),
                       Text(
@@ -104,7 +104,7 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
                         style: TextStyle(
                           color: AppColors.secondaryColor,
                           fontWeight: FontWeight.w300,
-                          fontSize: 9,
+                          fontSize: 11,
                         ),
                       ),
                     ],
@@ -118,7 +118,7 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
                 child: Text(
                   widget.noteModel.subtitle,
                   style: const TextStyle(
-                    color: AppColors.accentColor,
+                    color: Colors.black,
                     fontWeight: FontWeight.w300,
                     fontSize: 20,
                   ),
