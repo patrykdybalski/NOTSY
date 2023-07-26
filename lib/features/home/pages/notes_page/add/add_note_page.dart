@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/constans/colors.dart';
+import 'package:primary_school/domain/repositories/note/note_repository.dart';
 import 'package:primary_school/features/home/pages/notes_page/add/cubit/add_note_cubit.dart';
 
 class AddNotePage extends StatefulWidget {
@@ -17,7 +18,7 @@ class _AddNotePageState extends State<AddNotePage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AddNoteCubit(),
+      create: (context) => AddNoteCubit(NoteRepository()),
       child: BlocListener<AddNoteCubit, AddNoteState>(
         listener: (context, state) {
           if (state.saved) {
@@ -28,7 +29,7 @@ class _AddNotePageState extends State<AddNotePage> {
               content: Text(
                 state.errorMessage,
               ),
-              backgroundColor: Colors.red,
+              backgroundColor: AppColors.redColor,
             ));
           }
         },
