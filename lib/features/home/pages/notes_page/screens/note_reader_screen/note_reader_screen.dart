@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/constans/colors.dart';
-
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
+import 'package:primary_school/features/home/pages/notes_page/screens/edit_note_screen/edit_note_screen.dart';
 import 'package:primary_school/features/home/pages/notes_page/screens/note_reader_screen/cubit/reader_screen_cubit.dart';
 
 class NoteReaderScreen extends StatefulWidget {
@@ -18,11 +19,11 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => (ReaderScreenCubit(NoteRepository())),
+      create: (context) => ReaderScreenCubit(NoteRepository()),
       child: BlocBuilder<ReaderScreenCubit, ReaderScreenState>(
         builder: (context, state) {
           if (state.delete) {
-            Navigator.of(context).pop();
+            Navigator.of(context).pop(widget.noteModel);
           }
           if (state.errorMessage.isNotEmpty) {
             ScaffoldMessenger.of(context).showSnackBar(
@@ -62,43 +63,43 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
                 ),
               ),
             ),
-            floatingActionButton: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+            floatingActionButton: SpeedDial(
+              animatedIcon: AnimatedIcons.menu_close,
+              backgroundColor: Colors.black,
+              overlayColor: Colors.black,
+              overlayOpacity: 0.3,
+              spacing: 8,
+              spaceBetweenChildren: 8,
+              closeManually: false,
               children: [
-                FloatingActionButton(
-                  onPressed: () {
+                SpeedDialChild(
+                  child: const Icon(
+                    Icons.mode_edit_outline_outlined,
+                  ),
+                  label: 'Edytuj',
+                  backgroundColor: AppColors.greenColor,
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (builder) => EditNoteScreen(
+                        noteModel: widget.noteModel,
+                      ),
+                    ));
+                  },
+                ),
+                SpeedDialChild(
+                  child: const Icon(
+                    Icons.delete_forever_outlined,
+                  ),
+                  label: 'Usuń',
+                  backgroundColor: const Color.fromARGB(255, 176, 70, 24),
+                  onTap: () {
                     context.read<ReaderScreenCubit>().remove(
                           id: widget.noteModel.id,
                         );
                   },
-                  backgroundColor: AppColors.primaryColor,
-                  child: const Icon(
-                    Icons.delete_forever_outlined,
-                    color: AppColors.redColor,
-                  ),
-                ),
-                FloatingActionButton(
-                  onPressed: () {},
-                  backgroundColor: AppColors.primaryColor,
-                  child: const Icon(
-                    Icons.mode_edit_outline_outlined,
-                    color: AppColors.accentColor,
-                  ),
-                ),
-                FloatingActionButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  backgroundColor: AppColors.primaryColor,
-                  child: const Icon(
-                    Icons.keyboard_return_outlined,
-                    color: AppColors.secondaryColor,
-                  ),
                 ),
               ],
             ),
-            floatingActionButtonLocation:
-                FloatingActionButtonLocation.miniCenterFloat,
             body: Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(

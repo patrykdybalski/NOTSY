@@ -27,6 +27,27 @@ class AddNoteCubit extends Cubit<AddNoteState> {
     }
   }
 
+  Future<void> edit(
+    String title,
+    String subtitle,
+    String docId,
+  ) async {
+    try {
+      await _noteRepository.edit(
+        title,
+        subtitle,
+        docId,
+      );
+      emit(
+        AddNoteState(saved: true),
+      );
+    } catch (error) {
+      emit(AddNoteState(
+        errorMessage: error.toString(),
+      ));
+    }
+  }
+
   Future<void> remove({required String id}) async {
     try {
       await _noteRepository.delete(

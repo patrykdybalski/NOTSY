@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
@@ -13,9 +12,7 @@ class ReaderScreenCubit extends Cubit<ReaderScreenState> {
   Future<void> remove({required String id}) async {
     try {
       await _noteRepository.delete(id: id);
-      emit(const ReaderScreenState(
-        delete: true,
-      ));
+      emit(const ReaderScreenState());
     } catch (error) {
       emit(
         ReaderScreenState(

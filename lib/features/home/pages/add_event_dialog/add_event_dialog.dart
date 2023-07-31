@@ -15,7 +15,7 @@ class AddEventDialog extends StatefulWidget {
 }
 
 class _AddEventDialogState extends State<AddEventDialog> {
-  String? _title;
+  String? _title; 
   String? _subtitle;
   DateTime? _selectedDay;
   DateTime? _selectedTime;

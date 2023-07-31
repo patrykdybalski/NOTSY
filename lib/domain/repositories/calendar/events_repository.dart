@@ -28,6 +28,7 @@ class EventsRepository {
         .delete();
   }
 
+
   Future<void> add(
     String title,
     String subtitle,

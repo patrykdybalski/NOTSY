@@ -25,7 +25,18 @@ class NoteRepository {
   ) async {
     await FirebaseFirestore.instance.collection('noteItems').add({
       'title': title,
-      'subtitile': subtitle,
+      'subtitle': subtitle,
+    });
+  }
+
+  Future<void> edit(
+    String title,
+    String subtitle,
+    String docId,
+  ) async {
+    await FirebaseFirestore.instance.collection('noteItems').doc(docId).update({
+      'title': title,
+      'subtitle': subtitle,
     });
   }
 

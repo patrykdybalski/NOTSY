@@ -20,7 +20,9 @@ class _GeneralNotesState extends State<GeneralNotes> {
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
       body: BlocProvider(
-        create: (context) => NoteCubit(NoteRepository())..start(),
+        create: (context) => NoteCubit(
+          NoteRepository(),
+        )..start(),
         child: BlocBuilder<NoteCubit, NoteState>(
           builder: (context, state) {
             final noteModels = state.noteItems;
@@ -106,13 +108,13 @@ class _NoteItemState extends State<NoteItem> {
                 BoxShadow(
                   color: Colors.grey.shade500,
                   spreadRadius: 1,
-                  blurRadius: 15,
+                  blurRadius: 0.3,
                   offset: const Offset(1, 1), // Przesunięcie cienia w dół
                 ),
                 const BoxShadow(
                   color: Colors.white,
                   spreadRadius: 1,
-                  blurRadius: 15,
+                  blurRadius: 1,
                   offset: Offset(-1, -1), // Przesunięcie cienia w dół
                 ),
               ],
