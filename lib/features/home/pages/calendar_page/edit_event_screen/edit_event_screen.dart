@@ -101,15 +101,27 @@ class _EditEventScreenState extends State<EditEventScreen> {
               actions: [
                 TextButton(
                   onPressed: () {
-                    {
-                      context.read<EditEventCubit>().edit(
-                            _title!,
-                            _subtitle!,
-                            _selectedDay!,
-                            _selectedTime!,
-                            widget.eventModel.id,
-                          );
+                    Map<String, dynamic> updatedFields = {};
+
+                    if (_title != null && _title != widget.eventModel.title) {
+                      updatedFields['title'] = _title;
                     }
+                    if (_subtitle != null &&
+                        _subtitle != widget.eventModel.subtitle) {
+                      updatedFields['subtitle'] = _subtitle;
+                    }
+                    if (_selectedDay != null &&
+                        _selectedDay != widget.eventModel.selectedDay) {
+                      updatedFields['selectedDay'] = _selectedDay;
+                    }
+                    if (_selectedTime != null &&
+                        _selectedTime != widget.eventModel.selectedTime) {
+                      updatedFields['selectedTime'] = _selectedTime;
+                    }
+
+                    context
+                        .read<EditEventCubit>()
+                        .edit(widget.eventModel.id, updatedFields);
                   },
                   child: const Text(
                     'Zapisz',

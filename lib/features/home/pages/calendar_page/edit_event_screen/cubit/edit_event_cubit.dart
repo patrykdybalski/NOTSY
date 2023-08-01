@@ -8,15 +8,19 @@ class EditEventCubit extends Cubit<EditEventState> {
 
   final EventsRepository _eventsRepository;
 
-  Future<void> edit(String title, String subtitle, DateTime selectedDay,
-      DateTime selectedTime, String id) async {
+  Future<void> edit(
+    String id,
+    Map<String, dynamic>? updatedFields,
+  ) async {
+    if (updatedFields == null || updatedFields.isEmpty) {
+      emit(EditEventState(errorMessage: "Brak zmian do zapisania"));
+      return;
+    }
+
     try {
       await _eventsRepository.edit(
-        title,
-        subtitle,
-        selectedDay,
+        updatedFields,
         id,
-        selectedTime,
       );
       emit(
         EditEventState(saved: true),
