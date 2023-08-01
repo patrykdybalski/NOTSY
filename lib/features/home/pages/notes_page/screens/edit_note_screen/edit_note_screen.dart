@@ -45,6 +45,22 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   FloatingActionButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    backgroundColor: AppColors.primaryColor,
+                    // shape: BeveledRectangleBorder(
+                    //   borderRadius: BorderRadius.circular(10),
+                    //   side: const BorderSide(
+                    //     color: AppColors.secondaryColor,
+                    //   ),
+                    // ),
+                    child: const Icon(
+                      Icons.keyboard_return_outlined,
+                      color: AppColors.accentColor,
+                    ),
+                  ),
+                  FloatingActionButton(
                     onPressed: () {},
                     backgroundColor: AppColors.primaryColor,
                     child: const Icon(
@@ -64,16 +80,6 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
                     child: const Icon(
                       Icons.check_outlined,
                       color: AppColors.secondaryColor,
-                    ),
-                  ),
-                  FloatingActionButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    backgroundColor: AppColors.primaryColor,
-                    child: const Icon(
-                      Icons.keyboard_return_outlined,
-                      color: AppColors.accentColor,
                     ),
                   ),
                 ],
@@ -134,19 +140,22 @@ class _AddNotePageBody extends StatelessWidget {
               maxLines: 2,
               maxLength: 120,
               style: const TextStyle(
-                color: AppColors.accentColor,
+                color: Color.fromARGB(255, 56, 99, 56),
                 fontWeight: FontWeight.w700,
               ),
               decoration: const InputDecoration(
                 counterText: '',
                 hintText: 'Tytuł',
+                enabled: true,
+                enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.redColor, width: 0.8),
+                ),
                 border: UnderlineInputBorder(
-                  borderSide:
-                      BorderSide(color: AppColors.accentColor, width: 1.0),
+                  borderSide: BorderSide(
+                      color: Color.fromARGB(255, 108, 223, 88), width: 1.0),
                 ),
                 focusedBorder: UnderlineInputBorder(
-                  borderSide:
-                      BorderSide(color: AppColors.accentColor, width: 1.0),
+                  borderSide: BorderSide(color: AppColors.redColor, width: 1.0),
                 ),
               ),
             ),

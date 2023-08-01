@@ -81,8 +81,8 @@ class _NotesPageState extends State<NotesPage>
               fontWeight: FontWeight.bold,
             ),
             tabs: const [
-              Text('Krótkie'),
-              Text('Szczegółowe'),
+              Text('Wszystkie'),
+              Text('Wyróznione'),
             ],
             onTap: (index) {
               if (index == 2) {

@@ -14,7 +14,6 @@ class AddNotePage extends StatefulWidget {
 String? _title;
 String? _subtitle;
 
-
 class _AddNotePageState extends State<AddNotePage> {
   @override
   Widget build(BuildContext context) {
@@ -56,7 +55,6 @@ class _AddNotePageState extends State<AddNotePage> {
                             context.read<AddNoteCubit>().add(
                                   _title!,
                                   _subtitle!,
-                                 
                                 );
                           },
                     backgroundColor: AppColors.primaryColor,
@@ -91,7 +89,6 @@ class _AddNotePageState extends State<AddNotePage> {
                   });
                 },
               ),
-             
             );
           },
         ),
@@ -181,12 +178,13 @@ class _AddNotePageBody extends StatelessWidget {
               maxLines: 2,
               maxLength: 120,
               style: const TextStyle(
-                color: AppColors.accentColor,
+                color: Color.fromARGB(255, 56, 99, 56),
                 fontWeight: FontWeight.w700,
               ),
               decoration: const InputDecoration(
                 counterText: '',
                 hintText: 'Tytuł',
+                
                 border: UnderlineInputBorder(
                   borderSide:
                       BorderSide(color: AppColors.accentColor, width: 1.0),

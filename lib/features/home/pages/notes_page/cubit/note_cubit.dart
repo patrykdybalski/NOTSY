@@ -39,6 +39,24 @@ class NoteCubit extends Cubit<NoteState> {
       });
   }
 
+  Future<void> remove({required String id}) async {
+    try {
+      await _noteRepository.delete(
+        id: id,
+      );
+      emit(const NoteState(
+        status: Status.success,
+      ));
+    } catch (error) {
+      emit(
+        NoteState(
+          status: Status.error,
+          errorMessage: error.toString(),
+        ),
+      );
+    }
+  }
+
   @override
   Future<void> close() {
     _streamSubscription?.cancel();

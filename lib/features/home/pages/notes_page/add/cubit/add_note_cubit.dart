@@ -26,19 +26,4 @@ class AddNoteCubit extends Cubit<AddNoteState> {
       ));
     }
   }
-
-  Future<void> remove({required String id}) async {
-    try {
-      await _noteRepository.delete(
-        id: id,
-      );
-      emit(AddNoteState());
-    } catch (error) {
-      emit(
-        AddNoteState(
-          errorMessage: error.toString(),
-        ),
-      );
-    }
-  }
 }

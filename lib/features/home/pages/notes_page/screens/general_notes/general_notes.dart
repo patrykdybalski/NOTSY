@@ -86,94 +86,142 @@ class NoteItem extends StatefulWidget {
 class _NoteItemState extends State<NoteItem> {
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) =>
-                NoteReaderScreen(noteModel: widget.noteModel)));
-      },
-      child: Column(
-        children: [
-          Container(
-            height: 200,
-            width: 175,
-            decoration: BoxDecoration(
-              image: const DecorationImage(
-                image: AssetImage(
-                  'images/note_card.png.jpg',
+    return BlocBuilder<NoteCubit, NoteState>(
+      builder: (context, state) {
+        return InkWell(
+          onTap: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) =>
+                    NoteReaderScreen(noteModel: widget.noteModel)));
+          },
+          onLongPress: () {
+            showDialog(
+                context: context,
+                builder: ((context) {
+                  return BlocProvider(
+                    create: (context) => NoteCubit(NoteRepository()),
+                    child: BlocBuilder<NoteCubit, NoteState>(
+                      builder: (context, state) {
+                        return AlertDialog(
+                          title: const Text('Usunąć notatkę?'),
+                          actions: [
+                            TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: const Text(
+                                  'Nie',
+                                  style: TextStyle(
+                                    color: Color.fromARGB(255, 56, 99, 56),
+                                  ),
+                                )),
+                            TextButton(
+                              onPressed: () {
+                                context
+                                    .read<NoteCubit>()
+                                    .remove(id: widget.noteModel.id);
+                                Navigator.of(context).pop();
+                              },
+                              child: const Text(
+                                'Tak',
+                                style: TextStyle(
+                                  color: AppColors.redColor,
+                                ),
+                              ),
+                            ),
+                          ],
+                          elevation: 20,
+                          backgroundColor: AppColors.primaryColor,
+                        );
+                      },
+                    ),
+                  );
+                }));
+          },
+          child: Column(
+            children: [
+              Container(
+                height: 200,
+                width: 175,
+                decoration: BoxDecoration(
+                  image: const DecorationImage(
+                    image: AssetImage(
+                      'images/note_card.png.jpg',
+                    ),
+                    fit: BoxFit.cover,
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.shade500,
+                      spreadRadius: 1,
+                      blurRadius: 0.3,
+                      offset: const Offset(1, 1), // Przesunięcie cienia w dół
+                    ),
+                    const BoxShadow(
+                      color: Colors.white,
+                      spreadRadius: 1,
+                      blurRadius: 1,
+                      offset: Offset(-1, -1), // Przesunięcie cienia w dół
+                    ),
+                  ],
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(12),
+                    topRight: Radius.circular(12),
+                    bottomLeft: Radius.circular(12),
+                    bottomRight: Radius.circular(12),
+                  ),
                 ),
-                fit: BoxFit.cover,
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.shade500,
-                  spreadRadius: 1,
-                  blurRadius: 0.3,
-                  offset: const Offset(1, 1), // Przesunięcie cienia w dół
-                ),
-                const BoxShadow(
-                  color: Colors.white,
-                  spreadRadius: 1,
-                  blurRadius: 1,
-                  offset: Offset(-1, -1), // Przesunięcie cienia w dół
-                ),
-              ],
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(12),
-                topRight: Radius.circular(12),
-                bottomLeft: Radius.circular(12),
-                bottomRight: Radius.circular(12),
-              ),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 12.0,
-                vertical: 6,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12.0,
+                    vertical: 6,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              widget.noteModel.title,
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const Divider(
+                        color: AppColors.redColor,
+                        thickness: 0.3,
+                        height: 7,
+                      ),
                       Expanded(
-                        child: Text(
-                          widget.noteModel.title,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                            left: 0.0,
+                            right: 2.0,
+                            top: 4.0,
+                          ),
+                          child: Text(
+                            widget.noteModel.subtitle,
+                            overflow: TextOverflow.fade,
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 12,
+                            ),
                           ),
                         ),
                       ),
                     ],
                   ),
-                  const Divider(
-                    color: AppColors.redColor,
-                    thickness: 0.3,
-                    height: 7,
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                        left: 0.0,
-                        right: 2.0,
-                        top: 4.0,
-                      ),
-                      child: Text(
-                        widget.noteModel.subtitle,
-                        overflow: TextOverflow.fade,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 12,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }
