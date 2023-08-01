@@ -28,6 +28,23 @@ class EventsRepository {
         .delete();
   }
 
+  Future<void> edit(
+    String title,
+    String subtitle,
+    DateTime selectedDay,
+    String docID,
+    DateTime selectedTime,
+  ) async {
+    await FirebaseFirestore.instance
+        .collection('calendarItems')
+        .doc(docID)
+        .update({
+      'title': title,
+      'subtitle': subtitle,
+      'selectedDay': selectedDay,
+      'selectedTime': selectedTime,
+    });
+  }
 
   Future<void> add(
     String title,

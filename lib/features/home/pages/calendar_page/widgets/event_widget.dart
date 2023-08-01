@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
 
+
 class EventWidget extends StatefulWidget {
   const EventWidget({
     required this.eventModel,

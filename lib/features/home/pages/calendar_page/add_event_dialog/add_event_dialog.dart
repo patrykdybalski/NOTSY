@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/domain/repositories/calendar/events_repository.dart';
-import 'package:primary_school/features/home/pages/add_event_dialog/cubit/add_event_cubit.dart';
+import 'package:primary_school/features/home/pages/calendar_page/add_event_dialog/cubit/add_event_cubit.dart';
 
 class AddEventDialog extends StatefulWidget {
   const AddEventDialog({
@@ -15,7 +15,7 @@ class AddEventDialog extends StatefulWidget {
 }
 
 class _AddEventDialogState extends State<AddEventDialog> {
-  String? _title; 
+  String? _title;
   String? _subtitle;
   DateTime? _selectedDay;
   DateTime? _selectedTime;
