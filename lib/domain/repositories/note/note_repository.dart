@@ -30,16 +30,17 @@ class NoteRepository {
   }
 
   Future<void> edit(
-    String title,
-    String subtitle,
+    Map<String, dynamic>? updatedFields,
     String docId,
   ) async {
-    await FirebaseFirestore.instance.collection('noteItems').doc(docId).update({
-      'title': title,
-      'subtitle': subtitle,
-    });
+    if (updatedFields == null || updatedFields.isEmpty) {
+      return;
+    }
+    await FirebaseFirestore.instance
+        .collection('noteItems')
+        .doc(docId)
+        .update(updatedFields);
   }
-   
 
   Future<void> delete({required String id}) async {
     await FirebaseFirestore.instance.collection('noteItems').doc(id).delete();

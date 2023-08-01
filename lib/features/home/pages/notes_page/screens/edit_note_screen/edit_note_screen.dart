@@ -70,9 +70,17 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
                   ),
                   FloatingActionButton(
                     onPressed: () {
+                      Map<String, dynamic> updatedFields = {};
+                      if (_title != null && _title != widget.noteModel.title) {
+                        updatedFields['title'] = _title;
+                      }
+                      if (_subtitle != null &&
+                          _subtitle != widget.noteModel.subtitle) {
+                        updatedFields['title'] = _title;
+                      }
+
                       context.read<EditNoteCubit>().edit(
-                            _title!,
-                            _subtitle!,
+                            updatedFields,
                             widget.noteModel.id,
                           );
                     },
