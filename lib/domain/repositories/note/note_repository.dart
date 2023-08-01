@@ -39,6 +39,7 @@ class NoteRepository {
       'subtitle': subtitle,
     });
   }
+   
 
   Future<void> delete({required String id}) async {
     await FirebaseFirestore.instance.collection('noteItems').doc(id).delete();

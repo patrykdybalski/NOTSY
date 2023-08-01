@@ -14,6 +14,7 @@ class AddNotePage extends StatefulWidget {
 String? _title;
 String? _subtitle;
 
+
 class _AddNotePageState extends State<AddNotePage> {
   @override
   Widget build(BuildContext context) {
@@ -55,6 +56,7 @@ class _AddNotePageState extends State<AddNotePage> {
                             context.read<AddNoteCubit>().add(
                                   _title!,
                                   _subtitle!,
+                                 
                                 );
                           },
                     backgroundColor: AppColors.primaryColor,
@@ -89,6 +91,7 @@ class _AddNotePageState extends State<AddNotePage> {
                   });
                 },
               ),
+             
             );
           },
         ),

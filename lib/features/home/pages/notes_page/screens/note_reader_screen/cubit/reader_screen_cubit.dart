@@ -12,7 +12,9 @@ class ReaderScreenCubit extends Cubit<ReaderScreenState> {
   Future<void> remove({required String id}) async {
     try {
       await _noteRepository.delete(id: id);
-      emit(const ReaderScreenState());
+      emit(const ReaderScreenState(
+        delete: true,
+      ));
     } catch (error) {
       emit(
         ReaderScreenState(

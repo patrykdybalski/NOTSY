@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
-import 'package:primary_school/features/home/pages/notes_page/add/cubit/add_note_cubit.dart';
+import 'package:primary_school/features/home/pages/notes_page/notes_page.dart';
+import 'package:primary_school/features/home/pages/notes_page/screens/edit_note_screen/cubit/edit_note_cubit.dart';
 
 class EditNoteScreen extends StatefulWidget {
   const EditNoteScreen({super.key, required this.noteModel});
@@ -20,11 +21,12 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AddNoteCubit(NoteRepository()),
-      child: BlocListener<AddNoteCubit, AddNoteState>(
+      create: (context) => EditNoteCubit(NoteRepository()),
+      child: BlocListener<EditNoteCubit, EditNoteState>(
         listener: (context, state) {
           if (state.saved) {
-            Navigator.of(context).pop();
+            Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const NotesPage()));
           }
           if (state.errorMessage.isNotEmpty) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -35,7 +37,7 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
             ));
           }
         },
-        child: BlocBuilder<AddNoteCubit, AddNoteState>(
+        child: BlocBuilder<EditNoteCubit, EditNoteState>(
           builder: (context, state) {
             return Scaffold(
               backgroundColor: AppColors.primaryColor,
@@ -52,7 +54,7 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
                   ),
                   FloatingActionButton(
                     onPressed: () {
-                      context.read<AddNoteCubit>().edit(
+                      context.read<EditNoteCubit>().edit(
                             _title!,
                             _subtitle!,
                             widget.noteModel.id,
@@ -107,8 +109,8 @@ class _AddNotePageBody extends StatelessWidget {
     required this.noteModel,
   }) : super(key: key);
 
-  final Function(String) onTitleChanged;
-  final Function(String) onSubtitleChange;
+  final Function(String?) onTitleChanged;
+  final Function(String?) onSubtitleChange;
   final NoteModel noteModel;
 
   @override
