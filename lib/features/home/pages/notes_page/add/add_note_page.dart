@@ -14,7 +14,7 @@ class AddNotePage extends StatefulWidget {
 
 String? _title;
 String? _subtitle;
-Color color = Colors.red;
+Color color = AppColors.secondaryColor;
 
 class _AddNotePageState extends State<AddNotePage> {
   @override
@@ -108,11 +108,17 @@ class _AddNotePageState extends State<AddNotePage> {
     return ColorPicker(
         pickerColor: color,
         enableAlpha: false,
+        paletteType: PaletteType.hsvWithValue,
+        pickerAreaBorderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(13),
+          topRight: Radius.circular(13),
+        ),
+
         // ignore: deprecated_member_use
         showLabel: false,
         onColorChanged: (newColor) {
           setState(() {
-            newColor = color;
+            color = newColor;
           });
         });
   }
@@ -120,13 +126,40 @@ class _AddNotePageState extends State<AddNotePage> {
   void pickColor(BuildContext context) => showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: const Center(child: Text('Wybierz kolor tekstu')),
+          backgroundColor: Colors.transparent,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(13),
+          ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              buildColorPicekr(),
+              Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(13),
+                    image: const DecorationImage(
+                      image: AssetImage(
+                          'images/note_card.png.jpg'), // Ścieżka do twojego obrazu
+                      fit: BoxFit
+                          .cover, // Rozciągnij obraz, aby wypełnić całe tło
+                    ),
+                  ),
+                  child: buildColorPicekr()),
               TextButton(
-                child: const Text('Ustaw'),
+                style: TextButton.styleFrom(
+                    backgroundColor: Colors.transparent,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(13),
+                        side: const BorderSide(
+                          color: AppColors.greenColor,
+                          width: 0.5,
+                        ))),
+                child: const Text(
+                  'Ustaw kolor tekstu',
+                  style: TextStyle(
+                    color: AppColors.greenColor,
+                    fontSize: 15,
+                  ),
+                ),
                 onPressed: () {
                   return Navigator.of(context).pop();
                 },
