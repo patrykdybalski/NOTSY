@@ -48,7 +48,8 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    backgroundColor: AppColors.primaryColor,
+                    backgroundColor: AppColors.redColor2,
+                    mini: true,
                     // shape: BeveledRectangleBorder(
                     //   borderRadius: BorderRadius.circular(10),
                     //   side: const BorderSide(
@@ -56,16 +57,20 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
                     //   ),
                     // ),
                     child: const Icon(
-                      Icons.keyboard_return_outlined,
-                      color: AppColors.accentColor,
+                      Icons.chevron_left_outlined,
+                      color: AppColors.secondaryColor,
+                      size: 25,
                     ),
                   ),
                   FloatingActionButton(
                     onPressed: () {},
                     backgroundColor: AppColors.primaryColor,
-                    child: const Icon(
-                      Icons.mode_edit_outline_outlined,
-                      color: AppColors.redColor,
+                    mini: true,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        gradient: AppColors.fabGradient,
+                        borderRadius: BorderRadius.circular(32.0),
+                      ),
                     ),
                   ),
                   FloatingActionButton(
@@ -84,7 +89,8 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
                             widget.noteModel.id,
                           );
                     },
-                    backgroundColor: AppColors.primaryColor,
+                    backgroundColor: AppColors.greenColor,
+                    mini: true,
                     child: const Icon(
                       Icons.check_outlined,
                       color: AppColors.secondaryColor,

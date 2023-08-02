@@ -7,8 +7,18 @@ class AppColors {
   static const Color accentColor = Color(0xFF006633);
   static const Color dayColor = Color(0xFF006633);
   static const Color redColor = Color(0xFFb06218);
+  static const Color redColor2 = Color.fromARGB(255, 193, 64, 28);
   static const Color greenColor = Color(0xff01D68E);
   static const Color selectedDayColor = Color(0xFF006633);
+  static Gradient fabGradient = const LinearGradient(
+    colors: [
+      Color.fromARGB(255, 193, 64, 28),
+      Color.fromARGB(255, 242, 242, 11),
+      Color(0xff01D68E),
+    ],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
 
   // Dodaj inne kolory według potrzeb
 }

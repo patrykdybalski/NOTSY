@@ -41,11 +41,26 @@ class _AddNotePageState extends State<AddNotePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   FloatingActionButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    backgroundColor: AppColors.redColor2,
+                    mini: true,
+                    child: const Icon(
+                      Icons.chevron_left_outlined,
+                      color: AppColors.secondaryColor,
+                      size: 25,
+                    ),
+                  ),
+                  FloatingActionButton(
                     onPressed: () {},
                     backgroundColor: AppColors.primaryColor,
-                    child: const Icon(
-                      Icons.mode_edit_outline_outlined,
-                      color: AppColors.redColor,
+                    mini: true,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        gradient: AppColors.fabGradient,
+                        borderRadius: BorderRadius.circular(32.0),
+                      ),
                     ),
                   ),
                   FloatingActionButton(
@@ -57,20 +72,11 @@ class _AddNotePageState extends State<AddNotePage> {
                                   _subtitle!,
                                 );
                           },
-                    backgroundColor: AppColors.primaryColor,
+                    backgroundColor: AppColors.greenColor,
+                    mini: true,
                     child: const Icon(
                       Icons.check_outlined,
                       color: AppColors.secondaryColor,
-                    ),
-                  ),
-                  FloatingActionButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    backgroundColor: AppColors.primaryColor,
-                    child: const Icon(
-                      Icons.keyboard_return_outlined,
-                      color: AppColors.accentColor,
                     ),
                   ),
                 ],
@@ -184,7 +190,6 @@ class _AddNotePageBody extends StatelessWidget {
               decoration: const InputDecoration(
                 counterText: '',
                 hintText: 'Tytuł',
-                
                 border: UnderlineInputBorder(
                   borderSide:
                       BorderSide(color: AppColors.accentColor, width: 1.0),

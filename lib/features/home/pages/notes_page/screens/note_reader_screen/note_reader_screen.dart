@@ -69,8 +69,8 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
               ),
               floatingActionButton: SpeedDial(
                 animatedIcon: AnimatedIcons.menu_close,
-                backgroundColor: Colors.black,
-                overlayColor: Colors.black,
+                backgroundColor: AppColors.secondaryColor,
+                overlayColor: const Color.fromARGB(255, 105, 224, 224),
                 overlayOpacity: 0.3,
                 spacing: 8,
                 spaceBetweenChildren: 8,
