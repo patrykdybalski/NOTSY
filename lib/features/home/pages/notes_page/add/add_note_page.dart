@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
 import 'package:primary_school/features/home/pages/notes_page/add/cubit/add_note_cubit.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 class AddNotePage extends StatefulWidget {
   const AddNotePage({super.key});
@@ -13,6 +14,7 @@ class AddNotePage extends StatefulWidget {
 
 String? _title;
 String? _subtitle;
+Color color = Colors.red;
 
 class _AddNotePageState extends State<AddNotePage> {
   @override
@@ -53,7 +55,7 @@ class _AddNotePageState extends State<AddNotePage> {
                     ),
                   ),
                   FloatingActionButton(
-                    onPressed: () {},
+                    onPressed: () => pickColor(context),
                     backgroundColor: AppColors.primaryColor,
                     mini: true,
                     child: Container(
@@ -101,6 +103,38 @@ class _AddNotePageState extends State<AddNotePage> {
       ),
     );
   }
+
+  Widget buildColorPicekr() {
+    return ColorPicker(
+        pickerColor: color,
+        enableAlpha: false,
+        // ignore: deprecated_member_use
+        showLabel: false,
+        onColorChanged: (newColor) {
+          setState(() {
+            newColor = color;
+          });
+        });
+  }
+
+  void pickColor(BuildContext context) => showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Center(child: Text('Wybierz kolor tekstu')),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              buildColorPicekr(),
+              TextButton(
+                child: const Text('Ustaw'),
+                onPressed: () {
+                  return Navigator.of(context).pop();
+                },
+              ),
+            ],
+          ),
+        ),
+      );
 }
 
 // class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
