@@ -13,6 +13,8 @@ class NoteRepository {
             title: doc['title'],
             subtitle: doc['subtitle'],
             id: doc.id,
+            createdDate: (doc['createdDate'] as Timestamp).toDate(),
+            updatedDate: (doc['updatedDate'] as Timestamp).toDate(),
           );
         },
       ).toList();
@@ -26,6 +28,9 @@ class NoteRepository {
     await FirebaseFirestore.instance.collection('noteItems').add({
       'title': title,
       'subtitle': subtitle,
+      'createdDate': FieldValue.serverTimestamp(), // Ustawienie daty utworzenia
+      'updatedDate':
+          FieldValue.serverTimestamp(), // Ustawienie daty aktualizacji
     });
   }
 
@@ -36,6 +41,8 @@ class NoteRepository {
     if (updatedFields == null || updatedFields.isEmpty) {
       return;
     }
+    updatedFields['updatedDate'] =
+        FieldValue.serverTimestamp(); // Ustawienie daty aktualizacji
     await FirebaseFirestore.instance
         .collection('noteItems')
         .doc(docId)

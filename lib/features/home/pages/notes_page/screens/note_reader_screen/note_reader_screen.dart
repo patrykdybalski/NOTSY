@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
@@ -110,39 +111,42 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: ListView(
-                    children: [
-                      const Row(
+                child: ListView(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Column(
                             children: [
                               Text(
-                                'Utworzenie  23/07/2023',
-                                style: TextStyle(
+                                'utw. ${DateFormat('dd/MM/yyyy hh:mm').format(widget.noteModel.createdDate)}',
+                                style: const TextStyle(
                                   color: AppColors.secondaryColor,
                                   fontWeight: FontWeight.w300,
-                                  fontSize: 11,
+                                  fontSize: 9,
                                 ),
                               ),
                               Text(
-                                'Aktualizacja 23/07/2023',
-                                style: TextStyle(
+                                'upd. ${DateFormat('dd/MM/yyyy hh:mm').format(widget.noteModel.updatedDate)}',
+                                style: const TextStyle(
                                   color: AppColors.secondaryColor,
                                   fontWeight: FontWeight.w300,
-                                  fontSize: 11,
+                                  fontSize: 9,
                                 ),
                               ),
                             ],
                           ),
                         ],
                       ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      Expanded(
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Expanded(
                         child: Text(
                           widget.noteModel.subtitle,
                           style: const TextStyle(
@@ -152,8 +156,8 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             );
