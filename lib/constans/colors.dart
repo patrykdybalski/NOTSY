@@ -19,6 +19,24 @@ class AppColors {
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
   );
+  static List<Color> availableColors = [
+    Color(0xFF),
+    Color(0xFF),
+    Color(0xFF),
+    Color(0xFF),
+    Color(0xFF),
+    Color(0xFF),
+    Color(0xFF),
+    Color(0xFF),
+    Color(0xFF),
+    Color(0xFF),
+    Color(0xFF),
+    Color(0xFF),
+    Color(0xFF),
+    Color(0xFF),
+    Color(0xFF),
+    Color(0xFF),
+  ];
 
   // Dodaj inne kolory według potrzeb
 }

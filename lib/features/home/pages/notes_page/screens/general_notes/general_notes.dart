@@ -144,12 +144,13 @@ class _NoteItemState extends State<NoteItem> {
                 height: 200,
                 width: 175,
                 decoration: BoxDecoration(
-                  image: const DecorationImage(
-                    image: AssetImage(
-                      'images/note_card.png.jpg',
-                    ),
-                    fit: BoxFit.cover,
-                  ),
+                  // image: const DecorationImage(
+                  //   image: AssetImage(
+                  //     'images/note_card.png.jpg',
+                  //   ),
+                  //   fit: BoxFit.cover,
+                  // ),
+                  color: Color(0xffa7e0e9),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.shade500,
@@ -157,12 +158,12 @@ class _NoteItemState extends State<NoteItem> {
                       blurRadius: 0.3,
                       offset: const Offset(1, 1), // Przesunięcie cienia w dół
                     ),
-                    const BoxShadow(
-                      color: Colors.white,
-                      spreadRadius: 1,
-                      blurRadius: 1,
-                      offset: Offset(-1, -1), // Przesunięcie cienia w dół
-                    ),
+                    // const BoxShadow(
+                    //   color: Colors.white,
+                    //   spreadRadius: 1,
+                    //   blurRadius: 1,
+                    //   offset: Offset(-1, -1), // Przesunięcie cienia w dół
+                    // ),
                   ],
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(12),

@@ -14,7 +14,7 @@ class AddNotePage extends StatefulWidget {
 
 String? _title;
 String? _subtitle;
-Color color = AppColors.secondaryColor;
+Color pickerColor = AppColors.secondaryColor;
 
 class _AddNotePageState extends State<AddNotePage> {
   @override
@@ -55,7 +55,7 @@ class _AddNotePageState extends State<AddNotePage> {
                     ),
                   ),
                   FloatingActionButton(
-                    onPressed: () => pickColor(context),
+                    onPressed: () => colorPickerDialog(context),
                     backgroundColor: AppColors.primaryColor,
                     mini: true,
                     child: Container(
@@ -105,25 +105,17 @@ class _AddNotePageState extends State<AddNotePage> {
   }
 
   Widget buildColorPicekr() {
-    return ColorPicker(
-        pickerColor: color,
-        enableAlpha: false,
-        paletteType: PaletteType.hsvWithValue,
-        pickerAreaBorderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(13),
-          topRight: Radius.circular(13),
-        ),
-
-        // ignore: deprecated_member_use
-        showLabel: false,
+    return BlockPicker(
+        pickerColor: pickerColor,
+        availableColors: [],
         onColorChanged: (newColor) {
           setState(() {
-            color = newColor;
+            pickerColor = newColor;
           });
         });
   }
 
-  void pickColor(BuildContext context) => showDialog(
+  void colorPickerDialog(BuildContext context) => showDialog(
         context: context,
         builder: (context) => AlertDialog(
           backgroundColor: Colors.transparent,
@@ -135,13 +127,14 @@ class _AddNotePageState extends State<AddNotePage> {
             children: [
               Container(
                   decoration: BoxDecoration(
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(13),
-                    image: const DecorationImage(
-                      image: AssetImage(
-                          'images/note_card.png.jpg'), // Ścieżka do twojego obrazu
-                      fit: BoxFit
-                          .cover, // Rozciągnij obraz, aby wypełnić całe tło
-                    ),
+                    // image: const DecorationImage(
+                    //   image: AssetImage(
+                    //       'images/note_card.png.jpg'), // Ścieżka do twojego obrazu
+                    //   fit: BoxFit
+                    //       .cover, // Rozciągnij obraz, aby wypełnić całe tło
+                    // ),
                   ),
                   child: buildColorPicekr()),
               TextButton(
@@ -161,7 +154,9 @@ class _AddNotePageState extends State<AddNotePage> {
                   ),
                 ),
                 onPressed: () {
-                  return Navigator.of(context).pop();
+                  setState(() {
+                    Navigator.of(context).pop();
+                  });
                 },
               ),
             ],
@@ -234,12 +229,14 @@ class _AddNotePageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(
-              'images/note_card.png.jpg'), // Ścieżka do twojego obrazu
-          fit: BoxFit.cover, // Rozciągnij obraz, aby wypełnić całe tło
-        ),
+      decoration: BoxDecoration(
+        // image: DecorationImage(
+        //   image: AssetImage(
+        //       'images/note_card.png.jpg'), // Ścieżka do twojego obrazu
+        //   fit: BoxFit.cover, // Rozciągnij obraz, aby wypełnić całe tło
+        // ),
+
+        color: pickerColor,
       ),
       child: Padding(
         padding: const EdgeInsets.all(15.0),

@@ -67,40 +67,57 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
                   ),
                 ),
               ),
-              floatingActionButton: SpeedDial(
-                animatedIcon: AnimatedIcons.menu_close,
-                backgroundColor: AppColors.secondaryColor,
-                overlayColor: const Color.fromARGB(255, 105, 224, 224),
-                overlayOpacity: 0.3,
-                spacing: 8,
-                spaceBetweenChildren: 8,
-                closeManually: false,
+              floatingActionButton: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  SpeedDialChild(
-                    child: const Icon(
-                      Icons.mode_edit_outline_outlined,
-                    ),
-                    label: 'Edytuj',
-                    backgroundColor: AppColors.greenColor,
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (builder) => EditNoteScreen(
-                          noteModel: widget.noteModel,
-                        ),
-                      ));
+                  FloatingActionButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
                     },
+                    backgroundColor: AppColors.redColor2,
+                    mini: true,
+                    child: const Icon(
+                      Icons.chevron_left_outlined,
+                      color: AppColors.secondaryColor,
+                      size: 25,
+                    ),
                   ),
-                  SpeedDialChild(
-                    child: const Icon(
-                      Icons.delete_forever_outlined,
-                    ),
-                    label: 'Usuń',
-                    backgroundColor: const Color.fromARGB(255, 176, 70, 24),
-                    onTap: () {
-                      context.read<ReaderScreenCubit>().remove(
-                            id: widget.noteModel.id,
-                          );
-                    },
+                  SpeedDial(
+                    animatedIcon: AnimatedIcons.menu_close,
+                    buttonSize: const Size.square(40.0),
+                    backgroundColor: AppColors.secondaryColor,
+                    overlayColor: const Color.fromARGB(255, 105, 224, 224),
+                    overlayOpacity: 0.3,
+                    spacing: 8,
+                    closeManually: false,
+                    children: [
+                      SpeedDialChild(
+                        child: const Icon(
+                          Icons.mode_edit_outline_outlined,
+                        ),
+                        label: 'Edytuj',
+                        backgroundColor: AppColors.greenColor,
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (builder) => EditNoteScreen(
+                              noteModel: widget.noteModel,
+                            ),
+                          ));
+                        },
+                      ),
+                      SpeedDialChild(
+                        child: const Icon(
+                          Icons.delete_forever_outlined,
+                        ),
+                        label: 'Usuń',
+                        backgroundColor: const Color.fromARGB(255, 176, 70, 24),
+                        onTap: () {
+                          context.read<ReaderScreenCubit>().remove(
+                                id: widget.noteModel.id,
+                              );
+                        },
+                      ),
+                    ],
                   ),
                 ],
               ),
