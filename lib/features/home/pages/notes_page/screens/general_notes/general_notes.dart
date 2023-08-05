@@ -150,7 +150,7 @@ class _NoteItemState extends State<NoteItem> {
                   //   ),
                   //   fit: BoxFit.cover,
                   // ),
-                  color: Color(0xffa7e0e9),
+                  color: const Color(0xffa7e0e9),
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.shade500,

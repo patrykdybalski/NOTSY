@@ -14,7 +14,7 @@ class AddNotePage extends StatefulWidget {
 
 String? _title;
 String? _subtitle;
-Color pickerColor = AppColors.secondaryColor;
+Color pickerColor = Colors.transparent;
 
 class _AddNotePageState extends State<AddNotePage> {
   @override
@@ -107,7 +107,7 @@ class _AddNotePageState extends State<AddNotePage> {
   Widget buildColorPicekr() {
     return BlockPicker(
         pickerColor: pickerColor,
-        availableColors: [],
+        availableColors: AppColors.availableColors,
         onColorChanged: (newColor) {
           setState(() {
             pickerColor = newColor;
@@ -126,8 +126,9 @@ class _AddNotePageState extends State<AddNotePage> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
+                  height: 250,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: const Color(0xff190933),
                     borderRadius: BorderRadius.circular(13),
                     // image: const DecorationImage(
                     //   image: AssetImage(
