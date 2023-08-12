@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
 
-
 class EventWidget extends StatefulWidget {
   const EventWidget({
     required this.eventModel,
@@ -31,9 +30,15 @@ class _EventWidgetState extends State<EventWidget> {
           borderRadius: BorderRadius.circular(16.0),
           side: const BorderSide(
             color: AppColors.redColor,
-            width: 0.5,
+            width: 0.6,
           ),
         ),
+        collapsedShape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+            side: const BorderSide(
+              width: 1.0,
+              color: AppColors.greenColor,
+            )),
         leading: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -45,9 +50,9 @@ class _EventWidgetState extends State<EventWidget> {
             Text(
               widget.eventModel.selectedTimeFormatted(),
               style: const TextStyle(
-                fontWeight: FontWeight.w300,
+                fontWeight: FontWeight.w400,
                 fontSize: 15,
-                color: AppColors.dayColor,
+                color: AppColors.secondaryColor,
               ),
             ),
           ],
@@ -57,9 +62,9 @@ class _EventWidgetState extends State<EventWidget> {
           child: Text(
             widget.eventModel.title,
             style: const TextStyle(
-              fontSize: 15,
+              fontSize: 16,
               fontWeight: FontWeight.w700,
-              color: AppColors.dayColor,
+              color: AppColors.secondaryColor,
             ),
           ),
         ),
@@ -67,8 +72,8 @@ class _EventWidgetState extends State<EventWidget> {
           widget.eventModel.selectedDayFormatted(),
           style: const TextStyle(
             fontSize: 17,
-            fontWeight: FontWeight.w300,
-            color: AppColors.dayColor,
+            fontWeight: FontWeight.w400,
+            color: AppColors.secondaryColor,
           ),
         ),
         children: [
@@ -103,7 +108,8 @@ class _EventWidgetState extends State<EventWidget> {
                 child: Text(
                   widget.eventModel.subtitle,
                   style: const TextStyle(
-                    color: AppColors.dayColor,
+                    color: AppColors.secondaryColor,
+                    fontSize: 14,
                   ),
                 ),
               ),

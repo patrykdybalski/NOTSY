@@ -3,12 +3,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
-import 'package:primary_school/features/home/pages/notes_page/notes_page.dart';
 import 'package:primary_school/features/home/pages/notes_page/screens/edit_note_screen/cubit/edit_note_cubit.dart';
 
 class EditNoteScreen extends StatefulWidget {
-  const EditNoteScreen({super.key, required this.noteModel});
+  const EditNoteScreen({
+    super.key,
+    required this.noteModel,
+    required this.id,
+  });
   final NoteModel noteModel;
+  final String id;
 
   @override
   State<EditNoteScreen> createState() => _EditNoteScreenState();
@@ -25,8 +29,7 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
       child: BlocListener<EditNoteCubit, EditNoteState>(
         listener: (context, state) {
           if (state.saved) {
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const NotesPage()));
+            Navigator.of(context).popUntil((route) => route.isFirst);
           }
           if (state.errorMessage.isNotEmpty) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -49,6 +52,7 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
                       Navigator.of(context).pop();
                     },
                     backgroundColor: AppColors.redColor2,
+                    heroTag: null,
                     mini: true,
                     // shape: BeveledRectangleBorder(
                     //   borderRadius: BorderRadius.circular(10),
@@ -65,6 +69,7 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
                   FloatingActionButton(
                     onPressed: () {},
                     backgroundColor: AppColors.primaryColor,
+                    heroTag: null,
                     mini: true,
                     child: Container(
                       decoration: BoxDecoration(
@@ -76,20 +81,20 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
                   FloatingActionButton(
                     onPressed: () {
                       Map<String, dynamic> updatedFields = {};
-                      if (_title != null && _title != widget.noteModel.title) {
-                        updatedFields['title'] = _title;
-                      }
-                      if (_subtitle != null &&
-                          _subtitle != widget.noteModel.subtitle) {
+                      if (_title != null && _title!.isNotEmpty) {
                         updatedFields['title'] = _title;
                       }
 
+                      if (_subtitle != null && _subtitle!.isNotEmpty) {
+                        updatedFields['subtitle'] = _subtitle;
+                      }
                       context.read<EditNoteCubit>().edit(
                             updatedFields,
                             widget.noteModel.id,
                           );
                     },
                     backgroundColor: AppColors.greenColor,
+                    heroTag: null,
                     mini: true,
                     child: const Icon(
                       Icons.check_outlined,
@@ -151,25 +156,21 @@ class _AddNotePageBody extends StatelessWidget {
               initialValue: noteModel.title,
               onChanged: onTitleChanged,
               minLines: 1,
-              maxLines: 2,
+              maxLines: 4,
               maxLength: 120,
               style: const TextStyle(
-                color: Color.fromARGB(255, 56, 99, 56),
+                color: AppColors.secondaryColor,
                 fontWeight: FontWeight.w700,
+                fontSize: 20,
               ),
               decoration: const InputDecoration(
                 counterText: '',
-                hintText: 'Tytuł',
                 enabled: true,
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(color: AppColors.redColor, width: 0.8),
                 ),
-                border: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                      color: Color.fromARGB(255, 108, 223, 88), width: 1.0),
-                ),
                 focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: AppColors.redColor, width: 1.0),
+                  borderSide: BorderSide(color: AppColors.redColor, width: 1.2),
                 ),
               ),
             ),
@@ -180,9 +181,9 @@ class _AddNotePageBody extends StatelessWidget {
               initialValue: noteModel.subtitle,
               onChanged: onSubtitleChange,
               minLines: 1,
-              maxLines: 200,
+              maxLines: 1000,
               style: const TextStyle(
-                color: AppColors.accentColor,
+                color: AppColors.secondaryColor,
                 fontWeight: FontWeight.w300,
                 fontSize: 20,
               ),

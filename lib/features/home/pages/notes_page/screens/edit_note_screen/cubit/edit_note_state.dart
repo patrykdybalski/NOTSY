@@ -7,4 +7,5 @@ class EditNoteState {
   });
   final bool saved;
   final String errorMessage;
+  
 }

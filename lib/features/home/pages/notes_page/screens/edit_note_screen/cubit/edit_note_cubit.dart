@@ -8,9 +8,10 @@ class EditNoteCubit extends Cubit<EditNoteState> {
   final NoteRepository _noteRepository;
 
   Future<void> edit(
-    Map<String, dynamic>? updatedFields,
+    Map<String, dynamic> updatedFields,
     String docId,
   ) async {
+    
     try {
       await _noteRepository.edit(
         updatedFields,

@@ -17,6 +17,10 @@ class NoteReaderScreen extends StatefulWidget {
 }
 
 class _NoteReaderScreenState extends State<NoteReaderScreen> {
+  void _refreshScreen() {
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -41,32 +45,30 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
           builder: (context, state) {
             return Scaffold(
               backgroundColor: AppColors.primaryColor,
-              appBar: AppBar(
-                automaticallyImplyLeading: false,
-                backgroundColor: AppColors.primaryColor,
-                elevation: 0.6,
-                shadowColor: Colors.black,
-                flexibleSpace: Container(
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('images/note_card.png.jpg'),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-                title: Expanded(
-                  child: RichText(
-                    maxLines: 3,
-                    text: TextSpan(
-                      text: widget.noteModel.title.toString(),
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              // appBar: AppBar(
+              //   automaticallyImplyLeading: false,
+              //   backgroundColor: AppColors.primaryColor,
+              //   elevation: 1,
+              //   shadowColor: AppColors.redColor,
+              //   flexibleSpace: Container(
+              //     decoration: const BoxDecoration(
+              //       image: DecorationImage(
+              //         image: AssetImage('images/note_card.png.jpg'),
+              //         fit: BoxFit.cover,
+              //       ),
+              //     ),
+              //   ),
+              //   title: RichText(
+              //     maxLines: 3,
+              //     text: TextSpan(
+              //       text: widget.noteModel.title.toString(),
+              //       style: const TextStyle(
+              //         color: Colors.black,
+              //         fontWeight: FontWeight.w700,
+              //       ),
+              //     ),
+              //   ),
+              // ),
               floatingActionButton: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
@@ -101,8 +103,10 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
                           Navigator.of(context).push(MaterialPageRoute(
                             builder: (builder) => EditNoteScreen(
                               noteModel: widget.noteModel,
+                              id: widget.noteModel.id,
                             ),
                           ));
+                          _refreshScreen();
                         },
                       ),
                       SpeedDialChild(
@@ -128,11 +132,23 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                child: ListView(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: ListView(
+                    children: [
+                      Text(
+                        widget.noteModel.title,
+                        style: const TextStyle(
+                          color: AppColors.secondaryColor,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 20,
+                        ),
+                      ),
+                      const Divider(
+                        color: AppColors.redColor2,
+                        thickness: 0.8,
+                      ),
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Column(
@@ -157,24 +173,19 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
                           ),
                         ],
                       ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Expanded(
-                        child: Text(
-                          widget.noteModel.subtitle,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.w300,
-                            fontSize: 20,
-                          ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        widget.noteModel.subtitle,
+                        style: const TextStyle(
+                          color: AppColors.secondaryColor,
+                          fontWeight: FontWeight.w300,
+                          fontSize: 18,
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             );

@@ -174,8 +174,8 @@ class _NoteItemState extends State<NoteItem> {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 12.0,
-                    vertical: 6,
+                    horizontal: 8.0,
+                    vertical: 8.0,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -185,9 +185,13 @@ class _NoteItemState extends State<NoteItem> {
                           Expanded(
                             child: Text(
                               widget.noteModel.title,
+                              maxLines: 4,
+                              softWrap: true,
+                              overflow: TextOverflow.ellipsis,
                               style: const TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
+                                color: AppColors.secondaryColor,
+                                fontWeight: FontWeight.w800,
+                                fontSize: 12,
                               ),
                             ),
                           ),
@@ -199,19 +203,12 @@ class _NoteItemState extends State<NoteItem> {
                         height: 7,
                       ),
                       Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                            left: 0.0,
-                            right: 2.0,
-                            top: 4.0,
-                          ),
-                          child: Text(
-                            widget.noteModel.subtitle,
-                            overflow: TextOverflow.fade,
-                            style: const TextStyle(
-                              color: Colors.black,
-                              fontSize: 12,
-                            ),
+                        child: Text(
+                          widget.noteModel.subtitle,
+                          overflow: TextOverflow.fade,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 12,
                           ),
                         ),
                       ),

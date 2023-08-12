@@ -35,12 +35,10 @@ class NoteRepository {
   }
 
   Future<void> edit(
-    Map<String, dynamic>? updatedFields,
+    Map<String, dynamic> updatedFields,
     String docId,
   ) async {
-    if (updatedFields == null || updatedFields.isEmpty) {
-      return;
-    }
+    
     updatedFields['updatedDate'] =
         FieldValue.serverTimestamp(); // Ustawienie daty aktualizacji
     await FirebaseFirestore.instance

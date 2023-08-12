@@ -48,6 +48,7 @@ class _AddNotePageState extends State<AddNotePage> {
                     },
                     backgroundColor: AppColors.redColor2,
                     mini: true,
+                    heroTag: null,
                     child: const Icon(
                       Icons.chevron_left_outlined,
                       color: AppColors.secondaryColor,
@@ -55,6 +56,7 @@ class _AddNotePageState extends State<AddNotePage> {
                     ),
                   ),
                   FloatingActionButton(
+                    heroTag: null,
                     onPressed: () => colorPickerDialog(context),
                     backgroundColor: AppColors.primaryColor,
                     mini: true,
@@ -75,6 +77,7 @@ class _AddNotePageState extends State<AddNotePage> {
                                 );
                           },
                     backgroundColor: AppColors.greenColor,
+                    heroTag: null,
                     mini: true,
                     child: const Icon(
                       Icons.check_outlined,
@@ -246,23 +249,32 @@ class _AddNotePageBody extends StatelessWidget {
             TextField(
               onChanged: onTitleChanged,
               minLines: 1,
-              maxLines: 2,
+              maxLines: 4,
               maxLength: 120,
               style: const TextStyle(
-                color: Color.fromARGB(255, 56, 99, 56),
+                color: AppColors.secondaryColor,
                 fontWeight: FontWeight.w700,
+                fontSize: 20,
               ),
               decoration: const InputDecoration(
                 counterText: '',
                 hintText: 'Tytuł',
                 border: UnderlineInputBorder(
-                  borderSide:
-                      BorderSide(color: AppColors.accentColor, width: 1.0),
+                  borderSide: BorderSide(
+                    color: AppColors.redColor2,
+                    width: 0.8,
+                  ),
                 ),
                 focusedBorder: UnderlineInputBorder(
                   borderSide:
-                      BorderSide(color: AppColors.accentColor, width: 1.0),
+                      BorderSide(color: AppColors.redColor2, width: 1.0),
                 ),
+                enabledBorder: UnderlineInputBorder(
+                  borderSide:
+                      BorderSide(color: AppColors.redColor2, width: 1.0),
+                ),
+                
+                enabled: true,
               ),
             ),
             const SizedBox(
@@ -273,9 +285,9 @@ class _AddNotePageBody extends StatelessWidget {
               minLines: 1,
               maxLines: 200,
               style: const TextStyle(
-                color: AppColors.accentColor,
+                color: AppColors.secondaryColor,
                 fontWeight: FontWeight.w300,
-                fontSize: 20,
+                fontSize: 18,
               ),
               decoration: const InputDecoration(
                 hintText: 'Wpisz treść notatki',
