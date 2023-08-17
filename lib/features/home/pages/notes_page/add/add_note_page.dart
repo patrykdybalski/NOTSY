@@ -39,53 +39,7 @@ class _AddNotePageState extends State<AddNotePage> {
           builder: (context, state) {
             return Scaffold(
               backgroundColor: AppColors.primaryColor,
-              floatingActionButton: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  FloatingActionButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    backgroundColor: AppColors.redColor2,
-                    mini: true,
-                    heroTag: null,
-                    child: const Icon(
-                      Icons.chevron_left_outlined,
-                      color: AppColors.secondaryColor,
-                      size: 25,
-                    ),
-                  ),
-                  FloatingActionButton(
-                    heroTag: null,
-                    onPressed: () => colorPickerDialog(context),
-                    backgroundColor: AppColors.primaryColor,
-                    mini: true,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        gradient: AppColors.fabGradient,
-                        borderRadius: BorderRadius.circular(32.0),
-                      ),
-                    ),
-                  ),
-                  FloatingActionButton(
-                    onPressed: _title == null || _subtitle == null
-                        ? null
-                        : () {
-                            context.read<AddNoteCubit>().add(
-                                  _title!,
-                                  _subtitle!,
-                                );
-                          },
-                    backgroundColor: AppColors.greenColor,
-                    heroTag: null,
-                    mini: true,
-                    child: const Icon(
-                      Icons.check_outlined,
-                      color: AppColors.secondaryColor,
-                    ),
-                  ),
-                ],
-              ),
+              floatingActionButton: buildFabButtons(context),
               floatingActionButtonLocation:
                   FloatingActionButtonLocation.miniCenterFloat,
               body: _AddNotePageBody(
@@ -103,6 +57,69 @@ class _AddNotePageState extends State<AddNotePage> {
             );
           },
         ),
+      ),
+    );
+  }
+
+  Row buildFabButtons(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        buildBackButton(context),
+        buildColorPickerButton(context),
+        buildSaveButton(context),
+      ],
+    );
+  }
+
+  FloatingActionButton buildBackButton(BuildContext context) {
+    return FloatingActionButton(
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+      backgroundColor: AppColors.redColor2,
+      mini: true,
+      heroTag: null,
+      child: const Icon(
+        Icons.chevron_left_outlined,
+        color: AppColors.secondaryColor,
+        size: 25,
+      ),
+    );
+  }
+
+  FloatingActionButton buildColorPickerButton(BuildContext context) {
+    return FloatingActionButton(
+      onPressed: () {
+        return colorPickerDialog(context);
+      },
+      backgroundColor: AppColors.primaryColor,
+      mini: true,
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: AppColors.fabGradient,
+          borderRadius: BorderRadius.circular(32.0),
+        ),
+      ),
+    );
+  }
+
+  FloatingActionButton buildSaveButton(BuildContext context) {
+    return FloatingActionButton(
+      onPressed: (_title != null && _subtitle != null)
+          ? () {
+              context.read<AddNoteCubit>().add(
+                    _title!,
+                    _subtitle!,
+                  );
+            }
+          : null,
+      backgroundColor: AppColors.greenColor,
+      heroTag: null,
+      mini: true,
+      child: const Icon(
+        Icons.check_outlined,
+        color: AppColors.secondaryColor,
       ),
     );
   }
@@ -169,57 +186,6 @@ class _AddNotePageState extends State<AddNotePage> {
       );
 }
 
-// class MyCustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-//   @override
-//   Size get preferredSize =>
-//       Size.fromHeight(kToolbarHeight * 1.3); // Wysokość AppBara
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return AppBar(
-//       automaticallyImplyLeading: false,
-//       flexibleSpace: Container(
-//         height: 130,
-//         padding: EdgeInsets.symmetric(horizontal: 16),
-//         alignment: Alignment.bottomCenter, // Wyśrodkowujemy zawartość na dole
-//         child: TextField(
-//           maxLines: 3,
-//           minLines: 1,
-//           decoration: InputDecoration(
-//             hintText: 'Tutaj wpisz swój tekst',
-//             border: InputBorder.none,
-//           ),
-//           style: TextStyle(
-//             color: AppColors.accentColor,
-//             fontSize: 12,
-//             fontWeight: FontWeight.bold,
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-// class MyTextField extends StatelessWidget {
-//   const MyTextField({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: const EdgeInsets.only(top: 40.0),
-//       child: TextField(
-//         maxLines: 3,
-//         minLines: 1, // Ograniczamy TextField do maksymalnie trzech linii
-//         decoration: InputDecoration(
-//           hintText: 'Tutaj wpisz swój tekst', // Placeholder dla TextField
-//           border: InputBorder.none, // Usuwamy obramowanie TextField
-//         ),
-//         style: TextStyle(color: Colors.white, fontSize: 18),
-//       ),
-//     );
-//   }
-// }
-
 class _AddNotePageBody extends StatelessWidget {
   const _AddNotePageBody({
     Key? key,
@@ -234,12 +200,6 @@ class _AddNotePageBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        // image: DecorationImage(
-        //   image: AssetImage(
-        //       'images/note_card.png.jpg'), // Ścieżka do twojego obrazu
-        //   fit: BoxFit.cover, // Rozciągnij obraz, aby wypełnić całe tło
-        // ),
-
         color: pickerColor,
       ),
       child: Padding(
@@ -273,7 +233,6 @@ class _AddNotePageBody extends StatelessWidget {
                   borderSide:
                       BorderSide(color: AppColors.redColor2, width: 1.0),
                 ),
-                
                 enabled: true,
               ),
             ),
