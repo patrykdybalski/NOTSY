@@ -15,6 +15,7 @@ class AddNotePage extends StatefulWidget {
 String? _title;
 String? _subtitle;
 Color pickerColor = Colors.transparent;
+DateTime _createdDate = DateTime.now();
 
 class _AddNotePageState extends State<AddNotePage> {
   @override

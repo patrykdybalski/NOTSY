@@ -88,6 +88,7 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
                       if (_subtitle != null && _subtitle!.isNotEmpty) {
                         updatedFields['subtitle'] = _subtitle;
                       }
+                      updatedFields['updatedDate'] = DateTime.now();
                       context.read<EditNoteCubit>().edit(
                             updatedFields,
                             widget.noteModel.id,

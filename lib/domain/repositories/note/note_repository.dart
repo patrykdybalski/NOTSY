@@ -13,14 +13,14 @@ class NoteRepository {
             title: doc['title'],
             subtitle: doc['subtitle'],
             id: doc.id,
-            createdDate: (doc['createdDate'] as Timestamp).toDate(),
-            updatedDate: (doc['updatedDate'] as Timestamp).toDate(),
-            // createdDate: doc['createdDate'] != null
-            //     ? (doc['createdDate'] as Timestamp).toDate()
-            //     : DateTime.now(),
-            // updatedDate: doc['updatedDate'] != null
-            //     ? (doc['updatedDate'] as Timestamp).toDate()
-            //     : DateTime.now(),
+            // createdDate: (doc['createdDate'] as Timestamp).toDate(),
+            // updatedDate: (doc['updatedDate'] as Timestamp).toDate(),
+            createdDate: doc['createdDate'] != null
+                ? (doc['createdDate'] as Timestamp).toDate()
+                : DateTime.now(),
+            updatedDate: doc['updatedDate'] != null
+                ? (doc['updatedDate'] as Timestamp).toDate()
+                : DateTime.now(),
           );
         },
       ).toList();
@@ -31,12 +31,12 @@ class NoteRepository {
     String title,
     String subtitle,
   ) async {
+    final currentTime = DateTime.now();
     await FirebaseFirestore.instance.collection('noteItems').add({
       'title': title,
       'subtitle': subtitle,
-      'createdDate': FieldValue.serverTimestamp(), // Ustawienie daty utworzenia
-      'updatedDate':
-          FieldValue.serverTimestamp(), // Ustawienie daty aktualizacji
+      'createdDate': currentTime, // Ustawienie daty utworzenia
+      'updatedDate': currentTime, // Ustawienie daty aktualizacji
     });
   }
 
