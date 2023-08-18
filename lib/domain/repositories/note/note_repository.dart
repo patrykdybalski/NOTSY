@@ -15,6 +15,12 @@ class NoteRepository {
             id: doc.id,
             createdDate: (doc['createdDate'] as Timestamp).toDate(),
             updatedDate: (doc['updatedDate'] as Timestamp).toDate(),
+            // createdDate: doc['createdDate'] != null
+            //     ? (doc['createdDate'] as Timestamp).toDate()
+            //     : DateTime.now(),
+            // updatedDate: doc['updatedDate'] != null
+            //     ? (doc['updatedDate'] as Timestamp).toDate()
+            //     : DateTime.now(),
           );
         },
       ).toList();
@@ -38,7 +44,6 @@ class NoteRepository {
     Map<String, dynamic> updatedFields,
     String docId,
   ) async {
-    
     updatedFields['updatedDate'] =
         FieldValue.serverTimestamp(); // Ustawienie daty aktualizacji
     await FirebaseFirestore.instance

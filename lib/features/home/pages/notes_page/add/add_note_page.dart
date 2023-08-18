@@ -24,7 +24,7 @@ class _AddNotePageState extends State<AddNotePage> {
       child: BlocListener<AddNoteCubit, AddNoteState>(
         listener: (context, state) {
           if (state.saved) {
-            Navigator.of(context).pop();
+            Navigator.of(context).popUntil((route) => route.isFirst);
           }
           if (state.errorMessage.isNotEmpty) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -106,14 +106,15 @@ class _AddNotePageState extends State<AddNotePage> {
 
   FloatingActionButton buildSaveButton(BuildContext context) {
     return FloatingActionButton(
-      onPressed: (_title != null && _subtitle != null)
-          ? () {
+      onPressed: _title == null || _subtitle == null
+          ? null
+          : () {
               context.read<AddNoteCubit>().add(
                     _title!,
                     _subtitle!,
                   );
-            }
-          : null,
+              Navigator.of(context).popUntil((route) => route.isFirst);
+            },
       backgroundColor: AppColors.greenColor,
       heroTag: null,
       mini: true,
@@ -138,50 +139,38 @@ class _AddNotePageState extends State<AddNotePage> {
   void colorPickerDialog(BuildContext context) => showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          backgroundColor: Colors.transparent,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(13),
-          ),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Container(
-                  height: 250,
-                  decoration: BoxDecoration(
-                    color: const Color(0xff190933),
-                    borderRadius: BorderRadius.circular(13),
-                    // image: const DecorationImage(
-                    //   image: AssetImage(
-                    //       'images/note_card.png.jpg'), // Ścieżka do twojego obrazu
-                    //   fit: BoxFit
-                    //       .cover, // Rozciągnij obraz, aby wypełnić całe tło
-                    // ),
-                  ),
-                  child: buildColorPicekr()),
-              TextButton(
-                style: TextButton.styleFrom(
-                    backgroundColor: Colors.transparent,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(13),
-                        side: const BorderSide(
-                          color: AppColors.greenColor,
-                          width: 0.5,
-                        ))),
-                child: const Text(
-                  'Ustaw kolor tekstu',
-                  style: TextStyle(
+          backgroundColor: AppColors.primaryColor,
+          elevation: 200,
+          contentPadding: const EdgeInsets.all(5.0),
+          actions: [
+            TextButton(
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.transparent,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(13),
+                  side: const BorderSide(
                     color: AppColors.greenColor,
-                    fontSize: 15,
+                    width: 0.5,
                   ),
                 ),
-                onPressed: () {
-                  setState(() {
-                    Navigator.of(context).pop();
-                  });
-                },
               ),
-            ],
-          ),
+              child: const Text(
+                'Wybierz',
+                style: TextStyle(
+                  color: AppColors.greenColor,
+                  fontSize: 15,
+                ),
+              ),
+              onPressed: () {
+                setState(
+                  () {
+                    Navigator.of(context).pop();
+                  },
+                );
+              },
+            ),
+          ],
+          content: buildColorPicekr(),
         ),
       );
 }
@@ -199,8 +188,8 @@ class _AddNotePageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color: pickerColor,
+      decoration: const BoxDecoration(
+        color: AppColors.primaryColor,
       ),
       child: Padding(
         padding: const EdgeInsets.all(15.0),
