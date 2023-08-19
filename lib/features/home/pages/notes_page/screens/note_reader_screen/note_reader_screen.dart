@@ -43,6 +43,8 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
             return Scaffold(
               backgroundColor: widget.noteModel.color,
               floatingActionButton: buildFabButtons(context),
+              floatingActionButtonLocation:
+                  FloatingActionButtonLocation.miniCenterFloat,
               body: Container(
                 decoration: BoxDecoration(
                   color: widget.noteModel.color,

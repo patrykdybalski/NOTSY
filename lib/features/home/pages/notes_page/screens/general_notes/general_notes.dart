@@ -192,9 +192,10 @@ class _NoteItemState extends State<NoteItem> {
                         ],
                       ),
                       const Divider(
-                        color: AppColors.redColor,
-                        thickness: 0.3,
+                        color: Colors.black,
+                        thickness: 0.6,
                         height: 7,
+                        endIndent: 100,
                       ),
                       Expanded(
                         child: Text(
