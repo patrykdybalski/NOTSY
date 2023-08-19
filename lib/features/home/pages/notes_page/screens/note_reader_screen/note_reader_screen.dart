@@ -18,10 +18,6 @@ class NoteReaderScreen extends StatefulWidget {
 }
 
 class _NoteReaderScreenState extends State<NoteReaderScreen> {
-  void _refreshScreen() {
-    setState(() {});
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -45,14 +41,11 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
         child: BlocBuilder<ReaderScreenCubit, ReaderScreenState>(
           builder: (context, state) {
             return Scaffold(
-              backgroundColor: AppColors.primaryColor,
+              backgroundColor: widget.noteModel.color,
               floatingActionButton: buildFabButtons(context),
               body: Container(
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('images/note_card.png.jpg'),
-                    fit: BoxFit.cover,
-                  ),
+                decoration: BoxDecoration(
+                  color: widget.noteModel.color,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(15.0),
@@ -214,7 +207,6 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
             id: widget.noteModel.id,
           ),
         ));
-        _refreshScreen();
       },
       backgroundColor: AppColors.greenColor,
       mini: true,

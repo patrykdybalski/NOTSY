@@ -20,6 +20,7 @@ class EditNoteScreen extends StatefulWidget {
 
 String? _title;
 String? _subtitle;
+DateTime _updatedDate = DateTime.now();
 
 class _EditNoteScreenState extends State<EditNoteScreen> {
   @override
@@ -80,19 +81,23 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
                   ),
                   FloatingActionButton(
                     onPressed: () {
-                      Map<String, dynamic> updatedFields = {};
-                      if (_title != null && _title!.isNotEmpty) {
-                        updatedFields['title'] = _title;
+                      if ((_title != null && _title!.isNotEmpty) ||
+                          (_subtitle != null && _subtitle!.isNotEmpty)) {
+                        final newTitle = _title ?? widget.noteModel.title;
+                        final newSubtitle =
+                            _subtitle ?? widget.noteModel.subtitle;
+                        setState(() {
+                          _updatedDate =
+                              DateTime.now(); // Zaktualizuj _updatedDate
+                        });
+                        context.read<EditNoteCubit>().edit(
+                              newTitle,
+                              newSubtitle,
+                              widget.noteModel.createdDate,
+                              _updatedDate,
+                              widget.id,
+                            );
                       }
-
-                      if (_subtitle != null && _subtitle!.isNotEmpty) {
-                        updatedFields['subtitle'] = _subtitle;
-                      }
-                      updatedFields['updatedDate'] = DateTime.now();
-                      context.read<EditNoteCubit>().edit(
-                            updatedFields,
-                            widget.noteModel.id,
-                          );
                     },
                     backgroundColor: AppColors.greenColor,
                     heroTag: null,
@@ -142,12 +147,13 @@ class _AddNotePageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(
-              'images/note_card.png.jpg'), // Ścieżka do twojego obrazu
-          fit: BoxFit.cover, // Rozciągnij obraz, aby wypełnić całe tło
-        ),
+      decoration: BoxDecoration(
+        color: noteModel.color,
+        // image: DecorationImage(
+        //   image: AssetImage(
+        //       'images/note_card.png.jpg'), // Ścieżka do twojego obrazu
+        //   fit: BoxFit.cover, // Rozciągnij obraz, aby wypełnić całe tło
+        // ),
       ),
       child: Padding(
         padding: const EdgeInsets.all(15.0),

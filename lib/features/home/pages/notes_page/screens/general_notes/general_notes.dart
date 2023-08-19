@@ -144,13 +144,7 @@ class _NoteItemState extends State<NoteItem> {
                 height: 200,
                 width: 175,
                 decoration: BoxDecoration(
-                  // image: const DecorationImage(
-                  //   image: AssetImage(
-                  //     'images/note_card.png.jpg',
-                  //   ),
-                  //   fit: BoxFit.cover,
-                  // ),
-                  color: const Color(0xffa7e0e9),
+                  color: widget.noteModel.color,
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.shade500,

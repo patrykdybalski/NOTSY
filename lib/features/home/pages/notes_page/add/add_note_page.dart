@@ -14,10 +14,12 @@ class AddNotePage extends StatefulWidget {
 
 String? _title;
 String? _subtitle;
-Color pickerColor = Colors.transparent;
+
 DateTime _createdDate = DateTime.now();
+DateTime _updatedDate = DateTime.now();
 
 class _AddNotePageState extends State<AddNotePage> {
+  Color _selectedColor = AppColors.primaryColor;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -54,6 +56,7 @@ class _AddNotePageState extends State<AddNotePage> {
                     _subtitle = newValue;
                   });
                 },
+                selectedColor: _selectedColor,
               ),
             );
           },
@@ -113,8 +116,16 @@ class _AddNotePageState extends State<AddNotePage> {
               context.read<AddNoteCubit>().add(
                     _title!,
                     _subtitle!,
+                    _createdDate,
+                    _updatedDate,
+                    _selectedColor,
                   );
-              Navigator.of(context).popUntil((route) => route.isFirst);
+              Navigator.of(context).pop();
+              setState(() {
+                _title = null;
+                _subtitle = null;
+                _selectedColor = AppColors.primaryColor;
+              });
             },
       backgroundColor: AppColors.greenColor,
       heroTag: null,
@@ -128,11 +139,11 @@ class _AddNotePageState extends State<AddNotePage> {
 
   Widget buildColorPicekr() {
     return BlockPicker(
-        pickerColor: pickerColor,
+        pickerColor: _selectedColor,
         availableColors: AppColors.availableColors,
         onColorChanged: (newColor) {
           setState(() {
-            pickerColor = newColor;
+            _selectedColor = newColor;
           });
         });
   }
@@ -181,16 +192,18 @@ class _AddNotePageBody extends StatelessWidget {
     Key? key,
     required this.onTitleChanged,
     required this.onSubtitleChange,
+    required this.selectedColor, // Dodano selectedColor
   }) : super(key: key);
 
   final Function(String) onTitleChanged;
   final Function(String) onSubtitleChange;
+  final Color selectedColor; // Dodano selectedColor
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-        color: AppColors.primaryColor,
+      decoration: BoxDecoration(
+        color: selectedColor,
       ),
       child: Padding(
         padding: const EdgeInsets.all(15.0),

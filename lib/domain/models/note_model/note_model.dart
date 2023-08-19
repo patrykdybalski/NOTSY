@@ -1,18 +1,18 @@
+import 'package:flutter/material.dart';
+
 class NoteModel {
-  NoteModel ({
+  NoteModel({
     required this.title,
     required this.subtitle,
-     required this.id,
     required this.createdDate,
     required this.updatedDate,
-    
-   
-
+    required this.color,
+    required this.id,
   });
-  final String title;
-  final String subtitle;
-  final String id;
+  late final String title;
+  late final String subtitle;
   final DateTime createdDate; // Data utworzenia notatki
   final DateTime updatedDate; // Data ostatniej aktualizacji notatki
-  
+  final Color color;
+  final String id;
 }
