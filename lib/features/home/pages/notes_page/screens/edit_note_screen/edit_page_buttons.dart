@@ -51,20 +51,15 @@ class EditPageButtons {
   FloatingActionButton buildSaveButton() {
     return FloatingActionButton(
       onPressed: () {
-       
-        if ((title != null && title!.isNotEmpty) ||
-            (subtitle != null && subtitle!.isNotEmpty)) {
-          final newTitle = title ?? title!;
-          final newSubtitle = subtitle ?? subtitle!;
-
-          context.read<EditNoteCubit>().edit(
-                newTitle,
-                newSubtitle,
-                createdDate,
-                updatedDate!,
-                id,
-              );
-        }
+        final newTitle = title ?? title!;
+        final newSubtitle = subtitle ?? subtitle!;
+        context.read<EditNoteCubit>().edit(
+              newTitle,
+              newSubtitle,
+              createdDate,
+              updatedDate!,
+              id,
+            );
       },
       backgroundColor: AppColors.greenColor,
       heroTag: null,
