@@ -51,6 +51,7 @@ class EditPageButtons {
   FloatingActionButton buildSaveButton() {
     return FloatingActionButton(
       onPressed: () {
+       
         if ((title != null && title!.isNotEmpty) ||
             (subtitle != null && subtitle!.isNotEmpty)) {
           final newTitle = title ?? title!;
@@ -75,48 +76,3 @@ class EditPageButtons {
     );
   }
 }
-//   void colorPickerDialog() => showDialog(
-//         context: context,
-//         builder: (context) => AlertDialog(
-//           backgroundColor: AppColors.primaryColor,
-//           elevation: 200,
-//           contentPadding: const EdgeInsets.all(5.0),
-//           actions: [
-//             TextButton(
-//               style: TextButton.styleFrom(
-//                 backgroundColor: Colors.transparent,
-//                 shape: RoundedRectangleBorder(
-//                   borderRadius: BorderRadius.circular(13),
-//                   side: const BorderSide(
-//                     color: AppColors.greenColor,
-//                     width: 0.5,
-//                   ),
-//                 ),
-//               ),
-//               child: const Text(
-//                 'Wybierz',
-//                 style: TextStyle(
-//                   color: AppColors.greenColor,
-//                   fontSize: 15,
-//                 ),
-//               ),
-//               onPressed: () {
-//                 Navigator.of(context).pop();
-//               },
-//             ),
-//           ],
-//           content: buildColorPicker(),
-//         ),
-//       );
-
-//   Widget buildColorPicker() {
-//     return BlockPicker(
-//         pickerColor: selectedColor,
-//         availableColors: AppColors.availableColors,
-//         onColorChanged: (newColor) {
-//           selectedColor = newColor;
-//         });
-//   }
-
-//   void setState(Null Function() param0) {}
- 

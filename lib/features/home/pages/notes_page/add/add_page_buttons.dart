@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/features/home/pages/notes_page/add/cubit/add_note_cubit.dart';
+import 'package:primary_school/features/home/pages/notes_page/cubit/note_cubit.dart';
 
 class AddPageButtons {
   final BuildContext context;
@@ -68,18 +69,18 @@ class AddPageButtons {
 
   FloatingActionButton buildSaveButton() {
     return FloatingActionButton(
-      onPressed: title == null || subtitle == null
-          ? null
-          : () {
-              context.read<AddNoteCubit>().add(
-                    title!,
-                    subtitle!,
-                    createdDate,
-                    updatedDate,
-                    selectedColor,
-                  );
-              Navigator.of(context).pop();
-            },
+      onPressed: () {
+        final newTitle = title ?? '';
+        final newSubtitle = subtitle ?? '';
+        context.read<AddNoteCubit>().add(
+              newTitle,
+              newSubtitle,
+              createdDate,
+              updatedDate,
+              selectedColor,
+            );
+        context.read<NoteCubit>().start();
+      },
       backgroundColor: AppColors.greenColor,
       heroTag: null,
       mini: true,

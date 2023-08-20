@@ -27,13 +27,10 @@ class AddNoteCubit extends Cubit<AddNoteState> {
       emit(
         AddNoteState(saved: true),
       );
-      
     } catch (error) {
       emit(AddNoteState(
         errorMessage: error.toString(),
       ));
     }
-    
   }
-  
 }

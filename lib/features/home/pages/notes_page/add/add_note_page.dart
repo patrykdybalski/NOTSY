@@ -27,6 +27,13 @@ class _AddNotePageState extends State<AddNotePage> {
         AppColors.primaryColor; // Ustawienie domyślnego koloru na początku
   }
 
+  void startNewNote() {
+    setState(() {
+      _title = null;
+      _subtitle = null;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -34,6 +41,7 @@ class _AddNotePageState extends State<AddNotePage> {
       child: BlocListener<AddNoteCubit, AddNoteState>(
         listener: (context, state) {
           if (state.saved) {
+            startNewNote(); // Zerowanie pól po zapisaniu
             Navigator.of(context).popUntil((route) => route.isFirst);
           }
 
@@ -139,8 +147,8 @@ class _AddNotePageBody extends StatelessWidget {
     required this.selectedColor, // Dodano selectedColor
   }) : super(key: key);
 
-  final Function(String) onTitleChanged;
-  final Function(String) onSubtitleChange;
+  final Function(String?) onTitleChanged;
+  final Function(String?) onSubtitleChange;
   final Color selectedColor; // Dodano selectedColor
 
   @override
