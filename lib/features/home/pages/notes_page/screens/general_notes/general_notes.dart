@@ -148,9 +148,10 @@ class _NoteItemState extends State<NoteItem> {
                   boxShadow: [
                     BoxShadow(
                       color: Colors.grey.shade500,
-                      spreadRadius: 1,
+                      spreadRadius: 0.2,
                       blurRadius: 0.3,
-                      offset: const Offset(1, 1), // Przesunięcie cienia w dół
+                      offset:
+                          const Offset(0.3, 0.3), // Przesunięcie cienia w dół
                     ),
                     // const BoxShadow(
                     //   color: Colors.white,
@@ -193,9 +194,8 @@ class _NoteItemState extends State<NoteItem> {
                       ),
                       const Divider(
                         color: Colors.black,
-                        thickness: 0.6,
-                        height: 7,
-                        endIndent: 100,
+                        thickness: 0.5,
+                        height: 5,
                       ),
                       Expanded(
                         child: Text(
