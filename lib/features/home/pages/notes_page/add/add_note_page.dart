@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
+import 'package:primary_school/features/home/pages/notes_page/add/add_page_buttons.dart';
 import 'package:primary_school/features/home/pages/notes_page/add/cubit/add_note_cubit.dart';
-import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 class AddNotePage extends StatefulWidget {
   const AddNotePage({super.key});
@@ -14,12 +15,18 @@ class AddNotePage extends StatefulWidget {
 
 String? _title;
 String? _subtitle;
-
 DateTime _createdDate = DateTime.now();
 DateTime _updatedDate = DateTime.now();
+Color _selectedColor = AppColors.primaryColor;
 
 class _AddNotePageState extends State<AddNotePage> {
-  Color _selectedColor = AppColors.primaryColor;
+  @override
+  void initState() {
+    super.initState();
+    _selectedColor =
+        AppColors.primaryColor; // Ustawienie domyślnego koloru na początku
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -29,6 +36,7 @@ class _AddNotePageState extends State<AddNotePage> {
           if (state.saved) {
             Navigator.of(context).popUntil((route) => route.isFirst);
           }
+
           if (state.errorMessage.isNotEmpty) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text(
@@ -42,7 +50,15 @@ class _AddNotePageState extends State<AddNotePage> {
           builder: (context, state) {
             return Scaffold(
               backgroundColor: AppColors.primaryColor,
-              floatingActionButton: buildFabButtons(context),
+              floatingActionButton: AddPageButtons(
+                context: context,
+                title: _title,
+                subtitle: _subtitle,
+                createdDate: _createdDate,
+                updatedDate: _updatedDate,
+                selectedColor: _selectedColor,
+                colorPickerDialog: colorPickerDialog,
+              ).buildFabButtons(context),
               floatingActionButtonLocation:
                   FloatingActionButtonLocation.miniCenterFloat,
               body: _AddNotePageBody(
@@ -63,89 +79,6 @@ class _AddNotePageState extends State<AddNotePage> {
         ),
       ),
     );
-  }
-
-  Row buildFabButtons(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        buildBackButton(context),
-        buildColorPickerButton(context),
-        buildSaveButton(context),
-      ],
-    );
-  }
-
-  FloatingActionButton buildBackButton(BuildContext context) {
-    return FloatingActionButton(
-      onPressed: () {
-        Navigator.of(context).pop();
-      },
-      backgroundColor: AppColors.redColor2,
-      mini: true,
-      heroTag: null,
-      child: const Icon(
-        Icons.chevron_left_outlined,
-        color: AppColors.secondaryColor,
-        size: 25,
-      ),
-    );
-  }
-
-  FloatingActionButton buildColorPickerButton(BuildContext context) {
-    return FloatingActionButton(
-      onPressed: () {
-        return colorPickerDialog(context);
-      },
-      backgroundColor: AppColors.primaryColor,
-      mini: true,
-      child: Container(
-        decoration: BoxDecoration(
-          gradient: AppColors.fabGradient,
-          borderRadius: BorderRadius.circular(32.0),
-        ),
-      ),
-    );
-  }
-
-  FloatingActionButton buildSaveButton(BuildContext context) {
-    return FloatingActionButton(
-      onPressed: _title == null || _subtitle == null
-          ? null
-          : () {
-              context.read<AddNoteCubit>().add(
-                    _title!,
-                    _subtitle!,
-                    _createdDate,
-                    _updatedDate,
-                    _selectedColor,
-                  );
-              Navigator.of(context).pop();
-              setState(() {
-                _title = null;
-                _subtitle = null;
-                _selectedColor = AppColors.primaryColor;
-              });
-            },
-      backgroundColor: AppColors.greenColor,
-      heroTag: null,
-      mini: true,
-      child: const Icon(
-        Icons.check_outlined,
-        color: AppColors.secondaryColor,
-      ),
-    );
-  }
-
-  Widget buildColorPicekr() {
-    return BlockPicker(
-        pickerColor: _selectedColor,
-        availableColors: AppColors.availableColors,
-        onColorChanged: (newColor) {
-          setState(() {
-            _selectedColor = newColor;
-          });
-        });
   }
 
   void colorPickerDialog(BuildContext context) => showDialog(
@@ -185,6 +118,17 @@ class _AddNotePageState extends State<AddNotePage> {
           content: buildColorPicekr(),
         ),
       );
+
+  Widget buildColorPicekr() {
+    return BlockPicker(
+        pickerColor: _selectedColor,
+        availableColors: AppColors.availableColors,
+        onColorChanged: (newColor) {
+          setState(() {
+            _selectedColor = newColor;
+          });
+        });
+  }
 }
 
 class _AddNotePageBody extends StatelessWidget {
