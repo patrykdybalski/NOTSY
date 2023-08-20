@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
+
 import 'package:primary_school/features/home/pages/notes_page/screens/edit_note_screen/cubit/edit_note_cubit.dart';
+import 'package:primary_school/features/home/pages/notes_page/screens/edit_note_screen/edit_page_buttons.dart';
 
 class EditNoteScreen extends StatefulWidget {
   const EditNoteScreen({
@@ -20,7 +22,7 @@ class EditNoteScreen extends StatefulWidget {
 
 String? _title;
 String? _subtitle;
-DateTime _updatedDate = DateTime.now();
+final DateTime updatedDate = DateTime.now();
 
 class _EditNoteScreenState extends State<EditNoteScreen> {
   @override
@@ -45,70 +47,15 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
           builder: (context, state) {
             return Scaffold(
               backgroundColor: AppColors.primaryColor,
-              floatingActionButton: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  FloatingActionButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    backgroundColor: AppColors.redColor2,
-                    heroTag: null,
-                    mini: true,
-                    // shape: BeveledRectangleBorder(
-                    //   borderRadius: BorderRadius.circular(10),
-                    //   side: const BorderSide(
-                    //     color: AppColors.secondaryColor,
-                    //   ),
-                    // ),
-                    child: const Icon(
-                      Icons.chevron_left_outlined,
-                      color: AppColors.secondaryColor,
-                      size: 25,
-                    ),
-                  ),
-                  FloatingActionButton(
-                    onPressed: () {},
-                    backgroundColor: AppColors.primaryColor,
-                    heroTag: null,
-                    mini: true,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        gradient: AppColors.fabGradient,
-                        borderRadius: BorderRadius.circular(32.0),
-                      ),
-                    ),
-                  ),
-                  FloatingActionButton(
-                    onPressed: () {
-                      if ((_title != null && _title!.isNotEmpty) ||
-                          (_subtitle != null && _subtitle!.isNotEmpty)) {
-                        final newTitle = _title ?? widget.noteModel.title;
-                        final newSubtitle =
-                            _subtitle ?? widget.noteModel.subtitle;
-                        setState(() {
-                          _updatedDate =
-                              DateTime.now(); // Zaktualizuj _updatedDate
-                        });
-                        context.read<EditNoteCubit>().edit(
-                              newTitle,
-                              newSubtitle,
-                              widget.noteModel.createdDate,
-                              _updatedDate,
-                              widget.id,
-                            );
-                      }
-                    },
-                    backgroundColor: AppColors.greenColor,
-                    heroTag: null,
-                    mini: true,
-                    child: const Icon(
-                      Icons.check_outlined,
-                      color: AppColors.secondaryColor,
-                    ),
-                  ),
-                ],
-              ),
+              floatingActionButton: EditPageButtons(
+                      context: context,
+                      title: _title,
+                      subtitle: _subtitle,
+                      createdDate: widget.noteModel.createdDate,
+                      updatedDate: updatedDate,
+                      selectedColor: widget.noteModel.color,
+                      id: widget.id)
+                  .buildFabButtons(),
               floatingActionButtonLocation:
                   FloatingActionButtonLocation.miniCenterFloat,
               body: _AddNotePageBody(
@@ -149,11 +96,6 @@ class _AddNotePageBody extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: noteModel.color,
-        // image: DecorationImage(
-        //   image: AssetImage(
-        //       'images/note_card.png.jpg'), // Ścieżka do twojego obrazu
-        //   fit: BoxFit.cover, // Rozciągnij obraz, aby wypełnić całe tło
-        // ),
       ),
       child: Padding(
         padding: const EdgeInsets.all(15.0),
