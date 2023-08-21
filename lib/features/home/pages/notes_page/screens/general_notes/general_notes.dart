@@ -190,6 +190,7 @@ class _NoteItemState extends State<NoteItem> {
                               ),
                             ),
                           ),
+                          
                         ],
                       ),
                       const Divider(
