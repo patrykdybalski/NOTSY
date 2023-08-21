@@ -8,7 +8,7 @@ class ExpensesPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xff0c1020),
       appBar: AppBar(
-        title: const Text('Notatnik'),
+        title: const Text('Pogoda'),
         centerTitle: true,
         backgroundColor: const Color(0xff0c1020),
         leading: IconButton(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/features/home/pages/notes_page/add/add_note_page.dart';
-import 'package:primary_school/features/home/pages/notes_page/screens/detailed_notes/detailed_notes.dart';
 import 'package:primary_school/features/home/pages/notes_page/screens/general_notes/general_notes.dart';
 
 class NotesPage extends StatefulWidget {
@@ -37,7 +36,7 @@ class _NotesPageState extends State<NotesPage>
         title: const Text(
           'Notatki',
           style: TextStyle(
-            color: AppColors.accentColor,
+            color: AppColors.secondaryColor,
             letterSpacing: 2,
           ),
         ),
@@ -66,43 +65,8 @@ class _NotesPageState extends State<NotesPage>
             padding: const EdgeInsets.only(right: 5),
           ),
         ],
-        bottom: TabBar(
-            isScrollable: false,
-            controller: tabController,
-            labelPadding: const EdgeInsets.all(10),
-            indicatorColor: AppColors.redColor,
-            labelColor: AppColors.accentColor,
-            unselectedLabelStyle: const TextStyle(
-              fontSize: 15,
-            ),
-            labelStyle: const TextStyle(
-              color: AppColors.accentColor,
-              fontSize: 15,
-              fontWeight: FontWeight.bold,
-            ),
-            tabs: const [
-              Text('Wszystkie'),
-              Text('Wyróznione'),
-            ],
-            onTap: (index) {
-              if (index == 2) {
-                setState(() {
-                  isPasswordRequired = true;
-                });
-              } else {
-                setState(() {
-                  isPasswordRequired = false;
-                });
-              }
-            }),
       ),
-      body: TabBarView(
-        controller: tabController,
-        children: const [
-          GeneralNotes(),
-          DetailedNotesScreen(),
-        ],
-      ),
+      body: const GeneralNotes(),
     );
   }
 }

@@ -58,24 +58,11 @@ class _HomePageState extends State<HomePage> {
             label: 'Notatki',
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.attach_money_outlined,
-            ),
-            label: 'Wydatki',
+            icon: Icon(Icons.wb_sunny_outlined),
+            label: 'Pogoda',
           ),
         ],
       ),
     );
   }
 }
-
-// floatingActionButton: FloatingActionButton(
-//         onPressed: () {
-//           Navigator.of(context).push(
-//             MaterialPageRoute(
-//               builder: (context) => const AddTaskBarPage(),
-//             ),
-//           );
-//         },
-//         child: const Icon(Icons.add),
-//       ),
