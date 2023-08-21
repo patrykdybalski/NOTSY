@@ -89,42 +89,20 @@ class _AddNotePageState extends State<AddNotePage> {
     );
   }
 
-  void colorPickerDialog(BuildContext context) => showDialog(
+  void colorPickerDialog(BuildContext context) => showModalBottomSheet(
         context: context,
-        builder: (context) => AlertDialog(
-          backgroundColor: AppColors.primaryColor,
-          elevation: 200,
-          contentPadding: const EdgeInsets.all(5.0),
-          actions: [
-            TextButton(
-              style: TextButton.styleFrom(
-                backgroundColor: Colors.transparent,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(13),
-                  side: const BorderSide(
-                    color: AppColors.greenColor,
-                    width: 0.5,
-                  ),
-                ),
-              ),
-              child: const Text(
-                'Wybierz',
-                style: TextStyle(
-                  color: AppColors.greenColor,
-                  fontSize: 15,
-                ),
-              ),
-              onPressed: () {
-                setState(
-                  () {
-                    Navigator.of(context).pop();
-                  },
-                );
-              },
-            ),
-          ],
-          content: buildColorPicekr(),
-        ),
+        useSafeArea: true,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        showDragHandle: true,
+        backgroundColor: AppColors.primaryColor,
+        builder: (context) {
+          return Container(
+            height: 220,
+            padding: const EdgeInsets.all(16.0),
+            color: AppColors.primaryColor,
+            child: buildColorPicekr(),
+          );
+        },
       );
 
   Widget buildColorPicekr() {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:primary_school/constans/colors.dart';
 
 import 'package:primary_school/features/home/pages/calendar_page/calendar_page.dart';
-import 'package:primary_school/features/home/pages/expenses_page/expenses_page.dart';
+import 'package:primary_school/features/home/pages/expenses_page/weather_page.dart';
 import 'package:primary_school/features/home/pages/notes_page/notes_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
           if (currentIndex == 1) {
             return const NotesPage();
           }
-          return const ExpensesPage();
+          return const WeatherPage();
         },
       ),
       bottomNavigationBar: BottomNavigationBar(

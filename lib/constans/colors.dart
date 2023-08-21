@@ -20,22 +20,14 @@ class AppColors {
     end: Alignment.bottomRight,
   );
   static List<Color> availableColors = const [
-    Color(0xFFFAC7C3),
-    Color(0xFF38B4D0),
-    Color(0xFFFFF7EC),
-    Color(0xFFF57C51),
-    Color(0xFFFCBC58),
-    Color(0xFFF6F8E2),
-    Color(0xFFE0DDCA),
-    Color(0xFF407C87),
-    Color(0xFFA5DBDD),
     Color(0xFFEEF1F6),
-    Color(0xFF89687D),
+    Color.fromARGB(255, 214, 231, 213),
     Color(0xFFFCD8CC),
-    Color(0xFFFFF7EC),
-    Color(0XFFEED5D1),
-    Color(0xFFF38592),
-    Color(0xFFD6517C),
+    Color(0xFFA5DBDD),
+    Color(0xFFBDC3C7),
+    Color.fromARGB(255, 106, 156, 116),
+    Color.fromARGB(255, 209, 98, 98),
+    Color(0xFF2980B9),
   ];
 
   // Dodaj inne kolory według potrzeb

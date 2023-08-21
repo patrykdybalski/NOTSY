@@ -104,6 +104,7 @@ class _AddNotePageBody extends StatelessWidget {
             TextFormField(
               initialValue: noteModel.title,
               onChanged: onTitleChanged,
+              autofocus: true,
               minLines: 1,
               maxLines: 4,
               maxLength: 120,
