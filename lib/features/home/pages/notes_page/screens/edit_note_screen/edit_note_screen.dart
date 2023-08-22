@@ -117,10 +117,12 @@ class _AddNotePageBody extends StatelessWidget {
                 counterText: '',
                 enabled: true,
                 enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: AppColors.redColor, width: 0.8),
+                  borderSide:
+                      BorderSide(color: AppColors.secondaryColor, width: 0.8),
                 ),
                 focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: AppColors.redColor, width: 1.2),
+                  borderSide:
+                      BorderSide(color: AppColors.secondaryColor, width: 1.2),
                 ),
               ),
             ),

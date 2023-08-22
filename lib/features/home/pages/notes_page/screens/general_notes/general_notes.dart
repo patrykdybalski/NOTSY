@@ -104,17 +104,22 @@ class _NoteItemState extends State<NoteItem> {
                       builder: (context, state) {
                         return AlertDialog(
                           title: const Text('Usunąć notatkę?'),
+                          elevation: 20,
+                          backgroundColor: widget.noteModel.color,
                           actions: [
                             TextButton(
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                                child: const Text(
-                                  'Nie',
-                                  style: TextStyle(
-                                    color: Color.fromARGB(255, 56, 99, 56),
-                                  ),
-                                )),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: const Text(
+                                'Nie',
+                                style: TextStyle(
+                                  color: AppColors.secondaryColor,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ),
                             TextButton(
                               onPressed: () {
                                 context
@@ -125,13 +130,13 @@ class _NoteItemState extends State<NoteItem> {
                               child: const Text(
                                 'Tak',
                                 style: TextStyle(
-                                  color: AppColors.redColor,
+                                  color: AppColors.secondaryColor,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
                                 ),
                               ),
                             ),
                           ],
-                          elevation: 20,
-                          backgroundColor: AppColors.primaryColor,
                         );
                       },
                     ),
@@ -190,7 +195,6 @@ class _NoteItemState extends State<NoteItem> {
                               ),
                             ),
                           ),
-                          
                         ],
                       ),
                       const Divider(

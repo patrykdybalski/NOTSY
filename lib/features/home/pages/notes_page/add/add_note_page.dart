@@ -160,11 +160,11 @@ class _AddNotePageBody extends StatelessWidget {
                 ),
                 focusedBorder: UnderlineInputBorder(
                   borderSide:
-                      BorderSide(color: AppColors.redColor2, width: 1.0),
+                      BorderSide(color: AppColors.secondaryColor, width: 1.2),
                 ),
                 enabledBorder: UnderlineInputBorder(
                   borderSide:
-                      BorderSide(color: AppColors.redColor2, width: 1.0),
+                      BorderSide(color: AppColors.secondaryColor, width: 0.8),
                 ),
                 enabled: true,
               ),

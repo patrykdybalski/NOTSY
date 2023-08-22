@@ -43,9 +43,6 @@ class NoteReaderButtons {
   FloatingActionButton buildDeleteButton(BuildContext context) {
     return FloatingActionButton(
       onPressed: () {
-        // context.read<ReaderScreenCubit>().remove(
-        //       id: widget.noteModel.id,
-        //     );
         showDialog(
             context: context,
             builder: ((context) {
@@ -54,18 +51,23 @@ class NoteReaderButtons {
                 child: BlocBuilder<NoteCubit, NoteState>(
                   builder: (context, state) {
                     return AlertDialog(
+                      elevation: 20,
+                      backgroundColor: noteModel.color,
                       title: const Text('Usunąć notatkę?'),
                       actions: [
                         TextButton(
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: const Text(
-                              'Nie',
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 56, 99, 56),
-                              ),
-                            )),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: const Text(
+                            'Nie',
+                            style: TextStyle(
+                              color: AppColors.secondaryColor,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
                         TextButton(
                           onPressed: () {
                             context.read<NoteCubit>().remove(id: noteModel.id);
@@ -75,13 +77,13 @@ class NoteReaderButtons {
                           child: const Text(
                             'Tak',
                             style: TextStyle(
-                              color: AppColors.redColor,
+                              color: AppColors.secondaryColor,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
                             ),
                           ),
                         ),
                       ],
-                      elevation: 20,
-                      backgroundColor: AppColors.primaryColor,
                     );
                   },
                 ),
@@ -109,7 +111,7 @@ class NoteReaderButtons {
           ),
         ));
       },
-      backgroundColor: AppColors.greenColor,
+      backgroundColor: AppColors.editButton,
       mini: true,
       heroTag: null,
       child: const Icon(
