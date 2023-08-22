@@ -33,20 +33,20 @@ class _CalendarPageState extends State<CalendarPage> {
           'Kalendarz',
           style: TextStyle(
             letterSpacing: 2,
-            color: AppColors.accentColor,
+            color: AppColors.secondaryColor,
           ),
         ),
         leading: IconButton(
-          color: AppColors.accentColor,
+          color: AppColors.redColor,
           icon: const Icon(Icons.menu),
           onPressed: () {},
         ),
         actions: [
           IconButton(
             icon: const Icon(
-              Icons.add_circle_outline_outlined,
+              Icons.add_box_outlined,
               size: 35,
-              color: AppColors.redColor,
+              color: AppColors.darkGreen,
             ),
             padding: const EdgeInsets.only(right: 5),
             onPressed: () {
@@ -76,19 +76,6 @@ class _CalendarPageState extends State<CalendarPage> {
                 return ListView(
                   children: [
                     const CalendarWidget(),
-                    // TextButton(
-                    //     onPressed: () {
-                    //       showAboutDialog(
-                    //         context: context,
-                    //         applicationVersion: '3.0.0',
-                    //         applicationIcon: Icon(Icons.abc),
-                    //         applicationLegalese: 'Blah blah',
-                    //         children: [
-                    //           AdditionalWi
-                    //         ]
-                    //       );
-                    //     },
-                    //     child: const Text('Info')),
                     Column(
                       children: [
                         for (final eventModel in eventModels) ...[
