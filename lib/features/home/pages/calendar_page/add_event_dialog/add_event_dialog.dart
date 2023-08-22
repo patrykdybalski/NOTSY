@@ -45,21 +45,6 @@ class _AddEventDialogState extends State<AddEventDialog> {
               titlePadding: const EdgeInsets.all(1),
               contentPadding: const EdgeInsets.all(5),
               backgroundColor: AppColors.primaryColor,
-              // title: Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: [
-              //     IconButton(
-              //       icon: const Icon(
-              //         Icons.arrow_circle_left_outlined,
-              //         color: AppColors.redColor,
-              //         size: 30,
-              //       ),
-              //       onPressed: () {
-              //         Navigator.of(context).pop();
-              //       },
-              //     ),
-              //   ],
-              // ),
               content: _ContentDialog(
                 onTitleChanged: (newValue) {
                   setState(
@@ -111,19 +96,23 @@ class _AddEventDialogState extends State<AddEventDialog> {
                           ),
                         )),
                     TextButton(
-                      onPressed: _title == null ||
-                              _subtitle == null ||
-                              _selectedDay == null ||
-                              _selectedTime == null
-                          ? null
-                          : () {
-                              context.read<AddEventCubit>().add(
-                                    _title!,
-                                    _subtitle!,
-                                    _selectedDay!,
-                                    _selectedTime!,
-                                  );
-                            },
+                      onPressed: //_title == null ||
+                          //         _subtitle == null ||
+                          //         _selectedDay == null ||
+                          //         _selectedTime == null
+                          //     ? null
+                          () {
+                        final newTitle = _title ?? '';
+                        final newSubtitle = _subtitle ?? '';
+                        final newSelectedDay = _selectedDay ?? '' as DateTime;
+                        final newSelectedTime = _selectedTime ?? '' as DateTime;
+                        context.read<AddEventCubit>().add(
+                              newTitle,
+                              newSubtitle,
+                              newSelectedDay,
+                              newSelectedTime,
+                            );
+                      },
                       child: const Text(
                         'Zapisz',
                         style: TextStyle(
@@ -198,18 +187,18 @@ class _ContentDialog extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                   borderSide: const BorderSide(
                     color: AppColors.redColor,
-                    width: 1.2,
+                    width: 1,
                   )),
               disabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                   borderSide: const BorderSide(
-                    color: AppColors.dayColor,
-                    width: 0.6,
+                    color: AppColors.darkGreen,
+                    width: 0.3,
                   )),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
                 borderSide: const BorderSide(
-                  color: AppColors.dayColor,
+                  color: AppColors.darkGreen,
                   width: 0.6,
                 ),
               ),
@@ -220,10 +209,12 @@ class _ContentDialog extends StatelessWidget {
           ),
           TextFormField(
             onChanged: onSubtitleChanged,
-            keyboardType: TextInputType.text,
+            keyboardType: TextInputType.multiline,
+            scrollPhysics:
+                const ClampingScrollPhysics(), // Dodaj to, aby umożliwić przewijanie
             maxLines: 10,
-            minLines: 1,
-            cursorColor: Colors.white10,
+            minLines: 4,
+            cursorColor: AppColors.secondaryColor,
             cursorRadius: const Radius.circular(12),
             style: const TextStyle(
               color: AppColors.secondaryColor,
@@ -239,18 +230,18 @@ class _ContentDialog extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                   borderSide: const BorderSide(
                     color: AppColors.redColor,
-                    width: 0.3,
+                    width: 1,
                   )),
               disabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                   borderSide: const BorderSide(
-                    color: AppColors.dayColor,
+                    color: AppColors.darkGreen,
                     width: 0.3,
                   )),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
                 borderSide: const BorderSide(
-                  color: AppColors.dayColor,
+                  color: AppColors.darkGreen,
                   width: 0.3,
                 ),
               ),
@@ -262,7 +253,7 @@ class _ContentDialog extends StatelessWidget {
           ElevatedButton.icon(
             icon: const Icon(
               Icons.calendar_month_outlined,
-              color: AppColors.accentColor,
+              color: AppColors.secondaryColor,
             ),
             label: Text(
               selectedDateFormatted ?? 'Wybierz dzień',
@@ -297,7 +288,7 @@ class _ContentDialog extends StatelessWidget {
           ElevatedButton.icon(
             icon: const Icon(
               Icons.more_time_rounded,
-              color: AppColors.accentColor,
+              color: AppColors.secondaryColor,
             ),
             label: Text(
               selectedTimeFormatted ?? 'Dodaj godzinę',

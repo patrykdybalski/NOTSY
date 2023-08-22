@@ -104,9 +104,53 @@ class _CalendarPageState extends State<CalendarPage> {
                                     spacing: 5,
                                     backgroundColor: AppColors.primaryColor,
                                     onPressed: (context) {
-                                      context
-                                          .read<CalendarCubit>()
-                                          .remove(documentID: eventModel.id);
+                                      showDialog(
+                                        context: context,
+                                        builder: ((context) {
+                                          return AlertDialog(
+                                            elevation: 20,
+                                            backgroundColor:
+                                                AppColors.primaryColor,
+                                            title:
+                                                const Text('Usunąć notatkę?'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                },
+                                                child: const Text(
+                                                  'Nie',
+                                                  style: TextStyle(
+                                                    color: AppColors
+                                                        .secondaryColor,
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                                ),
+                                              ),
+                                              TextButton(
+                                                onPressed: () {
+                                                  context
+                                                      .read<CalendarCubit>()
+                                                      .remove(
+                                                        documentID:
+                                                            eventModel.id,
+                                                      );
+                                                },
+                                                child: const Text(
+                                                  'Tak',
+                                                  style: TextStyle(
+                                                    color: AppColors
+                                                        .secondaryColor,
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          );
+                                        }),
+                                      );
                                     },
                                   ),
                                   SlidableAction(

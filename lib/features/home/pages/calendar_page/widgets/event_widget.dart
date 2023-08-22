@@ -36,21 +36,21 @@ class _EventWidgetState extends State<EventWidget> {
         collapsedShape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
             side: const BorderSide(
-              width: 1.0,
-              color: AppColors.greenColor,
+              width: 1.2,
+              color: AppColors.accentColor,
             )),
         leading: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Icon(
               Icons.access_time,
-              color: AppColors.accentColor,
+              color: AppColors.secondaryColor,
               weight: 10.0,
             ),
             Text(
               widget.eventModel.selectedTimeFormatted(),
               style: const TextStyle(
-                fontWeight: FontWeight.w400,
+                fontWeight: FontWeight.w500,
                 fontSize: 15,
                 color: AppColors.secondaryColor,
               ),
@@ -72,7 +72,7 @@ class _EventWidgetState extends State<EventWidget> {
           widget.eventModel.selectedDayFormatted(),
           style: const TextStyle(
             fontSize: 17,
-            fontWeight: FontWeight.w400,
+            fontWeight: FontWeight.w500,
             color: AppColors.secondaryColor,
           ),
         ),
@@ -81,7 +81,7 @@ class _EventWidgetState extends State<EventWidget> {
             padding: const EdgeInsets.only(
               left: 25.0,
               right: 25,
-              top: 15,
+              top: 10,
               bottom: 25,
             ),
             child: Container(
@@ -101,9 +101,9 @@ class _EventWidgetState extends State<EventWidget> {
               ),
               child: Padding(
                 padding: const EdgeInsets.only(
-                  top: 15.0,
-                  left: 10,
+                  left: 5,
                   bottom: 10,
+                  right: 40,
                 ),
                 child: Text(
                   widget.eventModel.subtitle,
