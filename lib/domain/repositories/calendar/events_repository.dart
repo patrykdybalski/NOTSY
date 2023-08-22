@@ -23,9 +23,22 @@ class EventsRepository {
 
   Future<void> delete({required String id}) async {
     await FirebaseFirestore.instance
-        .collection('calendarEvents')
+        .collection('calendarItems')
         .doc(id)
         .delete();
+  }
+
+  Future<void> edit(
+    Map<String, dynamic>? updatedFields,
+    String docID,
+  ) async {
+    if (updatedFields == null || updatedFields.isEmpty) {
+      return;
+    }
+    await FirebaseFirestore.instance
+        .collection('calendarItems')
+        .doc(docID)
+        .update(updatedFields);
   }
 
   Future<void> add(

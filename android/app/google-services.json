@@ -29,6 +29,13 @@
             {
               "client_id": "185638894182-2el7gtodp571edlnvih4fhf5l2jr7o54.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "185638894182-t44h79pkcsilhink3tfsllk15qllg10p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.patrykdybalski.primarySchool"
+              }
             }
           ]
         }

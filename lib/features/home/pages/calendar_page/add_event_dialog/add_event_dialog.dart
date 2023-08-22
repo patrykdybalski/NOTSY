@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:primary_school/constans/colors.dart';
-import 'package:primary_school/domain/repositories/events_repository.dart';
-import 'package:primary_school/features/home/pages/add_event_dialog/cubit/add_event_cubit.dart';
+import 'package:primary_school/domain/repositories/calendar/events_repository.dart';
+import 'package:primary_school/features/home/pages/calendar_page/add_event_dialog/cubit/add_event_cubit.dart';
 
 class AddEventDialog extends StatefulWidget {
   const AddEventDialog({
@@ -45,41 +45,21 @@ class _AddEventDialogState extends State<AddEventDialog> {
               titlePadding: const EdgeInsets.all(1),
               contentPadding: const EdgeInsets.all(5),
               backgroundColor: AppColors.primaryColor,
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    icon: const Icon(
-                      Icons.arrow_circle_left_outlined,
-                      color: AppColors.redColor,
-                      size: 30,
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                  IconButton(
-                    onPressed: _title == null ||
-                            _subtitle == null ||
-                            _selectedDay == null ||
-                            _selectedTime == null
-                        ? null
-                        : () {
-                            context.read<AddEventCubit>().add(
-                                  _title!,
-                                  _subtitle!,
-                                  _selectedDay!,
-                                  _selectedTime!,
-                                );
-                          },
-                    icon: const Icon(
-                      Icons.add_circle_outline_sharp,
-                      color: AppColors.greenColor,
-                      size: 30,
-                    ),
-                  ),
-                ],
-              ),
+              // title: Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //   children: [
+              //     IconButton(
+              //       icon: const Icon(
+              //         Icons.arrow_circle_left_outlined,
+              //         color: AppColors.redColor,
+              //         size: 30,
+              //       ),
+              //       onPressed: () {
+              //         Navigator.of(context).pop();
+              //       },
+              //     ),
+              //   ],
+              // ),
               content: _ContentDialog(
                 onTitleChanged: (newValue) {
                   setState(
@@ -114,6 +94,48 @@ class _AddEventDialogState extends State<AddEventDialog> {
                     ? null
                     : DateFormat.yMd().format(_selectedDay!),
               ),
+              actions: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: const Text(
+                          'Anuluj',
+                          style: TextStyle(
+                            color: AppColors.redColor,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16,
+                          ),
+                        )),
+                    TextButton(
+                      onPressed: _title == null ||
+                              _subtitle == null ||
+                              _selectedDay == null ||
+                              _selectedTime == null
+                          ? null
+                          : () {
+                              context.read<AddEventCubit>().add(
+                                    _title!,
+                                    _subtitle!,
+                                    _selectedDay!,
+                                    _selectedTime!,
+                                  );
+                            },
+                      child: const Text(
+                        'Zapisz',
+                        style: TextStyle(
+                          color: AppColors.accentColor,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             );
           },
         ),
@@ -143,108 +165,125 @@ class _ContentDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.only(
+        top: 15.0,
+        left: 10.0,
+        right: 10.0,
+      ),
       child: Column(
         children: [
           TextFormField(
             textAlign: TextAlign.justify,
             onChanged: onTitleChanged,
             autofocus: true,
+            keyboardType: TextInputType.text,
+            maxLength: 50,
+            maxLines: 2,
+            minLines: 1,
             cursorColor: Colors.white10,
             cursorRadius: const Radius.circular(12),
             style: const TextStyle(
-              fontWeight: FontWeight.bold,
-              color: AppColors.dayColor,
+              color: AppColors.secondaryColor,
+              fontWeight: FontWeight.w700,
             ),
             decoration: InputDecoration(
+              filled: true,
+              fillColor: Colors.white10,
               labelText: 'Temat',
               labelStyle: const TextStyle(
-                color: AppColors.dayColor,
+                color: AppColors.secondaryColor,
                 fontSize: 18,
               ),
               focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                   borderSide: const BorderSide(
+                    color: AppColors.redColor,
+                    width: 1.2,
+                  )),
+              disabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(
                     color: AppColors.dayColor,
-                    width: 2,
+                    width: 0.6,
                   )),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
                 borderSide: const BorderSide(
                   color: AppColors.dayColor,
+                  width: 0.6,
                 ),
               ),
-              filled: true,
-              fillColor: Colors.white10,
             ),
-            keyboardType: TextInputType.text,
-            maxLength: 50,
-            maxLines: 2,
-            minLines: 1,
           ),
           const SizedBox(
             height: 10,
           ),
           TextFormField(
             onChanged: onSubtitleChanged,
+            keyboardType: TextInputType.text,
+            maxLines: 10,
+            minLines: 1,
             cursorColor: Colors.white10,
             cursorRadius: const Radius.circular(12),
             style: const TextStyle(
-              color: AppColors.dayColor,
+              color: AppColors.secondaryColor,
             ),
             decoration: InputDecoration(
-              enabled: true,
-              labelText: 'Opis',
+              hintText: 'Opis',
               labelStyle: const TextStyle(
-                color: AppColors.dayColor,
+                color: AppColors.secondaryColor,
                 fontSize: 18,
+                fontWeight: FontWeight.bold,
               ),
               focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                   borderSide: const BorderSide(
+                    color: AppColors.redColor,
+                    width: 0.3,
+                  )),
+              disabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(
                     color: AppColors.dayColor,
-                    width: 2,
+                    width: 0.3,
                   )),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
                 borderSide: const BorderSide(
                   color: AppColors.dayColor,
+                  width: 0.3,
                 ),
               ),
             ),
-            keyboardType: TextInputType.text,
-            maxLines: 10,
-            minLines: 1,
           ),
           const SizedBox(
-            height: 20,
+            height: 15,
           ),
           ElevatedButton.icon(
-            label: Text(
-              selectedDateFormatted ?? 'Wybierz dzień',
-              style: const TextStyle(
-                color: AppColors.accentColor,
-              ),
-            ),
             icon: const Icon(
               Icons.calendar_month_outlined,
               color: AppColors.accentColor,
             ),
+            label: Text(
+              selectedDateFormatted ?? 'Wybierz dzień',
+              style: const TextStyle(
+                color: AppColors.secondaryColor,
+              ),
+            ),
             style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.primaryColor, // Kolor tła przycisku
+              backgroundColor: AppColors.primaryColor,
+              elevation: 1.5,
+
+              shadowColor: AppColors.accentColor, // Kolor tła przycisku
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(
-                    8.0), // Opcjonalnie: zaokrąglenie rogów przycisku
+                  8.0,
+                ), // Opcjonalnie: zaokrąglenie rogów przycisku
               ),
-              side: const BorderSide(
-                color: AppColors.secondaryColor,
-                width: 2,
-              ),
-              elevation: 3,
-              shadowColor: AppColors.redColor,
             ),
             onPressed: () async {
               final selectedDate = await showDatePicker(
+                initialEntryMode: DatePickerEntryMode.calendarOnly,
                 context: context,
                 initialDate: DateTime.now(),
                 firstDate: DateTime.now(),
@@ -256,29 +295,25 @@ class _ContentDialog extends StatelessWidget {
             },
           ),
           ElevatedButton.icon(
-            label: Text(
-              selectedTimeFormatted ?? 'Dodaj godzinę',
-              style: const TextStyle(
-                color: AppColors.accentColor,
-              ),
-            ),
             icon: const Icon(
               Icons.more_time_rounded,
               color: AppColors.accentColor,
             ),
+            label: Text(
+              selectedTimeFormatted ?? 'Dodaj godzinę',
+              style: const TextStyle(
+                color: AppColors.secondaryColor,
+              ),
+            ),
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.primaryColor,
+              elevation: 2,
+              shadowColor: AppColors.accentColor,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(
                   8.0,
                 ),
               ),
-              side: const BorderSide(
-                color: AppColors.redColor,
-                width: 2,
-              ),
-              elevation: 3,
-              shadowColor: AppColors.secondaryColor,
             ),
             onPressed: () async {
               TimeOfDay? selectedTime = await showTimePicker(

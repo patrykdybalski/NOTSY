@@ -2,18 +2,15 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:primary_school/app/core/enums.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
-import 'package:primary_school/domain/repositories/events_repository.dart';
+import 'package:primary_school/domain/repositories/calendar/events_repository.dart';
 part 'calendar_state.dart';
 
 class CalendarCubit extends Cubit<CalendarState> {
   CalendarCubit(this._eventsRepository)
       : super(
-          const CalendarState(
-            calendarItems: [],
-            isLoading: false,
-            errorMessage: '',
-          ),
+          const CalendarState(),
         );
   final EventsRepository _eventsRepository;
 
@@ -22,9 +19,7 @@ class CalendarCubit extends Cubit<CalendarState> {
   Future<void> start() async {
     emit(
       const CalendarState(
-        calendarItems: [],
-        isLoading: true,
-        errorMessage: '',
+        status: Status.loading,
       ),
     );
 
@@ -32,8 +27,7 @@ class CalendarCubit extends Cubit<CalendarState> {
       emit(
         CalendarState(
           calendarItems: data,
-          isLoading: false,
-          errorMessage: '',
+          status: Status.success,
         ),
       );
     })
@@ -41,8 +35,7 @@ class CalendarCubit extends Cubit<CalendarState> {
         (error) {
           emit(
             CalendarState(
-              calendarItems: const [],
-              isLoading: false,
+              status: Status.error,
               errorMessage: error.toString(),
             ),
           );
@@ -56,8 +49,7 @@ class CalendarCubit extends Cubit<CalendarState> {
     } catch (error) {
       emit(
         CalendarState(
-          calendarItems: const [],
-          isLoading: false,
+          status: Status.error,
           errorMessage: error.toString(),
         ),
       );

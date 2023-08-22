@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:primary_school/app/core/enums.dart';
 import 'package:primary_school/constans/colors.dart';
 
-import 'package:primary_school/domain/repositories/events_repository.dart';
-import 'package:primary_school/features/home/pages/add_event_dialog/add_event_dialog.dart';
+import 'package:primary_school/domain/repositories/calendar/events_repository.dart';
+import 'package:primary_school/features/home/pages/calendar_page/add_event_dialog/add_event_dialog.dart';
+
 import 'package:primary_school/features/home/pages/calendar_page/cubit/calendar_cubit.dart';
+import 'package:primary_school/features/home/pages/calendar_page/edit_event_screen/edit_event_screen.dart';
 import 'package:primary_school/features/home/pages/calendar_page/widgets/calendar_widget.dart';
 import 'package:primary_school/features/home/pages/calendar_page/widgets/event_widget.dart';
 
@@ -23,6 +27,8 @@ class _CalendarPageState extends State<CalendarPage> {
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
       appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: AppColors.primaryColor,
         title: const Text(
           'Kalendarz',
           style: TextStyle(
@@ -30,8 +36,6 @@ class _CalendarPageState extends State<CalendarPage> {
             color: AppColors.accentColor,
           ),
         ),
-        centerTitle: true,
-        backgroundColor: AppColors.primaryColor,
         leading: IconButton(
           color: AppColors.accentColor,
           icon: const Icon(Icons.menu),
@@ -42,7 +46,7 @@ class _CalendarPageState extends State<CalendarPage> {
             icon: const Icon(
               Icons.add_circle_outline_outlined,
               size: 35,
-              color: AppColors.accentColor,
+              color: AppColors.redColor,
             ),
             padding: const EdgeInsets.only(right: 5),
             onPressed: () {
@@ -57,87 +61,90 @@ class _CalendarPageState extends State<CalendarPage> {
         )..start(),
         child: BlocBuilder<CalendarCubit, CalendarState>(
           builder: (context, state) {
-            if (state.errorMessage.isNotEmpty) {
-              return Center(
-                child: Text(
-                  'Coś  poszło nie tak: ${state.errorMessage}',
-                ),
-              );
-            }
-            if (state.isLoading) {
-              return const CircularProgressIndicator();
-            }
             final eventModels = state.calendarItems;
+            switch (state.status) {
+              case Status.initial:
+                return const Center(
+                  child: Text('Initial state'),
+                );
+              case Status.loading:
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
 
-            return ListView(
-              children: [
-                const CalendarWidget(
-                 
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: 20.0,
-                    right: 20,
-                  ),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: const [
-                            BoxShadow(
-                              color: Colors.grey,
-                              blurRadius: 10,
-                              offset: Offset(0, 0),
-                            ),
-                          ],
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 10.0),
-                        child: Material(
-                          color: Colors.blue,
-                          borderRadius: BorderRadius.circular(10),
-                          child: InkWell(
-                            borderRadius: BorderRadius.circular(20),
-                            onTap: () {
-                              // Logika po naciśnięciu przycisku
-                            },
-                            child: const Padding(
-                              padding: EdgeInsets.all(10),
-                              child: Icon(
-                                Icons.search,
-                                color: Colors.white,
-                              ),
+              case Status.success:
+                return ListView(
+                  children: [
+                    const CalendarWidget(),
+                    // TextButton(
+                    //     onPressed: () {
+                    //       showAboutDialog(
+                    //         context: context,
+                    //         applicationVersion: '3.0.0',
+                    //         applicationIcon: Icon(Icons.abc),
+                    //         applicationLegalese: 'Blah blah',
+                    //         children: [
+                    //           AdditionalWi
+                    //         ]
+                    //       );
+                    //     },
+                    //     child: const Text('Info')),
+                    Column(
+                      children: [
+                        for (final eventModel in eventModels) ...[
+                          Slidable(
+                            key: ValueKey(eventModel.id),
+                            endActionPane: ActionPane(
+                                motion: const ScrollMotion(),
+                                children: [
+                                  SlidableAction(
+                                    label: 'Usuń',
+                                    icon: Icons.delete,
+                                    borderRadius: BorderRadius.circular(12),
+                                    spacing: 5,
+                                    backgroundColor: AppColors.primaryColor,
+                                    onPressed: (context) {
+                                      context
+                                          .read<CalendarCubit>()
+                                          .remove(documentID: eventModel.id);
+                                    },
+                                  ),
+                                  SlidableAction(
+                                    label: 'Edytuj',
+                                    borderRadius: BorderRadius.circular(12),
+                                    icon: Icons.mode_edit_outline_outlined,
+                                    backgroundColor: AppColors.primaryColor,
+                                    onPressed: (context) {
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  EditEventScreen(
+                                                      eventModel: eventModel)));
+                                    },
+                                  ),
+                                ]),
+                            child: EventWidget(
+                              eventModel: eventModel,
                             ),
                           ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Column(
-                  children: [
-                    for (final eventModel in eventModels) ...[
-                      EventWidget(
-                        eventModel: eventModel,
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      )
-                    ],
+                          const SizedBox(
+                            height: 10,
+                          )
+                        ],
+                      ],
+                    )
                   ],
-                )
-              ],
-            );
+                );
+              case Status.error:
+                return Center(
+                  child: Text(
+                    state.errorMessage ?? 'Unknown error',
+                    style: const TextStyle(
+                      color: Colors.red,
+                    ),
+                  ),
+                );
+            }
           },
         ),
       ),

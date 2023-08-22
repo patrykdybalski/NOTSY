@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:primary_school/constans/colors.dart';
 
 import 'package:primary_school/features/home/pages/calendar_page/calendar_page.dart';
-import 'package:primary_school/features/home/pages/expenses_page/expenses_page.dart';
+import 'package:primary_school/features/home/pages/expenses_page/weather_page.dart';
 import 'package:primary_school/features/home/pages/notes_page/notes_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -28,14 +28,15 @@ class _HomePageState extends State<HomePage> {
           if (currentIndex == 1) {
             return const NotesPage();
           }
-          return const ExpensesPage();
+          return const WeatherPage();
         },
       ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
+        elevation: 10,
         backgroundColor: AppColors.primaryColor,
-        selectedItemColor: AppColors.secondaryColor,
-        unselectedItemColor: Colors.white,
+        selectedItemColor: AppColors.redColor,
+        unselectedItemColor: AppColors.secondaryColor,
         currentIndex: currentIndex,
         onTap: (newIndex) {
           setState(() {
@@ -44,6 +45,7 @@ class _HomePageState extends State<HomePage> {
         },
         items: const [
           BottomNavigationBarItem(
+            backgroundColor: Colors.red,
             icon: Icon(
               Icons.calendar_month_outlined,
             ),
@@ -56,24 +58,11 @@ class _HomePageState extends State<HomePage> {
             label: 'Notatki',
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.attach_money_outlined,
-            ),
-            label: 'Wydatki',
+            icon: Icon(Icons.wb_sunny_outlined),
+            label: 'Pogoda',
           ),
         ],
       ),
     );
   }
 }
-
-// floatingActionButton: FloatingActionButton(
-//         onPressed: () {
-//           Navigator.of(context).push(
-//             MaterialPageRoute(
-//               builder: (context) => const AddTaskBarPage(),
-//             ),
-//           );
-//         },
-//         child: const Icon(Icons.add),
-//       ),
