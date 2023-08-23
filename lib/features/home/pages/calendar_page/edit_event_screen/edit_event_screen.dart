@@ -43,96 +43,93 @@ class _EditEventScreenState extends State<EditEventScreen> {
         },
         child: BlocBuilder<EditEventCubit, EditEventState>(
           builder: (context, state) {
-            return AlertDialog(
-              scrollable: true,
-              titlePadding: const EdgeInsets.all(1),
-              contentPadding: const EdgeInsets.all(5),
-              backgroundColor: AppColors.primaryColor,
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    icon: const Icon(
-                      Icons.arrow_circle_left_outlined,
-                      color: AppColors.redColor,
-                      size: 30,
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
+            return Container(
+              color: AppColors.primaryColor,
+              child: AlertDialog(
+                scrollable: true,
+                titlePadding: const EdgeInsets.all(1),
+                contentPadding: const EdgeInsets.all(5),
+                backgroundColor: AppColors.primaryColor,
+                shadowColor: AppColors.primaryColor,
+                content: _ContentDialog(
+                  onTitleChanged: (newValue) {
+                    setState(
+                      () {
+                        _title = newValue;
+                      },
+                    );
+                  },
+                  onSubtitleChanged: (newValue) {
+                    setState(
+                      () {
+                        _subtitle = newValue;
+                      },
+                    );
+                  },
+                  onDayChanged: (newValue) {
+                    setState(
+                      () {
+                        _selectedDay = newValue;
+                      },
+                    );
+                  },
+                  onTimeChanged: (newValue) {
+                    setState(() {
+                      _selectedTime = newValue;
+                    });
+                  },
+                  selectedTimeFormatted: _selectedTime == null
+                      ? null
+                      : DateFormat.Hm().format(_selectedTime!),
+                  selectedDateFormatted: _selectedDay == null
+                      ? null
+                      : DateFormat.yMd().format(_selectedDay!),
+                  eventModel: widget.eventModel,
+                ),
+                actions: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: const Text(
+                            'Anuluj',
+                            style: TextStyle(
+                              color: AppColors.redColor,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 16,
+                            ),
+                          )),
+                      TextButton(
+                        onPressed: () {
+                          final newTitle = _title ?? '';
+                          final newSubtitle = _subtitle ?? '';
+                          final newSelectedDay = _selectedDay ?? '' as DateTime;
+                          final newSelectedTime =
+                              _selectedTime ?? '' as DateTime;
+                          context.read<EditEventCubit>().edit(
+                                newTitle,
+                                newSubtitle,
+                                newSelectedDay,
+                                newSelectedTime,
+                                widget.eventModel.id,
+                              );
+                        },
+                        child: const Text(
+                          'Zapisz',
+                          style: TextStyle(
+                            color: AppColors.accentColor,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
-              content: _ContentDialog(
-                onTitleChanged: (newValue) {
-                  setState(
-                    () {
-                      _title = newValue;
-                    },
-                  );
-                },
-                onSubtitleChanged: (newValue) {
-                  setState(
-                    () {
-                      _subtitle = newValue;
-                    },
-                  );
-                },
-                onDayChanged: (newValue) {
-                  setState(
-                    () {
-                      _selectedDay = newValue;
-                    },
-                  );
-                },
-                onTimeChanged: (newValue) {
-                  setState(() {
-                    _selectedTime = newValue;
-                  });
-                },
-                selectedTimeFormatted: _selectedTime == null
-                    ? null
-                    : DateFormat.Hm().format(_selectedTime!),
-                selectedDateFormatted: _selectedDay == null
-                    ? null
-                    : DateFormat.yMd().format(_selectedDay!),
-                eventModel: widget.eventModel,
-              ),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    Map<String, dynamic> updatedFields = {};
-
-                    if (_title != null && _title != widget.eventModel.title) {
-                      updatedFields['title'] = _title;
-                    }
-                    if (_subtitle != null &&
-                        _subtitle != widget.eventModel.subtitle) {
-                      updatedFields['subtitle'] = _subtitle;
-                    }
-                    if (_selectedDay != null &&
-                        _selectedDay != widget.eventModel.selectedDay) {
-                      updatedFields['selectedDay'] = _selectedDay;
-                    }
-                    if (_selectedTime != null &&
-                        _selectedTime != widget.eventModel.selectedTime) {
-                      updatedFields['selectedTime'] = _selectedTime;
-                    }
-
-                    context
-                        .read<EditEventCubit>()
-                        .edit(widget.eventModel.id, updatedFields);
-                  },
-                  child: const Text(
-                    'Zapisz',
-                    style: TextStyle(
-                      color: AppColors.redColor,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-              ],
             );
           },
         ),
@@ -164,7 +161,11 @@ class _ContentDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.only(
+        top: 15.0,
+        left: 10.0,
+        right: 10.0,
+      ),
       child: Column(
         children: [
           TextFormField(
@@ -172,36 +173,43 @@ class _ContentDialog extends StatelessWidget {
             initialValue: eventModel.title,
             onChanged: onTitleChanged,
             autofocus: true,
+            maxLength: 50,
+            maxLines: 2,
+            minLines: 1,
+            keyboardType: TextInputType.text,
             cursorColor: Colors.white10,
             cursorRadius: const Radius.circular(12),
             style: const TextStyle(
-              color: AppColors.dayColor,
+              color: AppColors.secondaryColor,
             ),
             decoration: InputDecoration(
               labelText: 'Temat',
+              filled: true,
+              fillColor: Colors.white10,
               labelStyle: const TextStyle(
-                color: AppColors.dayColor,
+                color: AppColors.secondaryColor,
                 fontSize: 18,
               ),
               focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                   borderSide: const BorderSide(
-                    color: AppColors.dayColor,
-                    width: 1.5,
+                    color: AppColors.redColor,
+                    width: 1.0,
                   )),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
                 borderSide: const BorderSide(
-                  color: AppColors.dayColor,
+                  color: AppColors.darkGreen,
+                  width: 0.3,
                 ),
               ),
-              filled: true,
-              fillColor: Colors.white10,
+              disabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(
+                    color: AppColors.darkGreen,
+                    width: 0.3,
+                  )),
             ),
-            keyboardType: TextInputType.text,
-            maxLength: 50,
-            maxLines: 2,
-            minLines: 1,
           ),
           const SizedBox(
             height: 10,
@@ -209,34 +217,43 @@ class _ContentDialog extends StatelessWidget {
           TextFormField(
             initialValue: eventModel.subtitle,
             onChanged: onSubtitleChanged,
-            cursorColor: Colors.white10,
+            keyboardType: TextInputType.multiline,
+            maxLines: 10,
+            minLines: 4,
+            scrollPhysics:
+                const ClampingScrollPhysics(), // Dodaj to, aby umożliwić przewijanie
+            cursorColor: AppColors.secondaryColor,
             cursorRadius: const Radius.circular(12),
             style: const TextStyle(
-              color: AppColors.dayColor,
+              color: AppColors.secondaryColor,
             ),
             decoration: InputDecoration(
               enabled: true,
               labelText: 'Opis',
               labelStyle: const TextStyle(
-                color: AppColors.dayColor,
+                color: AppColors.secondaryColor,
                 fontSize: 18,
               ),
               focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                   borderSide: const BorderSide(
-                    color: AppColors.dayColor,
-                    width: 1.5,
+                    color: AppColors.redColor,
+                    width: 1.0,
                   )),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
                 borderSide: const BorderSide(
-                  color: AppColors.dayColor,
+                  color: AppColors.darkGreen,
+                  width: 0.3,
                 ),
               ),
+              disabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: const BorderSide(
+                    color: AppColors.darkGreen,
+                    width: 0.3,
+                  )),
             ),
-            keyboardType: TextInputType.text,
-            maxLines: 10,
-            minLines: 1,
           ),
           const SizedBox(
             height: 20,
@@ -250,7 +267,7 @@ class _ContentDialog extends StatelessWidget {
             ),
             icon: const Icon(
               Icons.calendar_month_outlined,
-              color: AppColors.accentColor,
+              color: AppColors.secondaryColor,
             ),
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.primaryColor, // Kolor tła przycisku
@@ -261,10 +278,10 @@ class _ContentDialog extends StatelessWidget {
               ),
               side: const BorderSide(
                 color: AppColors.secondaryColor,
-                width: 1,
+                width: 0.3,
               ),
               elevation: 1.5,
-              shadowColor: AppColors.accentColor,
+              shadowColor: AppColors.primaryColor,
             ),
             onPressed: () async {
               final selectedDate = await showDatePicker(
@@ -287,7 +304,7 @@ class _ContentDialog extends StatelessWidget {
             ),
             icon: const Icon(
               Icons.more_time_rounded,
-              color: AppColors.accentColor,
+              color: AppColors.secondaryColor,
             ),
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.primaryColor,
@@ -298,10 +315,10 @@ class _ContentDialog extends StatelessWidget {
               ),
               side: const BorderSide(
                 color: AppColors.secondaryColor,
-                width: 1,
+                width: 0.3,
               ),
               elevation: 1.5,
-              shadowColor: AppColors.accentColor,
+              shadowColor: AppColors.primaryColor,
             ),
             onPressed: () async {
               TimeOfDay? selectedTime = await showTimePicker(

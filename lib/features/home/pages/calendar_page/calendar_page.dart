@@ -44,7 +44,7 @@ class _CalendarPageState extends State<CalendarPage> {
         actions: [
           IconButton(
             icon: const Icon(
-              Icons.add_box_outlined,
+              Icons.add,
               size: 35,
               color: AppColors.darkGreen,
             ),
@@ -86,58 +86,15 @@ class _CalendarPageState extends State<CalendarPage> {
                                 children: [
                                   SlidableAction(
                                     label: 'Usuń',
+                                    foregroundColor: AppColors.redColor,
                                     icon: Icons.delete,
                                     borderRadius: BorderRadius.circular(12),
                                     spacing: 5,
                                     backgroundColor: AppColors.primaryColor,
-                                    onPressed: (context) {
-                                      showDialog(
-                                        context: context,
-                                        builder: ((context) {
-                                          return AlertDialog(
-                                            elevation: 20,
-                                            backgroundColor:
-                                                AppColors.primaryColor,
-                                            title:
-                                                const Text('Usunąć notatkę?'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () {
-                                                  Navigator.of(context).pop();
-                                                },
-                                                child: const Text(
-                                                  'Nie',
-                                                  style: TextStyle(
-                                                    color: AppColors
-                                                        .secondaryColor,
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                                ),
-                                              ),
-                                              TextButton(
-                                                onPressed: () {
-                                                  context
-                                                      .read<CalendarCubit>()
-                                                      .remove(
-                                                        documentID:
-                                                            eventModel.id,
-                                                      );
-                                                },
-                                                child: const Text(
-                                                  'Tak',
-                                                  style: TextStyle(
-                                                    color: AppColors
-                                                        .secondaryColor,
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
+                                    onPressed: (conntext) {
+                                      context.read<CalendarCubit>().remove(
+                                            documentID: eventModel.id,
                                           );
-                                        }),
-                                      );
                                     },
                                   ),
                                   SlidableAction(
@@ -147,10 +104,11 @@ class _CalendarPageState extends State<CalendarPage> {
                                     backgroundColor: AppColors.primaryColor,
                                     onPressed: (context) {
                                       Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  EditEventScreen(
-                                                      eventModel: eventModel)));
+                                        MaterialPageRoute(
+                                          builder: (context) => EditEventScreen(
+                                              eventModel: eventModel),
+                                        ),
+                                      );
                                     },
                                   ),
                                 ]),

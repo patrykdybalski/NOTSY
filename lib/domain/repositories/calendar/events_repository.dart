@@ -29,16 +29,24 @@ class EventsRepository {
   }
 
   Future<void> edit(
-    Map<String, dynamic>? updatedFields,
+    String title,
+    String subtitle,
+    DateTime selectedDay,
+    DateTime selectedTime,
     String docID,
   ) async {
-    if (updatedFields == null || updatedFields.isEmpty) {
-      return;
-    }
+    
     await FirebaseFirestore.instance
         .collection('calendarItems')
         .doc(docID)
-        .update(updatedFields);
+        .update(
+          {
+            'title' : title,
+            'subtitle' : subtitle,
+            'selecteDay' : selectedDay,
+            'selectedTime' : selectedTime,
+          }
+        );
   }
 
   Future<void> add(

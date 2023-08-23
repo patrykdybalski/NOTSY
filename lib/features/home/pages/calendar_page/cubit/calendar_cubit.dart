@@ -46,6 +46,9 @@ class CalendarCubit extends Cubit<CalendarState> {
   Future<void> remove({required String documentID}) async {
     try {
       await _eventsRepository.delete(id: documentID);
+      emit(const CalendarState(
+        status: Status.success,
+      ));
     } catch (error) {
       emit(
         CalendarState(
