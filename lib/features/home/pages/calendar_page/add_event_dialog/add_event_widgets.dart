@@ -24,16 +24,6 @@ class TimeButton extends StatelessWidget {
           color: AppColors.secondaryColor,
         ),
       ),
-      style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.primaryColor,
-        elevation: 2,
-        shadowColor: AppColors.accentColor,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(
-            8.0,
-          ),
-        ),
-      ),
       onPressed: () async {
         TimeOfDay? selectedTime = await showTimePicker(
           context: context,
@@ -47,6 +37,16 @@ class TimeButton extends StatelessWidget {
           onTimeChanged(dateTime);
         }
       },
+      style: ElevatedButton.styleFrom(
+        backgroundColor: AppColors.primaryColor,
+        elevation: 2,
+        shadowColor: AppColors.accentColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(
+            8.0,
+          ),
+        ),
+      ),
     );
   }
 }
@@ -74,17 +74,6 @@ class DayButton extends StatelessWidget {
           color: AppColors.secondaryColor,
         ),
       ),
-      style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.primaryColor,
-        elevation: 1.5,
-
-        shadowColor: AppColors.accentColor, // Kolor tła przycisku
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(
-            8.0,
-          ), // Opcjonalnie: zaokrąglenie rogów przycisku
-        ),
-      ),
       onPressed: () async {
         final selectedDate = await showDatePicker(
           initialEntryMode: DatePickerEntryMode.calendarOnly,
@@ -97,6 +86,16 @@ class DayButton extends StatelessWidget {
         );
         onDayChanged(selectedDate);
       },
+      style: ElevatedButton.styleFrom(
+        backgroundColor: AppColors.primaryColor,
+        elevation: 1.5,
+        shadowColor: AppColors.accentColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(
+            8.0,
+          ),
+        ),
+      ),
     );
   }
 }

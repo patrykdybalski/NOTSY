@@ -27,20 +27,6 @@ class TimeButton extends StatelessWidget {
         Icons.more_time_rounded,
         color: AppColors.secondaryColor,
       ),
-      style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.primaryColor,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(
-            8.0,
-          ),
-        ),
-        side: const BorderSide(
-          color: AppColors.secondaryColor,
-          width: 0.3,
-        ),
-        elevation: 1.5,
-        shadowColor: AppColors.primaryColor,
-      ),
       onPressed: () async {
         TimeOfDay? selectedTime = await showTimePicker(
           context: context,
@@ -54,6 +40,16 @@ class TimeButton extends StatelessWidget {
           onTimeChanged(dateTime);
         }
       },
+      style: ElevatedButton.styleFrom(
+        backgroundColor: AppColors.primaryColor,
+        elevation: 2,
+        shadowColor: AppColors.accentColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(
+            8.0,
+          ),
+        ),
+      ),
     );
   }
 }
@@ -83,20 +79,6 @@ class DayButton extends StatelessWidget {
         Icons.calendar_month_outlined,
         color: AppColors.secondaryColor,
       ),
-      style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.primaryColor, // Kolor tła przycisku
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(
-            8.0,
-          ), // Opcjonalnie: zaokrąglenie rogów przycisku
-        ),
-        side: const BorderSide(
-          color: AppColors.secondaryColor,
-          width: 0.3,
-        ),
-        elevation: 1.5,
-        shadowColor: AppColors.primaryColor,
-      ),
       onPressed: () async {
         final selectedDate = await showDatePicker(
           context: context,
@@ -108,6 +90,16 @@ class DayButton extends StatelessWidget {
         );
         onDayChanged(selectedDate);
       },
+      style: ElevatedButton.styleFrom(
+        backgroundColor: AppColors.primaryColor,
+        elevation: 1.5,
+        shadowColor: AppColors.accentColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(
+            8.0,
+          ),
+        ),
+      ),
     );
   }
 }

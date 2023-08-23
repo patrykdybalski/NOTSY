@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:primary_school/app/core/enums.dart';
 import 'package:primary_school/constans/colors.dart';
+import 'package:primary_school/domain/models/event_model/event_model.dart';
 
 import 'package:primary_school/domain/repositories/calendar/events_repository.dart';
 import 'package:primary_school/features/home/pages/calendar_page/add_event_dialog/add_event_dialog.dart';
@@ -79,43 +80,7 @@ class _CalendarPageState extends State<CalendarPage> {
                     Column(
                       children: [
                         for (final eventModel in eventModels) ...[
-                          Slidable(
-                            key: ValueKey(eventModel.id),
-                            endActionPane: ActionPane(
-                                motion: const ScrollMotion(),
-                                children: [
-                                  SlidableAction(
-                                    label: 'Usuń',
-                                    foregroundColor: AppColors.redColor,
-                                    icon: Icons.delete,
-                                    borderRadius: BorderRadius.circular(12),
-                                    spacing: 5,
-                                    backgroundColor: AppColors.primaryColor,
-                                    onPressed: (conntext) {
-                                      context.read<CalendarCubit>().remove(
-                                            documentID: eventModel.id,
-                                          );
-                                    },
-                                  ),
-                                  SlidableAction(
-                                    label: 'Edytuj',
-                                    borderRadius: BorderRadius.circular(12),
-                                    icon: Icons.mode_edit_outline_outlined,
-                                    backgroundColor: AppColors.primaryColor,
-                                    onPressed: (context) {
-                                      Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                          builder: (context) => EditEventScreen(
-                                              eventModel: eventModel),
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                ]),
-                            child: EventWidget(
-                              eventModel: eventModel,
-                            ),
-                          ),
+                          SlidableEventWidget(eventModel: eventModel),
                           const SizedBox(
                             height: 10,
                           )
@@ -146,5 +111,52 @@ class _CalendarPageState extends State<CalendarPage> {
         builder: (context) {
           return const AddEventDialog();
         });
+  }
+}
+
+class SlidableEventWidget extends StatelessWidget {
+  const SlidableEventWidget({
+    super.key,
+    required this.eventModel,
+  });
+
+  final EventModel eventModel;
+
+  @override
+  Widget build(BuildContext context) {
+    return Slidable(
+      key: ValueKey(eventModel.id),
+      endActionPane: ActionPane(motion: const ScrollMotion(), children: [
+        SlidableAction(
+          label: 'Usuń',
+          foregroundColor: AppColors.redColor,
+          icon: Icons.delete,
+          borderRadius: BorderRadius.circular(12),
+          spacing: 5,
+          backgroundColor: AppColors.primaryColor,
+          onPressed: (conntext) {
+            context.read<CalendarCubit>().remove(
+                  documentID: eventModel.id,
+                );
+          },
+        ),
+        SlidableAction(
+          label: 'Edytuj',
+          borderRadius: BorderRadius.circular(12),
+          icon: Icons.mode_edit_outline_outlined,
+          backgroundColor: AppColors.primaryColor,
+          onPressed: (context) {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => EditEventScreen(eventModel: eventModel),
+              ),
+            );
+          },
+        ),
+      ]),
+      child: EventWidget(
+        eventModel: eventModel,
+      ),
+    );
   }
 }
