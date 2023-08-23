@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/domain/repositories/calendar/events_repository.dart';
+import 'package:primary_school/features/home/pages/calendar_page/add_event_dialog/add_event_widgets.dart';
 import 'package:primary_school/features/home/pages/calendar_page/add_event_dialog/cubit/add_event_cubit.dart';
 
 class AddEventDialog extends StatefulWidget {
@@ -161,164 +162,25 @@ class _ContentDialog extends StatelessWidget {
       ),
       child: Column(
         children: [
-          TextFormField(
-            textAlign: TextAlign.justify,
-            onChanged: onTitleChanged,
-            autofocus: true,
-            keyboardType: TextInputType.text,
-            maxLength: 50,
-            maxLines: 2,
-            minLines: 1,
-            cursorColor: Colors.white10,
-            cursorRadius: const Radius.circular(12),
-            style: const TextStyle(
-              color: AppColors.secondaryColor,
-              fontWeight: FontWeight.w700,
-            ),
-            decoration: InputDecoration(
-              filled: true,
-              fillColor: Colors.white10,
-              labelText: 'Temat',
-              labelStyle: const TextStyle(
-                color: AppColors.secondaryColor,
-                fontSize: 18,
-              ),
-              focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: const BorderSide(
-                    color: AppColors.redColor,
-                    width: 1,
-                  )),
-              disabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: const BorderSide(
-                    color: AppColors.darkGreen,
-                    width: 0.3,
-                  )),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(
-                  color: AppColors.darkGreen,
-                  width: 0.6,
-                ),
-              ),
-            ),
+          TitleWidget(
+            onTitleChanged: onTitleChanged,
           ),
           const SizedBox(
             height: 10,
           ),
-          TextFormField(
-            onChanged: onSubtitleChanged,
-            keyboardType: TextInputType.multiline,
-            scrollPhysics:
-                const ClampingScrollPhysics(), // Dodaj to, aby umożliwić przewijanie
-            maxLines: 10,
-            minLines: 4,
-            cursorColor: AppColors.secondaryColor,
-            cursorRadius: const Radius.circular(12),
-            style: const TextStyle(
-              color: AppColors.secondaryColor,
-            ),
-            decoration: InputDecoration(
-              hintText: 'Opis',
-              labelStyle: const TextStyle(
-                color: AppColors.secondaryColor,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-              focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: const BorderSide(
-                    color: AppColors.redColor,
-                    width: 1,
-                  )),
-              disabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: const BorderSide(
-                    color: AppColors.darkGreen,
-                    width: 0.3,
-                  )),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(
-                  color: AppColors.darkGreen,
-                  width: 0.3,
-                ),
-              ),
-            ),
+          SubtitleWidget(
+            onSubtitleChanged: onSubtitleChanged,
           ),
           const SizedBox(
             height: 15,
           ),
-          ElevatedButton.icon(
-            icon: const Icon(
-              Icons.calendar_month_outlined,
-              color: AppColors.secondaryColor,
-            ),
-            label: Text(
-              selectedDateFormatted ?? 'Wybierz dzień',
-              style: const TextStyle(
-                color: AppColors.secondaryColor,
-              ),
-            ),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.primaryColor,
-              elevation: 1.5,
-
-              shadowColor: AppColors.accentColor, // Kolor tła przycisku
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(
-                  8.0,
-                ), // Opcjonalnie: zaokrąglenie rogów przycisku
-              ),
-            ),
-            onPressed: () async {
-              final selectedDate = await showDatePicker(
-                initialEntryMode: DatePickerEntryMode.calendarOnly,
-                context: context,
-                initialDate: DateTime.now(),
-                firstDate: DateTime.now(),
-                lastDate: DateTime.now().add(
-                  const Duration(days: 365 * 10),
-                ),
-              );
-              onDayChanged(selectedDate);
-            },
+          DayButton(
+            selectedDateFormatted: selectedDateFormatted,
+            onDayChanged: onDayChanged,
           ),
-          ElevatedButton.icon(
-            icon: const Icon(
-              Icons.more_time_rounded,
-              color: AppColors.secondaryColor,
-            ),
-            label: Text(
-              selectedTimeFormatted ?? 'Dodaj godzinę',
-              style: const TextStyle(
-                color: AppColors.secondaryColor,
-              ),
-            ),
-            style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.primaryColor,
-              elevation: 2,
-              shadowColor: AppColors.accentColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(
-                  8.0,
-                ),
-              ),
-            ),
-            onPressed: () async {
-              TimeOfDay? selectedTime = await showTimePicker(
-                context: context,
-                initialTime: TimeOfDay.now(),
-              );
-
-              if (selectedTime != null) {
-                DateTime now = DateTime.now();
-                DateTime dateTime = DateTime(now.year, now.month, now.day,
-                    selectedTime.hour, selectedTime.minute);
-                onTimeChanged(dateTime);
-              }
-            },
+          TimeButton(
+            selectedTimeFormatted: selectedTimeFormatted,
+            onTimeChanged: onTimeChanged,
           ),
         ],
       ),
