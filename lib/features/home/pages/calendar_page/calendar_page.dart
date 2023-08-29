@@ -126,34 +126,39 @@ class SlidableEventWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Slidable(
       key: ValueKey(eventModel.id),
-      endActionPane: ActionPane(motion: const ScrollMotion(), children: [
-        SlidableAction(
-          label: 'Usuń',
-          foregroundColor: AppColors.redColor,
-          icon: Icons.delete,
-          borderRadius: BorderRadius.circular(12),
-          spacing: 5,
-          backgroundColor: AppColors.primaryColor,
-          onPressed: (conntext) {
-            context.read<CalendarCubit>().remove(
-                  documentID: eventModel.id,
-                );
-          },
-        ),
-        SlidableAction(
-          label: 'Edytuj',
-          borderRadius: BorderRadius.circular(12),
-          icon: Icons.mode_edit_outline_outlined,
-          backgroundColor: AppColors.primaryColor,
-          onPressed: (context) {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => EditEventScreen(eventModel: eventModel),
-              ),
-            );
-          },
-        ),
-      ]),
+      endActionPane: ActionPane(
+        motion: const ScrollMotion(),
+        children: [
+          SlidableAction(
+            onPressed: (conntext) {
+              context.read<CalendarCubit>().remove(
+                    documentID: eventModel.id,
+                  );
+            },
+            label: 'Usuń',
+            icon: Icons.delete_outline_outlined,
+            backgroundColor: AppColors.primaryColor,
+            foregroundColor: AppColors.secondaryColor,
+            borderRadius: BorderRadius.circular(12),
+            spacing: 5,
+          ),
+          SlidableAction(
+            onPressed: (context) {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => EditEventScreen(eventModel: eventModel),
+                ),
+              );
+            },
+            label: 'Edytuj',
+            icon: Icons.mode_edit_outline_outlined,
+            backgroundColor: AppColors.primaryColor,
+            foregroundColor: AppColors.secondaryColor,
+            spacing: 5,
+            borderRadius: BorderRadius.circular(12),
+          ),
+        ],
+      ),
       child: EventWidget(
         eventModel: eventModel,
       ),

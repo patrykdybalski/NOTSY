@@ -117,35 +117,37 @@ class SubtitleWidget extends StatelessWidget {
           const ClampingScrollPhysics(), // Dodaj to, aby umożliwić przewijanie
       maxLines: 10,
       minLines: 4,
+
       cursorColor: AppColors.secondaryColor,
       cursorRadius: const Radius.circular(12),
       style: const TextStyle(
         color: AppColors.secondaryColor,
       ),
       decoration: InputDecoration(
-        hintText: 'Opis',
+        labelText: 'Szczegóły',
+        alignLabelWithHint: true,
         labelStyle: const TextStyle(
           color: AppColors.secondaryColor,
           fontSize: 18,
-          fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.w300,
         ),
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(
               color: AppColors.redColor,
-              width: 1,
+              width: 0.2,
             )),
         disabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(
               color: AppColors.darkGreen,
-              width: 0.3,
+              width: 0.1,
             )),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: const BorderSide(
             color: AppColors.darkGreen,
-            width: 0.3,
+            width: 0.1,
           ),
         ),
       ),

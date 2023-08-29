@@ -26,32 +26,39 @@ class _EditEventScreenState extends State<EditEventScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => EditEventCubit(EventsRepository()),
-      child: BlocListener<EditEventCubit, EditEventState>(
-        listener: (context, state) {
-          if (state.saved) {
-            Navigator.of(context).pop();
-          }
-          if (state.errorMessage.isNotEmpty) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(state.errorMessage),
-                backgroundColor: Colors.red,
-              ),
-            );
-          }
-        },
-        child: BlocBuilder<EditEventCubit, EditEventState>(
-          builder: (context, state) {
-            return Container(
-              color: AppColors.primaryColor,
-              child: AlertDialog(
+    return Scaffold(
+      backgroundColor: AppColors.primaryColor,
+      body: BlocProvider(
+        create: (context) => EditEventCubit(EventsRepository()),
+        child: BlocListener<EditEventCubit, EditEventState>(
+          listener: (context, state) {
+            if (state.saved) {
+              Navigator.of(context).pop();
+            }
+            if (state.errorMessage.isNotEmpty) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(state.errorMessage),
+                  backgroundColor: Colors.red,
+                ),
+              );
+            }
+          },
+          child: BlocBuilder<EditEventCubit, EditEventState>(
+            builder: (context, state) {
+              return AlertDialog(
                 scrollable: true,
                 titlePadding: const EdgeInsets.all(1),
                 contentPadding: const EdgeInsets.all(5),
                 backgroundColor: AppColors.primaryColor,
-                shadowColor: AppColors.primaryColor,
+                shadowColor: AppColors.darkGreen,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(13),
+                    side: const BorderSide(
+                      color: AppColors.primaryColor,
+                      width: 60,
+                      strokeAlign: 1,
+                    )),
                 content: _ContentDialog(
                   onTitleChanged: (newValue) {
                     setState(
@@ -130,9 +137,9 @@ class _EditEventScreenState extends State<EditEventScreen> {
                     ],
                   ),
                 ],
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );

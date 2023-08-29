@@ -140,7 +140,7 @@ class SubtitleField extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(
               color: AppColors.redColor,
-              width: 1.0,
+              width: 0.6,
             )),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
@@ -176,7 +176,7 @@ class TitleField extends StatelessWidget {
       textAlign: TextAlign.justify,
       initialValue: eventModel.title,
       onChanged: onTitleChanged,
-      autofocus: true,
+      autofocus: false,
       maxLength: 50,
       maxLines: 2,
       minLines: 1,
