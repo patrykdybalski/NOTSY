@@ -12,7 +12,7 @@ class TimeButton extends StatelessWidget {
 
   final String? selectedTimeFormatted;
   final EventModel eventModel;
-  final Function(DateTime? p1) onTimeChanged;
+  final Function(DateTime?) onTimeChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class TimeButton extends StatelessWidget {
       onPressed: () async {
         TimeOfDay? selectedTime = await showTimePicker(
           context: context,
-          initialTime: TimeOfDay.now(),
+          initialTime: TimeOfDay.fromDateTime(eventModel.selectedTime),
         );
 
         if (selectedTime != null) {
@@ -64,7 +64,7 @@ class DayButton extends StatelessWidget {
 
   final String? selectedDateFormatted;
   final EventModel eventModel;
-  final Function(DateTime? p1) onDayChanged;
+  final Function(DateTime?) onDayChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +80,7 @@ class DayButton extends StatelessWidget {
         color: AppColors.secondaryColor,
       ),
       onPressed: () async {
-        final selectedDate = await showDatePicker(
+        DateTime? selectedDate = await showDatePicker(
           context: context,
           initialDate: eventModel.selectedDay,
           firstDate: DateTime.now(),
@@ -88,6 +88,7 @@ class DayButton extends StatelessWidget {
             const Duration(days: 365 * 10),
           ),
         );
+
         onDayChanged(selectedDate);
       },
       style: ElevatedButton.styleFrom(
@@ -176,7 +177,7 @@ class TitleField extends StatelessWidget {
       textAlign: TextAlign.justify,
       initialValue: eventModel.title,
       onChanged: onTitleChanged,
-      autofocus: false,
+      autofocus: true,
       maxLength: 50,
       maxLines: 2,
       minLines: 1,
@@ -187,7 +188,7 @@ class TitleField extends StatelessWidget {
         color: AppColors.secondaryColor,
       ),
       decoration: InputDecoration(
-        labelText: 'Temat',
+        labelText: 'Tytuł',
         filled: true,
         fillColor: Colors.white10,
         labelStyle: const TextStyle(

@@ -48,16 +48,15 @@ class _EditEventScreenState extends State<EditEventScreen> {
             builder: (context, state) {
               return AlertDialog(
                 scrollable: true,
-                titlePadding: const EdgeInsets.all(1),
+                titlePadding: const EdgeInsets.all(5),
                 contentPadding: const EdgeInsets.all(5),
                 backgroundColor: AppColors.primaryColor,
-                shadowColor: AppColors.darkGreen,
+                shadowColor: AppColors.primaryColor,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(13),
                     side: const BorderSide(
-                      color: AppColors.primaryColor,
-                      width: 60,
-                      strokeAlign: 1,
+                      color: AppColors.accentColor,
+                      width: 2.5,
                     )),
                 content: _ContentDialog(
                   onTitleChanged: (newValue) {
@@ -88,10 +87,14 @@ class _EditEventScreenState extends State<EditEventScreen> {
                   },
                   selectedTimeFormatted: _selectedTime == null
                       ? null
-                      : DateFormat.Hm().format(_selectedTime!),
+                      : DateFormat.Hm().format(
+                          _selectedTime!,
+                        ),
                   selectedDateFormatted: _selectedDay == null
                       ? null
-                      : DateFormat.yMd().format(_selectedDay!),
+                      : DateFormat.yMd().format(
+                          _selectedDay!,
+                        ),
                   eventModel: widget.eventModel,
                 ),
                 actions: [
@@ -112,11 +115,13 @@ class _EditEventScreenState extends State<EditEventScreen> {
                           )),
                       TextButton(
                         onPressed: () {
-                          final newTitle = _title ?? '';
-                          final newSubtitle = _subtitle ?? '';
-                          final newSelectedDay = _selectedDay ?? '' as DateTime;
+                          final newTitle = _title ?? widget.eventModel.title;
+                          final newSubtitle =
+                              _subtitle ?? widget.eventModel.subtitle;
+                          final newSelectedDay =
+                              _selectedDay ?? widget.eventModel.selectedDay;
                           final newSelectedTime =
-                              _selectedTime ?? '' as DateTime;
+                              _selectedTime ?? widget.eventModel.selectedTime;
                           context.read<EditEventCubit>().edit(
                                 newTitle,
                                 newSubtitle,
@@ -191,13 +196,15 @@ class _ContentDialog extends StatelessWidget {
             height: 20,
           ),
           DayButton(
-              selectedDateFormatted: selectedDateFormatted,
-              eventModel: eventModel,
-              onDayChanged: onDayChanged),
+            selectedDateFormatted: selectedDateFormatted,
+            eventModel: eventModel,
+            onDayChanged: onDayChanged,
+          ),
           TimeButton(
-              selectedTimeFormatted: selectedTimeFormatted,
-              eventModel: eventModel,
-              onTimeChanged: onTimeChanged),
+            selectedTimeFormatted: selectedTimeFormatted,
+            eventModel: eventModel,
+            onTimeChanged: onTimeChanged,
+          ),
         ],
       ),
     );

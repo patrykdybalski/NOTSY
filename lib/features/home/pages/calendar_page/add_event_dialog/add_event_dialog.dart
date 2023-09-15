@@ -23,123 +23,118 @@ class _AddEventDialogState extends State<AddEventDialog> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.primaryColor,
-      body: BlocProvider(
-        create: (context) => AddEventCubit(EventsRepository()),
-        child: BlocListener<AddEventCubit, AddEventState>(
-          listener: (context, state) {
-            if (state.saved) {
-              Navigator.of(context).pop();
-            }
-            if (state.errorMessage.isNotEmpty) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(state.errorMessage),
-                  backgroundColor: Colors.red,
+    return BlocProvider(
+      create: (context) => AddEventCubit(EventsRepository()),
+      child: BlocListener<AddEventCubit, AddEventState>(
+        listener: (context, state) {
+          if (state.saved) {
+            Navigator.of(context).pop();
+          }
+          if (state.errorMessage.isNotEmpty) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.errorMessage),
+                backgroundColor: Colors.red,
+              ),
+            );
+          }
+        },
+        child: BlocBuilder<AddEventCubit, AddEventState>(
+          builder: (context, state) {
+            return AlertDialog(
+              scrollable: true,
+              titlePadding: const EdgeInsets.all(5),
+              contentPadding: const EdgeInsets.all(5),
+              backgroundColor: AppColors.primaryColor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(13),
+                side: const BorderSide(
+                  color: AppColors.accentColor,
+                  width: 3,
                 ),
-              );
-            }
-          },
-          child: BlocBuilder<AddEventCubit, AddEventState>(
-            builder: (context, state) {
-              return AlertDialog(
-                scrollable: true,
-                titlePadding: const EdgeInsets.all(1),
-                contentPadding: const EdgeInsets.all(5),
-                backgroundColor: AppColors.primaryColor,
-                shadowColor: AppColors.darkGreen,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(13),
-                    side: const BorderSide(
-                      color: AppColors.primaryColor,
-                      width: 60,
-                      strokeAlign: 1,
-                    )),
-                content: _ContentDialog(
-                  onTitleChanged: (newValue) {
-                    setState(
-                      () {
-                        _title = newValue;
-                      },
-                    );
-                  },
-                  onSubtitleChanged: (newValue) {
-                    setState(
-                      () {
-                        _subtitle = newValue;
-                      },
-                    );
-                  },
-                  onDayChanged: (newValue) {
-                    setState(
-                      () {
-                        _selectedDay = newValue;
-                      },
-                    );
-                  },
-                  onTimeChanged: (newValue) {
-                    setState(() {
-                      _selectedTime = newValue;
-                    });
-                  },
-                  selectedTimeFormatted: _selectedTime == null
-                      ? null
-                      : DateFormat.Hm().format(_selectedTime!),
-                  selectedDateFormatted: _selectedDay == null
-                      ? null
-                      : DateFormat.yMd().format(_selectedDay!),
-                ),
-                actions: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      TextButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: const Text(
-                            'Anuluj',
-                            style: TextStyle(
-                              color: AppColors.redColor,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 16,
-                            ),
-                          )),
-                      TextButton(
-                        onPressed: //_title == null ||
-                            //         _subtitle == null ||
-                            //         _selectedDay == null ||
-                            //         _selectedTime == null
-                            //     ? null
-                            () {
-                          final newTitle = _title ?? '';
-                          final newSubtitle = _subtitle ?? '';
-                          final newSelectedDay = _selectedDay ?? '' as DateTime;
-                          final newSelectedTime =
-                              _selectedTime ?? '' as DateTime;
-                          context.read<AddEventCubit>().add(
-                                newTitle,
-                                newSubtitle,
-                                newSelectedDay,
-                                newSelectedTime,
-                              );
+              ),
+              content: _ContentDialog(
+                onTitleChanged: (newValue) {
+                  setState(
+                    () {
+                      _title = newValue;
+                    },
+                  );
+                },
+                onSubtitleChanged: (newValue) {
+                  setState(
+                    () {
+                      _subtitle = newValue;
+                    },
+                  );
+                },
+                onDayChanged: (newValue) {
+                  setState(
+                    () {
+                      _selectedDay = newValue;
+                    },
+                  );
+                },
+                onTimeChanged: (newValue) {
+                  setState(() {
+                    _selectedTime = newValue;
+                  });
+                },
+                selectedTimeFormatted: _selectedTime == null
+                    ? null
+                    : DateFormat.Hm().format(_selectedTime!),
+                selectedDateFormatted: _selectedDay == null
+                    ? null
+                    : DateFormat.yMd().format(_selectedDay!),
+              ),
+              actions: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
                         },
                         child: const Text(
-                          'Zapisz',
+                          'Anuluj',
                           style: TextStyle(
-                            color: AppColors.accentColor,
+                            color: AppColors.redColor,
                             fontWeight: FontWeight.w600,
                             fontSize: 16,
                           ),
+                        )),
+                    TextButton(
+                      onPressed: //_title == null ||
+                          //         _subtitle == null ||
+                          //         _selectedDay == null ||
+                          //         _selectedTime == null
+                          //     ? null
+                          () {
+                        final newTitle = _title ?? '';
+                        final newSubtitle = _subtitle ?? '';
+                        final newSelectedDay = _selectedDay ?? '' as DateTime;
+                        final newSelectedTime = _selectedTime ?? '' as DateTime;
+                        context.read<AddEventCubit>().add(
+                              newTitle,
+                              newSubtitle,
+                              newSelectedDay,
+                              newSelectedTime,
+                            );
+                      },
+                      child: const Text(
+                        'Zapisz',
+                        style: TextStyle(
+                          color: AppColors.accentColor,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
                         ),
                       ),
-                    ],
-                  ),
-                ],
-              );
-            },
-          ),
+                    ),
+                  ],
+                ),
+              ],
+            );
+          },
         ),
       ),
     );
