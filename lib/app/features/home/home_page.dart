@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:primary_school/app/features/home/pages/calendar_page/calendar_page.dart';
+import 'package:primary_school/app/features/home/pages/notes_page/notes_page.dart';
+import 'package:primary_school/app/features/home/pages/weather_page/weather_page.dart';
 import 'package:primary_school/constans/colors.dart';
 
-import 'package:primary_school/features/home/pages/calendar_page/calendar_page.dart';
-import 'package:primary_school/features/home/pages/weather_page/weather_page.dart';
-import 'package:primary_school/features/home/pages/notes_page/notes_page.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({

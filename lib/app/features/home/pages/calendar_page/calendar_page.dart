@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:primary_school/app/core/enums.dart';
+import 'package:primary_school/app/features/home/hidden_drawer.dart';
+import 'package:primary_school/app/features/home/pages/calendar_page/add_event_dialog/add_event_dialog.dart';
+import 'package:primary_school/app/features/home/pages/calendar_page/cubit/calendar_cubit.dart';
+import 'package:primary_school/app/features/home/pages/calendar_page/edit_event_screen/edit_event_screen.dart';
+import 'package:primary_school/app/features/home/pages/calendar_page/widgets/calendar_widget.dart';
+import 'package:primary_school/app/features/home/pages/calendar_page/widgets/event_widget.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
 
 import 'package:primary_school/domain/repositories/calendar/events_repository.dart';
-import 'package:primary_school/features/home/pages/calendar_page/add_event_dialog/add_event_dialog.dart';
-
-import 'package:primary_school/features/home/pages/calendar_page/cubit/calendar_cubit.dart';
-import 'package:primary_school/features/home/pages/calendar_page/edit_event_screen/edit_event_screen.dart';
-import 'package:primary_school/features/home/pages/calendar_page/widgets/calendar_widget.dart';
-import 'package:primary_school/features/home/pages/calendar_page/widgets/event_widget.dart';
 
 class CalendarPage extends StatefulWidget {
   const CalendarPage({
@@ -27,6 +27,7 @@ class _CalendarPageState extends State<CalendarPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
+      drawer: HiddenDrawer(context),
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: AppColors.primaryColor,
@@ -39,8 +40,10 @@ class _CalendarPageState extends State<CalendarPage> {
         ),
         leading: IconButton(
           color: AppColors.redColor,
-          icon: const Icon(Icons.menu),
-          onPressed: () {},
+          icon: const Icon(Icons.logout_outlined),
+          onPressed: () {
+            HiddenDrawer(context);
+          },
         ),
         actions: [
           IconButton(

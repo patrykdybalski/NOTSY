@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:primary_school/app/features/home/pages/notes_page/add/cubit/add_note_cubit.dart';
+import 'package:primary_school/app/features/home/pages/notes_page/cubit/note_cubit.dart';
 
 import 'package:primary_school/constans/colors.dart';
-import 'package:primary_school/features/home/pages/notes_page/add/cubit/add_note_cubit.dart';
-import 'package:primary_school/features/home/pages/notes_page/cubit/note_cubit.dart';
+
 
 class AddPageButtons {
   final BuildContext context;

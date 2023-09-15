@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:primary_school/app/features/home/pages/notes_page/screens/note_reader_screen/cubit/reader_screen_cubit.dart';
+import 'package:primary_school/app/features/home/pages/notes_page/screens/note_reader_screen/note_reader_buttons.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
-import 'package:primary_school/features/home/pages/notes_page/screens/note_reader_screen/cubit/reader_screen_cubit.dart';
-import 'package:primary_school/features/home/pages/notes_page/screens/note_reader_screen/note_reader_buttons.dart';
+
 
 class NoteReaderScreen extends StatefulWidget {
   const NoteReaderScreen({super.key, required this.noteModel});

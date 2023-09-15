@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:primary_school/app/features/home/pages/notes_page/add/add_page_buttons.dart';
+import 'package:primary_school/app/features/home/pages/notes_page/add/cubit/add_note_cubit.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
-import 'package:primary_school/features/home/pages/notes_page/add/add_page_buttons.dart';
-import 'package:primary_school/features/home/pages/notes_page/add/cubit/add_note_cubit.dart';
 
 class AddNotePage extends StatefulWidget {
   const AddNotePage({super.key});

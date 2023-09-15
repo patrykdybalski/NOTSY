@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:primary_school/app/features/home/pages/calendar_page/edit_event_screen/cubit/edit_event_cubit.dart';
+import 'package:primary_school/app/features/home/pages/calendar_page/edit_event_screen/edit_event_widgets.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
 import 'package:primary_school/domain/repositories/calendar/events_repository.dart';
-import 'package:primary_school/features/home/pages/calendar_page/edit_event_screen/cubit/edit_event_cubit.dart';
-import 'package:primary_school/features/home/pages/calendar_page/edit_event_screen/edit_event_widgets.dart';
 
 class EditEventScreen extends StatefulWidget {
   const EditEventScreen({

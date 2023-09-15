@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:primary_school/app/features/home/pages/notes_page/add/add_note_page.dart';
+import 'package:primary_school/app/features/home/pages/notes_page/screens/general_notes/general_notes.dart';
 import 'package:primary_school/constans/colors.dart';
-import 'package:primary_school/features/home/pages/notes_page/add/add_note_page.dart';
-import 'package:primary_school/features/home/pages/notes_page/screens/general_notes/general_notes.dart';
+
 
 class NotesPage extends StatefulWidget {
   const NotesPage({Key? key}) : super(key: key);
