@@ -1,11 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
 
 class EventsRepository {
   Stream<List<EventModel>> getEventsStream() {
+    final userId = FirebaseAuth.instance.currentUser?.uid;
+    if (userId == null) {
+      throw Exception('User is not logged in');
+    }
     return FirebaseFirestore.instance
         .collection('users')
-        .doc("N4idavG5HPeXOMj0MGYHYp2Pvzt1")
+        .doc(userId)
         .collection('calendarItems')
         .snapshots()
         .map((querySnapshot) {
@@ -24,9 +29,13 @@ class EventsRepository {
   }
 
   Future<void> delete({required String id}) async {
+    final userId = FirebaseAuth.instance.currentUser?.uid;
+    if (userId == null) {
+      throw Exception('User is not logged in');
+    }
     await FirebaseFirestore.instance
         .collection('users')
-        .doc("N4idavG5HPeXOMj0MGYHYp2Pvzt1")
+        .doc(userId)
         .collection('calendarItems')
         .doc(id)
         .delete();
@@ -39,9 +48,13 @@ class EventsRepository {
     DateTime selectedTime,
     String docID,
   ) async {
+    final userId = FirebaseAuth.instance.currentUser?.uid;
+    if (userId == null) {
+      throw Exception('User is not logged in');
+    }
     await FirebaseFirestore.instance
         .collection('users')
-        .doc("N4idavG5HPeXOMj0MGYHYp2Pvzt1")
+        .doc(userId)
         .collection('calendarItems')
         .doc(docID)
         .update({
@@ -58,9 +71,13 @@ class EventsRepository {
     DateTime selectedDay,
     DateTime selectedTime,
   ) async {
+    final userId = FirebaseAuth.instance.currentUser?.uid;
+    if (userId == null) {
+      throw Exception('User is not logged in');
+    }
     await FirebaseFirestore.instance
         .collection('users')
-        .doc("N4idavG5HPeXOMj0MGYHYp2Pvzt1")
+        .doc(userId)
         .collection('calendarItems')
         .add(
       {
