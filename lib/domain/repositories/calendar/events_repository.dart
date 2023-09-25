@@ -4,6 +4,8 @@ import 'package:primary_school/domain/models/event_model/event_model.dart';
 class EventsRepository {
   Stream<List<EventModel>> getEventsStream() {
     return FirebaseFirestore.instance
+        .collection('users')
+        .doc("N4idavG5HPeXOMj0MGYHYp2Pvzt1")
         .collection('calendarItems')
         .snapshots()
         .map((querySnapshot) {
@@ -23,6 +25,8 @@ class EventsRepository {
 
   Future<void> delete({required String id}) async {
     await FirebaseFirestore.instance
+        .collection('users')
+        .doc("N4idavG5HPeXOMj0MGYHYp2Pvzt1")
         .collection('calendarItems')
         .doc(id)
         .delete();
@@ -35,18 +39,17 @@ class EventsRepository {
     DateTime selectedTime,
     String docID,
   ) async {
-    
     await FirebaseFirestore.instance
+        .collection('users')
+        .doc("N4idavG5HPeXOMj0MGYHYp2Pvzt1")
         .collection('calendarItems')
         .doc(docID)
-        .update(
-          {
-            'title' : title,
-            'subtitle' : subtitle,
-            'selecteDay' : selectedDay,
-            'selectedTime' : selectedTime,
-          }
-        );
+        .update({
+      'title': title,
+      'subtitle': subtitle,
+      'selecteDay': selectedDay,
+      'selectedTime': selectedTime,
+    });
   }
 
   Future<void> add(
@@ -55,7 +58,11 @@ class EventsRepository {
     DateTime selectedDay,
     DateTime selectedTime,
   ) async {
-    await FirebaseFirestore.instance.collection('calendarItems').add(
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc("N4idavG5HPeXOMj0MGYHYp2Pvzt1")
+        .collection('calendarItems')
+        .add(
       {
         'title': title,
         'subtitle': subtitle,
