@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:primary_school/app/core/enums.dart';
-import 'package:primary_school/app/features/home/hidden_drawer.dart';
+
 import 'package:primary_school/app/features/home/pages/calendar_page/add_event_dialog/add_event_dialog.dart';
 import 'package:primary_school/app/features/home/pages/calendar_page/cubit/calendar_cubit.dart';
 import 'package:primary_school/app/features/home/pages/calendar_page/edit_event_screen/edit_event_screen.dart';
@@ -27,7 +27,6 @@ class _CalendarPageState extends State<CalendarPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
-      drawer: HiddenDrawer(context),
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: AppColors.primaryColor,
@@ -38,26 +37,26 @@ class _CalendarPageState extends State<CalendarPage> {
             color: AppColors.secondaryColor,
           ),
         ),
-        leading: IconButton(
-          color: AppColors.redColor,
-          icon: const Icon(Icons.logout_outlined),
-          onPressed: () {
-            HiddenDrawer(context);
-          },
-        ),
         actions: [
           IconButton(
             icon: const Icon(
-              Icons.add,
-              size: 35,
-              color: AppColors.darkGreen,
+              Icons.logout_outlined,
+              size: 30,
+              color: AppColors.redColor2,
             ),
-            padding: const EdgeInsets.only(right: 5),
-            onPressed: () {
-              _showDialog();
-            },
+            onPressed: () {},
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: AppColors.greenColor,
+        onPressed: () {
+          _showDialog();
+        },
+        child: const Icon(
+          Icons.add,
+          size: 30,
+        ),
       ),
       body: BlocProvider(
         create: (context) => CalendarCubit(

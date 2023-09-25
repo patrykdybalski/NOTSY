@@ -3,7 +3,6 @@ import 'package:primary_school/app/features/home/pages/notes_page/add/add_note_p
 import 'package:primary_school/app/features/home/pages/notes_page/screens/general_notes/general_notes.dart';
 import 'package:primary_school/constans/colors.dart';
 
-
 class NotesPage extends StatefulWidget {
   const NotesPage({Key? key}) : super(key: key);
 
@@ -34,6 +33,8 @@ class _NotesPageState extends State<NotesPage>
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
       appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: AppColors.primaryColor,
         title: const Text(
           'Notatki',
           style: TextStyle(
@@ -41,31 +42,29 @@ class _NotesPageState extends State<NotesPage>
             letterSpacing: 2,
           ),
         ),
-        centerTitle: true,
-        backgroundColor: AppColors.primaryColor,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.menu,
-            color: AppColors.accentColor,
-          ),
-          onPressed: () {},
-        ),
         actions: [
           IconButton(
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const AddNotePage(),
-                fullscreenDialog: true,
-              ));
-            },
+            onPressed: () {},
             icon: const Icon(
-              Icons.add_circle_outline_outlined,
-              size: 35,
-              color: AppColors.redColor,
+              Icons.logout_outlined,
+              size: 30,
+              color: AppColors.redColor2,
             ),
-            padding: const EdgeInsets.only(right: 5),
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: AppColors.redColor,
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => const AddNotePage(),
+            fullscreenDialog: true,
+          ));
+        },
+        child: const Icon(
+          Icons.add,
+          size: 30,
+        ),
       ),
       body: const GeneralNotes(),
     );
