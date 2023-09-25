@@ -5,6 +5,8 @@ import 'package:primary_school/domain/models/note_model/note_model.dart';
 class NoteRepository {
   Stream<List<NoteModel>> getNotesStream() {
     return FirebaseFirestore.instance
+        .collection('users')
+        .doc("N4idavG5HPeXOMj0MGYHYp2Pvzt1")
         .collection('noteItems')
         .snapshots()
         .map((querySnapshot) {
@@ -38,7 +40,11 @@ class NoteRepository {
     DateTime updatedDate,
     Color selectedColor,
   ) async {
-    await FirebaseFirestore.instance.collection('noteItems').add({
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc("N4idavG5HPeXOMj0MGYHYp2Pvzt1")
+        .collection('noteItems')
+        .add({
       'title': title,
       'subtitle': subtitle,
       'createdDate': createdDate, // Ustawienie daty utworzenia
@@ -55,7 +61,12 @@ class NoteRepository {
     DateTime updatedDate,
     String docId,
   ) async {
-    await FirebaseFirestore.instance.collection('noteItems').doc(docId).update({
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc("N4idavG5HPeXOMj0MGYHYp2Pvzt1")
+        .collection('noteItems')
+        .doc(docId)
+        .update({
       'title': title,
       'subtitle': subtitle,
       'createdDate': createdDate, // Ustawienie daty utworzenia
@@ -64,6 +75,11 @@ class NoteRepository {
   }
 
   Future<void> delete({required String id}) async {
-    await FirebaseFirestore.instance.collection('noteItems').doc(id).delete();
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc("N4idavG5HPeXOMj0MGYHYp2Pvzt1")
+        .collection('noteItems')
+        .doc(id)
+        .delete();
   }
 }
