@@ -78,7 +78,18 @@ class _CalendarPageState extends State<CalendarPage> {
               case Status.success:
                 return ListView(
                   children: [
+                    const SizedBox(
+                      height: 10,
+                    ),
                     const CalendarWidget(),
+                    const Divider(
+                      color: AppColors.darkGreen,
+                      indent: 30,
+                      endIndent: 30,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     Column(
                       children: [
                         for (final eventModel in eventModels) ...[

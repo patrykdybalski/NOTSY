@@ -7,7 +7,6 @@ import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
 
-
 class GeneralNotes extends StatefulWidget {
   const GeneralNotes({super.key});
 
@@ -91,9 +90,13 @@ class _NoteItemState extends State<NoteItem> {
       builder: (context, state) {
         return InkWell(
           onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) =>
-                    NoteReaderScreen(noteModel: widget.noteModel)));
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => NoteReaderScreen(
+                  noteModel: widget.noteModel,
+                ),
+              ),
+            );
           },
           onLongPress: () {
             showDialog(

@@ -71,10 +71,6 @@ class _CalendarWidgetState extends State<CalendarWidget> {
   CalendarStyle calendarStyle() {
     return CalendarStyle(
       outsideDaysVisible: false,
-      outsideTextStyle: const TextStyle(
-        color: Colors.black54,
-        fontSize: 15,
-      ),
       defaultTextStyle: const TextStyle(
         color: AppColors.dayColor,
       ),
@@ -82,10 +78,10 @@ class _CalendarWidgetState extends State<CalendarWidget> {
         gradient: LinearGradient(
           colors: [
             AppColors.primaryColor,
-            Color(0xFF006633),
+            AppColors.greenColor,
             AppColors.primaryColor,
           ],
-          begin: Alignment.centerLeft,
+          begin: Alignment.topLeft,
           end: Alignment.centerRight,
         ),
         shape: BoxShape.circle,
@@ -93,14 +89,14 @@ class _CalendarWidgetState extends State<CalendarWidget> {
       selectedTextStyle: const TextStyle(
         fontSize: 15,
         fontWeight: FontWeight.bold,
-        color: Color.fromRGBO(234, 232, 227, 1.0),
+        color: Colors.white,
       ),
       isTodayHighlighted: true,
       todayDecoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(
           width: 1,
-          color: AppColors.accentColor,
+          color: AppColors.greenColor,
         ),
       ),
       todayTextStyle: const TextStyle(
@@ -136,30 +132,31 @@ class _CalendarWidgetState extends State<CalendarWidget> {
   HeaderStyle headerStyle() {
     return HeaderStyle(
       titleTextFormatter: (date, locale) {
-        return DateFormat.yMMMMd(locale).format(date);
+        return DateFormat.yMMMM(locale).format(date);
       },
       titleTextStyle: const TextStyle(
         fontWeight: FontWeight.bold,
-        fontSize: 18,
+        fontSize: 17,
         color: AppColors.accentColor,
       ),
-      titleCentered: false,
+      titleCentered: true,
       headerPadding: const EdgeInsets.all(1),
       leftChevronIcon: const Icon(
         Icons.chevron_left_outlined,
-        size: 30,
+        size: 25,
         color: AppColors.accentColor,
       ),
       rightChevronIcon: const Icon(
         Icons.chevron_right_outlined,
-        size: 30,
+        size: 25,
         color: AppColors.accentColor,
       ),
-      formatButtonShowsNext: false,
+      formatButtonShowsNext: true,
       formatButtonPadding: const EdgeInsets.all(5),
       formatButtonTextStyle: const TextStyle(
-        fontWeight: FontWeight.bold,
-        color: AppColors.dayColor,
+        fontWeight: FontWeight.w500,
+        color: AppColors.accentColor,
+        fontSize: 10,
       ),
       formatButtonDecoration: const BoxDecoration(
         color: AppColors.primaryColor,
