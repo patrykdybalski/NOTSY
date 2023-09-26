@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/features/home/pages/notes_page/add/add_note_page.dart';
+import 'package:primary_school/app/features/home/pages/notes_page/cubit/note_cubit.dart';
 import 'package:primary_school/app/features/home/pages/notes_page/screens/general_notes/general_notes.dart';
 import 'package:primary_school/constans/colors.dart';
+import 'package:primary_school/domain/repositories/note/note_repository.dart';
 
 class NotesPage extends StatefulWidget {
   const NotesPage({Key? key}) : super(key: key);
@@ -30,43 +33,52 @@ class _NotesPageState extends State<NotesPage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.primaryColor,
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: AppColors.primaryColor,
-        title: const Text(
-          'Notatki',
-          style: TextStyle(
-            color: AppColors.secondaryColor,
-            letterSpacing: 2,
-          ),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.logout_outlined,
-              size: 30,
-              color: AppColors.redColor2,
+    return BlocProvider(
+      create: (context) => NoteCubit(NoteRepository()),
+      child: BlocBuilder<NoteCubit, NoteState>(
+        builder: (context, state) {
+          return Scaffold(
+            backgroundColor: AppColors.primaryColor,
+            appBar: AppBar(
+              centerTitle: true,
+              backgroundColor: AppColors.primaryColor,
+              title: const Text(
+                'Notatki',
+                style: TextStyle(
+                  color: AppColors.secondaryColor,
+                  letterSpacing: 2,
+                ),
+              ),
+              actions: [
+                IconButton(
+                  onPressed: () {
+                    context.read<NoteCubit>().signOut();
+                  },
+                  icon: const Icon(
+                    Icons.logout_outlined,
+                    size: 30,
+                    color: AppColors.redColor2,
+                  ),
+                ),
+              ],
             ),
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: AppColors.redColor,
-        onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => const AddNotePage(),
-            fullscreenDialog: true,
-          ));
+            floatingActionButton: FloatingActionButton(
+              backgroundColor: AppColors.redColor,
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const AddNotePage(),
+                  fullscreenDialog: true,
+                ));
+              },
+              child: const Icon(
+                Icons.add,
+                size: 30,
+              ),
+            ),
+            body: const GeneralNotes(),
+          );
         },
-        child: const Icon(
-          Icons.add,
-          size: 30,
-        ),
       ),
-      body: const GeneralNotes(),
     );
   }
 }

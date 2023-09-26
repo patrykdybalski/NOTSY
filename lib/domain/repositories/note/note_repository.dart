@@ -38,6 +38,10 @@ class NoteRepository {
     });
   }
 
+  Future<void> signOut() async {
+    await FirebaseAuth.instance.signOut();
+  }
+
   Future<void> add(
     String title,
     String subtitle,

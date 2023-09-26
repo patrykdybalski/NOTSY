@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:primary_school/app/cubit/root_cubit.dart';
+import 'package:primary_school/constans/colors.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({
@@ -106,13 +107,16 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                   ElevatedButton(
                                     style: ElevatedButton.styleFrom(
-                                      backgroundColor: const Color(0xff7fab72),
+                                      backgroundColor:
+                                          AppColors.greenLoginColor,
                                       shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(10.0),
                                       ),
                                       padding: const EdgeInsets.symmetric(
-                                          horizontal: 60, vertical: 10),
+                                        horizontal: 60,
+                                        vertical: 10,
+                                      ),
                                     ),
                                     onPressed: () async {
                                       if (isCreatingAccount == true) {
@@ -131,15 +135,18 @@ class _LoginPageState extends State<LoginPage> {
                                             );
                                       }
                                     },
-                                    child: Text(isCreatingAccount == true
-                                        ? 'Zarejestruj się'
-                                        : 'Zaloguj się '),
+                                    child: Text(
+                                      isCreatingAccount == true
+                                          ? 'Zarejestruj się'
+                                          : 'Zaloguj się ',
+                                    ),
                                   ),
                                   if (isCreatingAccount == false) ...[
                                     TextButton(
                                       style: TextButton.styleFrom(
-                                          foregroundColor:
-                                              const Color(0xff7fab72)),
+                                        foregroundColor:
+                                            AppColors.greenLoginColor,
+                                      ),
                                       onPressed: () {
                                         setState(() {
                                           isCreatingAccount = true;
@@ -152,6 +159,10 @@ class _LoginPageState extends State<LoginPage> {
                                   ],
                                   if (isCreatingAccount == true) ...[
                                     TextButton(
+                                      style: TextButton.styleFrom(
+                                        foregroundColor:
+                                            AppColors.greenLoginColor,
+                                      ),
                                       onPressed: () {
                                         setState(() {
                                           isCreatingAccount = false;
@@ -170,9 +181,6 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ],
                         ),
-                      ),
-                      const SizedBox(
-                        height: 10,
                       ),
                     ]),
                   ),
@@ -200,28 +208,39 @@ class TextFieldPassword extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(15, 5, 15, 0),
       child: Container(
         decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-              BoxShadow(
-                blurRadius: 2,
-                spreadRadius: 2,
-                offset: const Offset(1.5, 1.5),
-                color: Colors.grey.withOpacity(0.2),
-              )
-            ]),
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              blurRadius: 2,
+              spreadRadius: 2,
+              offset: const Offset(0, 1.5),
+              color: Colors.grey.withOpacity(0.2),
+            )
+          ],
+        ),
         child: TextField(
           controller: widget.passwordController,
           keyboardType: TextInputType.text,
+          obscureText: true,
           decoration: InputDecoration(
-              filled: true,
-              hintText: 'Hasło',
-              prefixIcon: const Icon(Icons.key),
-              fillColor: Colors.white,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide.none,
-              )),
+            focusColor: Colors.amber,
+            filled: true,
+            hintText: 'Hasło',
+            prefixIcon: const Icon(Icons.key),
+            prefixIconColor: Colors.amber,
+            fillColor: Colors.white,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide.none,
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: const BorderSide(
+                color: AppColors.greenLoginColor,
+              ),
+            ),
+          ),
         ),
       ),
     );
@@ -264,6 +283,12 @@ class TextFieldLogin extends StatelessWidget {
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide.none,
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: const BorderSide(
+                color: AppColors.greenLoginColor,
+              ),
             ),
           ),
         ),
