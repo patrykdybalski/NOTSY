@@ -51,11 +51,11 @@ class EditPageButtons {
   FloatingActionButton buildSaveButton() {
     return FloatingActionButton(
       onPressed: () {
-        final newTitle = title ?? title!;
-        final newSubtitle = subtitle ?? subtitle!;
+        final newTitle = title ?? title;
+        final newSubtitle = subtitle ?? subtitle;
         context.read<EditNoteCubit>().edit(
-              newTitle,
-              newSubtitle,
+              newTitle!,
+              newSubtitle!,
               createdDate,
               updatedDate!,
               id,
