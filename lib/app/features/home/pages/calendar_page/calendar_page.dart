@@ -6,7 +6,7 @@ import 'package:primary_school/app/core/enums.dart';
 import 'package:primary_school/app/features/home/pages/calendar_page/add_event_dialog/add_event_dialog.dart';
 import 'package:primary_school/app/features/home/pages/calendar_page/cubit/calendar_cubit.dart';
 import 'package:primary_school/app/features/home/pages/calendar_page/edit_event_screen/edit_event_screen.dart';
-import 'package:primary_school/app/features/home/pages/calendar_page/widgets/calendar_widget.dart';
+
 import 'package:primary_school/app/features/home/pages/calendar_page/widgets/event_widget.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
@@ -31,22 +31,12 @@ class _CalendarPageState extends State<CalendarPage> {
         centerTitle: true,
         backgroundColor: AppColors.primaryColor,
         title: const Text(
-          'Kalendarz',
+          'Zaplanowane',
           style: TextStyle(
             letterSpacing: 2,
             color: AppColors.secondaryColor,
           ),
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(
-              Icons.logout_outlined,
-              size: 30,
-              color: AppColors.redColor2,
-            ),
-            onPressed: () {},
-          ),
-        ],
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.greenColor,
@@ -78,17 +68,10 @@ class _CalendarPageState extends State<CalendarPage> {
               case Status.success:
                 return ListView(
                   children: [
+                    // const CalendarWidget(),
+
                     const SizedBox(
-                      height: 10,
-                    ),
-                    const CalendarWidget(),
-                    const Divider(
-                      color: AppColors.darkGreen,
-                      indent: 30,
-                      endIndent: 30,
-                    ),
-                    const SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
                     Column(
                       children: [

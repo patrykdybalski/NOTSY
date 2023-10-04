@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:primary_school/app/features/home/pages/calendar_page/add_event_dialog/cubit/add_event_cubit.dart';
 import 'package:primary_school/constans/colors.dart';
-import 'package:primary_school/domain/models/event_model/event_model.dart';
+
+import 'package:primary_school/domain/repositories/calendar/events_repository.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class CalendarWidget extends StatefulWidget {
@@ -15,56 +18,52 @@ class CalendarWidget extends StatefulWidget {
 
 class _CalendarWidgetState extends State<CalendarWidget> {
   CalendarFormat calendarFormat = CalendarFormat.month;
-  DateTime selectedDay = DateTime.now();
+  DateTime? selectedDay;
   DateTime focusedDay = DateTime.now();
-
-  List<EventModel> events = [];
-
-  List<EventModel> eventLoader(DateTime day) {
-    return events.where((event) => event.selectedDay == day).toList();
-  }
-
-  List<EventModel> eventLoadeer(DateTime day) {
-    return eventLoader(day);
-  }
 
   @override
   Widget build(BuildContext context) {
-    return TableCalendar(
-      focusedDay: focusedDay,
-      weekendDays: const [DateTime.saturday, DateTime.sunday],
-      firstDay: DateTime(2022),
-      lastDay: DateTime(2030),
-      calendarFormat: calendarFormat,
-      startingDayOfWeek: StartingDayOfWeek.monday,
-      daysOfWeekVisible: true,
-      daysOfWeekHeight: 15,
-      rowHeight: 40,
-      headerStyle: headerStyle(),
-      calendarStyle: calendarStyle(),
-      daysOfWeekStyle: daysOfWeekStyle(),
-      eventLoader: eventLoadeer,
-      onFormatChanged: (format) {
-        setState(
-          () {
-            calendarFormat = format;
-          },
-        );
-      },
-      onPageChanged: (focusedDay) {
-        focusedDay = focusedDay;
-      },
-      selectedDayPredicate: (day) {
-        return isSameDay(selectedDay, day);
-      },
-      onDaySelected: (selectedDayy, focusedDayy) {
-        setState(
-          () {
-            selectedDay = selectedDayy;
-            focusedDay = focusedDayy;
-          },
-        );
-      },
+    return BlocProvider(
+      create: (context) => AddEventCubit(EventsRepository()),
+      child: BlocBuilder<AddEventCubit, AddEventState>(
+        builder: (context, state) {
+          return TableCalendar(
+            focusedDay: focusedDay,
+            weekendDays: const [DateTime.saturday, DateTime.sunday],
+            firstDay: DateTime(2022),
+            lastDay: DateTime(2030),
+            calendarFormat: calendarFormat,
+            startingDayOfWeek: StartingDayOfWeek.monday,
+            daysOfWeekVisible: true,
+            daysOfWeekHeight: 15,
+            rowHeight: 40,
+            headerStyle: headerStyle(),
+            calendarStyle: calendarStyle(),
+            daysOfWeekStyle: daysOfWeekStyle(),
+            onFormatChanged: (format) {
+              setState(
+                () {
+                  calendarFormat = format;
+                },
+              );
+            },
+            onPageChanged: (focusedDay) {
+              focusedDay = focusedDay;
+            },
+            selectedDayPredicate: (day) {
+              return isSameDay(selectedDay, day);
+            },
+            onDaySelected: (selectedDayy, focusedDayy) {
+              setState(
+                () {
+                  selectedDay = selectedDayy;
+                  focusedDay = focusedDayy;
+                },
+              );
+            },
+          );
+        },
+      ),
     );
   }
 

@@ -39,26 +39,15 @@ class _EventWidgetState extends State<EventWidget> {
               width: 1.2,
               color: AppColors.accentColor,
             )),
-        leading: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(
-              Icons.access_time,
-              color: AppColors.secondaryColor,
-              weight: 10.0,
-            ),
-            Text(
-              widget.eventModel.selectedTimeFormatted(),
-              style: const TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 15,
-                color: AppColors.secondaryColor,
-              ),
-            ),
-          ],
+        leading: Icon(
+          Icons.task_alt_outlined,
+          color: AppColors.redColor,
         ),
         title: Padding(
-          padding: const EdgeInsets.only(top: 8.0, bottom: 8),
+          padding: const EdgeInsets.only(
+            top: 4.0,
+            bottom: 4.0,
+          ),
           child: Text(
             widget.eventModel.title,
             style: const TextStyle(
@@ -68,12 +57,29 @@ class _EventWidgetState extends State<EventWidget> {
             ),
           ),
         ),
-        trailing: Text(
-          widget.eventModel.selectedDayFormatted(),
-          style: const TextStyle(
-            fontSize: 17,
-            fontWeight: FontWeight.w500,
-            color: AppColors.secondaryColor,
+        trailing: Padding(
+          padding: const EdgeInsets.all(2.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                widget.eventModel.selectedDayFormatted(),
+                style: const TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
+                  color: AppColors.secondaryColor,
+                ),
+              ),
+              Text(
+                "${widget.eventModel.selectedDayFormatted2()}, ${widget.eventModel.selectedTimeFormatted()}",
+                style: const TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w500,
+                  color: AppColors.secondaryColor,
+                ),
+              ),
+            ],
           ),
         ),
         children: [
@@ -84,35 +90,34 @@ class _EventWidgetState extends State<EventWidget> {
               top: 10,
               bottom: 25,
             ),
-            child: Container(
-              width: 280,
-              decoration: const BoxDecoration(
-                border: Border(
-                  // left: BorderSide(
-                  //   style: BorderStyle.solid,
-                  //   color: AppColors.secondaryColor,
-                  //   width: 0.5,
-                  // ),
-                  top: BorderSide.none,
-                  left: BorderSide(
-                    color: AppColors.accentColor,
+            child: Row(
+              children: [
+                Container(
+                  width: 280,
+                  decoration: const BoxDecoration(
+                    border: Border(
+                      top: BorderSide.none,
+                      left: BorderSide(
+                        color: AppColors.accentColor,
+                      ),
+                    ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                      left: 5,
+                      bottom: 10,
+                      right: 40,
+                    ),
+                    child: Text(
+                      widget.eventModel.subtitle,
+                      style: const TextStyle(
+                        color: AppColors.secondaryColor,
+                        fontSize: 14,
+                      ),
+                    ),
                   ),
                 ),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  left: 5,
-                  bottom: 10,
-                  right: 40,
-                ),
-                child: Text(
-                  widget.eventModel.subtitle,
-                  style: const TextStyle(
-                    color: AppColors.secondaryColor,
-                    fontSize: 14,
-                  ),
-                ),
-              ),
+              ],
             ),
           ),
         ],

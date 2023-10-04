@@ -4,8 +4,8 @@ import 'package:intl/intl.dart';
 import 'package:primary_school/app/features/home/pages/calendar_page/add_event_dialog/add_event_widgets.dart';
 import 'package:primary_school/app/features/home/pages/calendar_page/add_event_dialog/cubit/add_event_cubit.dart';
 import 'package:primary_school/constans/colors.dart';
+import 'package:primary_school/domain/models/event_model/event_model.dart';
 import 'package:primary_school/domain/repositories/calendar/events_repository.dart';
-
 
 class AddEventDialog extends StatefulWidget {
   const AddEventDialog({
@@ -21,6 +21,8 @@ class _AddEventDialogState extends State<AddEventDialog> {
   String? _subtitle;
   DateTime? _selectedDay;
   DateTime? _selectedTime;
+  Map<DateTime, List<EventModel>> events = {};
+  late final EventModel eventModel;
 
   @override
   Widget build(BuildContext context) {
@@ -105,16 +107,12 @@ class _AddEventDialogState extends State<AddEventDialog> {
                           ),
                         )),
                     TextButton(
-                      onPressed: //_title == null ||
-                          //         _subtitle == null ||
-                          //         _selectedDay == null ||
-                          //         _selectedTime == null
-                          //     ? null
-                          () {
+                      onPressed: () {
                         final newTitle = _title ?? '';
                         final newSubtitle = _subtitle ?? '';
                         final newSelectedDay = _selectedDay ?? '' as DateTime;
                         final newSelectedTime = _selectedTime ?? '' as DateTime;
+
                         context.read<AddEventCubit>().add(
                               newTitle,
                               newSubtitle,
