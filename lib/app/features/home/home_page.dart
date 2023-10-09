@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:primary_school/app/features/home/pages/calendar_page/calendar_page.dart';
 import 'package:primary_school/app/features/home/pages/notes_page/notes_page.dart';
+import 'package:primary_school/app/features/home/pages/user_page/user_page.dart';
 import 'package:primary_school/app/features/home/pages/weather_page/weather_page.dart';
 import 'package:primary_school/constans/colors.dart';
-
-
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -29,7 +28,10 @@ class _HomePageState extends State<HomePage> {
           if (currentIndex == 1) {
             return const NotesPage();
           }
-          return const WeatherPage();
+          if (currentIndex == 2) {
+            return const WeatherPage();
+          }
+          return const UserPage();
         },
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -61,6 +63,10 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.wb_sunny_outlined),
             label: 'Pogoda',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_box_outlined),
+            label: 'Profil',
           ),
         ],
       ),

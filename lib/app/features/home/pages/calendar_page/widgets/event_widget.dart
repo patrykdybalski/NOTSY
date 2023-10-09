@@ -39,7 +39,7 @@ class _EventWidgetState extends State<EventWidget> {
               width: 1.2,
               color: AppColors.accentColor,
             )),
-        leading: Icon(
+        leading: const Icon(
           Icons.task_alt_outlined,
           color: AppColors.redColor,
         ),
