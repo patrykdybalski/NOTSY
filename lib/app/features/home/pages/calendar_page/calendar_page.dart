@@ -43,7 +43,7 @@ class _CalendarPageState extends State<CalendarPage> {
         },
         child: const Icon(
           Icons.add,
-          size: 30,
+          size: 25,
         ),
       ),
       body: BlocProvider(
@@ -101,6 +101,7 @@ class _CalendarPageState extends State<CalendarPage> {
 
   _showDialog() {
     showDialog(
+        useSafeArea: true,
         context: context,
         builder: (context) {
           return const AddEventDialog();

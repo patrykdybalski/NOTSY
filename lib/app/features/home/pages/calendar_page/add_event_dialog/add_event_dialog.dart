@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:primary_school/app/features/home/pages/calendar_page/add_event_dialog/add_event_widgets.dart';
 import 'package:primary_school/app/features/home/pages/calendar_page/add_event_dialog/cubit/add_event_cubit.dart';
@@ -46,15 +47,14 @@ class _AddEventDialogState extends State<AddEventDialog> {
           builder: (context, state) {
             return AlertDialog(
               scrollable: true,
-              titlePadding: const EdgeInsets.all(5),
-              contentPadding: const EdgeInsets.all(5),
               backgroundColor: AppColors.primaryColor,
+              contentPadding: const EdgeInsets.only(
+                top: 15.0,
+                left: 10.0,
+                right: 10.0,
+              ),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(13),
-                side: const BorderSide(
-                  color: AppColors.accentColor,
-                  width: 3,
-                ),
               ),
               content: _ContentDialog(
                 onTitleChanged: (newValue) {
@@ -90,46 +90,49 @@ class _AddEventDialogState extends State<AddEventDialog> {
                     ? null
                     : DateFormat.yMd().format(_selectedDay!),
               ),
+              actionsAlignment: MainAxisAlignment.spaceBetween,
+              actionsPadding: const EdgeInsets.only(
+                top: 0,
+                bottom: 3.0,
+                left: 5,
+                right: 5,
+              ),
               actions: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: const Text(
-                          'Anuluj',
-                          style: TextStyle(
-                            color: AppColors.redColor,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16,
-                          ),
-                        )),
-                    TextButton(
-                      onPressed: () {
-                        final newTitle = _title ?? '';
-                        final newSubtitle = _subtitle ?? '';
-                        final newSelectedDay = _selectedDay ?? '' as DateTime;
-                        final newSelectedTime = _selectedTime ?? '' as DateTime;
-
-                        context.read<AddEventCubit>().add(
-                              newTitle,
-                              newSubtitle,
-                              newSelectedDay,
-                              newSelectedTime,
-                            );
-                      },
-                      child: const Text(
-                        'Zapisz',
-                        style: TextStyle(
-                          color: AppColors.accentColor,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16,
-                        ),
-                      ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text(
+                    'Anuluj',
+                    style: GoogleFonts.domine(
+                      color: AppColors.redColor,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w800,
                     ),
-                  ],
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    final newTitle = _title ?? '';
+                    final newSubtitle = _subtitle ?? '';
+                    final newSelectedDay = _selectedDay ?? '' as DateTime;
+                    final newSelectedTime = _selectedTime ?? '' as DateTime;
+
+                    context.read<AddEventCubit>().add(
+                          newTitle,
+                          newSubtitle,
+                          newSelectedDay,
+                          newSelectedTime,
+                        );
+                  },
+                  child: Text(
+                    'Zapisz',
+                    style: GoogleFonts.domine(
+                      color: AppColors.accentColor,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
                 ),
               ],
             );
@@ -160,36 +163,29 @@ class _ContentDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        top: 15.0,
-        left: 10.0,
-        right: 10.0,
-      ),
-      child: Column(
-        children: [
-          TitleWidget(
-            onTitleChanged: onTitleChanged,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          SubtitleWidget(
-            onSubtitleChanged: onSubtitleChanged,
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          DayButton(
-            selectedDateFormatted: selectedDateFormatted,
-            onDayChanged: onDayChanged,
-          ),
-          TimeButton(
-            selectedTimeFormatted: selectedTimeFormatted,
-            onTimeChanged: onTimeChanged,
-          ),
-        ],
-      ),
+    return Column(
+      children: [
+        TitleWidget(
+          onTitleChanged: onTitleChanged,
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        SubtitleWidget(
+          onSubtitleChanged: onSubtitleChanged,
+        ),
+        const SizedBox(
+          height: 15,
+        ),
+        DayButton(
+          selectedDateFormatted: selectedDateFormatted,
+          onDayChanged: onDayChanged,
+        ),
+        TimeButton(
+          selectedTimeFormatted: selectedTimeFormatted,
+          onTimeChanged: onTimeChanged,
+        ),
+      ],
     );
   }
 }

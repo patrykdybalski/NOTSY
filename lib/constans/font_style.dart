@@ -19,6 +19,16 @@ class TextStyles {
     fontSize: 13,
     fontWeight: FontWeight.w800,
   );
+  static TextStyle addEventStyle1 = GoogleFonts.domine(
+    color: AppColors.secondaryColor,
+    fontSize: 13,
+    fontWeight: FontWeight.w800,
+  );
+  static TextStyle addEventStyle2 = GoogleFonts.domine(
+    color: AppColors.secondaryColor,
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+  );
 
   static TextStyle noteWidgetTextStyle1 = GoogleFonts.domine(
     color: AppColors.secondaryColor,

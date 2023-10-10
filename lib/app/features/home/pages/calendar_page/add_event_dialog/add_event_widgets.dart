@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:primary_school/constans/colors.dart';
+import 'package:primary_school/constans/font_style.dart';
 
 class TimeButton extends StatelessWidget {
   const TimeButton({
@@ -20,9 +21,7 @@ class TimeButton extends StatelessWidget {
       ),
       label: Text(
         selectedTimeFormatted ?? 'Dodaj godzinę',
-        style: const TextStyle(
-          color: AppColors.secondaryColor,
-        ),
+        style: TextStyles.addEventStyle1,
       ),
       onPressed: () async {
         TimeOfDay? selectedTime = await showTimePicker(
@@ -39,7 +38,7 @@ class TimeButton extends StatelessWidget {
       },
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.primaryColor,
-        elevation: 2,
+        elevation: 1.5,
         shadowColor: AppColors.accentColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
@@ -70,9 +69,7 @@ class DayButton extends StatelessWidget {
       ),
       label: Text(
         selectedDateFormatted ?? 'Wybierz dzień',
-        style: const TextStyle(
-          color: AppColors.secondaryColor,
-        ),
+        style: TextStyles.addEventStyle1,
       ),
       onPressed: () async {
         final selectedDate = await showDatePicker(
@@ -116,21 +113,15 @@ class SubtitleWidget extends StatelessWidget {
       scrollPhysics:
           const ClampingScrollPhysics(), // Dodaj to, aby umożliwić przewijanie
       maxLines: 10,
-      minLines: 4,
+      minLines: 3,
 
       cursorColor: AppColors.secondaryColor,
       cursorRadius: const Radius.circular(12),
-      style: const TextStyle(
-        color: AppColors.secondaryColor,
-      ),
+      style: TextStyles.addEventStyle2,
       decoration: InputDecoration(
         labelText: 'Szczegóły',
         alignLabelWithHint: true,
-        labelStyle: const TextStyle(
-          color: AppColors.secondaryColor,
-          fontSize: 18,
-          fontWeight: FontWeight.w300,
-        ),
+        labelStyle: TextStyles.addEventStyle2,
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(
@@ -173,20 +164,12 @@ class TitleWidget extends StatelessWidget {
       maxLength: 50,
       maxLines: 2,
       minLines: 1,
-      cursorColor: Colors.white10,
+      cursorColor: AppColors.secondaryColor,
       cursorRadius: const Radius.circular(12),
-      style: const TextStyle(
-        color: AppColors.secondaryColor,
-        fontWeight: FontWeight.w700,
-      ),
+      style: TextStyles.eventWidgetTextStyle1,
       decoration: InputDecoration(
-        filled: true,
-        fillColor: Colors.white10,
         labelText: 'Temat',
-        labelStyle: const TextStyle(
-          color: AppColors.secondaryColor,
-          fontSize: 18,
-        ),
+        labelStyle: TextStyles.eventWidgetTextStyle1,
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(
