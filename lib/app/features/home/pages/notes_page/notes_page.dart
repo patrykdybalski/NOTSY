@@ -4,6 +4,7 @@ import 'package:primary_school/app/features/home/pages/notes_page/add/add_note_p
 import 'package:primary_school/app/features/home/pages/notes_page/cubit/note_cubit.dart';
 import 'package:primary_school/app/features/home/pages/notes_page/screens/general_notes/general_notes.dart';
 import 'package:primary_school/constans/colors.dart';
+import 'package:primary_school/constans/font_style.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
 
 class NotesPage extends StatefulWidget {
@@ -45,10 +46,7 @@ class _NotesPageState extends State<NotesPage>
               title: const Text(
                 'Notatki',
               ),
-              titleTextStyle: const TextStyle(
-                color: AppColors.secondaryColor,
-                fontSize: 20,
-              ),
+              titleTextStyle: TextStyles.headingStyle,
             ),
             floatingActionButton: FloatingActionButton(
               backgroundColor: AppColors.redColor,

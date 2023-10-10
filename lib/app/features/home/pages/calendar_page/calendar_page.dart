@@ -9,6 +9,7 @@ import 'package:primary_school/app/features/home/pages/calendar_page/edit_event_
 
 import 'package:primary_school/app/features/home/pages/calendar_page/widgets/event_widget.dart';
 import 'package:primary_school/constans/colors.dart';
+import 'package:primary_school/constans/font_style.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
 
 import 'package:primary_school/domain/repositories/calendar/events_repository.dart';
@@ -33,10 +34,7 @@ class _CalendarPageState extends State<CalendarPage> {
         title: const Text(
           'Zaplanowane',
         ),
-        titleTextStyle: const TextStyle(
-          color: AppColors.secondaryColor,
-          fontSize: 20,
-        ),
+        titleTextStyle: TextStyles.headingStyle,
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.greenColor,

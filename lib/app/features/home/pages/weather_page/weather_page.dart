@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:primary_school/constans/colors.dart';
+import 'package:primary_school/constans/font_style.dart';
 
 class WeatherPage extends StatelessWidget {
   const WeatherPage({super.key});
@@ -10,10 +11,7 @@ class WeatherPage extends StatelessWidget {
       backgroundColor: AppColors.greenLoginColor,
       appBar: AppBar(
         title: const Text('Pogoda'),
-        titleTextStyle: const TextStyle(
-          color: AppColors.secondaryColor,
-          fontSize: 20,
-        ),
+        titleTextStyle: TextStyles.headingStyle,
         centerTitle: true,
         backgroundColor: AppColors.greenLoginColor,
         leading: IconButton(

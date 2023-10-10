@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/features/home/pages/notes_page/cubit/note_cubit.dart';
 import 'package:primary_school/constans/colors.dart';
+import 'package:primary_school/constans/font_style.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
 
 class UserPage extends StatefulWidget {
@@ -22,10 +23,7 @@ class _UserPageState extends State<UserPage> {
             backgroundColor: AppColors.primaryColor,
             appBar: AppBar(
               title: const Text('Mój profil'),
-              titleTextStyle: const TextStyle(
-                color: AppColors.secondaryColor,
-                fontSize: 20,
-              ),
+              titleTextStyle: TextStyles.headingStyle,
               centerTitle: true,
               backgroundColor: AppColors.primaryColor,
             ),
