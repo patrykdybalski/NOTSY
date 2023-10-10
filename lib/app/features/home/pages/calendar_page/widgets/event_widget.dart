@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:primary_school/constans/colors.dart';
+import 'package:primary_school/constans/font_style.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
 
 class EventWidget extends StatefulWidget {
@@ -50,11 +52,7 @@ class _EventWidgetState extends State<EventWidget> {
           ),
           child: Text(
             widget.eventModel.title,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
-              color: AppColors.secondaryColor,
-            ),
+            style: TextStyles.eventWidgetTextStyle1,
           ),
         ),
         trailing: Padding(
@@ -65,18 +63,16 @@ class _EventWidgetState extends State<EventWidget> {
             children: [
               Text(
                 widget.eventModel.selectedDayFormatted(),
-                style: const TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w500,
-                  color: AppColors.secondaryColor,
-                ),
+                style: TextStyles.eventWidgetTextStyle2,
               ),
               Text(
                 "${widget.eventModel.selectedDayFormatted2()}, ${widget.eventModel.selectedTimeFormatted()}",
-                style: const TextStyle(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w500,
+                style: GoogleFonts.domine(
                   color: AppColors.secondaryColor,
+                  fontSize: 11,
+                  fontWeight: FontWeight.w800,
+
+                  // Dodaj tutaj inne właściwości stylu tekstu dla nagłówków.
                 ),
               ),
             ],
@@ -110,9 +106,11 @@ class _EventWidgetState extends State<EventWidget> {
                     ),
                     child: Text(
                       widget.eventModel.subtitle,
-                      style: const TextStyle(
+                      style: GoogleFonts.domine(
                         color: AppColors.secondaryColor,
-                        fontSize: 14,
+                        fontSize: 16,
+
+                        // Dodaj tutaj inne właściwości stylu tekstu dla nagłówków.
                       ),
                     ),
                   ),

@@ -4,6 +4,7 @@ import 'package:primary_school/app/core/enums.dart';
 import 'package:primary_school/app/features/home/pages/notes_page/cubit/note_cubit.dart';
 import 'package:primary_school/app/features/home/pages/notes_page/screens/note_reader_screen/note_reader_screen.dart';
 import 'package:primary_school/constans/colors.dart';
+import 'package:primary_school/constans/font_style.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
 
@@ -192,11 +193,7 @@ class _NoteItemState extends State<NoteItem> {
                               maxLines: 4,
                               softWrap: true,
                               overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
-                                color: AppColors.secondaryColor,
-                                fontWeight: FontWeight.w800,
-                                fontSize: 12,
-                              ),
+                              style: TextStyles.noteWidgetTextStyle2,
                             ),
                           ),
                         ],
@@ -210,10 +207,7 @@ class _NoteItemState extends State<NoteItem> {
                         child: Text(
                           widget.noteModel.subtitle,
                           overflow: TextOverflow.fade,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 12,
-                          ),
+                          style: TextStyles.noteWidgetTextStyle1,
                         ),
                       ),
                     ],
