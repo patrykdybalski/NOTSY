@@ -30,4 +30,31 @@ class TextStyles {
     fontSize: 12,
     fontWeight: FontWeight.w800,
   );
+  static TextStyle noteReaderTextStyle1 = GoogleFonts.domine(
+    color: AppColors.secondaryColor,
+    fontSize: 20,
+    fontWeight: FontWeight.w800,
+  );
+  static TextStyle noteReaderTextStyle2 = GoogleFonts.domine(
+    color: AppColors.secondaryColor,
+    fontSize: 18,
+    fontWeight: FontWeight.w400,
+  );
+  static TextStyle noteReaderDateTextStyle = GoogleFonts.domine(
+    color: AppColors.secondaryColor,
+    fontSize: 9,
+    fontWeight: FontWeight.w400,
+  );
+
+  static TextStyle deleteDialogTextStyle1 = GoogleFonts.domine(
+    color: AppColors.secondaryColor,
+    fontSize: 20,
+    fontWeight: FontWeight.w800,
+  );
+
+  static TextStyle deleteDialogTextStyle2 = GoogleFonts.domine(
+    color: AppColors.secondaryColor,
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+  );
 }

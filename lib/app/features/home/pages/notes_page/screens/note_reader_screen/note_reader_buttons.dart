@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/features/home/pages/notes_page/cubit/note_cubit.dart';
 import 'package:primary_school/app/features/home/pages/notes_page/screens/edit_note_screen/edit_note_screen.dart';
 import 'package:primary_school/constans/colors.dart';
+import 'package:primary_school/constans/font_style.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
-
 
 class NoteReaderButtons {
   final BuildContext context;
@@ -55,18 +55,15 @@ class NoteReaderButtons {
                       elevation: 20,
                       backgroundColor: noteModel.color,
                       title: const Text('Usunąć notatkę?'),
+                      titleTextStyle: TextStyles.deleteDialogTextStyle1,
                       actions: [
                         TextButton(
                           onPressed: () {
                             Navigator.of(context).pop();
                           },
-                          child: const Text(
+                          child: Text(
                             'Nie',
-                            style: TextStyle(
-                              color: AppColors.secondaryColor,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                            ),
+                            style: TextStyles.deleteDialogTextStyle2,
                           ),
                         ),
                         TextButton(
@@ -75,13 +72,9 @@ class NoteReaderButtons {
                             Navigator.of(context)
                                 .popUntil((route) => route.isFirst);
                           },
-                          child: const Text(
+                          child: Text(
                             'Tak',
-                            style: TextStyle(
-                              color: AppColors.secondaryColor,
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                            ),
+                            style: TextStyles.deleteDialogTextStyle2,
                           ),
                         ),
                       ],

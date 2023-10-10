@@ -109,6 +109,7 @@ class _NoteItemState extends State<NoteItem> {
                       builder: (context, state) {
                         return AlertDialog(
                           title: const Text('Usunąć notatkę?'),
+                          titleTextStyle: TextStyles.deleteDialogTextStyle1,
                           elevation: 20,
                           backgroundColor: widget.noteModel.color,
                           actions: [
@@ -116,13 +117,9 @@ class _NoteItemState extends State<NoteItem> {
                               onPressed: () {
                                 Navigator.of(context).pop();
                               },
-                              child: const Text(
+                              child: Text(
                                 'Nie',
-                                style: TextStyle(
-                                  color: AppColors.secondaryColor,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                ),
+                                style: TextStyles.deleteDialogTextStyle2,
                               ),
                             ),
                             TextButton(
@@ -132,13 +129,9 @@ class _NoteItemState extends State<NoteItem> {
                                     .remove(id: widget.noteModel.id);
                                 Navigator.of(context).pop();
                               },
-                              child: const Text(
+                              child: Text(
                                 'Tak',
-                                style: TextStyle(
-                                  color: AppColors.secondaryColor,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                ),
+                                style: TextStyles.deleteDialogTextStyle2,
                               ),
                             ),
                           ],

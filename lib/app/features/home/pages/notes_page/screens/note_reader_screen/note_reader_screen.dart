@@ -4,9 +4,9 @@ import 'package:intl/intl.dart';
 import 'package:primary_school/app/features/home/pages/notes_page/screens/note_reader_screen/cubit/reader_screen_cubit.dart';
 import 'package:primary_school/app/features/home/pages/notes_page/screens/note_reader_screen/note_reader_buttons.dart';
 import 'package:primary_school/constans/colors.dart';
+import 'package:primary_school/constans/font_style.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
-
 
 class NoteReaderScreen extends StatefulWidget {
   const NoteReaderScreen({super.key, required this.noteModel});
@@ -92,11 +92,7 @@ class NoteReaderScreenBody extends StatelessWidget {
           children: [
             Text(
               title,
-              style: const TextStyle(
-                color: AppColors.secondaryColor,
-                fontWeight: FontWeight.w700,
-                fontSize: 20,
-              ),
+              style: TextStyles.noteReaderTextStyle1,
             ),
             const Divider(
               color: AppColors.secondaryColor,
@@ -109,19 +105,11 @@ class NoteReaderScreenBody extends StatelessWidget {
                   children: [
                     Text(
                       'utw. ${DateFormat('dd/MM/yyyy hh:mm').format(createdDate)}',
-                      style: const TextStyle(
-                        color: AppColors.secondaryColor,
-                        fontWeight: FontWeight.w300,
-                        fontSize: 9,
-                      ),
+                      style: TextStyles.noteReaderDateTextStyle,
                     ),
                     Text(
                       'edt. ${DateFormat('dd/MM/yyyy hh:mm').format(updatedDate)}',
-                      style: const TextStyle(
-                        color: AppColors.secondaryColor,
-                        fontWeight: FontWeight.w300,
-                        fontSize: 9,
-                      ),
+                      style: TextStyles.noteReaderDateTextStyle,
                     ),
                   ],
                 ),
@@ -132,11 +120,7 @@ class NoteReaderScreenBody extends StatelessWidget {
             ),
             Text(
               subtitle,
-              style: const TextStyle(
-                color: AppColors.secondaryColor,
-                fontWeight: FontWeight.w300,
-                fontSize: 18,
-              ),
+              style: TextStyles.noteReaderTextStyle2,
             ),
           ],
         ),
