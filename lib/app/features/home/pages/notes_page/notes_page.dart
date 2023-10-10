@@ -44,23 +44,11 @@ class _NotesPageState extends State<NotesPage>
               backgroundColor: AppColors.primaryColor,
               title: const Text(
                 'Notatki',
-                style: TextStyle(
-                  color: AppColors.secondaryColor,
-                  letterSpacing: 2,
-                ),
               ),
-              actions: [
-                IconButton(
-                  onPressed: () {
-                    context.read<NoteCubit>().signOut();
-                  },
-                  icon: const Icon(
-                    Icons.logout_outlined,
-                    size: 30,
-                    color: AppColors.redColor2,
-                  ),
-                ),
-              ],
+              titleTextStyle: const TextStyle(
+                color: AppColors.secondaryColor,
+                fontSize: 20,
+              ),
             ),
             floatingActionButton: FloatingActionButton(
               backgroundColor: AppColors.redColor,

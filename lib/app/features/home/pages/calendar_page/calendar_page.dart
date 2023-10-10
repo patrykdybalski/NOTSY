@@ -32,10 +32,10 @@ class _CalendarPageState extends State<CalendarPage> {
         backgroundColor: AppColors.primaryColor,
         title: const Text(
           'Zaplanowane',
-          style: TextStyle(
-            letterSpacing: 2,
-            color: AppColors.secondaryColor,
-          ),
+        ),
+        titleTextStyle: const TextStyle(
+          color: AppColors.secondaryColor,
+          fontSize: 20,
         ),
       ),
       floatingActionButton: FloatingActionButton(
