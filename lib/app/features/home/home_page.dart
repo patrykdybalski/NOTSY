@@ -4,6 +4,7 @@ import 'package:primary_school/app/features/home/pages/notes_page/notes_page.dar
 import 'package:primary_school/app/features/home/pages/user_page/user_page.dart';
 import 'package:primary_school/app/features/home/pages/weather_page/weather_page.dart';
 import 'package:primary_school/constans/colors.dart';
+import 'package:primary_school/constans/font_style.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -35,11 +36,13 @@ class _HomePageState extends State<HomePage> {
         },
       ),
       bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
+        type: BottomNavigationBarType.shifting,
         elevation: 10,
         backgroundColor: AppColors.primaryColor,
         selectedItemColor: AppColors.redColor,
         unselectedItemColor: AppColors.secondaryColor,
+        unselectedLabelStyle: TextStyles.addEventStyle1,
+        selectedLabelStyle: TextStyles.addEventStyle1,
         currentIndex: currentIndex,
         onTap: (newIndex) {
           setState(() {
@@ -48,23 +51,26 @@ class _HomePageState extends State<HomePage> {
         },
         items: const [
           BottomNavigationBarItem(
-            backgroundColor: Colors.red,
+            backgroundColor: AppColors.primaryColor,
             icon: Icon(
               Icons.calendar_month_outlined,
             ),
             label: 'Plany',
           ),
           BottomNavigationBarItem(
+            backgroundColor: AppColors.primaryColor,
             icon: Icon(
-              Icons.notes_outlined,
+              Icons.text_snippet_outlined,
             ),
             label: 'Notatki',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.wb_sunny_outlined),
+            backgroundColor: AppColors.primaryColor,
+            icon: Icon(Icons.wb_cloudy_outlined),
             label: 'Pogoda',
           ),
           BottomNavigationBarItem(
+            backgroundColor: AppColors.primaryColor,
             icon: Icon(Icons.account_box_outlined),
             label: 'Profil',
           ),
