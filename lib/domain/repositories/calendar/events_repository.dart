@@ -12,6 +12,7 @@ class EventsRepository {
         .collection('users')
         .doc(userId)
         .collection('calendarItems')
+        .orderBy('selectedDay')
         .snapshots()
         .map((querySnapshot) {
       return querySnapshot.docs.map(

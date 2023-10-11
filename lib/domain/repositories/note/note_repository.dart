@@ -13,6 +13,7 @@ class NoteRepository {
         .collection('users')
         .doc(userId)
         .collection('noteItems')
+        .orderBy('createdDate')
         .snapshots()
         .map((querySnapshot) {
       return querySnapshot.docs.map(
