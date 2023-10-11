@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:primary_school/app/features/home/pages/notes_page/cubit/note_cubit.dart';
+import 'package:primary_school/app/features/home/pages/user_page/cubit/user_page_cubit.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/constans/font_style.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
@@ -16,8 +16,8 @@ class _UserPageState extends State<UserPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => NoteCubit(NoteRepository()),
-      child: BlocBuilder<NoteCubit, NoteState>(
+      create: (context) => UserPageCubit(NoteRepository()),
+      child: BlocBuilder<UserPageCubit, UserPageState>(
         builder: (context, state) {
           return Scaffold(
             backgroundColor: AppColors.primaryColor,
@@ -47,7 +47,7 @@ class _UserPageState extends State<UserPage> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      context.read<NoteCubit>().signOut();
+                      context.read<UserPageCubit>().signOut();
                     },
                     child: const Text('Wyloguj'),
                   ),

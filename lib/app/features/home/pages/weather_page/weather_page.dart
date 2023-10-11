@@ -8,12 +8,12 @@ class WeatherPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.greenLoginColor,
+      backgroundColor: AppColors.primaryColor,
       appBar: AppBar(
         title: const Text('Pogoda'),
         titleTextStyle: TextStyles.headingStyle,
         centerTitle: true,
-        backgroundColor: AppColors.greenLoginColor,
+        backgroundColor: AppColors.primaryColor,
         leading: IconButton(
           icon: const Icon(Icons.menu),
           onPressed: () {},
