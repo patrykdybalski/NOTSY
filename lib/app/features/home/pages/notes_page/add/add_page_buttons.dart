@@ -5,7 +5,6 @@ import 'package:primary_school/app/features/home/pages/notes_page/cubit/note_cub
 
 import 'package:primary_school/constans/colors.dart';
 
-
 class AddPageButtons {
   final BuildContext context;
   final String? title;
@@ -41,13 +40,13 @@ class AddPageButtons {
       onPressed: () {
         Navigator.of(context).pop();
       },
-      backgroundColor: AppColors.redColor2,
+      backgroundColor: AppColors.primaryColor,
       mini: true,
       heroTag: null,
       child: const Icon(
         Icons.chevron_left_outlined,
-        color: AppColors.secondaryColor,
-        size: 25,
+        color: AppColors.redColor2,
+        size: 30,
       ),
     );
   }
@@ -59,11 +58,10 @@ class AddPageButtons {
       },
       backgroundColor: AppColors.primaryColor,
       mini: true,
-      child: Container(
-        decoration: BoxDecoration(
-          gradient: AppColors.fabGradient,
-          borderRadius: BorderRadius.circular(32.0),
-        ),
+      child: const Icon(
+        Icons.color_lens_outlined,
+        color: AppColors.selectedDayColor,
+        size: 25,
       ),
     );
   }
@@ -82,12 +80,13 @@ class AddPageButtons {
             );
         context.read<NoteCubit>().start();
       },
-      backgroundColor: AppColors.greenColor,
+      backgroundColor: AppColors.primaryColor,
       heroTag: null,
       mini: true,
       child: const Icon(
         Icons.check_outlined,
-        color: AppColors.secondaryColor,
+        color: AppColors.greenColor,
+        size: 25,
       ),
     );
   }

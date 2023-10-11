@@ -156,12 +156,6 @@ class _NoteItemState extends State<NoteItem> {
                       offset:
                           const Offset(0.3, 0.3), // Przesunięcie cienia w dół
                     ),
-                    // const BoxShadow(
-                    //   color: Colors.white,
-                    //   spreadRadius: 1,
-                    //   blurRadius: 1,
-                    //   offset: Offset(-1, -1), // Przesunięcie cienia w dół
-                    // ),
                   ],
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(12),

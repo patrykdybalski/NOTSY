@@ -30,13 +30,13 @@ class NoteReaderButtons {
       onPressed: () {
         Navigator.of(context).pop();
       },
-      backgroundColor: AppColors.redColor2,
+      backgroundColor: AppColors.primaryColor,
       mini: true,
       heroTag: null,
       child: const Icon(
         Icons.chevron_left_outlined,
-        color: AppColors.secondaryColor,
-        size: 25,
+        color: AppColors.redColor2,
+        size: 30,
       ),
     );
   }
@@ -84,7 +84,7 @@ class NoteReaderButtons {
               );
             }));
       },
-      backgroundColor: Colors.grey,
+      backgroundColor: AppColors.primaryColor,
       mini: true,
       heroTag: null,
       child: const Icon(
@@ -105,12 +105,12 @@ class NoteReaderButtons {
           ),
         ));
       },
-      backgroundColor: AppColors.editButton,
+      backgroundColor: AppColors.primaryColor,
       mini: true,
       heroTag: null,
       child: const Icon(
         Icons.edit_outlined,
-        color: AppColors.secondaryColor,
+        color: AppColors.greenColor,
         size: 25,
       ),
     );
