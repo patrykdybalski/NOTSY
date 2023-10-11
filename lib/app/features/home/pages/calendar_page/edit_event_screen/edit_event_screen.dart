@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:primary_school/app/features/home/pages/calendar_page/edit_event_screen/cubit/edit_event_cubit.dart';
 import 'package:primary_school/app/features/home/pages/calendar_page/edit_event_screen/edit_event_widgets.dart';
@@ -26,125 +27,124 @@ class _EditEventScreenState extends State<EditEventScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.primaryColor,
-      body: BlocProvider(
-        create: (context) => EditEventCubit(EventsRepository()),
-        child: BlocListener<EditEventCubit, EditEventState>(
-          listener: (context, state) {
-            if (state.saved) {
-              Navigator.of(context).pop();
-            }
-            if (state.errorMessage.isNotEmpty) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(state.errorMessage),
-                  backgroundColor: Colors.red,
-                ),
-              );
-            }
-          },
-          child: BlocBuilder<EditEventCubit, EditEventState>(
-            builder: (context, state) {
-              return AlertDialog(
-                scrollable: true,
-                titlePadding: const EdgeInsets.all(5),
-                contentPadding: const EdgeInsets.all(5),
-                backgroundColor: AppColors.primaryColor,
-                shadowColor: AppColors.primaryColor,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(13),
-                    side: const BorderSide(
-                      color: AppColors.accentColor,
-                      width: 2.5,
-                    )),
-                content: _ContentDialog(
-                  onTitleChanged: (newValue) {
-                    setState(
-                      () {
-                        _title = newValue;
-                      },
-                    );
-                  },
-                  onSubtitleChanged: (newValue) {
-                    setState(
-                      () {
-                        _subtitle = newValue;
-                      },
-                    );
-                  },
-                  onDayChanged: (newValue) {
-                    setState(
-                      () {
-                        _selectedDay = newValue;
-                      },
-                    );
-                  },
-                  onTimeChanged: (newValue) {
-                    setState(() {
-                      _selectedTime = newValue;
-                    });
-                  },
-                  selectedTimeFormatted: _selectedTime == null
-                      ? null
-                      : DateFormat.Hm().format(
-                          _selectedTime!,
-                        ),
-                  selectedDateFormatted: _selectedDay == null
-                      ? null
-                      : DateFormat.yMd().format(
-                          _selectedDay!,
-                        ),
-                  eventModel: widget.eventModel,
-                ),
-                actions: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      TextButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
-                          },
-                          child: const Text(
-                            'Anuluj',
-                            style: TextStyle(
-                              color: AppColors.redColor,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 16,
-                            ),
-                          )),
-                      TextButton(
-                        onPressed: () {
-                          final newTitle = _title ?? widget.eventModel.title;
-                          final newSubtitle =
-                              _subtitle ?? widget.eventModel.subtitle;
-                          final newSelectedDay =
-                              _selectedDay ?? widget.eventModel.selectedDay;
-                          final newSelectedTime =
-                              _selectedTime ?? widget.eventModel.selectedTime;
-                          context.read<EditEventCubit>().edit(
-                                newTitle,
-                                newSubtitle,
-                                newSelectedDay,
-                                newSelectedTime,
-                                widget.eventModel.id,
-                              );
-                        },
-                        child: const Text(
-                          'Zapisz',
-                          style: TextStyle(
-                            color: AppColors.accentColor,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 16,
-                          ),
-                        ),
+    return BlocProvider(
+      create: (context) => EditEventCubit(EventsRepository()),
+      child: BlocListener<EditEventCubit, EditEventState>(
+        listener: (context, state) {
+          if (state.saved) {
+            Navigator.of(context).pop();
+          }
+          if (state.errorMessage.isNotEmpty) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.errorMessage),
+                backgroundColor: Colors.red,
+              ),
+            );
+          }
+        },
+        child: BlocBuilder<EditEventCubit, EditEventState>(
+          builder: (context, state) {
+            return AlertDialog(
+              scrollable: true,
+              titlePadding: const EdgeInsets.all(5),
+              backgroundColor: AppColors.primaryColor2,
+              contentPadding: const EdgeInsets.only(
+                top: 15.0,
+                left: 10.0,
+                right: 10.0,
+              ),
+              shadowColor: AppColors.primaryColor,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(13),
+              ),
+              content: _ContentDialog(
+                onTitleChanged: (newValue) {
+                  setState(
+                    () {
+                      _title = newValue;
+                    },
+                  );
+                },
+                onSubtitleChanged: (newValue) {
+                  setState(
+                    () {
+                      _subtitle = newValue;
+                    },
+                  );
+                },
+                onDayChanged: (newValue) {
+                  setState(
+                    () {
+                      _selectedDay = newValue;
+                    },
+                  );
+                },
+                onTimeChanged: (newValue) {
+                  setState(() {
+                    _selectedTime = newValue;
+                  });
+                },
+                selectedTimeFormatted: _selectedTime == null
+                    ? null
+                    : DateFormat.Hm().format(
+                        _selectedTime!,
                       ),
-                    ],
+                selectedDateFormatted: _selectedDay == null
+                    ? null
+                    : DateFormat.yMd().format(
+                        _selectedDay!,
+                      ),
+                eventModel: widget.eventModel,
+              ),
+              actionsAlignment: MainAxisAlignment.spaceBetween,
+              actionsPadding: const EdgeInsets.only(
+                top: 0,
+                bottom: 3.0,
+                left: 5,
+                right: 5,
+              ),
+              actions: [
+                TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text(
+                      'Anuluj',
+                      style: GoogleFonts.domine(
+                        color: AppColors.redColor,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    )),
+                TextButton(
+                  onPressed: () {
+                    final newTitle = _title ?? widget.eventModel.title;
+                    final newSubtitle = _subtitle ?? widget.eventModel.subtitle;
+                    final newSelectedDay =
+                        _selectedDay ?? widget.eventModel.selectedDay;
+                    final newSelectedTime =
+                        _selectedTime ?? widget.eventModel.selectedTime;
+                    context.read<EditEventCubit>().edit(
+                          newTitle,
+                          newSubtitle,
+                          newSelectedDay,
+                          newSelectedTime,
+                          widget.eventModel.id,
+                        );
+                  },
+                  child: Text(
+                    'Zapisz edycję',
+                    style: GoogleFonts.domine(
+                      color: AppColors.accentColor,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w800,
+                    ),
                   ),
-                ],
-              );
-            },
-          ),
+                ),
+              ],
+            );
+          },
         ),
       ),
     );
@@ -173,40 +173,33 @@ class _ContentDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        top: 15.0,
-        left: 10.0,
-        right: 10.0,
-      ),
-      child: Column(
-        children: [
-          TitleField(
-            eventModel: eventModel,
-            onTitleChanged: onTitleChanged,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          SubtitleField(
-            eventModel: eventModel,
-            onSubtitleChanged: onSubtitleChanged,
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          DayButton(
-            selectedDateFormatted: selectedDateFormatted,
-            eventModel: eventModel,
-            onDayChanged: onDayChanged,
-          ),
-          TimeButton(
-            selectedTimeFormatted: selectedTimeFormatted,
-            eventModel: eventModel,
-            onTimeChanged: onTimeChanged,
-          ),
-        ],
-      ),
+    return Column(
+      children: [
+        TitleField(
+          eventModel: eventModel,
+          onTitleChanged: onTitleChanged,
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        SubtitleField(
+          eventModel: eventModel,
+          onSubtitleChanged: onSubtitleChanged,
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        DayButton(
+          selectedDateFormatted: selectedDateFormatted,
+          eventModel: eventModel,
+          onDayChanged: onDayChanged,
+        ),
+        TimeButton(
+          selectedTimeFormatted: selectedTimeFormatted,
+          eventModel: eventModel,
+          onTimeChanged: onTimeChanged,
+        ),
+      ],
     );
   }
 }

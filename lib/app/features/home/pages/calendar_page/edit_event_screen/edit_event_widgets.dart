@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:primary_school/constans/colors.dart';
+import 'package:primary_school/constans/font_style.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
 
 class TimeButton extends StatelessWidget {
@@ -19,9 +20,7 @@ class TimeButton extends StatelessWidget {
     return ElevatedButton.icon(
       label: Text(
         selectedTimeFormatted ?? eventModel.selectedTimeFormatted(),
-        style: const TextStyle(
-          color: AppColors.accentColor,
-        ),
+        style: TextStyles.addEventStyle1,
       ),
       icon: const Icon(
         Icons.more_time_rounded,
@@ -30,6 +29,7 @@ class TimeButton extends StatelessWidget {
       onPressed: () async {
         TimeOfDay? selectedTime = await showTimePicker(
           context: context,
+          initialEntryMode: TimePickerEntryMode.dial,
           initialTime: TimeOfDay.fromDateTime(eventModel.selectedTime),
         );
 
@@ -42,7 +42,7 @@ class TimeButton extends StatelessWidget {
       },
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.primaryColor,
-        elevation: 2,
+        elevation: 1.5,
         shadowColor: AppColors.accentColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
@@ -71,9 +71,7 @@ class DayButton extends StatelessWidget {
     return ElevatedButton.icon(
       label: Text(
         selectedDateFormatted ?? eventModel.selectedEditDayFormatted(),
-        style: const TextStyle(
-          color: AppColors.accentColor,
-        ),
+        style: TextStyles.addEventStyle1,
       ),
       icon: const Icon(
         Icons.calendar_month_outlined,
@@ -82,6 +80,7 @@ class DayButton extends StatelessWidget {
       onPressed: () async {
         DateTime? selectedDate = await showDatePicker(
           context: context,
+          initialDatePickerMode: DatePickerMode.day,
           initialDate: eventModel.selectedDay,
           firstDate: DateTime.now(),
           lastDate: DateTime.now().add(

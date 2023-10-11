@@ -60,7 +60,7 @@ class EventsRepository {
         .update({
       'title': title,
       'subtitle': subtitle,
-      'selecteDay': selectedDay,
+      'selectedDay': selectedDay,
       'selectedTime': selectedTime,
     });
   }

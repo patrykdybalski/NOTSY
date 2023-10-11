@@ -26,6 +26,7 @@ class TimeButton extends StatelessWidget {
       onPressed: () async {
         TimeOfDay? selectedTime = await showTimePicker(
           context: context,
+          initialEntryMode: TimePickerEntryMode.dial,
           initialTime: TimeOfDay.now(),
         );
 
@@ -73,7 +74,7 @@ class DayButton extends StatelessWidget {
       ),
       onPressed: () async {
         final selectedDate = await showDatePicker(
-          initialEntryMode: DatePickerEntryMode.calendarOnly,
+          initialEntryMode: DatePickerEntryMode.calendar,
           context: context,
           initialDate: DateTime.now(),
           firstDate: DateTime.now(),

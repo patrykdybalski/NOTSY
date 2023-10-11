@@ -56,6 +56,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(13),
               ),
+              shadowColor: null,
               content: _ContentDialog(
                 onTitleChanged: (newValue) {
                   setState(

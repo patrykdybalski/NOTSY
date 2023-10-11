@@ -49,6 +49,7 @@ class TextStyles {
     color: AppColors.secondaryColor,
     fontSize: 18,
     fontWeight: FontWeight.w400,
+    
   );
   static TextStyle noteReaderDateTextStyle = GoogleFonts.domine(
     color: AppColors.secondaryColor,
