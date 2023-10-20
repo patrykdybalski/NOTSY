@@ -125,66 +125,58 @@ class SlidableEventWidget extends StatelessWidget {
           SlidableAction(
             onPressed: (context) {
               showDialog(
-                  context: context,
-                  builder: ((context) {
-                    return AlertDialog(
-                      title: const Text('Usunąć zapis?'),
-                      titleTextStyle: TextStyles.deleteDialogTextStyle1,
-                      elevation: 20,
-                      backgroundColor: AppColors.primaryColor,
-                      actions: [
-                        TextButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
+                context: context,
+                builder: ((context) {
+                  return AlertDialog(
+                    title: const Text('Oznaczyć jako ukończone?'),
+                    titleTextStyle: TextStyles.deleteDialogTextStyle1,
+                    elevation: 20,
+                    backgroundColor: AppColors.primaryColor,
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: Text(
+                          'Nie',
+                          style: TextStyles.deleteDialogTextStyle2,
+                        ),
+                      ),
+                      BlocProvider(
+                        create: (context) => CalendarCubit(EventsRepository()),
+                        child: BlocBuilder<CalendarCubit, CalendarState>(
+                          builder: (context, state) {
+                            return TextButton(
+                              onPressed: () {
+                                context.read<CalendarCubit>().remove(
+                                      documentID: eventModel.id,
+                                    );
+                                Navigator.of(context).pop();
+                              },
+                              child: Text(
+                                'Tak',
+                                style: TextStyles.deleteDialogTextStyle2,
+                              ),
+                            );
                           },
-                          child: Text(
-                            'Nie',
-                            style: TextStyles.deleteDialogTextStyle2,
-                          ),
                         ),
-                        BlocProvider(
-                          create: (context) =>
-                              CalendarCubit(EventsRepository()),
-                          child: BlocBuilder<CalendarCubit, CalendarState>(
-                            builder: (context, state) {
-                              return TextButton(
-                                onPressed: () {
-                                  context.read<CalendarCubit>().remove(
-                                        documentID: eventModel.id,
-                                      );
-                                  Navigator.of(context).pop();
-                                },
-                                child: Text(
-                                  'Tak',
-                                  style: TextStyles.deleteDialogTextStyle2,
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
-                    );
-                  }));
+                      ),
+                    ],
+                  );
+                }),
+              );
             },
-            label: 'Usuń',
-            icon: Icons.delete_outline_outlined,
+            padding: const EdgeInsets.all(0),
+            label: 'Ukończone',
+            icon: Icons.task_alt_outlined,
             backgroundColor: AppColors.primaryColor,
-            foregroundColor: AppColors.secondaryColor,
+            foregroundColor: AppColors.greenColor,
             spacing: 5,
           ),
           SlidableAction(
             onPressed: (context) {
               _showEditDialog(context);
             },
-            // onPressed: (context) {
-            //   Navigator.of(context).push(
-            //     MaterialPageRoute(
-            //       builder: (context) => EditEventScreen(
-            //         eventModel: eventModel,
-            //       ),
-            //     ),
-            //   );
-            // },
             label: 'Edytuj',
             icon: Icons.mode_edit_outline_outlined,
             backgroundColor: AppColors.primaryColor,

@@ -33,21 +33,14 @@ class _UserPageState extends State<UserPage> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   const SizedBox(
-                    height: 24,
+                    height: 32,
                   ),
                   const CircleAvatar(
                     backgroundImage: AssetImage('images/login_page_logo.png'),
-                    radius: 70,
+                    radius: 80,
                   ),
                   const SizedBox(
                     height: 16,
-                  ),
-                  Text(
-                    'dybalski.patryk@wp.pl',
-                    style: TextStyles.addEventStyle2,
-                  ),
-                  const SizedBox(
-                    height: 24,
                   ),
                   ElevatedButton(
                     onPressed: () {
@@ -59,12 +52,12 @@ class _UserPageState extends State<UserPage> {
                     child: Text('Wyloguj',
                         style: GoogleFonts.domine(
                           color: AppColors.redColor2,
-                          fontSize: 14,
+                          fontSize: 16,
                           fontWeight: FontWeight.w800,
                         )),
                   ),
                   const SizedBox(
-                    height: 25,
+                    height: 24,
                   ),
                   ListTile(
                     onTap: () {},
