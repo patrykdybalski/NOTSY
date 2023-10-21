@@ -31,12 +31,22 @@ class WeatherPage extends StatelessWidget {
             size: 27,
           ),
         ),
-        body: const Column(
+        body: Column(
           children: [
             TabBar(
-              tabs: [
+              indicatorColor: AppColors.greenColor,
+              indicatorWeight: 1,
+              indicatorPadding: const EdgeInsets.all(4),
+              isScrollable: false,
+              labelColor: AppColors.greenColor,
+              unselectedLabelColor: AppColors.secondaryColor,
+              dividerColor: AppColors.primaryColor,
+              labelStyle: TextStyles.weatherStyle2,
+              overlayColor:
+                  const MaterialStatePropertyAll(AppColors.primaryColor),
+              tabs: const [
                 Tab(
-                  text: 'Dziś',
+                  text: 'Dzisiaj',
                 ),
                 Tab(
                   text: 'Jutro',
@@ -46,6 +56,13 @@ class WeatherPage extends StatelessWidget {
                 ),
               ],
             ),
+            Expanded(
+              child: TabBarView(children: [
+                Container(),
+                Container(),
+                Container(),
+              ]),
+            )
           ],
         ),
       ),
