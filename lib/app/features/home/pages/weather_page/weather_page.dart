@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:primary_school/app/features/home/pages/weather_page/tabs/first_tab.dart';
+import 'package:primary_school/app/features/home/pages/weather_page/tabs/second_tab.dart';
+import 'package:primary_school/app/features/home/pages/weather_page/tabs/third_tab.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/constans/font_style.dart';
 
@@ -17,19 +20,18 @@ class WeatherPage extends StatelessWidget {
           centerTitle: true,
           backgroundColor: AppColors.primaryColor,
           leadingWidth: 60,
-          leading: const Icon(
-            Icons.location_on_outlined,
-            size: 30,
-          ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: AppColors.primaryColor,
-          onPressed: () {},
-          child: const Icon(
-            Icons.location_searching_outlined,
-            color: AppColors.secondaryColor,
-            size: 27,
-          ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 16.0),
+              child: IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.location_on_outlined,
+                  size: 30,
+                ),
+              ),
+            ),
+          ],
         ),
         body: Column(
           children: [
@@ -56,12 +58,14 @@ class WeatherPage extends StatelessWidget {
                 ),
               ],
             ),
-            Expanded(
-              child: TabBarView(children: [
-                Container(),
-                Container(),
-                Container(),
-              ]),
+            const Expanded(
+              child: TabBarView(
+                children: [
+                  FirstTab(),
+                  SecondTab(),
+                  ThirdTab(),
+                ],
+              ),
             )
           ],
         ),
