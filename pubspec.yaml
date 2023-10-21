@@ -48,6 +48,7 @@ dependencies:
   flutter_slidable: ^3.0.0
   flutter_colorpicker: ^1.0.3
   hidden_drawer_menu: ^3.0.1
+  weather_icons: ^3.0.0
  
 
 dev_dependencies:
