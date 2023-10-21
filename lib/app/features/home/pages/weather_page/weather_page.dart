@@ -7,25 +7,47 @@ class WeatherPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.primaryColor,
-      appBar: AppBar(
-        title: const Text('Pogoda'),
-        titleTextStyle: TextStyles.headingStyle,
-        centerTitle: true,
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
         backgroundColor: AppColors.primaryColor,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.location_searching_outlined,
-              size: 30,
-              weight: 40,
-              color: AppColors.secondaryColor,
-            ),
-            padding: const EdgeInsets.only(right: 5),
+        appBar: AppBar(
+          title: const Text('Karlino, Polska'),
+          titleTextStyle: TextStyles.headingStyle,
+          centerTitle: true,
+          backgroundColor: AppColors.primaryColor,
+          leadingWidth: 60,
+          leading: const Icon(
+            Icons.location_on_outlined,
+            size: 30,
           ),
-        ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: AppColors.primaryColor,
+          onPressed: () {},
+          child: const Icon(
+            Icons.location_searching_outlined,
+            color: AppColors.secondaryColor,
+            size: 27,
+          ),
+        ),
+        body: const Column(
+          children: [
+            TabBar(
+              tabs: [
+                Tab(
+                  text: 'Dziś',
+                ),
+                Tab(
+                  text: 'Jutro',
+                ),
+                Tab(
+                  text: 'Pojutrze',
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

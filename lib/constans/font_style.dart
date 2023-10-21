@@ -49,7 +49,6 @@ class TextStyles {
     color: AppColors.secondaryColor,
     fontSize: 18,
     fontWeight: FontWeight.w400,
-    
   );
   static TextStyle noteReaderDateTextStyle = GoogleFonts.domine(
     color: AppColors.secondaryColor,
@@ -64,6 +63,26 @@ class TextStyles {
   );
 
   static TextStyle deleteDialogTextStyle2 = GoogleFonts.domine(
+    color: AppColors.secondaryColor,
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+  );
+  static TextStyle weatherStyle1 = GoogleFonts.domine(
+    color: AppColors.secondaryColor,
+    fontSize: 30,
+    fontWeight: FontWeight.w400,
+  );
+  static TextStyle weatherStyle2 = GoogleFonts.domine(
+    color: AppColors.secondaryColor,
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+  );
+  static TextStyle weatherStyle3 = GoogleFonts.domine(
+    color: AppColors.secondaryColor,
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+  );
+  static TextStyle weatherStyle4 = GoogleFonts.domine(
     color: AppColors.secondaryColor,
     fontSize: 16,
     fontWeight: FontWeight.w400,
