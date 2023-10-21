@@ -14,17 +14,14 @@ class WeatherPage extends StatelessWidget {
         titleTextStyle: TextStyles.headingStyle,
         centerTitle: true,
         backgroundColor: AppColors.primaryColor,
-        leading: IconButton(
-          icon: const Icon(Icons.menu),
-          onPressed: () {},
-        ),
         actions: [
           IconButton(
             onPressed: () {},
             icon: const Icon(
-              Icons.add_circle_outline_outlined,
-              size: 35,
-              color: Color(0xffC94CBA),
+              Icons.location_searching_outlined,
+              size: 30,
+              weight: 40,
+              color: AppColors.secondaryColor,
             ),
             padding: const EdgeInsets.only(right: 5),
           ),
