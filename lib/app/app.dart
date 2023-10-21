@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:primary_school/app/cubit/root_cubit.dart';
-import 'package:primary_school/features/home/home_page.dart';
-
-import 'package:primary_school/features/auth/login_page.dart';
+import 'package:primary_school/app/features/auth/login_page.dart';
+import 'package:primary_school/app/features/home/home_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -13,12 +12,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'PNP - plany, notatki, pogoda',
         theme: ThemeData(
           primarySwatch: Colors.blue,
+          useMaterial3: true,
           unselectedWidgetColor: Colors.white70,
         ),
-        home: const HomePage() //const RootPage(),
+        home: const RootPage() //const RootPage(),
         );
   }
 }

@@ -1,11 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
 
 class NoteRepository {
   Stream<List<NoteModel>> getNotesStream() {
+    final userId = FirebaseAuth.instance.currentUser?.uid;
+    if (userId == null) {
+      throw Exception('User is not logged in');
+    }
     return FirebaseFirestore.instance
+        .collection('users')
+        .doc(userId)
         .collection('noteItems')
+        .orderBy('createdDate')
         .snapshots()
         .map((querySnapshot) {
       return querySnapshot.docs.map(
@@ -31,6 +39,10 @@ class NoteRepository {
     });
   }
 
+  Future<void> signOut() async {
+    await FirebaseAuth.instance.signOut();
+  }
+
   Future<void> add(
     String title,
     String subtitle,
@@ -38,7 +50,15 @@ class NoteRepository {
     DateTime updatedDate,
     Color selectedColor,
   ) async {
-    await FirebaseFirestore.instance.collection('noteItems').add({
+    final userId = FirebaseAuth.instance.currentUser?.uid;
+    if (userId == null) {
+      throw Exception('User is not logged in');
+    }
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(userId)
+        .collection('noteItems')
+        .add({
       'title': title,
       'subtitle': subtitle,
       'createdDate': createdDate, // Ustawienie daty utworzenia
@@ -55,7 +75,16 @@ class NoteRepository {
     DateTime updatedDate,
     String docId,
   ) async {
-    await FirebaseFirestore.instance.collection('noteItems').doc(docId).update({
+    final userId = FirebaseAuth.instance.currentUser?.uid;
+    if (userId == null) {
+      throw Exception('User is not logged in');
+    }
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(userId)
+        .collection('noteItems')
+        .doc(docId)
+        .update({
       'title': title,
       'subtitle': subtitle,
       'createdDate': createdDate, // Ustawienie daty utworzenia
@@ -64,6 +93,15 @@ class NoteRepository {
   }
 
   Future<void> delete({required String id}) async {
-    await FirebaseFirestore.instance.collection('noteItems').doc(id).delete();
+    final userId = FirebaseAuth.instance.currentUser?.uid;
+    if (userId == null) {
+      throw Exception('User is not logged in');
+    }
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(userId)
+        .collection('noteItems')
+        .doc(id)
+        .delete();
   }
 }

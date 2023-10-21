@@ -47,6 +47,7 @@ dependencies:
   flutter_speed_dial: ^7.0.0
   flutter_slidable: ^3.0.0
   flutter_colorpicker: ^1.0.3
+  hidden_drawer_menu: ^3.0.1
  
 
 dev_dependencies:
