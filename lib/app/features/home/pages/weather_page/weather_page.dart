@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:primary_school/app/features/home/pages/weather_page/tabs/first_tab.dart';
-import 'package:primary_school/app/features/home/pages/weather_page/tabs/second_tab.dart';
-import 'package:primary_school/app/features/home/pages/weather_page/tabs/third_tab.dart';
+import 'package:primary_school/app/features/home/pages/weather_page/tabs/first_tab/first_tab.dart';
+import 'package:primary_school/app/features/home/pages/weather_page/tabs/second_tab/second_tab.dart';
+import 'package:primary_school/app/features/home/pages/weather_page/tabs/third_tab/third_tab.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/constans/font_style.dart';
 

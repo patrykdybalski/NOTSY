@@ -3,9 +3,14 @@ import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/constans/font_style.dart';
 import 'package:weather_icons/weather_icons.dart';
 
-class FirstTab extends StatelessWidget {
+class FirstTab extends StatefulWidget {
   const FirstTab({super.key});
 
+  @override
+  State<FirstTab> createState() => _FirstTabState();
+}
+
+class _FirstTabState extends State<FirstTab> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -13,29 +18,26 @@ class FirstTab extends StatelessWidget {
         const SizedBox(
           height: 24,
         ),
-        // ignore: avoid_unnecessary_containers
-        Container(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Column(
-                children: [
-                  Text(
-                    '12℃',
-                    style: TextStyles.weatherStyle1,
-                  ),
-                  Text(
-                    'Częściowe zachmurzenie ',
-                    style: TextStyles.weatherStyle4,
-                  ),
-                ],
-              ),
-              const Icon(
-                Icons.wb_sunny_outlined,
-                size: 70,
-              ),
-            ],
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Column(
+              children: [
+                Text(
+                  '12℃',
+                  style: TextStyles.weatherStyle1,
+                ),
+                Text(
+                  'Częściowe zachmurzenie ',
+                  style: TextStyles.weatherStyle4,
+                ),
+              ],
+            ),
+            const Icon(
+              Icons.wb_sunny_outlined,
+              size: 70,
+            ),
+          ],
         ),
         const SizedBox(
           height: 24,
@@ -43,7 +45,8 @@ class FirstTab extends StatelessWidget {
         const Divider(
           endIndent: 40,
           indent: 40,
-          color: AppColors.redColor,
+          thickness: 0.3,
+          color: AppColors.secondaryColor,
         ),
         const SizedBox(
           height: 24,
@@ -93,7 +96,9 @@ class FirstTab extends StatelessWidget {
                 const SizedBox(height: 10),
                 Row(
                   children: [
-                    const BoxedIcon(WeatherIcons.umbrella),
+                    const BoxedIcon(
+                      WeatherIcons.umbrella,
+                    ),
                     const SizedBox(width: 10),
                     Text(
                       '18%',
@@ -108,7 +113,9 @@ class FirstTab extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    const BoxedIcon(WeatherIcons.barometer),
+                    const BoxedIcon(
+                      WeatherIcons.barometer,
+                    ),
                     const SizedBox(width: 10),
                     Text(
                       '1020 hPa',
@@ -130,6 +137,18 @@ class FirstTab extends StatelessWidget {
               ],
             ),
           ],
+        ),
+        const SizedBox(
+          height: 24,
+        ),
+        const Divider(
+          endIndent: 80,
+          indent: 80,
+          thickness: 0.3,
+          color: AppColors.secondaryColor,
+        ),
+        const SizedBox(
+          height: 24,
         ),
       ],
     );
