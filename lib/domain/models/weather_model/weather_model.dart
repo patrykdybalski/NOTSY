@@ -1,8 +1,8 @@
 class WeatherModel {
   WeatherModel({
-    required this.temperature,
     required this.city,
+    required this.temperature,
   });
-  final double temperature;
   final String city;
+  final double temperature;
 }
