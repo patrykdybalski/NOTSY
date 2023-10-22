@@ -87,4 +87,14 @@ class TextStyles {
     fontSize: 10,
     fontWeight: FontWeight.w400,
   );
+  static TextStyle weatherStyle5 = GoogleFonts.domine(
+    color: AppColors.secondaryColor,
+    fontSize: 13,
+    fontWeight: FontWeight.w800,
+  );
+  static TextStyle weatherStyle6 = GoogleFonts.domine(
+    color: AppColors.secondaryColor,
+    fontSize: 20,
+    fontWeight: FontWeight.w800,
+  );
 }

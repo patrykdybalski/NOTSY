@@ -49,6 +49,7 @@ dependencies:
   flutter_colorpicker: ^1.0.3
   hidden_drawer_menu: ^3.0.1
   weather_icons: ^3.0.0
+  dio: ^5.3.3
  
 
 dev_dependencies:
