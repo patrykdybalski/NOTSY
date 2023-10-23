@@ -20,32 +20,35 @@ class WeatherPage extends StatelessWidget {
         builder: (context, state) {
           final weatherModel = state.model;
           return DefaultTabController(
-              length: 3,
-              child: Scaffold(
-                resizeToAvoidBottomInset: true,
+            length: 3,
+            child: Scaffold(
+              resizeToAvoidBottomInset: true,
+              backgroundColor: AppColors.primaryColor,
+              appBar: AppBar(
+                title: const Text('Progonza pogody'),
+                titleTextStyle: TextStyles.headingStyle,
+                centerTitle: true,
                 backgroundColor: AppColors.primaryColor,
-                appBar: AppBar(
-                  title: const Text('Progonza pogody'),
-                  titleTextStyle: TextStyles.headingStyle,
-                  centerTitle: true,
-                  backgroundColor: AppColors.primaryColor,
-                ),
-                body: Column(
-                  children: [
-                    if (weatherModel != null) const TabBarWidget(),
-                    Expanded(
-                      child: TabBarView(
-                        children: [
-                          if (weatherModel != null) const FirstTab(),
-                          if (weatherModel != null) const SecondTab(),
-                          if (weatherModel != null) const ThirdTab(),
-                        ],
-                      ),
+              ),
+              body: Column(
+                children: [
+                  if (weatherModel != null) const TabBarWidget(),
+                  Expanded(
+                    child: TabBarView(
+                      children: [
+                        FirstTab(
+                          weatherModel: weatherModel,
+                        ),
+                        SecondTab(),
+                        ThirdTab(),
+                      ],
                     ),
-                    SearchWidget(),
-                  ],
-                ),
-              ));
+                  ),
+                  SearchWidget(),
+                ],
+              ),
+            ),
+          );
         },
       ),
     );

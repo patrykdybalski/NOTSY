@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/constans/font_style.dart';
+import 'package:primary_school/domain/models/weather_model/weather_model.dart';
 import 'package:weather_icons/weather_icons.dart';
 
 class FirstTab extends StatefulWidget {
-  const FirstTab({super.key});
+  const FirstTab({required this.weatherModel, super.key});
+  final WeatherModel? weatherModel;
 
   @override
   State<FirstTab> createState() => _FirstTabState();
@@ -31,17 +33,9 @@ class _FirstTabState extends State<FirstTab> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Column(
-                  children: [
-                    Text(
-                      '12℃',
-                      style: TextStyles.weatherStyle1,
-                    ),
-                    Text(
-                      ' Zachmurzenie ',
-                      style: TextStyles.weatherStyle5,
-                    ),
-                  ],
+                Text(
+                  widget.weatherModel?.temperature.toString() ?? '--℃',
+                  style: TextStyles.weatherStyle1,
                 ),
                 const Icon(
                   Icons.wb_sunny_outlined,
@@ -64,7 +58,7 @@ class _FirstTabState extends State<FirstTab> {
                       const BoxedIcon(WeatherIcons.sunrise),
                       const SizedBox(width: 10),
                       Text(
-                        '7:20',
+                        'sunrise',
                         style: TextStyles.weatherStyle3,
                       ),
                     ],
@@ -75,7 +69,7 @@ class _FirstTabState extends State<FirstTab> {
                       const BoxedIcon(WeatherIcons.sunset),
                       const SizedBox(width: 10),
                       Text(
-                        '21:20',
+                        'sunset',
                         style: TextStyles.weatherStyle3,
                       ),
                     ],
@@ -90,7 +84,7 @@ class _FirstTabState extends State<FirstTab> {
                       const BoxedIcon(WeatherIcons.strong_wind),
                       const SizedBox(width: 10),
                       Text(
-                        '60 km/h',
+                        '${widget.weatherModel?.wind.toString()} km/h',
                         style: TextStyles.weatherStyle3,
                       ),
                     ],
@@ -103,7 +97,7 @@ class _FirstTabState extends State<FirstTab> {
                       ),
                       const SizedBox(width: 10),
                       Text(
-                        '18%',
+                        widget.weatherModel?.rain.toString() ?? 'rain',
                         style: TextStyles.weatherStyle3,
                       ),
                     ],
@@ -120,7 +114,7 @@ class _FirstTabState extends State<FirstTab> {
                       ),
                       const SizedBox(width: 10),
                       Text(
-                        '1020 hPa',
+                        widget.weatherModel?.barometr.toString() ?? 'barometr',
                         style: TextStyles.weatherStyle3,
                       ),
                     ],
@@ -131,7 +125,7 @@ class _FirstTabState extends State<FirstTab> {
                       const BoxedIcon(WeatherIcons.humidity),
                       const SizedBox(width: 10),
                       Text(
-                        '40%',
+                        widget.weatherModel?.humidity.toString() ?? 'humidity',
                         style: TextStyles.weatherStyle3,
                       ),
                     ],
@@ -157,7 +151,7 @@ class _FirstTabState extends State<FirstTab> {
             children: [
               const Icon(Icons.location_on_outlined),
               Text(
-                'Karlino, Poland',
+                widget.weatherModel?.city ?? 'city',
                 style: TextStyles.weatherStyle6,
               ),
             ],
