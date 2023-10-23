@@ -34,12 +34,12 @@ class _FirstTabState extends State<FirstTab> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Text(
-                  widget.weatherModel?.temperature.toString() ?? '--℃',
+                  '${widget.weatherModel?.temperature.toString()}℃',
                   style: TextStyles.weatherStyle1,
                 ),
-                const Icon(
-                  Icons.wb_sunny_outlined,
-                  size: 70,
+                Text(
+                  '${widget.weatherModel?.text}',
+                  style: TextStyles.weatherStyle2,
                 ),
               ],
             ),
@@ -97,7 +97,7 @@ class _FirstTabState extends State<FirstTab> {
                       ),
                       const SizedBox(width: 10),
                       Text(
-                        widget.weatherModel?.rain.toString() ?? 'rain',
+                        '${widget.weatherModel?.rain.toString()} mm',
                         style: TextStyles.weatherStyle3,
                       ),
                     ],
@@ -114,7 +114,7 @@ class _FirstTabState extends State<FirstTab> {
                       ),
                       const SizedBox(width: 10),
                       Text(
-                        widget.weatherModel?.barometr.toString() ?? 'barometr',
+                        '${widget.weatherModel?.barometr.toString()} hPa',
                         style: TextStyles.weatherStyle3,
                       ),
                     ],
@@ -125,7 +125,7 @@ class _FirstTabState extends State<FirstTab> {
                       const BoxedIcon(WeatherIcons.humidity),
                       const SizedBox(width: 10),
                       Text(
-                        widget.weatherModel?.humidity.toString() ?? 'humidity',
+                        '${widget.weatherModel?.humidity.toString()} %',
                         style: TextStyles.weatherStyle3,
                       ),
                     ],
@@ -151,7 +151,7 @@ class _FirstTabState extends State<FirstTab> {
             children: [
               const Icon(Icons.location_on_outlined),
               Text(
-                widget.weatherModel?.city ?? 'city',
+                ' ${widget.weatherModel?.name}, ${widget.weatherModel?.country}',
                 style: TextStyles.weatherStyle6,
               ),
             ],

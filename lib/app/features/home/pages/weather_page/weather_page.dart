@@ -39,8 +39,8 @@ class WeatherPage extends StatelessWidget {
                         FirstTab(
                           weatherModel: weatherModel,
                         ),
-                        SecondTab(),
-                        ThirdTab(),
+                        const SecondTab(),
+                        const ThirdTab(),
                       ],
                     ),
                   ),

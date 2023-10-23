@@ -16,19 +16,21 @@ class WeatherRepository {
     final name = responseData['location']['name'] as String;
     final country = responseData['location']['country'] as String;
     final temperature = (responseData['current']['temp_c'] + 0.0) as double;
-    final wind = (responseData['wind_mph'] + 0.0) as double;
-    final rain = (responseData['percip_mm'] + 0.0) as double;
-    final barometr = (responseData['pressure_mb'] + 0.0) as double;
-    final humidity = (responseData['humidity'] + 0.0) as double;
+    final wind = (responseData['current']['wind_mph'] + 0.0) as double;
+    final rain = (responseData['current']['precip_mm'] + 0.0) as double;
+    final barometr = (responseData['current']['pressure_mb'] + 0.0) as double;
+    final humidity = (responseData['current']['humidity'] + 0.0) as double;
+    final text = responseData['current']['condition']['text'] as String;
 
     return WeatherModel(
-      city: name,
+      name: name,
       country: country,
       temperature: temperature,
       wind: wind,
       rain: rain,
       barometr: barometr,
       humidity: humidity,
+      text: text,
     );
   }
 }
