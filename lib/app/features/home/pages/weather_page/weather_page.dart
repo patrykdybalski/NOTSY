@@ -3,8 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:primary_school/app/features/home/pages/weather_page/cubit/weather_cubit.dart';
 import 'package:primary_school/app/features/home/pages/weather_page/tabs/first_tab/first_tab.dart';
-import 'package:primary_school/app/features/home/pages/weather_page/tabs/second_tab/second_tab.dart';
-import 'package:primary_school/app/features/home/pages/weather_page/tabs/third_tab/third_tab.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/constans/font_style.dart';
 import 'package:primary_school/domain/repositories/weather/weather_repository.dart';
@@ -19,34 +17,25 @@ class WeatherPage extends StatelessWidget {
       child: BlocBuilder<WeatherCubit, WeatherState>(
         builder: (context, state) {
           final weatherModel = state.model;
-          return DefaultTabController(
-            length: 3,
-            child: Scaffold(
-              resizeToAvoidBottomInset: true,
+          return Scaffold(
+            resizeToAvoidBottomInset: true,
+            backgroundColor: AppColors.primaryColor,
+            appBar: AppBar(
+              title: const Text('Progonza pogody'),
+              titleTextStyle: TextStyles.headingStyle,
+              centerTitle: true,
               backgroundColor: AppColors.primaryColor,
-              appBar: AppBar(
-                title: const Text('Progonza pogody'),
-                titleTextStyle: TextStyles.headingStyle,
-                centerTitle: true,
-                backgroundColor: AppColors.primaryColor,
-              ),
-              body: Column(
-                children: [
-                  if (weatherModel != null) const TabBarWidget(),
+            ),
+            body: Column(
+              children: [
+                if (weatherModel != null)
                   Expanded(
-                    child: TabBarView(
-                      children: [
-                        FirstTab(
-                          weatherModel: weatherModel,
-                        ),
-                        const SecondTab(),
-                        const ThirdTab(),
-                      ],
+                    child: FirstTab(
+                      weatherModel: weatherModel,
                     ),
                   ),
-                  SearchWidget(),
-                ],
-              ),
+                SearchWidget(),
+              ],
             ),
           );
         },

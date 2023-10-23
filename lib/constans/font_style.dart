@@ -69,7 +69,7 @@ class TextStyles {
   );
   static TextStyle weatherStyle1 = GoogleFonts.domine(
     color: AppColors.secondaryColor,
-    fontSize: 60,
+    fontSize: 50,
     fontWeight: FontWeight.w400,
   );
   static TextStyle weatherStyle2 = GoogleFonts.domine(

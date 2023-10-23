@@ -16,6 +16,8 @@ class WeatherRepository {
     final name = responseData['location']['name'] as String;
     final country = responseData['location']['country'] as String;
     final temperature = (responseData['current']['temp_c'] + 0.0) as double;
+    final cloudy = (responseData['current']['cloud'] + 0.0) as double;
+    final direction = responseData['current']['wind_dir'] as String;
     final wind = (responseData['current']['wind_mph'] + 0.0) as double;
     final rain = (responseData['current']['precip_mm'] + 0.0) as double;
     final barometr = (responseData['current']['pressure_mb'] + 0.0) as double;
@@ -26,6 +28,8 @@ class WeatherRepository {
       name: name,
       country: country,
       temperature: temperature,
+      direction: direction,
+      cloudy: cloudy,
       wind: wind,
       rain: rain,
       barometr: barometr,

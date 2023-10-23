@@ -39,7 +39,7 @@ class _FirstTabState extends State<FirstTab> {
                 ),
                 Text(
                   '${widget.weatherModel?.text}',
-                  style: TextStyles.weatherStyle2,
+                  style: TextStyles.weatherStyle6,
                 ),
               ],
             ),
@@ -55,10 +55,12 @@ class _FirstTabState extends State<FirstTab> {
                 children: [
                   Row(
                     children: [
-                      const BoxedIcon(WeatherIcons.sunrise),
+                      const BoxedIcon(
+                        WeatherIcons.wind,
+                      ),
                       const SizedBox(width: 10),
                       Text(
-                        'sunrise',
+                        widget.weatherModel?.direction ?? 'null',
                         style: TextStyles.weatherStyle3,
                       ),
                     ],
@@ -66,10 +68,10 @@ class _FirstTabState extends State<FirstTab> {
                   const SizedBox(height: 10),
                   Row(
                     children: [
-                      const BoxedIcon(WeatherIcons.sunset),
+                      const BoxedIcon(WeatherIcons.cloudy),
                       const SizedBox(width: 10),
                       Text(
-                        'sunset',
+                        '${widget.weatherModel?.cloudy.toString()} %',
                         style: TextStyles.weatherStyle3,
                       ),
                     ],
