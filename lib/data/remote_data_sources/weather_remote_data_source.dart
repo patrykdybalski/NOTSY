@@ -9,7 +9,9 @@ class WeatherRemoteDataSource {
           'http://api.weatherapi.com/v1/current.json?key=9518138900ee4740ad9193115230506&q=$city&aqi=no');
       return response.data;
     } on DioException catch (error) {
-      throw Exception(error.response?.data ?? 'Unknwon error');
+      throw Exception(
+        error.response?.data['error']['message'] ?? 'Unknwon error',
+      );
     }
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:primary_school/app/core/enums.dart';
 import 'package:primary_school/app/features/home/pages/weather_page/cubit/weather_cubit.dart';
 import 'package:primary_school/app/features/home/pages/weather_page/tabs/first_tab/first_tab.dart';
 import 'package:primary_school/constans/colors.dart';
@@ -15,7 +16,20 @@ class WeatherPage extends StatelessWidget {
     return BlocProvider(
       create: (context) =>
           WeatherCubit(WeatherRepository(WeatherRemoteDataSource())),
-      child: BlocBuilder<WeatherCubit, WeatherState>(
+      child: BlocConsumer<WeatherCubit, WeatherState>(
+        listener: (context, state) {
+          if (state.status == Status.error) {
+            final errorMessage = state.errorMessage ?? 'Unknown error';
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  errorMessage,
+                ),
+                backgroundColor: AppColors.redColor,
+              ),
+            );
+          }
+        },
         builder: (context, state) {
           final weatherModel = state.model;
           return Scaffold(
