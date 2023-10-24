@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:primary_school/app/features/home/pages/weather_page/cubit/weather_cubit.dart';
 import 'package:primary_school/app/features/home/pages/weather_page/tabs/first_tab/first_tab.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/constans/font_style.dart';
+import 'package:primary_school/data/remote_data_sources/weather_remote_data_source.dart';
 import 'package:primary_school/domain/repositories/weather/weather_repository.dart';
 
 class WeatherPage extends StatelessWidget {
@@ -13,7 +13,8 @@ class WeatherPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => WeatherCubit(WeatherRepository()),
+      create: (context) =>
+          WeatherCubit(WeatherRepository(WeatherRemoteDataSource())),
       child: BlocBuilder<WeatherCubit, WeatherState>(
         builder: (context, state) {
           final weatherModel = state.model;

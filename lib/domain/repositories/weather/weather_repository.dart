@@ -1,14 +1,15 @@
-import 'package:dio/dio.dart';
+import 'package:primary_school/data/remote_data_sources/weather_remote_data_source.dart';
 import 'package:primary_school/domain/models/weather_model/weather_model.dart';
 
 class WeatherRepository {
+  WeatherRepository(this._weatherRemoteDataSource);
+  final WeatherRemoteDataSource _weatherRemoteDataSource;
+
   Future<WeatherModel?> getWeatherModel({
     required String city,
   }) async {
-    //
-    final response = await Dio().get<Map<String, dynamic>>(
-        'http://api.weatherapi.com/v1/current.json?key=9518138900ee4740ad9193115230506&q=$city&aqi=no');
-    final responseData = response.data;
+    final responseData =
+        await _weatherRemoteDataSource.getWeatherData(city: city);
     if (responseData == null) {
       return null;
     }
