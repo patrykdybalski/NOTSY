@@ -11,15 +11,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'PNP - plany, notatki, pogoda',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          useMaterial3: true,
-          unselectedWidgetColor: Colors.white70,
-        ),
-        home: const RootPage() //const RootPage(),
-        );
+      debugShowCheckedModeBanner: false,
+      title: 'PNP - plany, notatki, pogoda',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        useMaterial3: true,
+        unselectedWidgetColor: Colors.white70,
+      ),
+      home: const RootPage(),
+    );
   }
 }
 
