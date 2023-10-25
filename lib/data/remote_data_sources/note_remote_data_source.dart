@@ -16,25 +16,25 @@ class NoteRemoteDataSource {
           .collection('noteItems')
           .orderBy('createdDate')
           .snapshots()
-          .map((querySnapshot) {
-        return querySnapshot.docs.map(
-          (doc) {
-            return NoteModel(
-              title: doc['title'],
-              subtitle: doc['subtitle'],
-
-              createdDate: (doc['createdDate'] as Timestamp).toDate(),
-
-              updatedDate: (doc['updatedDate'] as Timestamp).toDate(),
-
-              color: Color(
-                int.parse(doc['color'] ?? '0xFF000000'),
-              ), // Parsuj string jako int i konwertuj na Color
-              id: doc.id,
-            );
-          },
-        ).toList();
-      });
+          .map(
+        (querySnapshot) {
+          return querySnapshot.docs.map(
+            (doc) {
+              return NoteModel(
+                title: doc['title'],
+                subtitle: doc['subtitle'],
+                createdDate: (doc['createdDate'] as Timestamp).toDate(),
+                updatedDate: (doc['updatedDate'] as Timestamp).toDate(),
+                color: Color(int.parse(
+                  doc['color'] ??
+                      '0xFF000000', // Parsuj string jako int i konwertuj na Color
+                )),
+                id: doc.id,
+              );
+            },
+          ).toList();
+        },
+      );
     } catch (error) {
       throw Exception(
         error,

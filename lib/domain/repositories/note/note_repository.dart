@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:primary_school/data/remote_data_sources/note_remote_data_source.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
@@ -9,10 +8,6 @@ class NoteRepository {
 
   Stream<List<NoteModel>> getNotesStream() {
     return _noteRemoteDataSource.getNotesData();
-  }
-
-  Future<void> signOut() async {
-    await FirebaseAuth.instance.signOut();
   }
 
   Future<void> add(
