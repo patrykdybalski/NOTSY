@@ -8,6 +8,7 @@ import 'package:primary_school/app/features/home/pages/calendar_page/edit_event_
 import 'package:primary_school/app/features/home/pages/calendar_page/widgets/event_widget.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/constans/font_style.dart';
+import 'package:primary_school/data/remote_data_sources/event_remote_data_source.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
 import 'package:primary_school/domain/repositories/event/events_repository.dart';
 
@@ -45,7 +46,9 @@ class _EventPageState extends State<EventPage> {
       ),
       body: BlocProvider(
         create: (context) => EventCubit(
-          EventsRepository(),
+          EventsRepository(
+            EventRemoteDataSource(),
+          ),
         )..start(),
         child: BlocBuilder<EventCubit, EventState>(
           builder: (context, state) {
@@ -143,7 +146,9 @@ class SlidableEventWidget extends StatelessWidget {
                         ),
                       ),
                       BlocProvider(
-                        create: (context) => EventCubit(EventsRepository()),
+                        create: (context) => EventCubit(EventsRepository(
+                          EventRemoteDataSource(),
+                        )),
                         child: BlocBuilder<EventCubit, EventState>(
                           builder: (context, state) {
                             return TextButton(

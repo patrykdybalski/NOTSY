@@ -1,45 +1,17 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:primary_school/data/remote_data_sources/event_remote_data_source.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
 
 class EventsRepository {
+  EventsRepository(this._eventRemoteDataSource);
+
+  final EventRemoteDataSource _eventRemoteDataSource;
+
   Stream<List<EventModel>> getEventsStream() {
-    final userId = FirebaseAuth.instance.currentUser?.uid;
-    if (userId == null) {
-      throw Exception('User is not logged in');
-    }
-    return FirebaseFirestore.instance
-        .collection('users')
-        .doc(userId)
-        .collection('calendarItems')
-        .orderBy('selectedDay')
-        .snapshots()
-        .map((querySnapshot) {
-      return querySnapshot.docs.map(
-        (doc) {
-          return EventModel(
-            title: doc['title'],
-            subtitle: doc['subtitle'],
-            selectedDay: (doc['selectedDay'] as Timestamp).toDate(),
-            selectedTime: (doc['selectedTime'] as Timestamp).toDate(),
-            id: doc.id,
-          );
-        },
-      ).toList();
-    });
+    return _eventRemoteDataSource.getEventsData();
   }
 
   Future<void> delete({required String id}) async {
-    final userId = FirebaseAuth.instance.currentUser?.uid;
-    if (userId == null) {
-      throw Exception('User is not logged in');
-    }
-    await FirebaseFirestore.instance
-        .collection('users')
-        .doc(userId)
-        .collection('calendarItems')
-        .doc(id)
-        .delete();
+    await _eventRemoteDataSource.deleteNote(id: id);
   }
 
   Future<void> edit(
@@ -49,21 +21,13 @@ class EventsRepository {
     DateTime selectedTime,
     String docID,
   ) async {
-    final userId = FirebaseAuth.instance.currentUser?.uid;
-    if (userId == null) {
-      throw Exception('User is not logged in');
-    }
-    await FirebaseFirestore.instance
-        .collection('users')
-        .doc(userId)
-        .collection('calendarItems')
-        .doc(docID)
-        .update({
-      'title': title,
-      'subtitle': subtitle,
-      'selectedDay': selectedDay,
-      'selectedTime': selectedTime,
-    });
+    await _eventRemoteDataSource.editNote(
+      title,
+      subtitle,
+      selectedDay,
+      selectedTime,
+      docID,
+    );
   }
 
   Future<void> add(
@@ -72,21 +36,11 @@ class EventsRepository {
     DateTime selectedDay,
     DateTime selectedTime,
   ) async {
-    final userId = FirebaseAuth.instance.currentUser?.uid;
-    if (userId == null) {
-      throw Exception('User is not logged in');
-    }
-    await FirebaseFirestore.instance
-        .collection('users')
-        .doc(userId)
-        .collection('calendarItems')
-        .add(
-      {
-        'title': title,
-        'subtitle': subtitle,
-        'selectedDay': selectedDay,
-        'selectedTime': selectedTime,
-      },
+    await _eventRemoteDataSource.addNote(
+      title,
+      subtitle,
+      selectedDay,
+      selectedTime,
     );
   }
 }
