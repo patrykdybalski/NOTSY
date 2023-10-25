@@ -3,24 +3,24 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:primary_school/app/core/enums.dart';
 import 'package:primary_school/app/features/home/pages/calendar_page/add_event_dialog/add_event_dialog.dart';
-import 'package:primary_school/app/features/home/pages/calendar_page/cubit/calendar_cubit.dart';
+import 'package:primary_school/app/features/home/pages/calendar_page/cubit/event_cubit.dart';
 import 'package:primary_school/app/features/home/pages/calendar_page/edit_event_screen/edit_event_screen.dart';
 import 'package:primary_school/app/features/home/pages/calendar_page/widgets/event_widget.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/constans/font_style.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
-import 'package:primary_school/domain/repositories/calendar/events_repository.dart';
+import 'package:primary_school/domain/repositories/event/events_repository.dart';
 
-class CalendarPage extends StatefulWidget {
-  const CalendarPage({
+class EventPage extends StatefulWidget {
+  const EventPage({
     super.key,
   });
 
   @override
-  State<CalendarPage> createState() => _CalendarPageState();
+  State<EventPage> createState() => _EventPageState();
 }
 
-class _CalendarPageState extends State<CalendarPage> {
+class _EventPageState extends State<EventPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,10 +44,10 @@ class _CalendarPageState extends State<CalendarPage> {
         ),
       ),
       body: BlocProvider(
-        create: (context) => CalendarCubit(
+        create: (context) => EventCubit(
           EventsRepository(),
         )..start(),
-        child: BlocBuilder<CalendarCubit, CalendarState>(
+        child: BlocBuilder<EventCubit, EventState>(
           builder: (context, state) {
             final eventModels = state.calendarItems;
             switch (state.status) {
@@ -143,12 +143,12 @@ class SlidableEventWidget extends StatelessWidget {
                         ),
                       ),
                       BlocProvider(
-                        create: (context) => CalendarCubit(EventsRepository()),
-                        child: BlocBuilder<CalendarCubit, CalendarState>(
+                        create: (context) => EventCubit(EventsRepository()),
+                        child: BlocBuilder<EventCubit, EventState>(
                           builder: (context, state) {
                             return TextButton(
                               onPressed: () {
-                                context.read<CalendarCubit>().remove(
+                                context.read<EventCubit>().remove(
                                       documentID: eventModel.id,
                                     );
                                 Navigator.of(context).pop();

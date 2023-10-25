@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:primary_school/app/features/home/pages/calendar_page/add_event_dialog/cubit/add_event_cubit.dart';
 import 'package:primary_school/constans/colors.dart';
 
-import 'package:primary_school/domain/repositories/calendar/events_repository.dart';
+import 'package:primary_school/domain/repositories/event/events_repository.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class CalendarWidget extends StatefulWidget {

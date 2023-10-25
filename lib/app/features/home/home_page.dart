@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:primary_school/app/features/home/pages/calendar_page/calendar_page.dart';
+import 'package:primary_school/app/features/home/pages/calendar_page/event_page.dart';
 import 'package:primary_school/app/features/home/pages/notes_page/notes_page.dart';
 import 'package:primary_school/app/features/home/pages/user_page/user_page.dart';
 import 'package:primary_school/app/features/home/pages/weather_page/weather_page.dart';
@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
       body: Builder(
         builder: (context) {
           if (currentIndex == 0) {
-            return const CalendarPage();
+            return const EventPage();
           }
           if (currentIndex == 1) {
             return const NotesPage();

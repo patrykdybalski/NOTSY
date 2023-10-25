@@ -6,7 +6,7 @@ import 'package:primary_school/app/features/home/pages/calendar_page/edit_event_
 import 'package:primary_school/app/features/home/pages/calendar_page/edit_event_screen/edit_event_widgets.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
-import 'package:primary_school/domain/repositories/calendar/events_repository.dart';
+import 'package:primary_school/domain/repositories/event/events_repository.dart';
 
 class EditEventScreen extends StatefulWidget {
   const EditEventScreen({

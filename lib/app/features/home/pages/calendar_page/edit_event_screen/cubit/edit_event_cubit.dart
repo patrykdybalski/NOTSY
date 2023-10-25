@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:primary_school/domain/repositories/calendar/events_repository.dart';
+import 'package:primary_school/domain/repositories/event/events_repository.dart';
 
 part 'edit_event_state.dart';
 
