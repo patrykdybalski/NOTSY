@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:primary_school/app/features/home/pages/user_page/cubit/user_page_cubit.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/constans/font_style.dart';
+import 'package:primary_school/data/remote_data_sources/note_remote_data_source.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
 
 class UserPage extends StatefulWidget {
@@ -17,7 +18,9 @@ class _UserPageState extends State<UserPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => UserPageCubit(NoteRepository()),
+      create: (context) => UserPageCubit(NoteRepository(
+        NoteRemoteDataSource(),
+      )),
       child: BlocBuilder<UserPageCubit, UserPageState>(
         builder: (context, state) {
           return Scaffold(

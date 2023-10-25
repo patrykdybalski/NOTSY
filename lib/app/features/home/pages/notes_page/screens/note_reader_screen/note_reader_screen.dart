@@ -5,6 +5,7 @@ import 'package:primary_school/app/features/home/pages/notes_page/screens/note_r
 import 'package:primary_school/app/features/home/pages/notes_page/screens/note_reader_screen/note_reader_buttons.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/constans/font_style.dart';
+import 'package:primary_school/data/remote_data_sources/note_remote_data_source.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
 
@@ -20,7 +21,9 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ReaderScreenCubit(NoteRepository()),
+      create: (context) => ReaderScreenCubit(NoteRepository(
+        NoteRemoteDataSource(),
+      )),
       child: BlocListener<ReaderScreenCubit, ReaderScreenState>(
         listener: (context, state) {
           if (state.delete) {

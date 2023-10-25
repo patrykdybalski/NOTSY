@@ -1,42 +1,14 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:primary_school/data/remote_data_sources/note_remote_data_source.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
 
 class NoteRepository {
-  Stream<List<NoteModel>> getNotesStream() {
-    final userId = FirebaseAuth.instance.currentUser?.uid;
-    if (userId == null) {
-      throw Exception('User is not logged in');
-    }
-    return FirebaseFirestore.instance
-        .collection('users')
-        .doc(userId)
-        .collection('noteItems')
-        .orderBy('createdDate')
-        .snapshots()
-        .map((querySnapshot) {
-      return querySnapshot.docs.map(
-        (doc) {
-          return NoteModel(
-            title: doc['title'],
-            subtitle: doc['subtitle'],
+  NoteRepository(this._noteRemoteDataSource);
+  final NoteRemoteDataSource _noteRemoteDataSource;
 
-            // createdDate: (doc['createdDate'] as Timestamp).toDate(),
-            // updatedDate: (doc['updatedDate'] as Timestamp).toDate(),
-            createdDate: doc['createdDate'] != null
-                ? (doc['createdDate'] as Timestamp).toDate()
-                : DateTime.now(),
-            updatedDate: doc['updatedDate'] != null
-                ? (doc['updatedDate'] as Timestamp).toDate()
-                : DateTime.now(),
-            color: Color(int.parse(doc['color'] ??
-                '0xFF000000')), // Parsuj string jako int i konwertuj na Color
-            id: doc.id,
-          );
-        },
-      ).toList();
-    });
+  Stream<List<NoteModel>> getNotesStream() {
+    return _noteRemoteDataSource.getNotesData();
   }
 
   Future<void> signOut() async {
@@ -50,22 +22,13 @@ class NoteRepository {
     DateTime updatedDate,
     Color selectedColor,
   ) async {
-    final userId = FirebaseAuth.instance.currentUser?.uid;
-    if (userId == null) {
-      throw Exception('User is not logged in');
-    }
-    await FirebaseFirestore.instance
-        .collection('users')
-        .doc(userId)
-        .collection('noteItems')
-        .add({
-      'title': title,
-      'subtitle': subtitle,
-      'createdDate': createdDate, // Ustawienie daty utworzenia
-      'updatedDate': updatedDate, // Ustawienie daty aktualizacji
-      'color':
-          selectedColor.value.toString(), // Zapisz wartość koloru jako string
-    });
+    await _noteRemoteDataSource.addNotes(
+      title,
+      subtitle,
+      createdDate,
+      updatedDate,
+      selectedColor,
+    );
   }
 
   Future<void> edit(
@@ -75,33 +38,16 @@ class NoteRepository {
     DateTime updatedDate,
     String docId,
   ) async {
-    final userId = FirebaseAuth.instance.currentUser?.uid;
-    if (userId == null) {
-      throw Exception('User is not logged in');
-    }
-    await FirebaseFirestore.instance
-        .collection('users')
-        .doc(userId)
-        .collection('noteItems')
-        .doc(docId)
-        .update({
-      'title': title,
-      'subtitle': subtitle,
-      'createdDate': createdDate, // Ustawienie daty utworzenia
-      'updatedDate': updatedDate, // Ustawienie daty aktualizac
-    });
+    await _noteRemoteDataSource.editNotes(
+      title,
+      subtitle,
+      createdDate,
+      updatedDate,
+      docId,
+    );
   }
 
   Future<void> delete({required String id}) async {
-    final userId = FirebaseAuth.instance.currentUser?.uid;
-    if (userId == null) {
-      throw Exception('User is not logged in');
-    }
-    await FirebaseFirestore.instance
-        .collection('users')
-        .doc(userId)
-        .collection('noteItems')
-        .doc(id)
-        .delete();
+    await _noteRemoteDataSource.deleteNotes(id);
   }
 }

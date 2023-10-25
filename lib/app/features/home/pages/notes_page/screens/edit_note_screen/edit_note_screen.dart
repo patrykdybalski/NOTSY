@@ -4,6 +4,7 @@ import 'package:primary_school/app/features/home/pages/notes_page/screens/edit_n
 import 'package:primary_school/app/features/home/pages/notes_page/screens/edit_note_screen/edit_page_buttons.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/constans/font_style.dart';
+import 'package:primary_school/data/remote_data_sources/note_remote_data_source.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
 
@@ -28,7 +29,9 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => EditNoteCubit(NoteRepository()),
+      create: (context) => EditNoteCubit(NoteRepository(
+        NoteRemoteDataSource(),
+      )),
       child: BlocListener<EditNoteCubit, EditNoteState>(
         listener: (context, state) {
           if (state.saved) {

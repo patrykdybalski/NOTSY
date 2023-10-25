@@ -22,9 +22,7 @@ class WeatherPage extends StatelessWidget {
             final errorMessage = state.errorMessage ?? 'Unknown error';
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text(
-                  errorMessage,
-                ),
+                content: Text(errorMessage),
                 backgroundColor: AppColors.redColor,
               ),
             );

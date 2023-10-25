@@ -5,6 +5,7 @@ import 'package:primary_school/app/features/home/pages/notes_page/add/add_page_b
 import 'package:primary_school/app/features/home/pages/notes_page/add/cubit/add_note_cubit.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/constans/font_style.dart';
+import 'package:primary_school/data/remote_data_sources/note_remote_data_source.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
 
 class AddNotePage extends StatefulWidget {
@@ -38,7 +39,7 @@ class _AddNotePageState extends State<AddNotePage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AddNoteCubit(NoteRepository()),
+      create: (context) => AddNoteCubit(NoteRepository(NoteRemoteDataSource(),)),
       child: BlocListener<AddNoteCubit, AddNoteState>(
         listener: (context, state) {
           if (state.saved) {

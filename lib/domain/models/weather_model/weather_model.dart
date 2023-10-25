@@ -23,7 +23,7 @@ class WeatherModel {
   final String text;
 
   WeatherModel.fromJson(Map<String, dynamic> json)
-      : name = json['location']['name'] + 0.0,
+      : name = json['location']['name'],
         country = json['location']['country'],
         temperature = json['current']['temp_c'] + 0.0,
         cloudy = json['current']['cloud'] + 0.0,
