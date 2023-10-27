@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:primary_school/app/core/enums.dart';
 
 import 'package:primary_school/app/cubit/root_cubit.dart';
 import 'package:primary_school/app/features/auth/login_page.dart';
 import 'package:primary_school/app/features/home/home_page.dart';
+import 'package:primary_school/constans/font_style.dart';
+import 'package:primary_school/data/remote_data_sources/login_auth_data_source.dart';
+import 'package:primary_school/domain/repositories/login_auth/login_auth_repository.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -31,25 +35,38 @@ class RootPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => RootCubit()..start(),
-        child: BlocBuilder<RootCubit, RootState>(builder: (context, state) {
-          if (state.errorMessage.isNotEmpty) {
-            return Center(
-              child: Text(
-                'Smoething went wrong ${state.errorMessage}',
-              ),
-            );
+      create: (context) => RootCubit(LoginAuthRepository(
+        LoginAuthDataSource(),
+      ))
+        ..start(),
+      child: BlocBuilder<RootCubit, RootState>(
+        builder: (context, state) {
+          switch (state.status) {
+            case Status.initial:
+              return const Center(
+                child: Text('Initial state'),
+              );
+
+            case Status.loading:
+              return const Center(child: CircularProgressIndicator());
+
+            case Status.error:
+              return Center(
+                child: Text(
+                  state.errorMessage,
+                  style: TextStyles.addEventStyle1,
+                ),
+              );
+
+            case Status.success:
+              final user = state.user;
+              if (user == null) {
+                return LoginPage();
+              }
+              return const HomePage();
           }
-          if (state.isLoadnig) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-          final user = state.user;
-          if (user == null) {
-            return LoginPage();
-          }
-          return const HomePage();
-        }));
+        },
+      ),
+    );
   }
 }

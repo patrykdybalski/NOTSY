@@ -1,7 +1,41 @@
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginAuthDataSource {
+  Future<void> createUser({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+    } catch (error) {
+      throw Exception(error);
+    }
+  }
+
+  Future<void> signIn({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+    } catch (error) {
+      throw Exception(error);
+    }
+  }
+
   Future<void> signOut() async {
-    await FirebaseAuth.instance.signOut();
+    try {
+      await FirebaseAuth.instance.signOut();
+    } catch (error) {
+      throw Exception(error);
+    }
   }
 }

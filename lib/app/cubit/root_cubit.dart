@@ -1,24 +1,27 @@
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:primary_school/app/core/enums.dart';
+import 'package:primary_school/domain/repositories/login_auth/login_auth_repository.dart';
 part 'root_state.dart';
 
 class RootCubit extends Cubit<RootState> {
-  RootCubit()
+  RootCubit(this._loginAuthRepository)
       : super(
           RootState(
             user: null,
-            isLoadnig: false,
+            status: Status.initial,
             errorMessage: '',
           ),
         );
 
   StreamSubscription? _streamSubscription;
+  final LoginAuthRepository _loginAuthRepository;
 
   Future<void> createUser(
       {required String email, required String password}) async {
     try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      await _loginAuthRepository.createUsers(
         email: email,
         password: password,
       );
@@ -26,16 +29,19 @@ class RootCubit extends Cubit<RootState> {
       emit(
         RootState(
           user: null,
-          isLoadnig: false,
+          status: Status.error,
           errorMessage: error.toString(),
         ),
       );
     }
   }
 
-  Future<void> signIn({required String email, required String password}) async {
+  Future<void> signIn({
+    required String email,
+    required String password,
+  }) async {
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      await _loginAuthRepository.signInUser(
         email: email,
         password: password,
       );
@@ -43,7 +49,7 @@ class RootCubit extends Cubit<RootState> {
       emit(
         RootState(
           user: null,
-          isLoadnig: false,
+          status: Status.error,
           errorMessage: error.toString(),
         ),
       );
@@ -54,7 +60,7 @@ class RootCubit extends Cubit<RootState> {
     emit(
       RootState(
         user: null,
-        isLoadnig: true,
+        status: Status.loading,
         errorMessage: '',
       ),
     );
@@ -64,7 +70,7 @@ class RootCubit extends Cubit<RootState> {
       emit(
         RootState(
           user: user,
-          isLoadnig: false,
+          status: Status.success,
           errorMessage: '',
         ),
       );
@@ -73,7 +79,7 @@ class RootCubit extends Cubit<RootState> {
             emit(
               RootState(
                 user: null,
-                isLoadnig: false,
+                status: Status.error,
                 errorMessage: error.toString(),
               ),
             );
