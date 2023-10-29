@@ -31,7 +31,7 @@ class LoginAuthRepository {
     await _loginAuthDataSource.signOut();
   }
 
-  StreamSubscription<User?> streamSubscriptionData({User? user}) {
+  StreamSubscription<User?> streamSubscription({User? user}) {
     return _loginAuthDataSource.streamSubscriptionData(user: user);
   }
 }
