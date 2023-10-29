@@ -43,14 +43,14 @@ class _LoginPageState extends State<LoginPage> {
         child: BlocBuilder<RootCubit, RootState>(
           builder: (context, state) {
             return Scaffold(
+                backgroundColor: AppColors.primaryColor,
                 body: SingleChildScrollView(
-              child: SafeArea(
-                child: Container(
-                  decoration: const BoxDecoration(
-                    color: AppColors.primaryColor,
-                  ),
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 30.0),
+                    padding: const EdgeInsets.only(
+                      top: 80.0,
+                      left: 20,
+                      right: 20,
+                    ),
                     child: Column(children: [
                       Container(
                         height: 200,
@@ -63,133 +63,114 @@ class _LoginPageState extends State<LoginPage> {
                       const SizedBox(
                         height: 24,
                       ),
+                      Text(
+                        isCreatingAccount == true
+                            ? 'Zarejestruj się'
+                            : 'Zaloguj się',
+                        style: TextStyles.textSize1,
+                      ),
+                      const SizedBox(
+                        height: 24,
+                      ),
                       Container(
-                        margin: const EdgeInsets.only(
-                          left: 20,
-                          right: 20,
+                        decoration: BoxDecoration(
+                          color: Colors.white.withOpacity(0.5),
+                          borderRadius: BorderRadius.circular(20),
                         ),
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text(
-                              isCreatingAccount == true
-                                  ? 'Zarejestruj się'
-                                  : 'Zaloguj się',
-                              style: TextStyles.textSize1,
-                            ),
+                            TextFieldLogin(widget: widget),
+                            TextFieldPassword(widget: widget),
                             const SizedBox(
-                              height: 25,
+                              height: 1,
                             ),
-                            Container(
-                              decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.7),
-                                  borderRadius: BorderRadius.circular(20)),
-                              child: Column(
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(20, 0, 10, 0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  TextFieldLogin(widget: widget),
-                                  TextFieldPassword(widget: widget),
-                                  const SizedBox(
-                                    height: 1,
-                                  ),
-                                  Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(20, 0, 10, 0),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        TextButton(
-                                          onPressed: () {},
-                                          child: const Text(
-                                            'Nie pamiętasz hasła?',
-                                            style:
-                                                TextStyle(color: Colors.grey),
-                                          ),
-                                        ),
-                                      ],
+                                  TextButton(
+                                    onPressed: () {},
+                                    child: const Text(
+                                      'Nie pamiętasz hasła?',
+                                      style: TextStyle(color: Colors.grey),
                                     ),
-                                  ),
-                                  ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor:
-                                          AppColors.greenLoginColor,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10.0),
-                                      ),
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 60,
-                                        vertical: 10,
-                                      ),
-                                    ),
-                                    onPressed: () async {
-                                      if (isCreatingAccount == true) {
-                                        context.read<RootCubit>().createUser(
-                                              email:
-                                                  widget.emailController.text,
-                                              password: widget
-                                                  .passwordController.text,
-                                            );
-                                      } else {
-                                        context.read<RootCubit>().signIn(
-                                              email:
-                                                  widget.emailController.text,
-                                              password: widget
-                                                  .passwordController.text,
-                                            );
-                                      }
-                                    },
-                                    child: Text(
-                                      isCreatingAccount == true
-                                          ? 'Zarejestruj się'
-                                          : 'Zaloguj się ',
-                                    ),
-                                  ),
-                                  if (isCreatingAccount == false) ...[
-                                    TextButton(
-                                      style: TextButton.styleFrom(
-                                        foregroundColor: AppColors.greenColor,
-                                      ),
-                                      onPressed: () {
-                                        setState(() {
-                                          isCreatingAccount = true;
-                                        });
-                                      },
-                                      child: Text(
-                                        'Utwórz konto',
-                                        style: TextStyles.weatherStyle3,
-                                      ),
-                                    ),
-                                  ],
-                                  if (isCreatingAccount == true) ...[
-                                    TextButton(
-                                      style: TextButton.styleFrom(
-                                        foregroundColor:
-                                            AppColors.greenLoginColor,
-                                      ),
-                                      onPressed: () {
-                                        setState(() {
-                                          isCreatingAccount = false;
-                                        });
-                                      },
-                                      child: const Text(
-                                        'Masz już konto?',
-                                      ),
-                                    ),
-                                  ],
-                                  const SizedBox(
-                                    height: 10,
                                   ),
                                 ],
                               ),
+                            ),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: AppColors.greenLoginColor,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 60,
+                                  vertical: 10,
+                                ),
+                              ),
+                              onPressed: () async {
+                                if (isCreatingAccount == true) {
+                                  context.read<RootCubit>().createUser(
+                                        email: widget.emailController.text,
+                                        password:
+                                            widget.passwordController.text,
+                                      );
+                                } else {
+                                  context.read<RootCubit>().signIn(
+                                        email: widget.emailController.text,
+                                        password:
+                                            widget.passwordController.text,
+                                      );
+                                }
+                              },
+                              child: Text(
+                                isCreatingAccount == true
+                                    ? 'Zarejestruj się'
+                                    : 'Zaloguj się ',
+                              ),
+                            ),
+                            if (isCreatingAccount == false) ...[
+                              TextButton(
+                                style: TextButton.styleFrom(
+                                  foregroundColor: AppColors.greenColor,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    isCreatingAccount = true;
+                                  });
+                                },
+                                child: Text(
+                                  'Utwórz konto',
+                                  style: TextStyles.weatherStyle3,
+                                ),
+                              ),
+                            ],
+                            if (isCreatingAccount == true) ...[
+                              TextButton(
+                                style: TextButton.styleFrom(
+                                  foregroundColor: AppColors.greenLoginColor,
+                                ),
+                                onPressed: () {
+                                  setState(() {
+                                    isCreatingAccount = false;
+                                  });
+                                },
+                                child: const Text(
+                                  'Masz już konto?',
+                                ),
+                              ),
+                            ],
+                            const SizedBox(
+                              height: 10,
                             ),
                           ],
                         ),
                       ),
                     ]),
                   ),
-                ),
-              ),
-            ));
+                ));
           },
         ),
       ),

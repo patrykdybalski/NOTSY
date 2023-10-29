@@ -60,7 +60,7 @@ class RootCubit extends Cubit<RootState> {
         errorMessage: '',
       ),
     );
-    _loginAuthRepository.streamSubscriptionData(user: user);
+    _loginAuthRepository.streamSubscription(user: user);
     try {
       emit(
         RootState(

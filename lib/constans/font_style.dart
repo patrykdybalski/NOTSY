@@ -13,7 +13,11 @@ class TextStyles {
     fontSize: 34,
     fontWeight: FontWeight.w700,
   );
-
+  static TextStyle loginTextSize2 = GoogleFonts.domine(
+    color: AppColors.secondaryColor,
+    fontSize: 14,
+    fontWeight: FontWeight.w700,
+  );
   static TextStyle eventWidgetTextStyle1 = GoogleFonts.domine(
     color: AppColors.secondaryColor,
     fontSize: 16,
