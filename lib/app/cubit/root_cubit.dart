@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:primary_school/app/core/enums.dart';
 import 'package:primary_school/domain/repositories/login_auth/login_auth_repository.dart';
 part 'root_state.dart';
 
@@ -10,7 +9,7 @@ class RootCubit extends Cubit<RootState> {
       : super(
           RootState(
             user: null,
-            status: Status.initial,
+            isLoadnig: false,
             errorMessage: '',
           ),
         );
@@ -29,17 +28,14 @@ class RootCubit extends Cubit<RootState> {
       emit(
         RootState(
           user: null,
-          status: Status.error,
+          isLoadnig: false,
           errorMessage: error.toString(),
         ),
       );
     }
   }
 
-  Future<void> signIn({
-    required String email,
-    required String password,
-  }) async {
+  Future<void> signIn({required String email, required String password}) async {
     try {
       await _loginAuthRepository.signInUser(
         email: email,
@@ -49,41 +45,39 @@ class RootCubit extends Cubit<RootState> {
       emit(
         RootState(
           user: null,
-          status: Status.error,
+          isLoadnig: false,
           errorMessage: error.toString(),
         ),
       );
     }
   }
 
-  Future<void> start() async {
+  Future<void> start({User? user}) async {
     emit(
       RootState(
         user: null,
-        status: Status.loading,
+        isLoadnig: true,
         errorMessage: '',
       ),
     );
-
-    _streamSubscription =
-        FirebaseAuth.instance.authStateChanges().listen((user) {
+    _loginAuthRepository.streamSubscriptionData(user: user);
+    try {
       emit(
         RootState(
           user: user,
-          status: Status.success,
+          isLoadnig: false,
           errorMessage: '',
         ),
       );
-    })
-          ..onError((error) {
-            emit(
-              RootState(
-                user: null,
-                status: Status.error,
-                errorMessage: error.toString(),
-              ),
-            );
-          });
+    } catch (error) {
+      emit(
+        RootState(
+          user: null,
+          isLoadnig: false,
+          errorMessage: error.toString(),
+        ),
+      );
+    }
   }
 
   @override

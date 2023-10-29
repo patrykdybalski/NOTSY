@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:primary_school/data/remote_data_sources/login_auth_data_source.dart';
 
 class LoginAuthRepository {
@@ -28,5 +29,9 @@ class LoginAuthRepository {
 
   Future<void> signOut() async {
     await _loginAuthDataSource.signOut();
+  }
+
+  StreamSubscription<User?> streamSubscriptionData({User? user}) {
+    return _loginAuthDataSource.streamSubscriptionData(user: user);
   }
 }

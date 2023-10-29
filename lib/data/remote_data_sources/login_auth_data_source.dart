@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginAuthDataSource {
@@ -37,5 +36,16 @@ class LoginAuthDataSource {
     } catch (error) {
       throw Exception(error);
     }
+  }
+
+  Stream<User?> authStateStream() {
+    return FirebaseAuth.instance.authStateChanges();
+  }
+
+  StreamSubscription<User?> streamSubscriptionData({User? user}) {
+    final stream = FirebaseAuth.instance.authStateChanges();
+    return stream.listen((User? user) {
+      
+    });
   }
 }

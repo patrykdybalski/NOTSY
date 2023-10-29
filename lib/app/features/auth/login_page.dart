@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:primary_school/app/cubit/root_cubit.dart';
 import 'package:primary_school/app/features/auth/text_fields_login_page.dart';
 import 'package:primary_school/constans/colors.dart';
+import 'package:primary_school/constans/font_style.dart';
 import 'package:primary_school/data/remote_data_sources/login_auth_data_source.dart';
 import 'package:primary_school/domain/repositories/login_auth/login_auth_repository.dart';
 
@@ -19,7 +19,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  var errorMessage = '';
   var isCreatingAccount = false;
 
   @override
@@ -29,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
         LoginAuthRepository(
           LoginAuthDataSource(),
         ),
-      ),
+      )..start(),
       child: BlocListener<RootCubit, RootState>(
         listener: (context, state) {
           if (state.errorMessage.isNotEmpty) {
@@ -44,25 +43,25 @@ class _LoginPageState extends State<LoginPage> {
         child: BlocBuilder<RootCubit, RootState>(
           builder: (context, state) {
             return Scaffold(
-                body: Container(
-              decoration: const BoxDecoration(
-                color: Color(0xfff6f3f0),
-              ),
+                body: SingleChildScrollView(
               child: SafeArea(
-                child: Center(
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
+                child: Container(
+                  decoration: const BoxDecoration(
+                    color: AppColors.primaryColor,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 30.0),
                     child: Column(children: [
                       Container(
                         height: 200,
                         decoration: const BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage('images/logo_login_page.png'),
+                            image: AssetImage('images/last_check_logo1.png'),
                           ),
                         ),
                       ),
                       const SizedBox(
-                        height: 35,
+                        height: 24,
                       ),
                       Container(
                         margin: const EdgeInsets.only(
@@ -76,10 +75,7 @@ class _LoginPageState extends State<LoginPage> {
                               isCreatingAccount == true
                                   ? 'Zarejestruj się'
                                   : 'Zaloguj się',
-                              style: GoogleFonts.dosis(
-                                fontSize: 35,
-                                fontWeight: FontWeight.w600,
-                              ),
+                              style: TextStyles.textSize1,
                             ),
                             const SizedBox(
                               height: 25,
@@ -151,16 +147,16 @@ class _LoginPageState extends State<LoginPage> {
                                   if (isCreatingAccount == false) ...[
                                     TextButton(
                                       style: TextButton.styleFrom(
-                                        foregroundColor:
-                                            AppColors.greenLoginColor,
+                                        foregroundColor: AppColors.greenColor,
                                       ),
                                       onPressed: () {
                                         setState(() {
                                           isCreatingAccount = true;
                                         });
                                       },
-                                      child: const Text(
+                                      child: Text(
                                         'Utwórz konto',
+                                        style: TextStyles.weatherStyle3,
                                       ),
                                     ),
                                   ],

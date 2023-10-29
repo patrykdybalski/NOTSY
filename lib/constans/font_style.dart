@@ -8,6 +8,11 @@ class TextStyles {
     fontSize: 24,
     fontWeight: FontWeight.w700,
   );
+  static TextStyle textSize1 = GoogleFonts.domine(
+    color: AppColors.secondaryColor,
+    fontSize: 34,
+    fontWeight: FontWeight.w700,
+  );
 
   static TextStyle eventWidgetTextStyle1 = GoogleFonts.domine(
     color: AppColors.secondaryColor,
