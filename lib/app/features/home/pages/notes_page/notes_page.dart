@@ -63,7 +63,7 @@ class _NotesPageState extends State<NotesPage>
               },
               child: const Icon(
                 Icons.add,
-                size: 25,
+                size: 30,
               ),
             ),
             body: const GeneralNotes(),

@@ -29,7 +29,9 @@ class _AddEventDialogState extends State<AddEventDialog> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AddEventCubit(EventsRepository(EventRemoteDataSource(),)),
+      create: (context) => AddEventCubit(EventsRepository(
+        EventRemoteDataSource(),
+      )),
       child: BlocListener<AddEventCubit, AddEventState>(
         listener: (context, state) {
           if (state.saved) {
@@ -50,12 +52,12 @@ class _AddEventDialogState extends State<AddEventDialog> {
               scrollable: true,
               backgroundColor: AppColors.primaryColor,
               contentPadding: const EdgeInsets.only(
-                top: 15.0,
+                top: 16.0,
                 left: 10.0,
                 right: 10.0,
               ),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(13),
+                borderRadius: BorderRadius.circular(16),
               ),
               shadowColor: null,
               content: _ContentDialog(

@@ -41,7 +41,7 @@ class _EventPageState extends State<EventPage> {
         },
         child: const Icon(
           Icons.add,
-          size: 25,
+          size: 30,
         ),
       ),
       body: BlocProvider(
