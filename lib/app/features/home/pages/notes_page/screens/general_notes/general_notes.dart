@@ -5,6 +5,7 @@ import 'package:primary_school/app/features/home/pages/notes_page/cubit/note_cub
 import 'package:primary_school/app/features/home/pages/notes_page/screens/note_reader_screen/note_reader_screen.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/constans/font_style.dart';
+import 'package:primary_school/data/remote_data_sources/note_remote_data_source.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
 
@@ -22,7 +23,9 @@ class _GeneralNotesState extends State<GeneralNotes> {
       backgroundColor: AppColors.primaryColor,
       body: BlocProvider(
         create: (context) => NoteCubit(
-          NoteRepository(),
+          NoteRepository(
+            NoteRemoteDataSource(),
+          ),
         )..start(),
         child: BlocBuilder<NoteCubit, NoteState>(
           builder: (context, state) {
@@ -104,7 +107,9 @@ class _NoteItemState extends State<NoteItem> {
                 context: context,
                 builder: ((context) {
                   return BlocProvider(
-                    create: (context) => NoteCubit(NoteRepository()),
+                    create: (context) => NoteCubit(NoteRepository(
+                      NoteRemoteDataSource(),
+                    )),
                     child: BlocBuilder<NoteCubit, NoteState>(
                       builder: (context, state) {
                         return AlertDialog(

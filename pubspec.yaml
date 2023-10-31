@@ -37,7 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   firebase_core: ^2.13.0
   cloud_firestore: ^4.7.1
-  firebase_auth: ^4.6.1
+  firebase_auth: ^4.12.0
   flutter_bloc: ^8.1.2
   google_fonts: ^4.0.4
   intl: ^0.18.1
@@ -48,6 +48,8 @@ dependencies:
   flutter_slidable: ^3.0.0
   flutter_colorpicker: ^1.0.3
   hidden_drawer_menu: ^3.0.1
+  weather_icons: ^3.0.0
+  dio: ^5.3.3
  
 
 dev_dependencies:

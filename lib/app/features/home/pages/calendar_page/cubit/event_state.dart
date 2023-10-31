@@ -1,8 +1,8 @@
-part of 'calendar_cubit.dart';
+part of 'event_cubit.dart';
 
 @immutable
-class CalendarState {
-  const CalendarState(
+class EventState {
+  const EventState(
     {this.calendarItems = const [],
     this.status = Status.initial,
     this.errorMessage,}

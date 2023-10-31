@@ -5,8 +5,9 @@ import 'package:intl/intl.dart';
 import 'package:primary_school/app/features/home/pages/calendar_page/edit_event_screen/cubit/edit_event_cubit.dart';
 import 'package:primary_school/app/features/home/pages/calendar_page/edit_event_screen/edit_event_widgets.dart';
 import 'package:primary_school/constans/colors.dart';
+import 'package:primary_school/data/remote_data_sources/event_remote_data_source.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
-import 'package:primary_school/domain/repositories/calendar/events_repository.dart';
+import 'package:primary_school/domain/repositories/event/events_repository.dart';
 
 class EditEventScreen extends StatefulWidget {
   const EditEventScreen({
@@ -28,7 +29,9 @@ class _EditEventScreenState extends State<EditEventScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => EditEventCubit(EventsRepository()),
+      create: (context) => EditEventCubit(EventsRepository(
+        EventRemoteDataSource(),
+      )),
       child: BlocListener<EditEventCubit, EditEventState>(
         listener: (context, state) {
           if (state.saved) {

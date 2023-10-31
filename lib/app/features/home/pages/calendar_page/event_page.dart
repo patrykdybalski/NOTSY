@@ -3,24 +3,25 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:primary_school/app/core/enums.dart';
 import 'package:primary_school/app/features/home/pages/calendar_page/add_event_dialog/add_event_dialog.dart';
-import 'package:primary_school/app/features/home/pages/calendar_page/cubit/calendar_cubit.dart';
+import 'package:primary_school/app/features/home/pages/calendar_page/cubit/event_cubit.dart';
 import 'package:primary_school/app/features/home/pages/calendar_page/edit_event_screen/edit_event_screen.dart';
 import 'package:primary_school/app/features/home/pages/calendar_page/widgets/event_widget.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/constans/font_style.dart';
+import 'package:primary_school/data/remote_data_sources/event_remote_data_source.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
-import 'package:primary_school/domain/repositories/calendar/events_repository.dart';
+import 'package:primary_school/domain/repositories/event/events_repository.dart';
 
-class CalendarPage extends StatefulWidget {
-  const CalendarPage({
+class EventPage extends StatefulWidget {
+  const EventPage({
     super.key,
   });
 
   @override
-  State<CalendarPage> createState() => _CalendarPageState();
+  State<EventPage> createState() => _EventPageState();
 }
 
-class _CalendarPageState extends State<CalendarPage> {
+class _EventPageState extends State<EventPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,14 +41,16 @@ class _CalendarPageState extends State<CalendarPage> {
         },
         child: const Icon(
           Icons.add,
-          size: 25,
+          size: 30,
         ),
       ),
       body: BlocProvider(
-        create: (context) => CalendarCubit(
-          EventsRepository(),
+        create: (context) => EventCubit(
+          EventsRepository(
+            EventRemoteDataSource(),
+          ),
         )..start(),
-        child: BlocBuilder<CalendarCubit, CalendarState>(
+        child: BlocBuilder<EventCubit, EventState>(
           builder: (context, state) {
             final eventModels = state.calendarItems;
             switch (state.status) {
@@ -125,66 +128,60 @@ class SlidableEventWidget extends StatelessWidget {
           SlidableAction(
             onPressed: (context) {
               showDialog(
-                  context: context,
-                  builder: ((context) {
-                    return AlertDialog(
-                      title: const Text('Usunąć zapis?'),
-                      titleTextStyle: TextStyles.deleteDialogTextStyle1,
-                      elevation: 20,
-                      backgroundColor: AppColors.primaryColor,
-                      actions: [
-                        TextButton(
-                          onPressed: () {
-                            Navigator.of(context).pop();
+                context: context,
+                builder: ((context) {
+                  return AlertDialog(
+                    title: const Text('Oznaczyć jako ukończone?'),
+                    titleTextStyle: TextStyles.deleteDialogTextStyle1,
+                    elevation: 20,
+                    backgroundColor: AppColors.primaryColor,
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: Text(
+                          'Nie',
+                          style: TextStyles.deleteDialogTextStyle2,
+                        ),
+                      ),
+                      BlocProvider(
+                        create: (context) => EventCubit(EventsRepository(
+                          EventRemoteDataSource(),
+                        )),
+                        child: BlocBuilder<EventCubit, EventState>(
+                          builder: (context, state) {
+                            return TextButton(
+                              onPressed: () {
+                                context.read<EventCubit>().remove(
+                                      documentID: eventModel.id,
+                                    );
+                                Navigator.of(context).pop();
+                              },
+                              child: Text(
+                                'Tak',
+                                style: TextStyles.deleteDialogTextStyle2,
+                              ),
+                            );
                           },
-                          child: Text(
-                            'Nie',
-                            style: TextStyles.deleteDialogTextStyle2,
-                          ),
                         ),
-                        BlocProvider(
-                          create: (context) =>
-                              CalendarCubit(EventsRepository()),
-                          child: BlocBuilder<CalendarCubit, CalendarState>(
-                            builder: (context, state) {
-                              return TextButton(
-                                onPressed: () {
-                                  context.read<CalendarCubit>().remove(
-                                        documentID: eventModel.id,
-                                      );
-                                  Navigator.of(context).pop();
-                                },
-                                child: Text(
-                                  'Tak',
-                                  style: TextStyles.deleteDialogTextStyle2,
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      ],
-                    );
-                  }));
+                      ),
+                    ],
+                  );
+                }),
+              );
             },
-            label: 'Usuń',
-            icon: Icons.delete_outline_outlined,
+            padding: const EdgeInsets.all(0),
+            label: 'Ukończone',
+            icon: Icons.task_alt_outlined,
             backgroundColor: AppColors.primaryColor,
-            foregroundColor: AppColors.secondaryColor,
+            foregroundColor: AppColors.greenColor,
             spacing: 5,
           ),
           SlidableAction(
             onPressed: (context) {
               _showEditDialog(context);
             },
-            // onPressed: (context) {
-            //   Navigator.of(context).push(
-            //     MaterialPageRoute(
-            //       builder: (context) => EditEventScreen(
-            //         eventModel: eventModel,
-            //       ),
-            //     ),
-            //   );
-            // },
             label: 'Edytuj',
             icon: Icons.mode_edit_outline_outlined,
             backgroundColor: AppColors.primaryColor,

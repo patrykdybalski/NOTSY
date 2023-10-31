@@ -4,6 +4,7 @@ import 'package:primary_school/app/features/home/pages/notes_page/cubit/note_cub
 import 'package:primary_school/app/features/home/pages/notes_page/screens/edit_note_screen/edit_note_screen.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/constans/font_style.dart';
+import 'package:primary_school/data/remote_data_sources/note_remote_data_source.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
 
@@ -48,7 +49,9 @@ class NoteReaderButtons {
             context: context,
             builder: ((context) {
               return BlocProvider(
-                create: (context) => NoteCubit(NoteRepository()),
+                create: (context) => NoteCubit(NoteRepository(
+                  NoteRemoteDataSource(),
+                )),
                 child: BlocBuilder<NoteCubit, NoteState>(
                   builder: (context, state) {
                     return AlertDialog(

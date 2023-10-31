@@ -39,8 +39,8 @@ class TimeButton extends StatelessWidget {
       },
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.primaryColor,
-        elevation: 1.5,
-        shadowColor: AppColors.accentColor,
+        elevation: 1,
+        shadowColor: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
             8.0,
@@ -86,8 +86,8 @@ class DayButton extends StatelessWidget {
       },
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.primaryColor,
-        elevation: 1.5,
-        shadowColor: AppColors.accentColor,
+        elevation: 1,
+        shadowColor: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
             8.0,

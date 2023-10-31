@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/core/enums.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
-import 'package:primary_school/domain/repositories/calendar/events_repository.dart';
-part 'calendar_state.dart';
+import 'package:primary_school/domain/repositories/event/events_repository.dart';
+part 'event_state.dart';
 
-class CalendarCubit extends Cubit<CalendarState> {
-  CalendarCubit(this._eventsRepository)
+class EventCubit extends Cubit<EventState> {
+  EventCubit(this._eventsRepository)
       : super(
-          const CalendarState(),
+          const EventState(),
         );
   final EventsRepository _eventsRepository;
 
@@ -18,14 +18,14 @@ class CalendarCubit extends Cubit<CalendarState> {
 
   Future<void> start() async {
     emit(
-      const CalendarState(
+      const EventState(
         status: Status.loading,
       ),
     );
 
     _streamSubscription = _eventsRepository.getEventsStream().listen((data) {
       emit(
-        CalendarState(
+        EventState(
           calendarItems: data,
           status: Status.success,
         ),
@@ -34,7 +34,7 @@ class CalendarCubit extends Cubit<CalendarState> {
       ..onError(
         (error) {
           emit(
-            CalendarState(
+            EventState(
               status: Status.error,
               errorMessage: error.toString(),
             ),
@@ -48,7 +48,7 @@ class CalendarCubit extends Cubit<CalendarState> {
       await _eventsRepository.delete(id: documentID);
     } catch (error) {
       emit(
-        CalendarState(
+        EventState(
           status: Status.error,
           errorMessage: error.toString(),
         ),
