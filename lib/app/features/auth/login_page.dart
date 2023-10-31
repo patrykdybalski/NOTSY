@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:primary_school/app/cubit/root_cubit.dart';
+import 'package:primary_school/app/features/auth/cubit/login_cubit.dart';
 import 'package:primary_school/app/features/auth/text_fields_login_page.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/constans/font_style.dart';
@@ -24,12 +24,12 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => RootCubit(
+      create: (context) => LoginCubit(
         LoginAuthRepository(
           LoginAuthDataSource(),
         ),
-      )..start(),
-      child: BlocListener<RootCubit, RootState>(
+      ),
+      child: BlocListener<LoginCubit, LoginState>(
         listener: (context, state) {
           if (state.errorMessage.isNotEmpty) {
             ScaffoldMessenger.of(context).showSnackBar(
@@ -40,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
             );
           }
         },
-        child: BlocBuilder<RootCubit, RootState>(
+        child: BlocBuilder<LoginCubit, LoginState>(
           builder: (context, state) {
             return Scaffold(
                 backgroundColor: AppColors.primaryColor,
@@ -117,13 +117,13 @@ class _LoginPageState extends State<LoginPage> {
                                 ),
                                 onPressed: () async {
                                   if (isCreatingAccount == true) {
-                                    context.read<RootCubit>().createUser(
+                                    context.read<LoginCubit>().createUser(
                                           email: widget.emailController.text,
                                           password:
                                               widget.passwordController.text,
                                         );
                                   } else {
-                                    context.read<RootCubit>().signIn(
+                                    context.read<LoginCubit>().signIn(
                                           email: widget.emailController.text,
                                           password:
                                               widget.passwordController.text,
@@ -153,23 +153,12 @@ class _LoginPageState extends State<LoginPage> {
                                       isCreatingAccount = true;
                                     });
                                   },
-                                  child: const Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: [
-                                      Text(
-                                        'Nie masz konta?',
-                                        style: TextStyle(
-                                          color: AppColors.redColor,
-                                          fontSize: 15,
-                                        ),
-                                      ),
-                                      Text('Utwórz konto',
-                                          style: TextStyle(
-                                            color: AppColors.greenLogoColor,
-                                            fontSize: 15,
-                                          )),
-                                    ],
+                                  child: const Text(
+                                    'Utwórz konto',
+                                    style: TextStyle(
+                                      color: AppColors.greenLogoColor,
+                                      fontSize: 15,
+                                    ),
                                   ),
                                 ),
                               ],

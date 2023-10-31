@@ -38,14 +38,14 @@ class LoginAuthDataSource {
     }
   }
 
-  Stream<User?> authStateStream() {
-    return FirebaseAuth.instance.authStateChanges();
-  }
+  // Stream<User?> authStateStream() {
+  //   return FirebaseAuth.instance.authStateChanges();
+  // }
 
-  StreamSubscription<User?> streamSubscriptionData({User? user}) {
-    final stream = FirebaseAuth.instance.authStateChanges();
-    return stream.listen((User? user) {
-      
-    });
-  }
+  // StreamSubscription<User?> streamSubscriptionData({User? user}) {
+  //   final stream = FirebaseAuth.instance.authStateChanges();
+  //   return stream.listen((User? user) {
+
+  //   });
+  // }
 }

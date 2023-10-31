@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:primary_school/app/cubit/root_cubit.dart';
 import 'package:primary_school/app/features/home/pages/user_page/cubit/user_page_cubit.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/constans/font_style.dart';
-import 'package:primary_school/data/remote_data_sources/login_auth_data_source.dart';
-
-import 'package:primary_school/domain/repositories/login_auth/login_auth_repository.dart';
 
 class UserPage extends StatefulWidget {
   const UserPage({super.key});
@@ -19,9 +17,7 @@ class _UserPageState extends State<UserPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => UserPageCubit(LoginAuthRepository(
-        LoginAuthDataSource(),
-      )),
+      create: (context) => UserPageCubit(),
       child: BlocBuilder<UserPageCubit, UserPageState>(
         builder: (context, state) {
           return Scaffold(
@@ -48,7 +44,7 @@ class _UserPageState extends State<UserPage> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      context.read<UserPageCubit>().signOut();
+                      context.read<RootCubit>().signOut();
                     },
                     style: TextButton.styleFrom(
                       backgroundColor: AppColors.primaryColor,

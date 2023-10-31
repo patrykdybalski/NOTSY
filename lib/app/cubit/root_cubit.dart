@@ -17,54 +17,12 @@ class RootCubit extends Cubit<RootState> {
   StreamSubscription? _streamSubscription;
   final LoginAuthRepository _loginAuthRepository;
 
-  Future<void> createUser(
-      {required String email, required String password}) async {
+  Future<void> signOut() async {
     try {
-      await _loginAuthRepository.createUsers(
-        email: email,
-        password: password,
-      );
-    } catch (error) {
+      await _loginAuthRepository.signOut();
       emit(
-        RootState(
+         RootState(
           user: null,
-          isLoadnig: false,
-          errorMessage: error.toString(),
-        ),
-      );
-    }
-  }
-
-  Future<void> signIn({required String email, required String password}) async {
-    try {
-      await _loginAuthRepository.signInUser(
-        email: email,
-        password: password,
-      );
-    } catch (error) {
-      emit(
-        RootState(
-          user: null,
-          isLoadnig: false,
-          errorMessage: error.toString(),
-        ),
-      );
-    }
-  }
-
-  Future<void> start({User? user}) async {
-    emit(
-      RootState(
-        user: null,
-        isLoadnig: true,
-        errorMessage: '',
-      ),
-    );
-    _loginAuthRepository.streamSubscription(user: user);
-    try {
-      emit(
-        RootState(
-          user: user,
           isLoadnig: false,
           errorMessage: '',
         ),
@@ -78,6 +36,36 @@ class RootCubit extends Cubit<RootState> {
         ),
       );
     }
+  }
+
+  Future<void> start() async {
+    emit(
+      RootState(
+        user: null,
+        isLoadnig: true,
+        errorMessage: '',
+      ),
+    );
+
+    _streamSubscription =
+        FirebaseAuth.instance.authStateChanges().listen((user) {
+      emit(
+        RootState(
+          user: user,
+          isLoadnig: false,
+          errorMessage: '',
+        ),
+      );
+    })
+          ..onError((error) {
+            emit(
+              RootState(
+                user: null,
+                isLoadnig: false,
+                errorMessage: error.toString(),
+              ),
+            );
+          });
   }
 
   @override

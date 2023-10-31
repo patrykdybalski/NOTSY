@@ -33,10 +33,10 @@ class RootPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => RootCubit(
-              LoginAuthRepository(LoginAuthDataSource()),
-            )..start(),
-        child: BlocBuilder<RootCubit, RootState>(builder: (context, state) {
+      create: (context) =>
+          RootCubit(LoginAuthRepository(LoginAuthDataSource()))..start(),
+      child: BlocBuilder<RootCubit, RootState>(
+        builder: (context, state) {
           if (state.errorMessage.isNotEmpty) {
             return Center(
               child: Text(
@@ -52,8 +52,11 @@ class RootPage extends StatelessWidget {
           final user = state.user;
           if (user == null) {
             return LoginPage();
+          } else {
+            return const HomePage();
           }
-          return const HomePage();
-        },),);
+        },
+      ),
+    );
   }
 }
