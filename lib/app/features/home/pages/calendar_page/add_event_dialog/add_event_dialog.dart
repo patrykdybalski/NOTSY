@@ -23,15 +23,16 @@ class _AddEventDialogState extends State<AddEventDialog> {
   String? _subtitle;
   DateTime? _selectedDay;
   DateTime? _selectedTime;
-  Map<DateTime, List<EventModel>> events = {};
   late final EventModel eventModel;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AddEventCubit(EventsRepository(
-        EventRemoteDataSource(),
-      )),
+      create: (context) => AddEventCubit(
+        EventsRepository(
+          EventRemoteDataSource(),
+        ),
+      ),
       child: BlocListener<AddEventCubit, AddEventState>(
         listener: (context, state) {
           if (state.saved) {
@@ -51,6 +52,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
             return AlertDialog(
               scrollable: true,
               backgroundColor: AppColors.primaryColor,
+              shadowColor: AppColors.primaryColor,
               contentPadding: const EdgeInsets.only(
                 top: 16.0,
                 left: 10.0,
@@ -59,7 +61,6 @@ class _AddEventDialogState extends State<AddEventDialog> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
               ),
-              shadowColor: null,
               content: _ContentDialog(
                 onTitleChanged: (newValue) {
                   setState(

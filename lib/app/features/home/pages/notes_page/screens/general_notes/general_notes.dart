@@ -107,9 +107,11 @@ class _NoteItemState extends State<NoteItem> {
                 context: context,
                 builder: ((context) {
                   return BlocProvider(
-                    create: (context) => NoteCubit(NoteRepository(
-                      NoteRemoteDataSource(),
-                    )),
+                    create: (context) => NoteCubit(
+                      NoteRepository(
+                        NoteRemoteDataSource(),
+                      ),
+                    ),
                     child: BlocBuilder<NoteCubit, NoteState>(
                       builder: (context, state) {
                         return AlertDialog(
