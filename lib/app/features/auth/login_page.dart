@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/features/auth/cubit/login_cubit.dart';
+import 'package:primary_school/app/features/auth/forgot_password_page/forgot_password_page.dart';
 import 'package:primary_school/app/features/auth/text_fields_login_page.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/constans/font_style.dart';
@@ -92,7 +93,12 @@ class _LoginPageState extends State<LoginPage> {
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   TextButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.push(context,
+                                          MaterialPageRoute(builder: (context) {
+                                        return const ForgotPasswordPage();
+                                      }));
+                                    },
                                     child: Text(
                                       isCreatingAccount == true
                                           ? ''
