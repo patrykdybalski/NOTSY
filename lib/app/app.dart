@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'PNP - plany, notatki, pogoda',
+      title: 'Last Check Only',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         useMaterial3: true,

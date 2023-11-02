@@ -90,128 +90,119 @@ class NoteItem extends StatefulWidget {
 class _NoteItemState extends State<NoteItem> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<NoteCubit, NoteState>(
-      builder: (context, state) {
-        return InkWell(
-          onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => NoteReaderScreen(
-                  noteModel: widget.noteModel,
-                ),
-              ),
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => NoteReaderScreen(
+              noteModel: widget.noteModel,
+            ),
+          ),
+        );
+      },
+      onLongPress: () {
+        showDialog(
+          context: context,
+          builder: ((context) {
+            return DeleteNotesDialog(
+              widget: widget,
             );
-          },
-          onLongPress: () {
-            showDialog(
-                context: context,
-                builder: ((context) {
-                  return BlocProvider(
-                    create: (context) => NoteCubit(
-                      NoteRepository(
-                        NoteRemoteDataSource(),
-                      ),
-                    ),
-                    child: BlocBuilder<NoteCubit, NoteState>(
-                      builder: (context, state) {
-                        return AlertDialog(
-                          title: const Text('Usunąć notatkę?'),
-                          titleTextStyle: TextStyles.deleteDialogTextStyle1,
-                          elevation: 20,
-                          backgroundColor: widget.noteModel.color,
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                              child: Text(
-                                'Nie',
-                                style: TextStyles.deleteDialogTextStyle2,
-                              ),
-                            ),
-                            TextButton(
-                              onPressed: () {
-                                context
-                                    .read<NoteCubit>()
-                                    .remove(id: widget.noteModel.id);
-                                Navigator.of(context).pop();
-                              },
-                              child: Text(
-                                'Tak',
-                                style: TextStyles.deleteDialogTextStyle2,
-                              ),
-                            ),
-                          ],
-                        );
-                      },
-                    ),
-                  );
-                }));
-          },
+          }),
+        );
+      },
+      child: Container(
+        height: 200,
+        width: 175,
+        decoration: BoxDecoration(
+          color: widget.noteModel.color,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.shade500,
+              spreadRadius: 0.2,
+              blurRadius: 0.3,
+              offset: const Offset(0.3, 0.3), // Przesunięcie cienia w dół
+            ),
+          ],
+          borderRadius: BorderRadius.circular(
+            12,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(
+            8.0,
+          ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                height: 200,
-                width: 175,
-                decoration: BoxDecoration(
-                  color: widget.noteModel.color,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.shade500,
-                      spreadRadius: 0.2,
-                      blurRadius: 0.3,
-                      offset:
-                          const Offset(0.3, 0.3), // Przesunięcie cienia w dół
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      widget.noteModel.title,
+                      maxLines: 4,
+                      softWrap: true,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyles.noteWidgetTextStyle2,
                     ),
-                  ],
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(12),
-                    topRight: Radius.circular(12),
-                    bottomLeft: Radius.circular(12),
-                    bottomRight: Radius.circular(12),
                   ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8.0,
-                    vertical: 8.0,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Text(
-                              widget.noteModel.title,
-                              maxLines: 4,
-                              softWrap: true,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyles.noteWidgetTextStyle2,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const Divider(
-                        color: Colors.black,
-                        thickness: 0.5,
-                        height: 5,
-                      ),
-                      Expanded(
-                        child: Text(
-                          widget.noteModel.subtitle,
-                          overflow: TextOverflow.fade,
-                          style: TextStyles.noteWidgetTextStyle1,
-                        ),
-                      ),
-                    ],
-                  ),
+                ],
+              ),
+              const Divider(
+                color: AppColors.secondaryColor,
+                thickness: 0.5,
+                height: 5,
+              ),
+              Expanded(
+                child: Text(
+                  widget.noteModel.subtitle,
+                  overflow: TextOverflow.fade,
+                  style: TextStyles.noteWidgetTextStyle1,
                 ),
               ),
             ],
           ),
-        );
-      },
+        ),
+      ),
+    );
+  }
+}
+
+class DeleteNotesDialog extends StatelessWidget {
+  const DeleteNotesDialog({
+    super.key,
+    required this.widget,
+  });
+
+  final NoteItem widget;
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: const Text('Usunąć notatkę?'),
+      titleTextStyle: TextStyles.deleteDialogTextStyle1,
+      elevation: 20,
+      backgroundColor: widget.noteModel.color,
+      actions: [
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: Text(
+            'Nie',
+            style: TextStyles.deleteDialogTextStyle2,
+          ),
+        ),
+        TextButton(
+          onPressed: () {
+            context.read<NoteCubit>().remove(id: widget.noteModel.id);
+            Navigator.of(context).pop();
+          },
+          child: Text(
+            'Tak',
+            style: TextStyles.deleteDialogTextStyle2,
+          ),
+        ),
+      ],
     );
   }
 }

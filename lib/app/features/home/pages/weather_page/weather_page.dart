@@ -81,7 +81,7 @@ class SearchWidget extends StatelessWidget {
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
                   borderSide: const BorderSide(
-                    color: AppColors.redColor,
+                    color: AppColors.greenLogoColor,
                   ),
                 ),
                 disabledBorder: OutlineInputBorder(
@@ -112,12 +112,12 @@ class SearchWidget extends StatelessWidget {
                     .getWeatherModel(city: _controller.text);
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.redColor,
+                backgroundColor: AppColors.greenLogoColor,
                 elevation: 1.5,
                 shadowColor: AppColors.primaryColor,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(
-                    12.0,
+                    16.0,
                   ),
                 ),
               ),
