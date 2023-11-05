@@ -22,6 +22,10 @@ class WeatherModel {
   final double humidity;
   final String text;
 
+  String? get nameWithCountry {
+    return '$name, $country';
+  }
+
   WeatherModel.fromJson(Map<String, dynamic> json)
       : name = json['location']['name'],
         country = json['location']['country'],

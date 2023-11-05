@@ -153,7 +153,7 @@ class _FirstTabState extends State<FirstTab> {
             children: [
               const Icon(Icons.location_on_outlined),
               Text(
-                ' ${widget.weatherModel?.name}, ${widget.weatherModel?.country}',
+                widget.weatherModel?.nameWithCountry ?? '',
                 style: TextStyles.weatherStyle6,
               ),
             ],

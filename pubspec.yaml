@@ -50,6 +50,7 @@ dependencies:
   hidden_drawer_menu: ^3.0.1
   weather_icons: ^3.0.0
   dio: ^5.3.3
+  json_annotation: ^4.8.1
  
 
 dev_dependencies:
