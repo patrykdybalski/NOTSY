@@ -48,13 +48,13 @@ class _LoginPageState extends State<LoginPage> {
                 body: SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.only(
-                      top: 80.0,
+                      top: 40.0,
                       left: 20,
                       right: 20,
                     ),
                     child: Column(children: [
                       Container(
-                        height: 200,
+                        height: 250,
                         decoration: const BoxDecoration(
                           image: DecorationImage(
                             image: AssetImage('images/last_check_logo1.png'),

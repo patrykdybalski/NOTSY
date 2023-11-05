@@ -28,11 +28,11 @@ class _UserPageState extends State<UserPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(
-              height: 16,
+              height: 8,
             ),
             const CircleAvatar(
               backgroundImage: AssetImage('images/last_check_logo1.png'),
-              radius: 115,
+              radius: 130,
             ),
             const SizedBox(
               height: 8,

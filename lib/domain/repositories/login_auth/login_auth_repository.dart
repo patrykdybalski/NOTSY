@@ -31,6 +31,10 @@ class LoginAuthRepository {
     await _loginAuthDataSource.signOut();
   }
 
+  Future<void> resetPassword({required String email}) async {
+    await _loginAuthDataSource.passwordResetData(email: email);
+  }
+
   // StreamSubscription<User?> streamSubscription({User? user}) {
   //   return _loginAuthDataSource.streamSubscriptionData(user: user);
   // }

@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginAuthDataSource {
@@ -11,7 +12,7 @@ class LoginAuthDataSource {
         email: email,
         password: password,
       );
-    } catch (error) {
+    } on FirebaseAuthException catch (error) {
       throw Exception(error);
     }
   }
@@ -25,7 +26,7 @@ class LoginAuthDataSource {
         email: email,
         password: password,
       );
-    } catch (error) {
+    } on FirebaseAuthException catch (error) {
       throw Exception(error);
     }
   }
@@ -33,11 +34,18 @@ class LoginAuthDataSource {
   Future<void> signOut() async {
     try {
       await FirebaseAuth.instance.signOut();
-    } catch (error) {
+    } on FirebaseAuthException catch (error) {
       throw Exception(error);
     }
   }
 
+  Future<void> passwordResetData({required String email}) async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email.trim());
+    } on FirebaseAuthException catch (error) {
+      throw Exception(error);
+    }
+  }
   // Stream<User?> authStateStream() {
   //   return FirebaseAuth.instance.authStateChanges();
   // }
