@@ -1,94 +1,139 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'weather_model.g.dart';
+part 'weather_model.freezed.dart';
 
-@JsonSerializable()
-class WeatherModel {
-  WeatherModel({
-    required this.location,
-    required this.current,
-  });
-  @JsonKey(name: "location")
-  Location location;
-  @JsonKey(name: "current")
-  Current current;
 
-  factory WeatherModel.fromJson(Map<String, dynamic> json) =>
-      _$WeatherModelFromJson(json);
 
-  Map<String, dynamic> toJson() => _$WeatherModelToJson(this);
+@freezed
+class WeatherModel with _$WeatherModel {
+  factory WeatherModel( Location location, Current current,) = _WeatherModel;
+
+  factory WeatherModel.fromJson(Map<String, dynamic> json) => _$WeatherModelFromJson(json);
 }
 
-@JsonSerializable()
-class Current {
-  Current({
-    required this.tempC,
-    required this.condition,
-    required this.windMph,
-    required this.windDir,
-    required this.pressureMb,
-    required this.precipMm,
-    required this.humidity,
-    required this.cloud,
-    required this.feelsLikeC,
-  });
+// @JsonSerializable()
+// class WeatherModel {
+//   WeatherModel({
+//     required this.location,
+//     required this.current,
+//   });
+//   @JsonKey(name: "location")
+//   Location location;
+//   @JsonKey(name: "current")
+//   Current current;
 
-  @JsonKey(name: "temp_c")
-  double tempC;
-  @JsonKey(name: "condition")
-  Condition condition;
+//   factory WeatherModel.fromJson(Map<String, dynamic> json) =>
+//       _$WeatherModelFromJson(json);
+
+//   Map<String, dynamic> toJson() => _$WeatherModelToJson(this);
+// }
+@freezed
+class Current with _$Current {
+  factory Current( @JsonKey(name: "temp_c")
+  double tempC,
+  
+  Condition condition,
   @JsonKey(name: "wind_mph")
-  double windMph;
+  double windMph,
   @JsonKey(name: "wind_dir")
-  String windDir;
+  String windDir,
   @JsonKey(name: "pressure_mb")
-  double pressureMb;
+  double pressureMb,
   @JsonKey(name: "precip_mm")
-  double precipMm;
-  @JsonKey(name: "humidity")
-  double humidity;
-  @JsonKey(name: "cloud")
-  double cloud;
+  double precipMm,
+  
+  double humidity,
+  
+  double cloud,
   @JsonKey(name: "feelslike_c")
-  double feelsLikeC;
+  double feelsLikeC,) = _Current;
 
-  factory Current.fromJson(Map<String, dynamic> json) =>
-      _$CurrentFromJson(json);
-
-  Map<String, dynamic> toJson() => _$CurrentToJson(this);
+  factory Current.fromJson(Map<String, dynamic> json) => _$CurrentFromJson(json);
 }
 
-@JsonSerializable()
-class Condition {
-  Condition({
-    required this.text,
-  });
+// @JsonSerializable()
+// class Current {
+//   Current({
+//     required this.tempC,
+//     required this.condition,
+//     required this.windMph,
+//     required this.windDir,
+//     required this.pressureMb,
+//     required this.precipMm,
+//     required this.humidity,
+//     required this.cloud,
+//     required this.feelsLikeC,
+//   });
 
-  String text;
+//   @JsonKey(name: "temp_c")
+//   double tempC;
+//   @JsonKey(name: "condition")
+//   Condition condition;
+//   @JsonKey(name: "wind_mph")
+//   double windMph;
+//   @JsonKey(name: "wind_dir")
+//   String windDir;
+//   @JsonKey(name: "pressure_mb")
+//   double pressureMb;
+//   @JsonKey(name: "precip_mm")
+//   double precipMm;
+//   @JsonKey(name: "humidity")
+//   double humidity;
+//   @JsonKey(name: "cloud")
+//   double cloud;
+//   @JsonKey(name: "feelslike_c")
+//   double feelsLikeC;
 
-  factory Condition.fromJson(Map<String, dynamic> json) =>
-      _$ConditionFromJson(json);
+//   factory Current.fromJson(Map<String, dynamic> json) =>
+//       _$CurrentFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ConditionToJson(this);
+//   Map<String, dynamic> toJson() => _$CurrentToJson(this);
+// }
+
+@freezed
+class Condition with _$Condition {
+  factory Condition(String text,) = _Condition;
+
+  factory Condition.fromJson(Map<String, dynamic> json) => _$ConditionFromJson(json);
 }
+// @JsonSerializable()
+// class Condition {
+//   Condition({
+//     required this.text,
+//   });
 
-@JsonSerializable()
-class Location {
-  Location({
-    required this.name,
-    required this.country,
-  });
+//   String text;
 
-  @JsonKey(name: "name")
-  String name;
-  @JsonKey(name: "country")
-  String country;
+//   factory Condition.fromJson(Map<String, dynamic> json) =>
+//       _$ConditionFromJson(json);
 
-  factory Location.fromJson(Map<String, dynamic> json) =>
-      _$LocationFromJson(json);
+//   Map<String, dynamic> toJson() => _$ConditionToJson(this);
+// }
 
-  Map<String, dynamic> toJson() => _$LocationToJson(this);
+@freezed
+class Location with _$Location {
+  factory Location(String name, String country,) = _Location;
+
+  factory Location.fromJson(Map<String, dynamic> json) => _$LocationFromJson(json);
 }
+// @JsonSerializable()
+// class Location {
+//   Location({
+//     required this.name,
+//     required this.country,
+//   });
+
+//   @JsonKey(name: "name")
+//   String name;
+//   @JsonKey(name: "country")
+//   String country;
+
+//   factory Location.fromJson(Map<String, dynamic> json) =>
+//       _$LocationFromJson(json);
+
+//   Map<String, dynamic> toJson() => _$LocationToJson(this);
+// }
 
 
 // // class WeatherModel {
