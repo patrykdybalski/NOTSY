@@ -34,11 +34,11 @@ class _FirstTabState extends State<FirstTab> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Text(
-                  '${widget.weatherModel?.temperature.toString()}℃',
+                  '${widget.weatherModel?.current.tempC}℃',
                   style: TextStyles.weatherStyle1,
                 ),
                 Text(
-                  '${widget.weatherModel?.text}',
+                  '${widget.weatherModel?.current.condition.text}',
                   style: TextStyles.weatherStyle6,
                 ),
               ],
@@ -60,7 +60,7 @@ class _FirstTabState extends State<FirstTab> {
                       ),
                       const SizedBox(width: 10),
                       Text(
-                        widget.weatherModel?.direction ?? 'null',
+                        widget.weatherModel?.current.windDir ?? 'null',
                         style: TextStyles.weatherStyle3,
                       ),
                     ],
@@ -71,7 +71,7 @@ class _FirstTabState extends State<FirstTab> {
                       const BoxedIcon(WeatherIcons.cloudy),
                       const SizedBox(width: 10),
                       Text(
-                        '${widget.weatherModel?.cloudy.toString()} %',
+                        '${widget.weatherModel?.current.cloud} %',
                         style: TextStyles.weatherStyle3,
                       ),
                     ],
@@ -86,7 +86,7 @@ class _FirstTabState extends State<FirstTab> {
                       const BoxedIcon(WeatherIcons.strong_wind),
                       const SizedBox(width: 10),
                       Text(
-                        '${widget.weatherModel?.wind.toString()} km/h',
+                        '${widget.weatherModel?.current.windMph} km/h',
                         style: TextStyles.weatherStyle3,
                       ),
                     ],
@@ -99,7 +99,7 @@ class _FirstTabState extends State<FirstTab> {
                       ),
                       const SizedBox(width: 10),
                       Text(
-                        '${widget.weatherModel?.rain.toString()} mm',
+                        '${widget.weatherModel?.current.precipMm} mm',
                         style: TextStyles.weatherStyle3,
                       ),
                     ],
@@ -116,7 +116,7 @@ class _FirstTabState extends State<FirstTab> {
                       ),
                       const SizedBox(width: 10),
                       Text(
-                        '${widget.weatherModel?.barometr.toString()} hPa',
+                        '${widget.weatherModel?.current.pressureMb} hPa',
                         style: TextStyles.weatherStyle3,
                       ),
                     ],
@@ -127,7 +127,7 @@ class _FirstTabState extends State<FirstTab> {
                       const BoxedIcon(WeatherIcons.humidity),
                       const SizedBox(width: 10),
                       Text(
-                        '${widget.weatherModel?.humidity.toString()} %',
+                        '${widget.weatherModel?.current.humidity} %',
                         style: TextStyles.weatherStyle3,
                       ),
                     ],
@@ -153,7 +153,7 @@ class _FirstTabState extends State<FirstTab> {
             children: [
               const Icon(Icons.location_on_outlined),
               Text(
-                widget.weatherModel?.nameWithCountry ?? '',
+                ' ${widget.weatherModel?.location.name}',
                 style: TextStyles.weatherStyle6,
               ),
             ],
