@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:primary_school/constans/colors.dart';
-import 'package:primary_school/constans/font_style.dart';
+import 'package:primary_school/constans/fonts_style.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
 
 class EventWidget extends StatefulWidget {
@@ -52,7 +52,7 @@ class _EventWidgetState extends State<EventWidget> {
           ),
           child: Text(
             widget.eventModel.title,
-            style: TextStyles.eventWidgetTextStyle1,
+            style: TextStyles.textStyle2(16),
           ),
         ),
         trailing: Padding(
@@ -63,7 +63,7 @@ class _EventWidgetState extends State<EventWidget> {
             children: [
               Text(
                 widget.eventModel.selectedDayFormatted(),
-                style: TextStyles.eventWidgetTextStyle2,
+                style: TextStyles.textStyle2(13),
               ),
               Text(
                 "${widget.eventModel.selectedDayFormatted2()}, ${widget.eventModel.selectedTimeFormatted()}",

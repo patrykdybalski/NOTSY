@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:primary_school/constans/colors.dart';
-import 'package:primary_school/constans/font_style.dart';
+import 'package:primary_school/constans/fonts_style.dart';
 
 class TimeButton extends StatelessWidget {
   const TimeButton({
@@ -21,7 +21,7 @@ class TimeButton extends StatelessWidget {
       ),
       label: Text(
         selectedTimeFormatted ?? 'Dodaj godzinę',
-        style: TextStyles.addEventStyle1,
+        style: TextStyles.textStyle2(13),
       ),
       onPressed: () async {
         TimeOfDay? selectedTime = await showTimePicker(
@@ -70,7 +70,7 @@ class DayButton extends StatelessWidget {
       ),
       label: Text(
         selectedDateFormatted ?? 'Wybierz dzień',
-        style: TextStyles.addEventStyle1,
+        style: TextStyles.textStyle2(13),
       ),
       onPressed: () async {
         final selectedDate = await showDatePicker(
@@ -118,11 +118,11 @@ class SubtitleWidget extends StatelessWidget {
 
       cursorColor: AppColors.secondaryColor,
       cursorRadius: const Radius.circular(12),
-      style: TextStyles.addEventStyle2,
+      style: TextStyles.textStyle1(16),
       decoration: InputDecoration(
         labelText: 'Szczegóły',
         alignLabelWithHint: true,
-        labelStyle: TextStyles.addEventStyle2,
+        labelStyle: TextStyles.textStyle1(16),
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(
@@ -167,10 +167,10 @@ class TitleWidget extends StatelessWidget {
       minLines: 1,
       cursorColor: AppColors.secondaryColor,
       cursorRadius: const Radius.circular(12),
-      style: TextStyles.eventWidgetTextStyle1,
+      style: TextStyles.textStyle2(16),
       decoration: InputDecoration(
         labelText: 'Temat',
-        labelStyle: TextStyles.eventWidgetTextStyle1,
+        labelStyle: TextStyles.textStyle2(16),
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(

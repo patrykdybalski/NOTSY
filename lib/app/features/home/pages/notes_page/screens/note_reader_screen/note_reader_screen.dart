@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:primary_school/app/features/home/pages/notes_page/screens/note_reader_screen/cubit/reader_screen_cubit.dart';
 import 'package:primary_school/app/features/home/pages/notes_page/screens/note_reader_screen/note_reader_buttons.dart';
 import 'package:primary_school/constans/colors.dart';
-import 'package:primary_school/constans/font_style.dart';
+import 'package:primary_school/constans/fonts_style.dart';
 import 'package:primary_school/data/remote_data_sources/note_remote_data_source.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
@@ -95,7 +95,7 @@ class NoteReaderScreenBody extends StatelessWidget {
           children: [
             Text(
               title,
-              style: TextStyles.noteReaderTextStyle1,
+              style: TextStyles.textStyle2(20),
             ),
             const Divider(
               color: AppColors.secondaryColor,
@@ -108,11 +108,11 @@ class NoteReaderScreenBody extends StatelessWidget {
                   children: [
                     Text(
                       'utw. ${DateFormat('dd/MM/yyyy hh:mm').format(createdDate)}',
-                      style: TextStyles.noteReaderDateTextStyle,
+                      style: TextStyles.textStyle1(9),
                     ),
                     Text(
                       'edt. ${DateFormat('dd/MM/yyyy hh:mm').format(updatedDate)}',
-                      style: TextStyles.noteReaderDateTextStyle,
+                      style: TextStyles.textStyle1(9),
                     ),
                   ],
                 ),
@@ -123,7 +123,7 @@ class NoteReaderScreenBody extends StatelessWidget {
             ),
             Text(
               subtitle,
-              style: TextStyles.noteReaderTextStyle2,
+              style: TextStyles.textStyle1(18),
             ),
           ],
         ),

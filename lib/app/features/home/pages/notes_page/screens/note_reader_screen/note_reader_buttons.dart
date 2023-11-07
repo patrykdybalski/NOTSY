@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/features/home/pages/notes_page/cubit/note_cubit.dart';
 import 'package:primary_school/app/features/home/pages/notes_page/screens/edit_note_screen/edit_note_screen.dart';
 import 'package:primary_school/constans/colors.dart';
-import 'package:primary_school/constans/font_style.dart';
+import 'package:primary_school/constans/fonts_style.dart';
 import 'package:primary_school/data/remote_data_sources/note_remote_data_source.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
@@ -58,7 +58,7 @@ class NoteReaderButtons {
                       elevation: 20,
                       backgroundColor: noteModel.color,
                       title: const Text('Usunąć notatkę?'),
-                      titleTextStyle: TextStyles.deleteDialogTextStyle1,
+                      titleTextStyle: TextStyles.textStyle2(20),
                       actions: [
                         TextButton(
                           onPressed: () {
@@ -66,7 +66,7 @@ class NoteReaderButtons {
                           },
                           child: Text(
                             'Nie',
-                            style: TextStyles.deleteDialogTextStyle2,
+                            style: TextStyles.textStyle1(16),
                           ),
                         ),
                         TextButton(
@@ -77,7 +77,7 @@ class NoteReaderButtons {
                           },
                           child: Text(
                             'Tak',
-                            style: TextStyles.deleteDialogTextStyle2,
+                            style: TextStyles.textStyle1(16),
                           ),
                         ),
                       ],

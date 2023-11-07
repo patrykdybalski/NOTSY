@@ -4,7 +4,7 @@ import 'package:primary_school/app/core/enums.dart';
 import 'package:primary_school/app/features/home/pages/notes_page/cubit/note_cubit.dart';
 import 'package:primary_school/app/features/home/pages/notes_page/screens/note_reader_screen/note_reader_screen.dart';
 import 'package:primary_school/constans/colors.dart';
-import 'package:primary_school/constans/font_style.dart';
+import 'package:primary_school/constans/fonts_style.dart';
 import 'package:primary_school/data/remote_data_sources/note_remote_data_source.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
@@ -142,7 +142,7 @@ class _NoteItemState extends State<NoteItem> {
                       maxLines: 4,
                       softWrap: true,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyles.noteWidgetTextStyle2,
+                      style: TextStyles.textStyle2(12),
                     ),
                   ),
                 ],
@@ -156,7 +156,7 @@ class _NoteItemState extends State<NoteItem> {
                 child: Text(
                   widget.noteModel.subtitle,
                   overflow: TextOverflow.fade,
-                  style: TextStyles.noteWidgetTextStyle1,
+                  style: TextStyles.textStyle1(12),
                 ),
               ),
             ],
@@ -179,7 +179,7 @@ class DeleteNotesDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       title: const Text('Usunąć notatkę?'),
-      titleTextStyle: TextStyles.deleteDialogTextStyle1,
+      titleTextStyle: TextStyles.textStyle2(20),
       elevation: 20,
       backgroundColor: widget.noteModel.color,
       actions: [
@@ -189,7 +189,7 @@ class DeleteNotesDialog extends StatelessWidget {
           },
           child: Text(
             'Nie',
-            style: TextStyles.deleteDialogTextStyle2,
+            style: TextStyles.textStyle1(16),
           ),
         ),
         TextButton(
@@ -199,7 +199,7 @@ class DeleteNotesDialog extends StatelessWidget {
           },
           child: Text(
             'Tak',
-            style: TextStyles.deleteDialogTextStyle2,
+            style: TextStyles.textStyle1(16),
           ),
         ),
       ],

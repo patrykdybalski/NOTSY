@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/features/home/pages/notes_page/screens/edit_note_screen/cubit/edit_note_cubit.dart';
 import 'package:primary_school/app/features/home/pages/notes_page/screens/edit_note_screen/edit_page_buttons.dart';
 import 'package:primary_school/constans/colors.dart';
-import 'package:primary_school/constans/font_style.dart';
+import 'package:primary_school/constans/fonts_style.dart';
 import 'package:primary_school/data/remote_data_sources/note_remote_data_source.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
@@ -111,7 +111,7 @@ class _AddNotePageBody extends StatelessWidget {
               minLines: 1,
               maxLines: 4,
               maxLength: 120,
-              style: TextStyles.noteReaderTextStyle1,
+              style: TextStyles.textStyle2(20),
               decoration: const InputDecoration(
                 counterText: '',
                 enabled: true,
@@ -133,7 +133,7 @@ class _AddNotePageBody extends StatelessWidget {
               onChanged: onSubtitleChange,
               minLines: 1,
               maxLines: 1000,
-              style: TextStyles.noteReaderTextStyle2,
+              style: TextStyles.textStyle2(12),
               decoration: const InputDecoration(
                 hintText: 'Wpisz treść notatki',
                 border: InputBorder.none,

@@ -7,7 +7,7 @@ import 'package:primary_school/app/features/home/pages/calendar_page/cubit/event
 import 'package:primary_school/app/features/home/pages/calendar_page/edit_event_screen/edit_event_screen.dart';
 import 'package:primary_school/app/features/home/pages/calendar_page/widgets/event_widget.dart';
 import 'package:primary_school/constans/colors.dart';
-import 'package:primary_school/constans/font_style.dart';
+import 'package:primary_school/constans/fonts_style.dart';
 import 'package:primary_school/data/remote_data_sources/event_remote_data_source.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
 import 'package:primary_school/domain/repositories/event/events_repository.dart';
@@ -32,7 +32,7 @@ class _EventPageState extends State<EventPage> {
         title: const Text(
           'Zaplanowane',
         ),
-        titleTextStyle: TextStyles.headingStyle,
+        titleTextStyle: TextStyles.textStyle2(24),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.greenColor,
@@ -132,7 +132,7 @@ class SlidableEventWidget extends StatelessWidget {
                 builder: ((context) {
                   return AlertDialog(
                     title: const Text('Oznaczyć jako ukończone?'),
-                    titleTextStyle: TextStyles.deleteDialogTextStyle1,
+                    titleTextStyle: TextStyles.textStyle2(20),
                     elevation: 20,
                     backgroundColor: AppColors.primaryColor,
                     actions: [
@@ -142,7 +142,7 @@ class SlidableEventWidget extends StatelessWidget {
                         },
                         child: Text(
                           'Nie',
-                          style: TextStyles.deleteDialogTextStyle2,
+                          style: TextStyles.textStyle1(16),
                         ),
                       ),
                       BlocProvider(
@@ -160,7 +160,7 @@ class SlidableEventWidget extends StatelessWidget {
                               },
                               child: Text(
                                 'Tak',
-                                style: TextStyles.deleteDialogTextStyle2,
+                                style: TextStyles.textStyle1(16),
                               ),
                             );
                           },

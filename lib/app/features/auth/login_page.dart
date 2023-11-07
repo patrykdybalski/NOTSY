@@ -4,7 +4,7 @@ import 'package:primary_school/app/features/auth/cubit/login_cubit.dart';
 import 'package:primary_school/app/features/auth/forgot_password_page/forgot_password_page.dart';
 import 'package:primary_school/app/features/auth/text_fields_login_page.dart';
 import 'package:primary_school/constans/colors.dart';
-import 'package:primary_school/constans/font_style.dart';
+import 'package:primary_school/constans/fonts_style.dart';
 import 'package:primary_school/data/remote_data_sources/login_auth_data_source.dart';
 import 'package:primary_school/domain/repositories/login_auth/login_auth_repository.dart';
 
@@ -68,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                         isCreatingAccount == true
                             ? 'Zarejestruj się'
                             : 'Zaloguj się',
-                        style: TextStyles.textSize1,
+                        style: TextStyles.textStyle2(34),
                       ),
                       const SizedBox(
                         height: 24,

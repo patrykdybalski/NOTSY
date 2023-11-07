@@ -4,7 +4,7 @@ import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:primary_school/app/features/home/pages/notes_page/add/add_page_buttons.dart';
 import 'package:primary_school/app/features/home/pages/notes_page/add/cubit/add_note_cubit.dart';
 import 'package:primary_school/constans/colors.dart';
-import 'package:primary_school/constans/font_style.dart';
+import 'package:primary_school/constans/fonts_style.dart';
 import 'package:primary_school/data/remote_data_sources/note_remote_data_source.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
 
@@ -146,7 +146,7 @@ class _AddNotePageBody extends StatelessWidget {
               minLines: 1,
               maxLines: 4,
               maxLength: 120,
-              style: TextStyles.noteReaderTextStyle1,
+              style: TextStyles.textStyle2(18),
               decoration: const InputDecoration(
                 counterText: '',
                 hintText: 'Tytuł',
@@ -174,7 +174,7 @@ class _AddNotePageBody extends StatelessWidget {
               onChanged: onSubtitleChange,
               minLines: 1,
               maxLines: 200,
-              style: TextStyles.noteReaderTextStyle2,
+              style: TextStyles.textStyle1(18),
               decoration: const InputDecoration(
                 hintText: 'Wpisz treść notatki',
                 border: InputBorder.none,

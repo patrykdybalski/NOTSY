@@ -4,7 +4,7 @@ import 'package:primary_school/app/features/home/pages/notes_page/notes_page.dar
 import 'package:primary_school/app/features/home/pages/user_page/user_page.dart';
 import 'package:primary_school/app/features/home/pages/weather_page/weather_page.dart';
 import 'package:primary_school/constans/colors.dart';
-import 'package:primary_school/constans/font_style.dart';
+import 'package:primary_school/constans/fonts_style.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -41,8 +41,8 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: AppColors.primaryColor,
         selectedItemColor: AppColors.redColor,
         unselectedItemColor: AppColors.secondaryColor,
-        unselectedLabelStyle: TextStyles.addEventStyle1,
-        selectedLabelStyle: TextStyles.addEventStyle1,
+        unselectedLabelStyle: TextStyles.textStyle2(13),
+        selectedLabelStyle: TextStyles.textStyle2(13),
         currentIndex: currentIndex,
         onTap: (newIndex) {
           setState(() {

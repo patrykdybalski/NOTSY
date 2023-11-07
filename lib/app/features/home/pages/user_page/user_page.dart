@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:primary_school/app/cubit/root_cubit.dart';
 import 'package:primary_school/constans/colors.dart';
-import 'package:primary_school/constans/font_style.dart';
+import 'package:primary_school/constans/fonts_style.dart';
 
 class UserPage extends StatefulWidget {
   const UserPage({super.key});
@@ -19,7 +19,7 @@ class _UserPageState extends State<UserPage> {
       backgroundColor: AppColors.primaryColor,
       appBar: AppBar(
         title: const Text('Mój profil'),
-        titleTextStyle: TextStyles.headingStyle,
+        titleTextStyle: TextStyles.textStyleRed(24),
         centerTitle: true,
         backgroundColor: AppColors.primaryColor,
       ),
@@ -57,19 +57,19 @@ class _UserPageState extends State<UserPage> {
             ListTile(
               onTap: () {},
               leading: const Text('Edytuj profil'),
-              leadingAndTrailingTextStyle: TextStyles.addEventStyle2,
+              leadingAndTrailingTextStyle: TextStyles.textStyle1(16),
               trailing: const Icon(Icons.navigate_next_outlined),
             ),
             ListTile(
               onTap: () {},
               leading: const Text("Zmiana hasła"),
-              leadingAndTrailingTextStyle: TextStyles.addEventStyle2,
+              leadingAndTrailingTextStyle: TextStyles.textStyle1(16),
               trailing: const Icon(Icons.navigate_next_outlined),
             ),
             ListTile(
               onTap: () {},
               leading: const Text("Polityka prywatności"),
-              leadingAndTrailingTextStyle: TextStyles.addEventStyle2,
+              leadingAndTrailingTextStyle: TextStyles.textStyle1(16),
               trailing: const Icon(Icons.navigate_next_outlined),
             ),
             const SizedBox(

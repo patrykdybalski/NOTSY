@@ -4,7 +4,8 @@ import 'package:primary_school/app/core/enums.dart';
 import 'package:primary_school/app/features/home/pages/weather_page/cubit/weather_cubit.dart';
 import 'package:primary_school/app/features/home/pages/weather_page/tabs/first_tab/first_tab.dart';
 import 'package:primary_school/constans/colors.dart';
-import 'package:primary_school/constans/font_style.dart';
+import 'package:primary_school/constans/fonts_style.dart';
+
 import 'package:primary_school/data/remote_data_sources/weather_remote_data_source.dart';
 import 'package:primary_school/domain/repositories/weather/weather_repository.dart';
 
@@ -35,7 +36,7 @@ class WeatherPage extends StatelessWidget {
             backgroundColor: AppColors.primaryColor,
             appBar: AppBar(
               title: const Text('Progonza pogody'),
-              titleTextStyle: TextStyles.headingStyle,
+              titleTextStyle: TextStyles.textStyle2(24),
               centerTitle: true,
               backgroundColor: AppColors.primaryColor,
             ),
@@ -74,10 +75,10 @@ class SearchWidget extends StatelessWidget {
               decoration: InputDecoration(
                 label: Text(
                   'Miasto',
-                  style: TextStyles.weatherStyle5,
+                  style: TextStyles.textStyle2(13),
                 ),
                 hintText: 'Podaj nazwę ',
-                hintStyle: TextStyles.weatherStyle5,
+                hintStyle: TextStyles.textStyle2(13),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
                   borderSide: const BorderSide(
@@ -123,7 +124,7 @@ class SearchWidget extends StatelessWidget {
               ),
               child: Text(
                 'Sprawdź',
-                style: TextStyles.weatherStyle5,
+                style: TextStyles.textStyleWhite(13),
               )),
         ],
       ),
@@ -146,7 +147,7 @@ class TabBarWidget extends StatelessWidget {
       labelColor: AppColors.redColor,
       unselectedLabelColor: AppColors.secondaryColor,
       dividerColor: AppColors.primaryColor,
-      labelStyle: TextStyles.weatherStyle2,
+      labelStyle: TextStyles.textStyle1(16),
       overlayColor: const MaterialStatePropertyAll(AppColors.primaryColor),
       tabs: const [
         Tab(

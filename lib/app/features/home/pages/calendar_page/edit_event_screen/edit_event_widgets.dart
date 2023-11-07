@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:primary_school/constans/colors.dart';
-import 'package:primary_school/constans/font_style.dart';
+import 'package:primary_school/constans/fonts_style.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
 
 class TimeButton extends StatelessWidget {
@@ -20,7 +20,7 @@ class TimeButton extends StatelessWidget {
     return ElevatedButton.icon(
       label: Text(
         selectedTimeFormatted ?? eventModel.selectedTimeFormatted(),
-        style: TextStyles.addEventStyle1,
+        style: TextStyles.textStyle2(13),
       ),
       icon: const Icon(
         Icons.more_time_rounded,
@@ -71,7 +71,7 @@ class DayButton extends StatelessWidget {
     return ElevatedButton.icon(
       label: Text(
         selectedDateFormatted ?? eventModel.selectedEditDayFormatted(),
-        style: TextStyles.addEventStyle1,
+        style: TextStyles.textStyle2(13),
       ),
       icon: const Icon(
         Icons.calendar_month_outlined,

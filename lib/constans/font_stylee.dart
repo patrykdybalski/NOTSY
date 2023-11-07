@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class TextStyles {
+class TextStyleee {
   static TextStyle headingStyle = GoogleFonts.domine(
     color: AppColors.secondaryColor,
     fontSize: 24,

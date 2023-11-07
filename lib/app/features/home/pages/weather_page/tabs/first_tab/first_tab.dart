@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:primary_school/constans/colors.dart';
-import 'package:primary_school/constans/font_style.dart';
+import 'package:primary_school/constans/fonts_style.dart';
 import 'package:primary_school/domain/models/weather_model/weather_model.dart';
 import 'package:weather_icons/weather_icons.dart';
 
@@ -50,11 +50,11 @@ class _FirstTabState extends State<FirstTab> {
                       children: [
                         Text(
                           '${widget.weatherModel?.current.tempC}℃',
-                          style: TextStyles.weatherStyle1,
+                          style: TextStyles.textStyleRed(50),
                         ),
                         Text(
                           'Odczuwalne ${widget.weatherModel?.current.feelsLikeC}℃',
-                          style: TextStyles.weatherStyle5,
+                          style: TextStyles.textStyle2(13),
                         ),
                       ],
                     ),
@@ -76,7 +76,7 @@ class _FirstTabState extends State<FirstTab> {
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
                                 '${widget.weatherModel?.current.condition.text}',
-                                style: TextStyles.weatherStyle6,
+                                style: TextStyles.textStyle2(20),
                               ),
                             ),
                           ],
@@ -104,7 +104,7 @@ class _FirstTabState extends State<FirstTab> {
                         const SizedBox(width: 10),
                         Text(
                           widget.weatherModel?.current.windDir ?? 'null',
-                          style: TextStyles.weatherStyle3,
+                          style: TextStyles.textStyleRed(13),
                         ),
                       ],
                     ),
@@ -115,7 +115,7 @@ class _FirstTabState extends State<FirstTab> {
                         const SizedBox(width: 10),
                         Text(
                           '${widget.weatherModel?.current.cloud} %',
-                          style: TextStyles.weatherStyle3,
+                          style: TextStyles.textStyleRed(13),
                         ),
                       ],
                     ),
@@ -130,7 +130,7 @@ class _FirstTabState extends State<FirstTab> {
                         const SizedBox(width: 10),
                         Text(
                           '${widget.weatherModel?.current.windMph} km/h',
-                          style: TextStyles.weatherStyle3,
+                          style: TextStyles.textStyleRed(13),
                         ),
                       ],
                     ),
@@ -143,7 +143,7 @@ class _FirstTabState extends State<FirstTab> {
                         const SizedBox(width: 10),
                         Text(
                           '${widget.weatherModel?.current.precipMm} mm',
-                          style: TextStyles.weatherStyle3,
+                          style: TextStyles.textStyleRed(13),
                         ),
                       ],
                     ),
@@ -160,7 +160,7 @@ class _FirstTabState extends State<FirstTab> {
                         const SizedBox(width: 10),
                         Text(
                           '${widget.weatherModel?.current.pressureMb} hPa',
-                          style: TextStyles.weatherStyle3,
+                          style: TextStyles.textStyleRed(13),
                         ),
                       ],
                     ),
@@ -171,7 +171,7 @@ class _FirstTabState extends State<FirstTab> {
                         const SizedBox(width: 10),
                         Text(
                           '${widget.weatherModel?.current.humidity} %',
-                          style: TextStyles.weatherStyle3,
+                          style: TextStyles.textStyleRed(13),
                         ),
                       ],
                     ),
@@ -197,7 +197,7 @@ class _FirstTabState extends State<FirstTab> {
                 const Icon(Icons.location_on_outlined),
                 Text(
                   ' ${widget.weatherModel?.location.name} ',
-                  style: TextStyles.weatherStyle6,
+                  style: TextStyles.textStyle2(20),
                 ),
               ],
             ),
