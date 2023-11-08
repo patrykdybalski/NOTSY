@@ -51,7 +51,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
             return AlertDialog(
               scrollable: true,
               titlePadding: const EdgeInsets.all(5),
-              backgroundColor: AppColors.primaryColor2,
+              backgroundColor: AppColors.primaryColor,
               contentPadding: const EdgeInsets.only(
                 top: 15.0,
                 left: 10.0,

@@ -39,7 +39,9 @@ class _AddNotePageState extends State<AddNotePage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AddNoteCubit(NoteRepository(NoteRemoteDataSource(),)),
+      create: (context) => AddNoteCubit(NoteRepository(
+        NoteRemoteDataSource(),
+      )),
       child: BlocListener<AddNoteCubit, AddNoteState>(
         listener: (context, state) {
           if (state.saved) {
@@ -146,25 +148,23 @@ class _AddNotePageBody extends StatelessWidget {
               minLines: 1,
               maxLines: 4,
               maxLength: 120,
+              autofocus: true,
               style: TextStyles.textStyle2(18),
               decoration: const InputDecoration(
                 counterText: '',
                 hintText: 'Tytuł',
-                border: UnderlineInputBorder(
+                focusedBorder: UnderlineInputBorder(
                   borderSide: BorderSide(
-                    color: AppColors.redColor2,
+                    color: AppColors.redColor,
+                    width: 1.2,
+                  ),
+                ),
+                enabledBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(
+                    color: AppColors.redColor,
                     width: 0.8,
                   ),
                 ),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide:
-                      BorderSide(color: AppColors.secondaryColor, width: 1.2),
-                ),
-                enabledBorder: UnderlineInputBorder(
-                  borderSide:
-                      BorderSide(color: AppColors.secondaryColor, width: 0.8),
-                ),
-                enabled: true,
               ),
             ),
             const SizedBox(

@@ -42,7 +42,7 @@ class EditPageButtons {
       heroTag: null,
       child: const Icon(
         Icons.chevron_left_outlined,
-        color: AppColors.redColor2,
+        color: AppColors.redColor,
         size: 30,
       ),
     );

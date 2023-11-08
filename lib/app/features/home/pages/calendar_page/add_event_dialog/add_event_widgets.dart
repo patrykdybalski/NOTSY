@@ -17,11 +17,11 @@ class TimeButton extends StatelessWidget {
     return ElevatedButton.icon(
       icon: const Icon(
         Icons.more_time_rounded,
-        color: AppColors.secondaryColor,
+        color: Colors.white70,
       ),
       label: Text(
         selectedTimeFormatted ?? 'Dodaj godzinę',
-        style: TextStyles.textStyle2(13),
+        style: TextStyles.textStyleWhite(13),
       ),
       onPressed: () async {
         TimeOfDay? selectedTime = await showTimePicker(
@@ -38,12 +38,11 @@ class TimeButton extends StatelessWidget {
         }
       },
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.primaryColor,
-        elevation: 1,
-        shadowColor: Colors.white,
+        backgroundColor: AppColors.greenLoginColor,
+        shadowColor: AppColors.darkGreen,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
-            8.0,
+            12.0,
           ),
         ),
       ),
@@ -66,11 +65,11 @@ class DayButton extends StatelessWidget {
     return ElevatedButton.icon(
       icon: const Icon(
         Icons.calendar_month_outlined,
-        color: AppColors.secondaryColor,
+        color: Colors.white70,
       ),
       label: Text(
         selectedDateFormatted ?? 'Wybierz dzień',
-        style: TextStyles.textStyle2(13),
+        style: TextStyles.textStyleWhite(13),
       ),
       onPressed: () async {
         final selectedDate = await showDatePicker(
@@ -85,12 +84,11 @@ class DayButton extends StatelessWidget {
         onDayChanged(selectedDate);
       },
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.primaryColor,
-        elevation: 1,
+        backgroundColor: AppColors.redColor,
         shadowColor: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
-            8.0,
+            12.0,
           ),
         ),
       ),
@@ -122,7 +120,7 @@ class SubtitleWidget extends StatelessWidget {
       decoration: InputDecoration(
         labelText: 'Szczegóły',
         alignLabelWithHint: true,
-        labelStyle: TextStyles.textStyle1(16),
+        labelStyle: TextStyles.textStyle1(14),
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(
@@ -132,13 +130,13 @@ class SubtitleWidget extends StatelessWidget {
         disabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(
-              color: AppColors.darkGreen,
+              color: AppColors.accentColor,
               width: 0.1,
             )),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: const BorderSide(
-            color: AppColors.darkGreen,
+            color: AppColors.accentColor,
             width: 0.1,
           ),
         ),
@@ -158,7 +156,6 @@ class TitleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      textAlign: TextAlign.justify,
       onChanged: onTitleChanged,
       autofocus: true,
       keyboardType: TextInputType.text,
@@ -180,13 +177,13 @@ class TitleWidget extends StatelessWidget {
         disabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(
-              color: AppColors.darkGreen,
+              color: AppColors.accentColor,
               width: 0.3,
             )),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: const BorderSide(
-            color: AppColors.darkGreen,
+            color: AppColors.accentColor,
             width: 0.6,
           ),
         ),

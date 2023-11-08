@@ -37,7 +37,7 @@ class TextStyles {
     double size,
   ) {
     return GoogleFonts.domine(
-      color: AppColors.redColor,
+      color: Colors.white70,
       fontSize: size,
       fontWeight: FontWeight.w800,
     );
