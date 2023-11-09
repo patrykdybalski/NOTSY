@@ -21,65 +21,59 @@ class _FirstTabState extends State<FirstTab> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const SizedBox(
-              height: 24,
-            ),
+            const SizedBox(height: 16),
             Container(
               height: 120,
               decoration: BoxDecoration(
-                color: AppColors.primaryColor,
+                color: AppColors.greenLoginColor,
                 borderRadius: BorderRadius.circular(16),
-                border: Border.all(
-                  color: AppColors.primaryColor,
-                ),
                 boxShadow: const [
                   BoxShadow(
-                    color: AppColors.redColor,
-                    blurRadius: 1.2,
-                    spreadRadius: 0.3,
+                    color: AppColors.whiteColor,
+                    blurRadius: 0.8,
+                    spreadRadius: 0.5,
                   )
                 ],
               ),
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.only(left: 24.0),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          '${widget.weatherModel?.current.tempC}℃',
-                          style: TextStyles.textStyleRed(50),
+                          '${widget.weatherModel?.current.tempC}°C',
+                          style: TextStyles.textStyleWhite(50),
                         ),
                         Text(
-                          'Odczuwalne ${widget.weatherModel?.current.feelsLikeC}℃',
-                          style: TextStyles.textStyle2(13),
+                          'Odczuwalne ${widget.weatherModel?.current.feelsLikeC}°C',
+                          style: TextStyles.textStyleWhite(13),
                         ),
                       ],
                     ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: AppColors.primaryColor,
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      width: 135,
-                      height: 80,
-                      child: Expanded(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                '${widget.weatherModel?.current.condition.text}',
-                                style: TextStyles.textStyle2(20),
+                    Center(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                        ),
+                        width: 150,
+                        height: 115,
+                        child: Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: Text(
+                                  '${widget.weatherModel?.current.condition.text}',
+                                  style: TextStyles.textStyleWhite(19),
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -88,10 +82,10 @@ class _FirstTabState extends State<FirstTab> {
               ),
             ),
             const SizedBox(
-              height: 24,
+              height: 16,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,7 +95,7 @@ class _FirstTabState extends State<FirstTab> {
                         const BoxedIcon(
                           WeatherIcons.wind,
                         ),
-                        const SizedBox(width: 10),
+                        const SizedBox(width: 3),
                         Text(
                           widget.weatherModel?.current.windDir ?? 'null',
                           style: TextStyles.textStyleRed(13),
@@ -111,8 +105,10 @@ class _FirstTabState extends State<FirstTab> {
                     const SizedBox(height: 10),
                     Row(
                       children: [
-                        const BoxedIcon(WeatherIcons.cloudy),
-                        const SizedBox(width: 10),
+                        const BoxedIcon(
+                          WeatherIcons.cloudy,
+                        ),
+                        const SizedBox(width: 3),
                         Text(
                           '${widget.weatherModel?.current.cloud} %',
                           style: TextStyles.textStyleRed(13),
@@ -127,7 +123,7 @@ class _FirstTabState extends State<FirstTab> {
                     Row(
                       children: [
                         const BoxedIcon(WeatherIcons.strong_wind),
-                        const SizedBox(width: 10),
+                        const SizedBox(width: 3),
                         Text(
                           '${widget.weatherModel?.current.windMph} km/h',
                           style: TextStyles.textStyleRed(13),
@@ -140,7 +136,7 @@ class _FirstTabState extends State<FirstTab> {
                         const BoxedIcon(
                           WeatherIcons.umbrella,
                         ),
-                        const SizedBox(width: 10),
+                        const SizedBox(width: 3),
                         Text(
                           '${widget.weatherModel?.current.precipMm} mm',
                           style: TextStyles.textStyleRed(13),
@@ -157,7 +153,7 @@ class _FirstTabState extends State<FirstTab> {
                         const BoxedIcon(
                           WeatherIcons.barometer,
                         ),
-                        const SizedBox(width: 10),
+                        const SizedBox(width: 3),
                         Text(
                           '${widget.weatherModel?.current.pressureMb} hPa',
                           style: TextStyles.textStyleRed(13),
@@ -168,7 +164,7 @@ class _FirstTabState extends State<FirstTab> {
                     Row(
                       children: [
                         const BoxedIcon(WeatherIcons.humidity),
-                        const SizedBox(width: 10),
+                        const SizedBox(width: 3),
                         Text(
                           '${widget.weatherModel?.current.humidity} %',
                           style: TextStyles.textStyleRed(13),
@@ -180,16 +176,16 @@ class _FirstTabState extends State<FirstTab> {
               ],
             ),
             const SizedBox(
-              height: 24,
+              height: 8,
             ),
             const Divider(
               endIndent: 80,
               indent: 80,
-              thickness: 0.3,
-              color: AppColors.secondaryColor,
+              thickness: 0.4,
+              color: AppColors.accentColor,
             ),
             const SizedBox(
-              height: 24,
+              height: 8,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
