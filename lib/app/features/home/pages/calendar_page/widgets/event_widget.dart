@@ -38,7 +38,7 @@ class _EventWidgetState extends State<EventWidget> {
         collapsedShape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
           side: const BorderSide(
-            width: 1.6,
+            width: 1.2,
             color: AppColors.accentColor,
           ),
         ),

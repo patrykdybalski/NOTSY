@@ -36,6 +36,7 @@ class _NotesPageState extends State<NotesPage>
         child: const Icon(
           Icons.add,
           size: 30,
+          color: AppColors.whiteColor,
         ),
       ),
       body: const GeneralNotes(),
