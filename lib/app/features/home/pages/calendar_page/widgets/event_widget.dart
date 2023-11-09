@@ -21,9 +21,9 @@ class _EventWidgetState extends State<EventWidget> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        left: 10,
-        right: 10,
-        bottom: 5,
+        left: 8,
+        right: 8,
+        bottom: 6,
       ),
       child: ExpansionTile(
         initiallyExpanded: false,
@@ -36,27 +36,28 @@ class _EventWidgetState extends State<EventWidget> {
           ),
         ),
         collapsedShape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
-            side: const BorderSide(
-              width: 1.2,
-              color: AppColors.accentColor,
-            )),
+          borderRadius: BorderRadius.circular(16),
+          side: const BorderSide(
+            width: 1.6,
+            color: AppColors.accentColor,
+          ),
+        ),
+        tilePadding: const EdgeInsets.symmetric(
+          vertical: 4.0,
+          horizontal: 8.0,
+        ),
         leading: const Icon(
           Icons.task_alt_outlined,
           color: AppColors.redColor,
         ),
-        title: Padding(
-          padding: const EdgeInsets.only(
-            top: 4.0,
-            bottom: 4.0,
-          ),
-          child: Text(
-            widget.eventModel.title,
-            style: TextStyles.textStyle2(16),
-          ),
+        title: Text(
+          widget.eventModel.title,
+          style: TextStyles.textStyle2(15),
         ),
         trailing: Padding(
-          padding: const EdgeInsets.all(2.0),
+          padding: const EdgeInsets.symmetric(
+            vertical: 2.0,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -71,52 +72,44 @@ class _EventWidgetState extends State<EventWidget> {
                   color: AppColors.secondaryColor,
                   fontSize: 11,
                   fontWeight: FontWeight.w800,
-
-                  // Dodaj tutaj inne właściwości stylu tekstu dla nagłówków.
                 ),
               ),
             ],
           ),
         ),
         children: [
-          Padding(
-            padding: const EdgeInsets.only(
-              left: 25.0,
-              right: 25,
-              top: 10,
-              bottom: 25,
-            ),
-            child: Row(
-              children: [
-                Container(
-                  width: 280,
-                  decoration: const BoxDecoration(
-                    border: Border(
-                      top: BorderSide.none,
-                      left: BorderSide(
-                        color: AppColors.accentColor,
-                      ),
-                    ),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      left: 5,
-                      bottom: 10,
-                      right: 40,
-                    ),
-                    child: Text(
-                      widget.eventModel.subtitle,
-                      style: GoogleFonts.domine(
-                        color: AppColors.secondaryColor,
-                        fontSize: 16,
-
-                        // Dodaj tutaj inne właściwości stylu tekstu dla nagłówków.
-                      ),
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.only(
+                  left: 8.0,
+                  right: 8,
+                  top: 8,
+                  bottom: 8,
+                ),
+                margin: const EdgeInsets.only(
+                  left: 24.0,
+                  right: 8,
+                  bottom: 24,
+                ),
+                width: 290,
+                decoration: const BoxDecoration(
+                  border: Border(
+                    top: BorderSide.none,
+                    left: BorderSide(
+                      color: AppColors.accentColor,
                     ),
                   ),
                 ),
-              ],
-            ),
+                child: Text(
+                  widget.eventModel.subtitle,
+                  style: GoogleFonts.domine(
+                    color: AppColors.secondaryColor,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),

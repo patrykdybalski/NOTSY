@@ -98,7 +98,7 @@ class NoteReaderScreenBody extends StatelessWidget {
               style: TextStyles.textStyle2(20),
             ),
             const Divider(
-              color: AppColors.secondaryColor,
+              color: AppColors.redColor,
               thickness: 0.8,
             ),
             Row(

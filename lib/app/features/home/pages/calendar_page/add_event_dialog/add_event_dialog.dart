@@ -52,11 +52,17 @@ class _AddEventDialogState extends State<AddEventDialog> {
             return AlertDialog(
               scrollable: true,
               backgroundColor: AppColors.primaryColor,
+              surfaceTintColor: Colors.transparent,
               shadowColor: AppColors.primaryColor,
               contentPadding: const EdgeInsets.only(
                 top: 16.0,
-                left: 10.0,
-                right: 10.0,
+                left: 16.0,
+                right: 8.0,
+              ),
+              actionsAlignment: MainAxisAlignment.spaceBetween,
+              actionsPadding: const EdgeInsets.only(
+                top: 8,
+                bottom: 4.0,
               ),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16),
@@ -95,13 +101,6 @@ class _AddEventDialogState extends State<AddEventDialog> {
                     ? null
                     : DateFormat.yMd().format(_selectedDay!),
               ),
-              actionsAlignment: MainAxisAlignment.spaceBetween,
-              actionsPadding: const EdgeInsets.only(
-                top: 0,
-                bottom: 3.0,
-                left: 5,
-                right: 5,
-              ),
               actions: [
                 TextButton(
                   onPressed: () {
@@ -110,7 +109,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
                   child: Text(
                     'Anuluj',
                     style: GoogleFonts.domine(
-                      color: AppColors.redColor,
+                      color: AppColors.redColor2,
                       fontSize: 15,
                       fontWeight: FontWeight.w800,
                     ),

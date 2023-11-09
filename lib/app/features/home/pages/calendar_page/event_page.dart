@@ -29,19 +29,21 @@ class _EventPageState extends State<EventPage> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: AppColors.primaryColor,
+        forceMaterialTransparency: true,
         title: const Text(
           'Zaplanowane',
         ),
         titleTextStyle: TextStyles.textStyle2(24),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: AppColors.greenColor,
+        backgroundColor: AppColors.redColor,
         onPressed: () {
           _showDialog();
         },
         child: const Icon(
           Icons.add,
           size: 30,
+          color: Colors.white,
         ),
       ),
       body: BlocProvider(
@@ -175,7 +177,7 @@ class SlidableEventWidget extends StatelessWidget {
             label: 'Ukończone',
             icon: Icons.task_alt_outlined,
             backgroundColor: AppColors.primaryColor,
-            foregroundColor: AppColors.greenColor,
+            foregroundColor: AppColors.greenLogoColor,
             spacing: 5,
           ),
           SlidableAction(

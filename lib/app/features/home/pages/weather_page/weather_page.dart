@@ -39,6 +39,7 @@ class WeatherPage extends StatelessWidget {
               titleTextStyle: TextStyles.textStyle2(24),
               centerTitle: true,
               backgroundColor: AppColors.primaryColor,
+              forceMaterialTransparency: true,
             ),
             body: Column(
               children: [

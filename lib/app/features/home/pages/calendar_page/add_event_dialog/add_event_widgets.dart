@@ -17,7 +17,7 @@ class TimeButton extends StatelessWidget {
     return ElevatedButton.icon(
       icon: const Icon(
         Icons.more_time_rounded,
-        color: Colors.white70,
+        color: AppColors.whiteColor,
       ),
       label: Text(
         selectedTimeFormatted ?? 'Dodaj godzinę',
@@ -65,7 +65,7 @@ class DayButton extends StatelessWidget {
     return ElevatedButton.icon(
       icon: const Icon(
         Icons.calendar_month_outlined,
-        color: Colors.white70,
+        color: AppColors.whiteColor,
       ),
       label: Text(
         selectedDateFormatted ?? 'Wybierz dzień',

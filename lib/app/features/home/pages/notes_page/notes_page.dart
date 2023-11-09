@@ -14,14 +14,13 @@ class NotesPage extends StatefulWidget {
 class _NotesPageState extends State<NotesPage>
     with SingleTickerProviderStateMixin {
   @override
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
       appBar: AppBar(
         centerTitle: true,
         titleTextStyle: TextStyles.textStyle2(24),
-        backgroundColor: AppColors.primaryColor,
+        forceMaterialTransparency: true,
         title: const Text(
           'Notatki',
         ),

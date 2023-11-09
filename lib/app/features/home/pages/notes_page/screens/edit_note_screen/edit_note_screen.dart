@@ -116,12 +116,10 @@ class _AddNotePageBody extends StatelessWidget {
                 counterText: '',
                 enabled: true,
                 enabledBorder: UnderlineInputBorder(
-                  borderSide:
-                      BorderSide(color: AppColors.secondaryColor, width: 0.8),
+                  borderSide: BorderSide(color: AppColors.redColor, width: 0.8),
                 ),
                 focusedBorder: UnderlineInputBorder(
-                  borderSide:
-                      BorderSide(color: AppColors.secondaryColor, width: 1.2),
+                  borderSide: BorderSide(color: AppColors.redColor, width: 1.2),
                 ),
               ),
             ),
@@ -133,7 +131,7 @@ class _AddNotePageBody extends StatelessWidget {
               onChanged: onSubtitleChange,
               minLines: 1,
               maxLines: 1000,
-              style: TextStyles.textStyle2(12),
+              style: TextStyles.textStyle1(16),
               decoration: const InputDecoration(
                 hintText: 'Wpisz treść notatki',
                 border: InputBorder.none,
