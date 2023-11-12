@@ -3,11 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:primary_school/app/features/home/pages/notes_page/screens/note_reader_screen/cubit/reader_screen_cubit.dart';
 import 'package:primary_school/app/features/home/pages/notes_page/screens/note_reader_screen/note_reader_buttons.dart';
+import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/constans/fonts_style.dart';
-import 'package:primary_school/data/remote_data_sources/note_remote_data_source.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
-import 'package:primary_school/domain/repositories/note/note_repository.dart';
 
 class NoteReaderScreen extends StatefulWidget {
   const NoteReaderScreen({super.key, required this.noteModel});
@@ -21,9 +20,7 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ReaderScreenCubit(NoteRepository(
-        NoteRemoteDataSource(),
-      )),
+      create: (context) => getIt<ReaderScreenCubit>(),
       child: BlocListener<ReaderScreenCubit, ReaderScreenState>(
         listener: (context, state) {
           if (state.delete) {
