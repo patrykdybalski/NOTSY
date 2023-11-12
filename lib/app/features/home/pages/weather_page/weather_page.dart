@@ -1,14 +1,11 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/core/enums.dart';
 import 'package:primary_school/app/features/home/pages/weather_page/cubit/weather_cubit.dart';
 import 'package:primary_school/app/features/home/pages/weather_page/tabs/first_tab/first_tab.dart';
+import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/constans/fonts_style.dart';
-
-import 'package:primary_school/data/remote_data_sources/weather_remote_data_source.dart';
-import 'package:primary_school/domain/repositories/weather/weather_repository.dart';
 
 class WeatherPage extends StatelessWidget {
   const WeatherPage({super.key});
@@ -16,8 +13,7 @@ class WeatherPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          WeatherCubit(WeatherRepository(WeatherRemoteRetrofitDataSource(Dio()))),
+      create: (context) => getIt<WeatherCubit>(),
       child: BlocConsumer<WeatherCubit, WeatherState>(
         listener: (context, state) {
           if (state.status == Status.error) {
