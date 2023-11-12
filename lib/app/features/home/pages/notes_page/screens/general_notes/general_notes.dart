@@ -177,32 +177,40 @@ class DeleteNotesDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      title: const Text('Usunąć notatkę?'),
-      titleTextStyle: TextStyles.textStyle2(20),
-      elevation: 20,
-      backgroundColor: widget.noteModel.color,
-      actions: [
-        TextButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          child: Text(
-            'Nie',
-            style: TextStyles.textStyle1(16),
-          ),
-        ),
-        TextButton(
-          onPressed: () {
-            context.read<NoteCubit>().remove(id: widget.noteModel.id);
-            Navigator.of(context).pop();
-          },
-          child: Text(
-            'Tak',
-            style: TextStyles.textStyle1(16),
-          ),
-        ),
-      ],
+    return BlocProvider(
+      create: (context) =>
+          NoteCubit(NoteRepository(NoteRemoteDataSource()))..start(),
+      child: BlocBuilder<NoteCubit, NoteState>(
+        builder: (context, state) {
+          return AlertDialog(
+            title: const Text('Usunąć notatkę?'),
+            titleTextStyle: TextStyles.textStyle2(20),
+            elevation: 20,
+            backgroundColor: widget.noteModel.color,
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text(
+                  'Nie',
+                  style: TextStyles.textStyle1(16),
+                ),
+              ),
+              TextButton(
+                onPressed: () {
+                  context.read<NoteCubit>().remove(id: widget.noteModel.id);
+                  Navigator.of(context).pop();
+                },
+                child: Text(
+                  'Tak',
+                  style: TextStyles.textStyle1(16),
+                ),
+              ),
+            ],
+          );
+        },
+      ),
     );
   }
 }
