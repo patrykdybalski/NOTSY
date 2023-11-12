@@ -12,6 +12,11 @@ abstract class WeatherRemoteRetrofitDataSource {
   Future<WeatherModel> getCurrentWeather(@Query('q') String city);
 }
 
+
+
+
+
+// first code in DataSource
 // class WeatherRemoteDataSource {
 //   Future<Map<String, dynamic>?> getWeatherData({
 //     required String city,
