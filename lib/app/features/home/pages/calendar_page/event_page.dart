@@ -6,11 +6,10 @@ import 'package:primary_school/app/features/home/pages/calendar_page/add_event_d
 import 'package:primary_school/app/features/home/pages/calendar_page/cubit/event_cubit.dart';
 import 'package:primary_school/app/features/home/pages/calendar_page/edit_event_screen/edit_event_screen.dart';
 import 'package:primary_school/app/features/home/pages/calendar_page/widgets/event_widget.dart';
+import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/constans/fonts_style.dart';
-import 'package:primary_school/data/remote_data_sources/event_remote_data_source.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
-import 'package:primary_school/domain/repositories/event/events_repository.dart';
 
 class EventPage extends StatefulWidget {
   const EventPage({
@@ -47,11 +46,7 @@ class _EventPageState extends State<EventPage> {
         ),
       ),
       body: BlocProvider(
-        create: (context) => EventCubit(
-          EventsRepository(
-            EventRemoteDataSource(),
-          ),
-        )..start(),
+        create: (context) =>getIt<EventCubit>()..start(),
         child: BlocBuilder<EventCubit, EventState>(
           builder: (context, state) {
             final eventModels = state.calendarItems;
@@ -148,9 +143,7 @@ class SlidableEventWidget extends StatelessWidget {
                         ),
                       ),
                       BlocProvider(
-                        create: (context) => EventCubit(EventsRepository(
-                          EventRemoteDataSource(),
-                        )),
+                        create: (context) =>getIt<EventCubit>(),
                         child: BlocBuilder<EventCubit, EventState>(
                           builder: (context, state) {
                             return TextButton(

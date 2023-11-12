@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/features/auth/cubit/login_cubit.dart';
+import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/constans/colors.dart';
-import 'package:primary_school/data/remote_data_sources/login_auth_data_source.dart';
-import 'package:primary_school/domain/repositories/login_auth/login_auth_repository.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
   const ForgotPasswordPage({super.key});
@@ -18,8 +17,7 @@ class ForgotPasswordPage extends StatelessWidget {
         elevation: 0,
       ),
       body: BlocProvider(
-        create: (context) =>
-            LoginCubit(LoginAuthRepository(LoginAuthDataSource())),
+        create: (context) => getIt<LoginCubit>(),
         child: BlocListener<LoginCubit, LoginState>(
           listener: (context, state) {
             if (state.saved) {

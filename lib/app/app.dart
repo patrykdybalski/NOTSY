@@ -3,9 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/cubit/root_cubit.dart';
 import 'package:primary_school/app/features/auth/login_page.dart';
 import 'package:primary_school/app/features/home/home_page.dart';
+import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/constans/colors.dart';
-import 'package:primary_school/data/remote_data_sources/login_auth_data_source.dart';
-import 'package:primary_school/domain/repositories/login_auth/login_auth_repository.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -33,11 +32,7 @@ class RootPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => RootCubit(
-        LoginAuthRepository(
-          LoginAuthDataSource(),
-        ),
-      )..start(),
+      create: (context) => getIt<RootCubit>()..start(),
       child: BlocBuilder<RootCubit, RootState>(
         builder: (context, state) {
           if (state.errorMessage.isNotEmpty) {
