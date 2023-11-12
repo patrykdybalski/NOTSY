@@ -3,15 +3,13 @@ import 'package:primary_school/domain/models/weather_model/weather_model.dart';
 
 class WeatherRepository {
   WeatherRepository(this._weatherRemoteDataSource);
-  final WeatherRemoteDataSource _weatherRemoteDataSource;
+  final WeatherRemoteRetrofitDataSource _weatherRemoteDataSource;
 
   Future<WeatherModel?> getWeatherModel({
     required String city,
   }) async {
-    final json = await _weatherRemoteDataSource.getWeatherData(city: city);
-    if (json == null) {
-      return null;
-    }
-    return WeatherModel.fromJson(json);
+     return   _weatherRemoteDataSource.getCurrentWeather(city);
+   
+   
   }
 }
