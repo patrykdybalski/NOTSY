@@ -41,12 +41,12 @@ class _FirstTabState extends State<FirstTab> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
                           '${widget.weatherModel?.current.tempC}°C',
-                          style: TextStyles.textStyleWhite(50),
+                          style: TextStyles.textStyleWhite(47),
                         ),
                         Text(
                           'Odczuwalne ${widget.weatherModel?.current.feelsLikeC}°C',
@@ -192,8 +192,8 @@ class _FirstTabState extends State<FirstTab> {
               children: [
                 const Icon(Icons.location_on_outlined),
                 Text(
-                  ' ${widget.weatherModel?.location.name} ',
-                  style: TextStyles.textStyle2(20),
+                  ' ${widget.weatherModel?.location.nameWithCountry} ',
+                  style: TextStyles.textStyle2(18),
                 ),
               ],
             ),

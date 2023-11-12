@@ -10,6 +10,10 @@ class WeatherState with _$WeatherState {
 }
 
 
+
+
+
+//WeatherState przed generowaniem freezed 
 // @immutable
 // class WeatherState {
 //   const WeatherState({

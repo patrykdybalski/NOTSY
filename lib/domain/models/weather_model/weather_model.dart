@@ -44,10 +44,15 @@ class Condition with _$Condition {
 
 @freezed
 class Location with _$Location {
+  const Location._();
   factory Location(
     String name,
     String country,
   ) = _Location;
+
+  String get nameWithCountry {
+    return '$name, $country';
+  }
 
   factory Location.fromJson(Map<String, dynamic> json) =>
       _$LocationFromJson(json);
