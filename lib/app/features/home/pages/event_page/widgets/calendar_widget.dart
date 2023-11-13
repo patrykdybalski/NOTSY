@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:primary_school/app/features/home/pages/calendar_page/add_event_dialog/cubit/add_event_cubit.dart';
+import 'package:primary_school/app/features/home/pages/event_page/add_event_dialog/cubit/add_event_cubit.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/data/remote_data_sources/event_remote_data_source.dart';
 

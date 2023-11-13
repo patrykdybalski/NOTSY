@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:primary_school/app/features/home/pages/event_page/event_page.dart';
-import 'package:primary_school/app/features/home/pages/notes_page/notes_page.dart';
-import 'package:primary_school/app/features/home/pages/user_page/user_page.dart';
-import 'package:primary_school/app/features/home/pages/weather_page/weather_page.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/constans/fonts_style.dart';
+import 'package:primary_school/features/features/home/pages/notes_page/notes_page.dart';
+import 'package:primary_school/features/features/home/pages/user_page/user_page.dart';
+import 'package:primary_school/features/features/home/pages/weather_page/weather_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -52,28 +52,28 @@ class _HomePageState extends State<HomePage> {
         },
         items: const [
           BottomNavigationBarItem(
+            label: 'Plany',
             backgroundColor: AppColors.primaryColor,
             icon: Icon(
               Icons.calendar_month_outlined,
             ),
-            label: 'Plany',
           ),
           BottomNavigationBarItem(
+            label: 'Notatki',
             backgroundColor: AppColors.primaryColor,
             icon: Icon(
               Icons.text_snippet_outlined,
             ),
-            label: 'Notatki',
           ),
           BottomNavigationBarItem(
+            label: 'Pogoda',
             backgroundColor: AppColors.primaryColor,
             icon: Icon(Icons.wb_cloudy_outlined),
-            label: 'Pogoda',
           ),
           BottomNavigationBarItem(
+            label: 'Profil',
             backgroundColor: AppColors.primaryColor,
             icon: Icon(Icons.account_box_outlined),
-            label: 'Profil',
           ),
         ],
       ),
