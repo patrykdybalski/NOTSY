@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:primary_school/app/features/home/pages/event_page/event_page.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/constans/fonts_style.dart';
+import 'package:primary_school/features/features/home/pages/event_page/event_page.dart';
 import 'package:primary_school/features/features/home/pages/notes_page/notes_page.dart';
 import 'package:primary_school/features/features/home/pages/user_page/user_page.dart';
 import 'package:primary_school/features/features/home/pages/weather_page/weather_page.dart';

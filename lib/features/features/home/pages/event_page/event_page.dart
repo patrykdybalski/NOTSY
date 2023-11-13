@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:primary_school/app/core/enums.dart';
-import 'package:primary_school/app/features/home/pages/event_page/cubit/event_cubit.dart';
-import 'package:primary_school/app/features/home/pages/event_page/edit_event_screen/edit_event_screen.dart';
-import 'package:primary_school/app/features/home/pages/event_page/widgets/event_widget.dart';
 import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/constans/colors.dart';
 import 'package:primary_school/constans/fonts_style.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
+import 'package:primary_school/features/features/home/pages/event_page/cubit/event_cubit.dart';
+import 'package:primary_school/features/features/home/pages/event_page/edit_event_screen/edit_event_screen.dart';
+import 'package:primary_school/features/features/home/pages/event_page/widgets/event_widget.dart';
 
 import 'add_event_dialog/add_event_dialog.dart';
 

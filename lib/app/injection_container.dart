@@ -2,9 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:primary_school/app/cubit/root_cubit.dart';
 import 'package:primary_school/app/features/auth/cubit/login_cubit.dart';
-import 'package:primary_school/app/features/home/pages/event_page/add_event_dialog/cubit/add_event_cubit.dart';
-import 'package:primary_school/app/features/home/pages/event_page/cubit/event_cubit.dart';
-import 'package:primary_school/app/features/home/pages/event_page/edit_event_screen/cubit/edit_event_cubit.dart';
 import 'package:primary_school/app/features/home/pages/notes_page/cubit/note_cubit.dart';
 import 'package:primary_school/app/features/home/pages/notes_page/screens/edit_note_screen/cubit/edit_note_cubit.dart';
 import 'package:primary_school/app/features/home/pages/notes_page/screens/note_reader_screen/cubit/reader_screen_cubit.dart';
@@ -17,6 +14,10 @@ import 'package:primary_school/domain/repositories/event/events_repository.dart'
 import 'package:primary_school/domain/repositories/login_auth/login_auth_repository.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
 import 'package:primary_school/domain/repositories/weather/weather_repository.dart';
+import 'package:primary_school/features/features/home/pages/event_page/add_event_dialog/cubit/add_event_cubit.dart';
+import 'package:primary_school/features/features/home/pages/event_page/edit_event_screen/cubit/edit_event_cubit.dart';
+
+import '../features/features/home/pages/event_page/cubit/event_cubit.dart';
 
 final getIt = GetIt.instance;
 
