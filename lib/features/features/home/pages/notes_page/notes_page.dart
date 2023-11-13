@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:primary_school/constans/colors.dart';
-import 'package:primary_school/constans/fonts_style.dart';
+import 'package:primary_school/app/constans/colors.dart';
+import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/features/features/home/pages/notes_page/screens/add_note_page/add_note_page.dart';
 import 'package:primary_school/features/features/home/pages/notes_page/screens/general_notes/general_notes.dart';
 

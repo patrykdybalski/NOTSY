@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:primary_school/app/root_page/cubit/root_cubit.dart';
-import 'package:primary_school/constans/colors.dart';
-import 'package:primary_school/constans/fonts_style.dart';
+import 'package:primary_school/app/constans/colors.dart';
+import 'package:primary_school/app/constans/fonts_style.dart';
 
 class UserPage extends StatefulWidget {
   const UserPage({super.key});

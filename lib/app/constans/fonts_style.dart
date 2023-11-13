@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'package:primary_school/constans/colors.dart';
+import 'package:primary_school/app/constans/colors.dart';
 
 class TextStyles {
   static textStyle1(

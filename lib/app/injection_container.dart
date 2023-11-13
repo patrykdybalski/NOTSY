@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:primary_school/app/cubit/root_cubit.dart';
+import 'package:primary_school/app/root_page/cubit/root_cubit.dart';
+import 'package:primary_school/data/remote_data_sources_api/weather_remote_data_source.dart';
+import 'package:primary_school/data/remote_data_sources_firebase/event_remote_data_source.dart';
+import 'package:primary_school/data/remote_data_sources_firebase/login_auth_data_source.dart';
+import 'package:primary_school/data/remote_data_sources_firebase/note_remote_data_source.dart';
 
-import 'package:primary_school/data/remote_data_sources/event_remote_data_source.dart';
-import 'package:primary_school/data/remote_data_sources/login_auth_data_source.dart';
-import 'package:primary_school/data/remote_data_sources/note_remote_data_source.dart';
-import 'package:primary_school/data/remote_data_sources/weather_remote_data_source.dart';
 import 'package:primary_school/domain/repositories/event/events_repository.dart';
 import 'package:primary_school/domain/repositories/login_auth/login_auth_repository.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
@@ -28,12 +28,11 @@ void configureDependencies() {
   getIt.registerFactory(() => NoteCubit(getIt()));
   getIt.registerFactory(() => ReaderScreenCubit(getIt()));
   getIt.registerFactory(() => EditNoteCubit(getIt()));
-   getIt.registerFactory(() => RootCubit(getIt()));
-   getIt.registerFactory(() => LoginCubit(getIt()));
-   getIt.registerFactory(() => EventCubit(getIt()));
-   getIt.registerFactory(() => EditEventCubit(getIt()));
-     getIt.registerFactory(() => AddEventCubit(getIt()));
-   
+  getIt.registerFactory(() => RootCubit(getIt()));
+  getIt.registerFactory(() => LoginCubit(getIt()));
+  getIt.registerFactory(() => EventCubit(getIt()));
+  getIt.registerFactory(() => EditEventCubit(getIt()));
+  getIt.registerFactory(() => AddEventCubit(getIt()));
 
   //Repositories
   getIt.registerFactory(() => WeatherRepository(getIt()));

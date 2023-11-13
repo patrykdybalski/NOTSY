@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:primary_school/constans/colors.dart';
-import 'package:primary_school/constans/fonts_style.dart';
+import 'package:primary_school/app/constans/colors.dart';
+import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/domain/models/weather_model/weather_model.dart';
 import 'package:weather_icons/weather_icons.dart';
 

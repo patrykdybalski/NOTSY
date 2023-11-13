@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:primary_school/constans/colors.dart';
+import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/features/features/home/pages/notes_page/cubit/note_cubit.dart';
 import 'package:primary_school/features/features/home/pages/notes_page/screens/add_note_page/cubit/add_note_cubit.dart';
 

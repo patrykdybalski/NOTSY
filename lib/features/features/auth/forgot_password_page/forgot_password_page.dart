@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/injection_container.dart';
-import 'package:primary_school/constans/colors.dart';
+import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/features/features/auth/login_page/cubit/login_cubit.dart';
 
 class ForgotPasswordPage extends StatelessWidget {

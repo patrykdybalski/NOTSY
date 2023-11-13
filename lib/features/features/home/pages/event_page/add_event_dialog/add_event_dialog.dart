@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:primary_school/app/injection_container.dart';
-import 'package:primary_school/constans/colors.dart';
+import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
 import 'package:primary_school/features/features/home/pages/event_page/add_event_dialog/add_event_widgets.dart';
 import 'package:primary_school/features/features/home/pages/event_page/add_event_dialog/cubit/add_event_cubit.dart';

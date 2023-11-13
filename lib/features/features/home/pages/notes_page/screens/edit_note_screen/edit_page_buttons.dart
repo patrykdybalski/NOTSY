@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:primary_school/constans/colors.dart';
+import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/features/features/home/pages/notes_page/screens/edit_note_screen/cubit/edit_note_cubit.dart';
 
 class EditPageButtons {

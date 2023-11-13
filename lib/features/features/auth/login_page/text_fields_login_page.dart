@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:primary_school/constans/colors.dart';
+import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/features/features/auth/login_page/login_page.dart';
 
 class TextFieldLogin extends StatelessWidget {

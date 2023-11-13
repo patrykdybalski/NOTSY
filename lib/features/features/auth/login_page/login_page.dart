@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:primary_school/app/injection_container.dart';
-import 'package:primary_school/constans/colors.dart';
-import 'package:primary_school/constans/fonts_style.dart';
+import 'package:primary_school/app/constans/colors.dart';
+import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/features/features/auth/forgot_password_page/forgot_password_page.dart';
 import 'package:primary_school/features/features/auth/login_page/cubit/login_cubit.dart';
 import 'package:primary_school/features/features/auth/login_page/text_fields_login_page.dart';
