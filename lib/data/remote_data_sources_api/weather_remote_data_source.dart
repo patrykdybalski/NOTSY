@@ -16,6 +16,14 @@ abstract class WeatherRemoteRetrofitDataSource {
 }
 
 
+
+
+
+
+
+
+
+
 //2st (add injectable with Dio, delete baseUrl and get to injection_container, add @factoryMethod comment)
 // @RestApi(baseUrl: 'http://api.weatherapi.com/v1/')
 
@@ -25,9 +33,6 @@ abstract class WeatherRemoteRetrofitDataSource {
 //    @GET('/current.json?key=9518138900ee4740ad9193115230506&aqi=no')
 //   Future<WeatherModel> getCurrentWeather(@Query('q') String city);
 // }
-
-
-
 
 // 
 // first code in DataSource (Add retrofit to 2st)

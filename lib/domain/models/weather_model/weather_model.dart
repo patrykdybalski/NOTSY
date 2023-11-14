@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 part 'weather_model.g.dart';
 part 'weather_model.freezed.dart';
 
@@ -16,6 +15,7 @@ class WeatherModel with _$WeatherModel {
 
 @freezed
 class Current with _$Current {
+  @JsonSerializable(fieldRename: FieldRename.snake)
   factory Current(
     @JsonKey(name: "temp_c") double tempC,
     Condition condition,
