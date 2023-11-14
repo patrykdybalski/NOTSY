@@ -1,10 +1,8 @@
-
-import 'package:injectable/injectable.dart';
 import 'package:primary_school/data/remote_data_sources_api/weather_remote_data_source.dart';
 import 'package:primary_school/domain/models/weather_model/weather_model.dart';
 
 
-@injectable  
+
 class WeatherRepository {
   WeatherRepository(this._weatherRemoteDataSource);
   final WeatherRemoteRetrofitDataSource _weatherRemoteDataSource;

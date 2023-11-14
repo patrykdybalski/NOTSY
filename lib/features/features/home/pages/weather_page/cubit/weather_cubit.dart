@@ -1,12 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:injectable/injectable.dart';
 import 'package:primary_school/app/core/enums.dart';
 import 'package:primary_school/domain/models/weather_model/weather_model.dart';
 import 'package:primary_school/domain/repositories/weather/weather_repository.dart';
 part 'weather_cubit.freezed.dart';
 part 'weather_state.dart';
-@injectable  
+
 class WeatherCubit extends Cubit<WeatherState> {
   WeatherCubit(this._weatherRepository) : super( WeatherState());
 

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:injectable/injectable.dart';
 import 'package:primary_school/data/remote_data_sources_firebase/note_remote_data_source.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
 
-@injectable  
+
 class NoteRepository {
   NoteRepository(this._noteRemoteDataSource);
   final NoteRemoteDataSource _noteRemoteDataSource;

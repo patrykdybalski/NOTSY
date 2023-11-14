@@ -1,9 +1,8 @@
 import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:injectable/injectable.dart';
 import 'package:primary_school/domain/repositories/login_auth/login_auth_repository.dart';
 part 'login_state.dart';
-@injectable  
+
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit(this._loginAuthRepository)
       : super(

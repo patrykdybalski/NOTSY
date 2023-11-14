@@ -1,10 +1,9 @@
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:injectable/injectable.dart';
 import 'package:primary_school/domain/repositories/login_auth/login_auth_repository.dart';
 part 'root_state.dart';
-@injectable  
+
 class RootCubit extends Cubit<RootState> {
   RootCubit(this._loginAuthRepository)
       : super(

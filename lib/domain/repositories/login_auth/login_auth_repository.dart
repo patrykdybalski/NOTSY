@@ -1,8 +1,7 @@
 import 'dart:async';
-import 'package:injectable/injectable.dart';
 import 'package:primary_school/data/remote_data_sources_firebase/login_auth_data_source.dart';
 
-@injectable  
+
 class LoginAuthRepository {
   LoginAuthRepository(this._loginAuthDataSource);
 

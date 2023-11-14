@@ -1,13 +1,11 @@
 import 'dart:async';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:injectable/injectable.dart';
 import 'package:primary_school/app/core/enums.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
 part 'note_state.dart';
-@injectable  
+ 
 class NoteCubit extends Cubit<NoteState> {
   NoteCubit(this._noteRepository)
       : super(const NoteState(
