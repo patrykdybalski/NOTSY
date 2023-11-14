@@ -206,7 +206,7 @@ mixin _$Current {
   double get precipMm => throw _privateConstructorUsedError;
   double get humidity => throw _privateConstructorUsedError;
   double get cloud => throw _privateConstructorUsedError;
-  double get feelsLikeC => throw _privateConstructorUsedError;
+  double get feelslikeC => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -227,7 +227,7 @@ abstract class $CurrentCopyWith<$Res> {
       double precipMm,
       double humidity,
       double cloud,
-      double feelsLikeC});
+      double feelslikeC});
 
   $ConditionCopyWith<$Res> get condition;
 }
@@ -253,7 +253,7 @@ class _$CurrentCopyWithImpl<$Res, $Val extends Current>
     Object? precipMm = null,
     Object? humidity = null,
     Object? cloud = null,
-    Object? feelsLikeC = null,
+    Object? feelslikeC = null,
   }) {
     return _then(_value.copyWith(
       tempC: null == tempC
@@ -288,9 +288,9 @@ class _$CurrentCopyWithImpl<$Res, $Val extends Current>
           ? _value.cloud
           : cloud // ignore: cast_nullable_to_non_nullable
               as double,
-      feelsLikeC: null == feelsLikeC
-          ? _value.feelsLikeC
-          : feelsLikeC // ignore: cast_nullable_to_non_nullable
+      feelslikeC: null == feelslikeC
+          ? _value.feelslikeC
+          : feelslikeC // ignore: cast_nullable_to_non_nullable
               as double,
     ) as $Val);
   }
@@ -320,7 +320,7 @@ abstract class _$$CurrentImplCopyWith<$Res> implements $CurrentCopyWith<$Res> {
       double precipMm,
       double humidity,
       double cloud,
-      double feelsLikeC});
+      double feelslikeC});
 
   @override
   $ConditionCopyWith<$Res> get condition;
@@ -345,7 +345,7 @@ class __$$CurrentImplCopyWithImpl<$Res>
     Object? precipMm = null,
     Object? humidity = null,
     Object? cloud = null,
-    Object? feelsLikeC = null,
+    Object? feelslikeC = null,
   }) {
     return _then(_$CurrentImpl(
       null == tempC
@@ -380,9 +380,9 @@ class __$$CurrentImplCopyWithImpl<$Res>
           ? _value.cloud
           : cloud // ignore: cast_nullable_to_non_nullable
               as double,
-      null == feelsLikeC
-          ? _value.feelsLikeC
-          : feelsLikeC // ignore: cast_nullable_to_non_nullable
+      null == feelslikeC
+          ? _value.feelslikeC
+          : feelslikeC // ignore: cast_nullable_to_non_nullable
               as double,
     ));
   }
@@ -401,7 +401,7 @@ class _$CurrentImpl implements _Current {
       this.precipMm,
       this.humidity,
       this.cloud,
-      this.feelsLikeC);
+      this.feelslikeC);
 
   factory _$CurrentImpl.fromJson(Map<String, dynamic> json) =>
       _$$CurrentImplFromJson(json);
@@ -423,11 +423,11 @@ class _$CurrentImpl implements _Current {
   @override
   final double cloud;
   @override
-  final double feelsLikeC;
+  final double feelslikeC;
 
   @override
   String toString() {
-    return 'Current(tempC: $tempC, condition: $condition, windMph: $windMph, windDir: $windDir, pressureMb: $pressureMb, precipMm: $precipMm, humidity: $humidity, cloud: $cloud, feelsLikeC: $feelsLikeC)';
+    return 'Current(tempC: $tempC, condition: $condition, windMph: $windMph, windDir: $windDir, pressureMb: $pressureMb, precipMm: $precipMm, humidity: $humidity, cloud: $cloud, feelslikeC: $feelslikeC)';
   }
 
   @override
@@ -447,14 +447,14 @@ class _$CurrentImpl implements _Current {
             (identical(other.humidity, humidity) ||
                 other.humidity == humidity) &&
             (identical(other.cloud, cloud) || other.cloud == cloud) &&
-            (identical(other.feelsLikeC, feelsLikeC) ||
-                other.feelsLikeC == feelsLikeC));
+            (identical(other.feelslikeC, feelslikeC) ||
+                other.feelslikeC == feelslikeC));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, tempC, condition, windMph,
-      windDir, pressureMb, precipMm, humidity, cloud, feelsLikeC);
+      windDir, pressureMb, precipMm, humidity, cloud, feelslikeC);
 
   @JsonKey(ignore: true)
   @override
@@ -480,7 +480,7 @@ abstract class _Current implements Current {
       final double precipMm,
       final double humidity,
       final double cloud,
-      final double feelsLikeC) = _$CurrentImpl;
+      final double feelslikeC) = _$CurrentImpl;
 
   factory _Current.fromJson(Map<String, dynamic> json) = _$CurrentImpl.fromJson;
 
@@ -501,7 +501,7 @@ abstract class _Current implements Current {
   @override
   double get cloud;
   @override
-  double get feelsLikeC;
+  double get feelslikeC;
   @override
   @JsonKey(ignore: true)
   _$$CurrentImplCopyWith<_$CurrentImpl> get copyWith =>

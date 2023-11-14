@@ -9,7 +9,7 @@ part 'weather_remote_data_source.g.dart';
 
 abstract class WeatherRemoteRetrofitDataSource {
   @factoryMethod
-  factory WeatherRemoteRetrofitDataSource(Dio dio,) = _WeatherRemoteRetrofitDataSource;
+  factory WeatherRemoteRetrofitDataSource(Dio dio) = _WeatherRemoteRetrofitDataSource;
 
    @GET('/current.json?key=9518138900ee4740ad9193115230506&aqi=no')
   Future<WeatherModel> getCurrentWeather(@Query('q') String city);

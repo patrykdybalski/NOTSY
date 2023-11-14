@@ -28,7 +28,7 @@ _$CurrentImpl _$$CurrentImplFromJson(Map<String, dynamic> json) =>
       (json['precip_mm'] as num).toDouble(),
       (json['humidity'] as num).toDouble(),
       (json['cloud'] as num).toDouble(),
-      (json['feels_like_c'] as num).toDouble(),
+      (json['feelslike_c'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$$CurrentImplToJson(_$CurrentImpl instance) =>
@@ -41,7 +41,7 @@ Map<String, dynamic> _$$CurrentImplToJson(_$CurrentImpl instance) =>
       'precip_mm': instance.precipMm,
       'humidity': instance.humidity,
       'cloud': instance.cloud,
-      'feels_like_c': instance.feelsLikeC,
+      'feelslike_c': instance.feelslikeC,
     };
 
 _$ConditionImpl _$$ConditionImplFromJson(Map<String, dynamic> json) =>

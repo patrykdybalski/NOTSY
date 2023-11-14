@@ -49,7 +49,7 @@ class _FirstTabState extends State<FirstTab> {
                           style: TextStyles.textStyleWhite(47),
                         ),
                         Text(
-                          'Odczuwalne ${widget.weatherModel?.current.feelsLikeC}°C',
+                          'Odczuwalne ${widget.weatherModel?.current.feelslikeC}°C',
                           style: TextStyles.textStyleWhite(13),
                         ),
                       ],
