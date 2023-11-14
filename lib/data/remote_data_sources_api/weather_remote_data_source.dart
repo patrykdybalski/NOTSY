@@ -5,20 +5,32 @@ import 'package:retrofit/retrofit.dart';
 part 'weather_remote_data_source.g.dart';
 
 @injectable  
-@RestApi(baseUrl: 'http://api.weatherapi.com/v1/')
+@RestApi()
 
 abstract class WeatherRemoteRetrofitDataSource {
-  factory WeatherRemoteRetrofitDataSource(Dio dio, {String baseUrl}) = _WeatherRemoteRetrofitDataSource;
+  @factoryMethod
+  factory WeatherRemoteRetrofitDataSource(Dio dio,) = _WeatherRemoteRetrofitDataSource;
 
    @GET('/current.json?key=9518138900ee4740ad9193115230506&aqi=no')
   Future<WeatherModel> getCurrentWeather(@Query('q') String city);
 }
 
 
+//2st (add injectable with Dio, delete baseUrl and get to injection_container, add @factoryMethod comment)
+// @RestApi(baseUrl: 'http://api.weatherapi.com/v1/')
+
+// abstract class WeatherRemoteRetrofitDataSource {
+//   factory WeatherRemoteRetrofitDataSource(Dio dio, {String baseUrl}) = _WeatherRemoteRetrofitDataSource;
+
+//    @GET('/current.json?key=9518138900ee4740ad9193115230506&aqi=no')
+//   Future<WeatherModel> getCurrentWeather(@Query('q') String city);
+// }
 
 
 
-// first code in DataSource
+
+// 
+// first code in DataSource (Add retrofit to 2st)
 // class WeatherRemoteDataSource {
 //   Future<Map<String, dynamic>?> getWeatherData({
 //     required String city,
