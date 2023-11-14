@@ -8,13 +8,13 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:dio/dio.dart' as _i13;
+import 'package:dio/dio.dart' as _i15;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
-import 'package:primary_school/app/injection_container.dart' as _i21;
+import 'package:primary_school/app/injection_container.dart' as _i23;
 import 'package:primary_school/app/root_page/cubit/root_cubit.dart' as _i11;
 import 'package:primary_school/data/remote_data_sources_api/weather_remote_data_source.dart'
-    as _i18;
+    as _i20;
 import 'package:primary_school/data/remote_data_sources_firebase/event_remote_data_source.dart'
     as _i3;
 import 'package:primary_school/data/remote_data_sources_firebase/login_auth_data_source.dart'
@@ -28,23 +28,27 @@ import 'package:primary_school/domain/repositories/login_auth/login_auth_reposit
 import 'package:primary_school/domain/repositories/note/note_repository.dart'
     as _i9;
 import 'package:primary_school/domain/repositories/weather/weather_repository.dart'
-    as _i19;
+    as _i21;
 import 'package:primary_school/features/features/auth/login_page/cubit/login_cubit.dart'
     as _i7;
 import 'package:primary_school/features/features/home/pages/event_page/add_event_dialog/cubit/add_event_cubit.dart'
-    as _i12;
+    as _i13;
 import 'package:primary_school/features/features/home/pages/event_page/cubit/event_cubit.dart'
-    as _i16;
+    as _i18;
 import 'package:primary_school/features/features/home/pages/event_page/edit_event_screen/cubit/edit_event_cubit.dart'
-    as _i14;
+    as _i16;
 import 'package:primary_school/features/features/home/pages/notes_page/cubit/note_cubit.dart'
-    as _i17;
+    as _i19;
+import 'package:primary_school/features/features/home/pages/notes_page/screens/add_note_page/cubit/add_note_cubit.dart'
+    as _i14;
 import 'package:primary_school/features/features/home/pages/notes_page/screens/edit_note_screen/cubit/edit_note_cubit.dart'
-    as _i15;
+    as _i17;
 import 'package:primary_school/features/features/home/pages/notes_page/screens/note_reader_screen/cubit/reader_screen_cubit.dart'
     as _i10;
+import 'package:primary_school/features/features/home/pages/user_page/cubit/user_page_cubit.dart'
+    as _i12;
 import 'package:primary_school/features/features/home/pages/weather_page/cubit/weather_cubit.dart'
-    as _i20;
+    as _i22;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -77,25 +81,28 @@ extension GetItInjectableX on _i1.GetIt {
       () => registerModule.baseUrl,
       instanceName: 'BaseUrl',
     );
-    gh.factory<_i12.AddEventCubit>(
-        () => _i12.AddEventCubit(gh<_i4.EventsRepository>()));
-    gh.lazySingleton<_i13.Dio>(
+    gh.factory<_i12.UserPageCubit>(() => _i12.UserPageCubit());
+    gh.factory<_i13.AddEventCubit>(
+        () => _i13.AddEventCubit(gh<_i4.EventsRepository>()));
+    gh.factory<_i14.AddNoteCubit>(
+        () => _i14.AddNoteCubit(gh<_i9.NoteRepository>()));
+    gh.lazySingleton<_i15.Dio>(
         () => registerModule.dio(gh<String>(instanceName: 'BaseUrl')));
-    gh.factory<_i14.EditEventCubit>(
-        () => _i14.EditEventCubit(gh<_i4.EventsRepository>()));
-    gh.factory<_i15.EditNoteCubit>(
-        () => _i15.EditNoteCubit(gh<_i9.NoteRepository>()));
-    gh.factory<_i16.EventCubit>(
-        () => _i16.EventCubit(gh<_i4.EventsRepository>()));
-    gh.factory<_i17.NoteCubit>(() => _i17.NoteCubit(gh<_i9.NoteRepository>()));
-    gh.factory<_i18.WeatherRemoteRetrofitDataSource>(
-        () => _i18.WeatherRemoteRetrofitDataSource(gh<_i13.Dio>()));
-    gh.factory<_i19.WeatherRepository>(() =>
-        _i19.WeatherRepository(gh<_i18.WeatherRemoteRetrofitDataSource>()));
-    gh.factory<_i20.WeatherCubit>(
-        () => _i20.WeatherCubit(gh<_i19.WeatherRepository>()));
+    gh.factory<_i16.EditEventCubit>(
+        () => _i16.EditEventCubit(gh<_i4.EventsRepository>()));
+    gh.factory<_i17.EditNoteCubit>(
+        () => _i17.EditNoteCubit(gh<_i9.NoteRepository>()));
+    gh.factory<_i18.EventCubit>(
+        () => _i18.EventCubit(gh<_i4.EventsRepository>()));
+    gh.factory<_i19.NoteCubit>(() => _i19.NoteCubit(gh<_i9.NoteRepository>()));
+    gh.factory<_i20.WeatherRemoteRetrofitDataSource>(
+        () => _i20.WeatherRemoteRetrofitDataSource(gh<_i15.Dio>()));
+    gh.factory<_i21.WeatherRepository>(() =>
+        _i21.WeatherRepository(gh<_i20.WeatherRemoteRetrofitDataSource>()));
+    gh.factory<_i22.WeatherCubit>(
+        () => _i22.WeatherCubit(gh<_i21.WeatherRepository>()));
     return this;
   }
 }
 
-class _$RegisterModule extends _i21.RegisterModule {}
+class _$RegisterModule extends _i23.RegisterModule {}
