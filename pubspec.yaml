@@ -71,6 +71,7 @@ dev_dependencies:
   json_serializable: ^6.7.1
   freezed: ^2.4.5
   retrofit_generator: ^8.0.3
+  injectable_generator: ^2.4.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
