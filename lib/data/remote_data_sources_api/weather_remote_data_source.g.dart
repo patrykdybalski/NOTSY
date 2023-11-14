@@ -12,8 +12,8 @@ class _WeatherRemoteRetrofitDataSource
     implements WeatherRemoteRetrofitDataSource {
   _WeatherRemoteRetrofitDataSource(
     this._dio, 
-   
-  );
+    
+ );
 
   final Dio _dio;
 

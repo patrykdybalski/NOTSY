@@ -198,20 +198,14 @@ Current _$CurrentFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Current {
-  @JsonKey(name: "temp_c")
   double get tempC => throw _privateConstructorUsedError;
   Condition get condition => throw _privateConstructorUsedError;
-  @JsonKey(name: "wind_mph")
   double get windMph => throw _privateConstructorUsedError;
-  @JsonKey(name: "wind_dir")
   String get windDir => throw _privateConstructorUsedError;
-  @JsonKey(name: "pressure_mb")
   double get pressureMb => throw _privateConstructorUsedError;
-  @JsonKey(name: "precip_mm")
   double get precipMm => throw _privateConstructorUsedError;
   double get humidity => throw _privateConstructorUsedError;
   double get cloud => throw _privateConstructorUsedError;
-  @JsonKey(name: "feelslike_c")
   double get feelsLikeC => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -225,15 +219,15 @@ abstract class $CurrentCopyWith<$Res> {
       _$CurrentCopyWithImpl<$Res, Current>;
   @useResult
   $Res call(
-      {@JsonKey(name: "temp_c") double tempC,
+      {double tempC,
       Condition condition,
-      @JsonKey(name: "wind_mph") double windMph,
-      @JsonKey(name: "wind_dir") String windDir,
-      @JsonKey(name: "pressure_mb") double pressureMb,
-      @JsonKey(name: "precip_mm") double precipMm,
+      double windMph,
+      String windDir,
+      double pressureMb,
+      double precipMm,
       double humidity,
       double cloud,
-      @JsonKey(name: "feelslike_c") double feelsLikeC});
+      double feelsLikeC});
 
   $ConditionCopyWith<$Res> get condition;
 }
@@ -318,15 +312,15 @@ abstract class _$$CurrentImplCopyWith<$Res> implements $CurrentCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: "temp_c") double tempC,
+      {double tempC,
       Condition condition,
-      @JsonKey(name: "wind_mph") double windMph,
-      @JsonKey(name: "wind_dir") String windDir,
-      @JsonKey(name: "pressure_mb") double pressureMb,
-      @JsonKey(name: "precip_mm") double precipMm,
+      double windMph,
+      String windDir,
+      double pressureMb,
+      double precipMm,
       double humidity,
       double cloud,
-      @JsonKey(name: "feelslike_c") double feelsLikeC});
+      double feelsLikeC});
 
   @override
   $ConditionCopyWith<$Res> get condition;
@@ -395,45 +389,40 @@ class __$$CurrentImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
+@JsonSerializable(fieldRename: FieldRename.snake)
 class _$CurrentImpl implements _Current {
   _$CurrentImpl(
-      @JsonKey(name: "temp_c") this.tempC,
+      this.tempC,
       this.condition,
-      @JsonKey(name: "wind_mph") this.windMph,
-      @JsonKey(name: "wind_dir") this.windDir,
-      @JsonKey(name: "pressure_mb") this.pressureMb,
-      @JsonKey(name: "precip_mm") this.precipMm,
+      this.windMph,
+      this.windDir,
+      this.pressureMb,
+      this.precipMm,
       this.humidity,
       this.cloud,
-      @JsonKey(name: "feelslike_c") this.feelsLikeC);
+      this.feelsLikeC);
 
   factory _$CurrentImpl.fromJson(Map<String, dynamic> json) =>
       _$$CurrentImplFromJson(json);
 
   @override
-  @JsonKey(name: "temp_c")
   final double tempC;
   @override
   final Condition condition;
   @override
-  @JsonKey(name: "wind_mph")
   final double windMph;
   @override
-  @JsonKey(name: "wind_dir")
   final String windDir;
   @override
-  @JsonKey(name: "pressure_mb")
   final double pressureMb;
   @override
-  @JsonKey(name: "precip_mm")
   final double precipMm;
   @override
   final double humidity;
   @override
   final double cloud;
   @override
-  @JsonKey(name: "feelslike_c")
   final double feelsLikeC;
 
   @override
@@ -483,41 +472,35 @@ class _$CurrentImpl implements _Current {
 
 abstract class _Current implements Current {
   factory _Current(
-      @JsonKey(name: "temp_c") final double tempC,
+      final double tempC,
       final Condition condition,
-      @JsonKey(name: "wind_mph") final double windMph,
-      @JsonKey(name: "wind_dir") final String windDir,
-      @JsonKey(name: "pressure_mb") final double pressureMb,
-      @JsonKey(name: "precip_mm") final double precipMm,
+      final double windMph,
+      final String windDir,
+      final double pressureMb,
+      final double precipMm,
       final double humidity,
       final double cloud,
-      @JsonKey(name: "feelslike_c") final double feelsLikeC) = _$CurrentImpl;
+      final double feelsLikeC) = _$CurrentImpl;
 
   factory _Current.fromJson(Map<String, dynamic> json) = _$CurrentImpl.fromJson;
 
   @override
-  @JsonKey(name: "temp_c")
   double get tempC;
   @override
   Condition get condition;
   @override
-  @JsonKey(name: "wind_mph")
   double get windMph;
   @override
-  @JsonKey(name: "wind_dir")
   String get windDir;
   @override
-  @JsonKey(name: "pressure_mb")
   double get pressureMb;
   @override
-  @JsonKey(name: "precip_mm")
   double get precipMm;
   @override
   double get humidity;
   @override
   double get cloud;
   @override
-  @JsonKey(name: "feelslike_c")
   double get feelsLikeC;
   @override
   @JsonKey(ignore: true)

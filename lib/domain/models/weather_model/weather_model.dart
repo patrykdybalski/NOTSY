@@ -17,15 +17,15 @@ class WeatherModel with _$WeatherModel {
 class Current with _$Current {
   @JsonSerializable(fieldRename: FieldRename.snake)
   factory Current(
-    @JsonKey(name: "temp_c") double tempC,
+    double tempC,
     Condition condition,
-    @JsonKey(name: "wind_mph") double windMph,
-    @JsonKey(name: "wind_dir") String windDir,
-    @JsonKey(name: "pressure_mb") double pressureMb,
-    @JsonKey(name: "precip_mm") double precipMm,
+    double windMph,
+    String windDir,
+    double pressureMb,
+    double precipMm,
     double humidity,
     double cloud,
-    @JsonKey(name: "feelslike_c") double feelsLikeC,
+    double feelsLikeC,
   ) = _Current;
 
   factory Current.fromJson(Map<String, dynamic> json) =>
