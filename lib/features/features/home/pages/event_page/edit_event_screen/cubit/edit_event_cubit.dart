@@ -1,8 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:primary_school/domain/repositories/event/events_repository.dart';
-
 part 'edit_event_state.dart';
 
+@injectable  
 class EditEventCubit extends Cubit<EditEventState> {
   EditEventCubit(this._eventsRepository) : super(EditEventState());
 

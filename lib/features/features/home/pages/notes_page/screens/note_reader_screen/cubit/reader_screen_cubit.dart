@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
 
 part 'reader_screen_state.dart';
-
+@injectable  
 class ReaderScreenCubit extends Cubit<ReaderScreenState> {
   ReaderScreenCubit(this._noteRepository) : super(const ReaderScreenState());
 

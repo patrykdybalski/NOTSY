@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:injectable/injectable.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
 
+@injectable  
 class EventRemoteDataSource {
   Stream<List<EventModel>> getEventsData() {
     final userId = FirebaseAuth.instance.currentUser?.uid;

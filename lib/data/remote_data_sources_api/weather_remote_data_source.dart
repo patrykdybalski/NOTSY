@@ -1,10 +1,12 @@
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:primary_school/domain/models/weather_model/weather_model.dart';
 import 'package:retrofit/retrofit.dart';
-
 part 'weather_remote_data_source.g.dart';
 
+@injectable  
 @RestApi(baseUrl: 'http://api.weatherapi.com/v1/')
+
 abstract class WeatherRemoteRetrofitDataSource {
   factory WeatherRemoteRetrofitDataSource(Dio dio, {String baseUrl}) = _WeatherRemoteRetrofitDataSource;
 

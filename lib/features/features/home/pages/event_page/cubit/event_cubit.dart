@@ -1,12 +1,14 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:primary_school/app/core/enums.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
 import 'package:primary_school/domain/repositories/event/events_repository.dart';
 part 'event_state.dart';
 
+
+@injectable  
 class EventCubit extends Cubit<EventState> {
   EventCubit(this._eventsRepository)
       : super(

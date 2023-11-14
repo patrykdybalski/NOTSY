@@ -1,8 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
 
+
+@injectable  
 class NoteRemoteDataSource {
   Stream<List<NoteModel>> getNotesData() {
     final userId = FirebaseAuth.instance.currentUser?.uid;
