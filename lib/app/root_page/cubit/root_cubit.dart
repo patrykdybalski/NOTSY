@@ -14,14 +14,14 @@ class RootCubit extends Cubit<RootState> {
           ),
         );
 
-  StreamSubscription? _streamSubscription;
   final LoginAuthRepository _loginAuthRepository;
+  StreamSubscription? _streamSubscription;
 
   Future<void> signOut() async {
     try {
       await _loginAuthRepository.signOut();
       emit(
-         RootState(
+        RootState(
           user: null,
           isLoadnig: false,
           errorMessage: '',

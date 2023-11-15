@@ -16,14 +16,14 @@ class EventsRepository {
     await _eventRemoteDataSource.deleteNote(id: id);
   }
 
-  Future<void> edit(
-    String title,
-    String subtitle,
-    DateTime selectedDay,
-    DateTime selectedTime,
+  Future<void> editNote(
+    String? title,
+    String? subtitle,
+    DateTime? selectedDay,
+    DateTime? selectedTime,
     String docID,
   ) async {
-    await _eventRemoteDataSource.editNote(
+    await _eventRemoteDataSource.editNoteData(
       title,
       subtitle,
       selectedDay,
@@ -32,13 +32,13 @@ class EventsRepository {
     );
   }
 
-  Future<void> add(
-    String title,
-    String subtitle,
-    DateTime selectedDay,
-    DateTime selectedTime,
+  Future<void> addEvent(
+    String? title,
+    String? subtitle,
+    DateTime? selectedDay,
+    DateTime? selectedTime,
   ) async {
-    await _eventRemoteDataSource.addNote(
+    await _eventRemoteDataSource.addEventData(
       title,
       subtitle,
       selectedDay,

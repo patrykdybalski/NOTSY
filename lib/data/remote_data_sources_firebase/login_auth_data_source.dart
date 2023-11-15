@@ -5,7 +5,8 @@ import 'package:injectable/injectable.dart';
 
 @injectable  
 class LoginAuthDataSource {
-  Future<void> createUser({
+  
+  Future<void> createUserAccount({
     required String email,
     required String password,
   }) async {
@@ -48,14 +49,4 @@ class LoginAuthDataSource {
       throw Exception(error);
     }
   }
-  // Stream<User?> authStateStream() {
-  //   return FirebaseAuth.instance.authStateChanges();
-  // }
-
-  // StreamSubscription<User?> streamSubscriptionData({User? user}) {
-  //   final stream = FirebaseAuth.instance.authStateChanges();
-  //   return stream.listen((User? user) {
-
-  //   });
-  // }
 }

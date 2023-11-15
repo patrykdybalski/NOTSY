@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
 
-@injectable  
+@injectable
 class EventRemoteDataSource {
   Stream<List<EventModel>> getEventsData() {
     final userId = FirebaseAuth.instance.currentUser?.uid;
@@ -32,16 +32,17 @@ class EventRemoteDataSource {
           ).toList();
         },
       );
-    } catch (error) {
+    } on FirebaseException catch (error) {
       throw Exception(error);
     }
   }
 
-  Future<void> addNote(
-    String title,
-    String subtitle,
-    DateTime selectedDay,
-    DateTime selectedTime,
+  Future<void> addEventData
+(
+    String? title,
+    String? subtitle,
+    DateTime? selectedDay,
+    DateTime? selectedTime,
   ) async {
     final userId = FirebaseAuth.instance.currentUser?.uid;
     if (userId == null) {
@@ -60,16 +61,16 @@ class EventRemoteDataSource {
           'selectedTime': selectedTime,
         },
       );
-    } catch (error) {
+    } on FirebaseAuthException catch (error) {
       throw Exception(error);
     }
   }
 
-  Future<void> editNote(
-    String title,
-    String subtitle,
-    DateTime selectedDay,
-    DateTime selectedTime,
+  Future<void> editNoteData(
+    String? title,
+    String? subtitle,
+    DateTime? selectedDay,
+    DateTime? selectedTime,
     String docID,
   ) async {
     final userId = FirebaseAuth.instance.currentUser?.uid;
@@ -88,7 +89,7 @@ class EventRemoteDataSource {
         'selectedDay': selectedDay,
         'selectedTime': selectedTime,
       });
-    } catch (error) {
+    } on FirebaseAuthException catch (error) {
       throw Exception(error);
     }
   }
@@ -105,7 +106,7 @@ class EventRemoteDataSource {
           .collection('calendarItems')
           .doc(id)
           .delete();
-    } catch (error) {
+    } on FirebaseAuthException catch (error) {
       throw Exception(error);
     }
   }

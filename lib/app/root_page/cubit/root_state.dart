@@ -2,7 +2,7 @@ part of 'root_cubit.dart';
 
 class RootState {
   final User? user;
-  final bool isLoadnig;
+   bool isLoadnig = false;
   final String errorMessage;
 
   RootState({

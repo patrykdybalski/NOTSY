@@ -29,25 +29,25 @@ import 'package:primary_school/domain/repositories/note/note_repository.dart'
     as _i9;
 import 'package:primary_school/domain/repositories/weather/weather_repository.dart'
     as _i21;
-import 'package:primary_school/features/features/auth/login_page/cubit/login_cubit.dart'
+import 'package:primary_school/features/auth/login_page/cubit/login_cubit.dart'
     as _i7;
-import 'package:primary_school/features/features/home/pages/event_page/add_event_dialog/cubit/add_event_cubit.dart'
-    as _i13;
-import 'package:primary_school/features/features/home/pages/event_page/cubit/event_cubit.dart'
+import 'package:primary_school/features/home/pages/event_page/event_page/cubit/event_cubit.dart'
     as _i18;
-import 'package:primary_school/features/features/home/pages/event_page/edit_event_screen/cubit/edit_event_cubit.dart'
+import 'package:primary_school/features/home/pages/event_page/screens/add_event_dialog/cubit/add_event_cubit.dart'
+    as _i13;
+import 'package:primary_school/features/home/pages/event_page/screens/edit_event_screen/cubit/edit_event_cubit.dart'
     as _i16;
-import 'package:primary_school/features/features/home/pages/notes_page/cubit/note_cubit.dart'
+import 'package:primary_school/features/home/pages/notes_page/cubit/note_cubit.dart'
     as _i19;
-import 'package:primary_school/features/features/home/pages/notes_page/screens/add_note_page/cubit/add_note_cubit.dart'
+import 'package:primary_school/features/home/pages/notes_page/screens/add_note_page/cubit/add_note_cubit.dart'
     as _i14;
-import 'package:primary_school/features/features/home/pages/notes_page/screens/edit_note_screen/cubit/edit_note_cubit.dart'
+import 'package:primary_school/features/home/pages/notes_page/screens/edit_note_screen/cubit/edit_note_cubit.dart'
     as _i17;
-import 'package:primary_school/features/features/home/pages/notes_page/screens/note_reader_screen/cubit/reader_screen_cubit.dart'
+import 'package:primary_school/features/home/pages/notes_page/screens/note_reader_screen/cubit/reader_screen_cubit.dart'
     as _i10;
-import 'package:primary_school/features/features/home/pages/user_page/cubit/user_page_cubit.dart'
+import 'package:primary_school/features/home/pages/user_page/cubit/user_page_cubit.dart'
     as _i12;
-import 'package:primary_school/features/features/home/pages/weather_page/cubit/weather_cubit.dart'
+import 'package:primary_school/features/home/pages/weather_page/cubit/weather_cubit.dart'
     as _i22;
 
 extension GetItInjectableX on _i1.GetIt {

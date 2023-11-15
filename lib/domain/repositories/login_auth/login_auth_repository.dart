@@ -7,11 +7,11 @@ class LoginAuthRepository {
 
   final LoginAuthDataSource _loginAuthDataSource;
 
-  Future<void> createUsers({
+  Future<void> createUser({
     required String email,
     required String password,
   }) async {
-    await _loginAuthDataSource.createUser(
+    await _loginAuthDataSource.createUserAccount(
       email: email,
       password: password,
     );
@@ -34,8 +34,4 @@ class LoginAuthRepository {
   Future<void> resetPassword({required String email}) async {
     await _loginAuthDataSource.passwordResetData(email: email);
   }
-
-  // StreamSubscription<User?> streamSubscription({User? user}) {
-  //   return _loginAuthDataSource.streamSubscriptionData(user: user);
-  // }
 }
