@@ -4,15 +4,19 @@ import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/domain/models/weather_model/weather_model.dart';
 import 'package:weather_icons/weather_icons.dart';
 
-class FirstTab extends StatefulWidget {
-  const FirstTab({required this.weatherModel, super.key});
+class WeatherInfoWidget
+ extends StatefulWidget {
+  const WeatherInfoWidget
+  ({required this.weatherModel, super.key});
   final WeatherModel? weatherModel;
 
   @override
-  State<FirstTab> createState() => _FirstTabState();
+  State<WeatherInfoWidget
+  > createState() => _FirstTabState();
 }
 
-class _FirstTabState extends State<FirstTab> {
+class _FirstTabState extends State<WeatherInfoWidget
+> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(

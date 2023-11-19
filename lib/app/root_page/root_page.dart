@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/app/root_page/cubit/root_cubit.dart';
 import 'package:primary_school/app/constans/colors.dart';
-import 'package:primary_school/features/auth/login_page/login_page.dart';
+import 'package:primary_school/features/auth/pages/login_page/login_page.dart';
 import 'package:primary_school/features/home/home_page.dart';
 
 class MyApp extends StatelessWidget {

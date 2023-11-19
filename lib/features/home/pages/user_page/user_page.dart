@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:primary_school/app/root_page/cubit/root_cubit.dart';
 import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
+
+import 'widgets/sign_out_buttod.dart';
 
 class UserPage extends StatefulWidget {
   const UserPage({super.key});
@@ -37,20 +36,7 @@ class _UserPageState extends State<UserPage> {
             const SizedBox(
               height: 8,
             ),
-            ElevatedButton(
-              onPressed: () {
-                context.read<RootCubit>().signOut();
-              },
-              style: TextButton.styleFrom(
-                backgroundColor: AppColors.greenLogoColor,
-              ),
-              child: Text('Wyloguj',
-                  style: GoogleFonts.domine(
-                    color: Colors.white,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w800,
-                  )),
-            ),
+            const SignOutButton(),
             const SizedBox(
               height: 40,
             ),

@@ -1,7 +1,7 @@
 part of 'login_cubit.dart';
 
-class LoginState {
-  LoginState({
+class AuthState {
+  AuthState({
     this.errorMessage = '',
     this.saved = false,
   });

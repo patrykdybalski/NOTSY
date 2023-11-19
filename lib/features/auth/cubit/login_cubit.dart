@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/domain/repositories/login_auth/login_auth_repository.dart';
 part 'login_state.dart';
 
-class LoginCubit extends Cubit<LoginState> {
-  LoginCubit(this._loginAuthRepository)
+class AuthCubit extends Cubit<AuthState> {
+  AuthCubit(this._loginAuthRepository)
       : super(
-          LoginState(),
+          AuthState(),
         );
   final LoginAuthRepository _loginAuthRepository;
 
@@ -18,7 +18,25 @@ class LoginCubit extends Cubit<LoginState> {
       );
     } catch (error) {
       emit(
-        LoginState(
+        AuthState(
+          errorMessage: error.toString(),
+        ),
+      );
+    }
+  }
+  Future<void> signOut() async {
+    try {
+      await _loginAuthRepository.signOut();
+      emit(
+        AuthState(
+         
+         
+        ),
+      );
+    } catch (error) {
+      emit(
+        AuthState(
+          
           errorMessage: error.toString(),
         ),
       );
@@ -34,7 +52,7 @@ class LoginCubit extends Cubit<LoginState> {
       );
     } catch (error) {
       emit(
-        LoginState(
+        AuthState(
           errorMessage: error.toString(),
         ),
       );
@@ -45,11 +63,11 @@ class LoginCubit extends Cubit<LoginState> {
     try {
       await _loginAuthRepository.resetPassword(email: email);
       emit(
-        LoginState(saved: true),
+        AuthState(saved: true),
       );
     } catch (error) {
       emit(
-        LoginState(
+        AuthState(
           errorMessage: error.toString(),
         ),
       );

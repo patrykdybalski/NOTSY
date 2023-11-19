@@ -5,7 +5,8 @@ import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/features/home/pages/weather_page/cubit/weather_cubit.dart';
-import 'package:primary_school/features/home/pages/weather_page/tabs/first_tab/first_tab.dart';
+import 'package:primary_school/features/home/pages/weather_page/widgets/search_widget.dart';
+import 'package:primary_school/features/home/pages/weather_page/widgets/weather_info_widget.dart';
 
 
 class WeatherPage extends StatelessWidget {
@@ -43,7 +44,7 @@ class WeatherPage extends StatelessWidget {
               children: [
                 if (weatherModel != null)
                   Expanded(
-                    child: FirstTab(
+                    child: WeatherInfoWidget(
                       weatherModel: weatherModel,
                     ),
                   ),
@@ -57,108 +58,5 @@ class WeatherPage extends StatelessWidget {
   }
 }
 
-class SearchWidget extends StatelessWidget {
-  SearchWidget({
-    super.key,
-  });
-  final _controller = TextEditingController();
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Row(
-        children: [
-          Expanded(
-            child: TextField(
-              controller: _controller,
-              decoration: InputDecoration(
-                label: Text(
-                  'Miasto',
-                  style: TextStyles.textStyle2(13),
-                ),
-                hintText: 'Podaj nazwę ',
-                hintStyle: TextStyles.textStyle2(13),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16),
-                  borderSide: const BorderSide(
-                    color: AppColors.redColor,
-                  ),
-                ),
-                disabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16),
-                  borderSide: const BorderSide(
-                    color: AppColors.redColor,
-                  ),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16),
-                  borderSide: const BorderSide(
-                    color: AppColors.redColor,
-                  ),
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(
-            width: 16,
-          ),
-          ElevatedButton(
-              onPressed: () {
-                context
-                    .read<WeatherCubit>()
-                    .getWeatherModel(city: _controller.text);
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.redColor,
-                elevation: 1.5,
-                shadowColor: AppColors.primaryColor,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(
-                    16.0,
-                  ),
-                ),
-              ),
-              child: Text(
-                'Sprawdź',
-                style: TextStyles.textStyleWhite(13),
-              )),
-        ],
-      ),
-    );
-  }
-}
 
-class TabBarWidget extends StatelessWidget {
-  const TabBarWidget({
-    super.key,
-  });
 
-  @override
-  Widget build(BuildContext context) {
-    return TabBar(
-      indicatorColor: AppColors.redColor,
-      indicatorWeight: 1,
-      indicatorPadding: const EdgeInsets.all(4),
-      isScrollable: false,
-      labelColor: AppColors.redColor,
-      unselectedLabelColor: AppColors.secondaryColor,
-      dividerColor: AppColors.primaryColor,
-      labelStyle: TextStyles.textStyle1(16),
-      overlayColor: const MaterialStatePropertyAll(AppColors.primaryColor),
-      tabs: const [
-        Tab(
-          text: 'Dzisiaj',
-        ),
-        Tab(
-          text: 'Jutro',
-        ),
-        Tab(
-          text: 'Pojutrze',
-        ),
-      ],
-    );
-  }
-}

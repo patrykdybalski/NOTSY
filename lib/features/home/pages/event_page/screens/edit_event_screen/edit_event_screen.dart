@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/app/constans/colors.dart';
+import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
-import 'package:primary_school/features/features/home/pages/event_page/screens/edit_event_screen/widgets/subtitle_widget/subtitle_widget.dart';
-import 'package:primary_school/features/features/home/pages/event_page/screens/edit_event_screen/widgets/time_button/time_button_widget.dart';
-import 'package:primary_school/features/features/home/pages/event_page/screens/edit_event_screen/widgets/title_widget/title_widget.dart';
 import 'package:primary_school/features/home/pages/event_page/screens/edit_event_screen/widgets/date_button/date_button_widget.dart';
+import 'package:primary_school/features/home/pages/event_page/screens/edit_event_screen/widgets/subtitle_widget/subtitle_widget.dart';
+import 'package:primary_school/features/home/pages/event_page/screens/edit_event_screen/widgets/time_button/time_button_widget.dart';
 
 import 'cubit/edit_event_cubit.dart';
+import 'widgets/title_widget/title_widget.dart';
 
 class EditEventScreen extends StatefulWidget {
   const EditEventScreen({
@@ -35,18 +35,18 @@ class _EditEventScreenState extends State<EditEventScreen> {
       create: (context) => getIt<EditEventCubit>(),
       child: BlocConsumer<EditEventCubit, EditEventState>(
         listener: (context, state) {
-        if (state.saved) {
-          Navigator.of(context).pop();
-        }
-        if (state.errorMessage.isNotEmpty) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(state.errorMessage),
-              backgroundColor: Colors.red,
-            ),
-          );
-        }
-      },
+          if (state.saved) {
+            Navigator.of(context).pop();
+          }
+          if (state.errorMessage.isNotEmpty) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.errorMessage),
+                backgroundColor: Colors.red,
+              ),
+            );
+          }
+        },
         builder: (context, state) {
           return AlertDialog(
             scrollable: true,
@@ -191,7 +191,7 @@ class _ContentDialog extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
-       EditDateButton(
+        EditDateButton(
           selectedDateFormatted: selectedDateFormatted,
           eventModel: eventModel,
           onDayChanged: onDayChanged,

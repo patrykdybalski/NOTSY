@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:primary_school/app/constans/colors.dart';
-import 'package:primary_school/features/auth/login_page/login_page.dart';
+import 'package:primary_school/features/auth/pages/login_page/login_page.dart';
 
 class TextFieldPassword extends StatefulWidget {
   const TextFieldPassword({

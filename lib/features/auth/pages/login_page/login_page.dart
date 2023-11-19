@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
-import 'package:primary_school/features/auth/forgot_password_page/forgot_password_page.dart';
-import 'package:primary_school/features/auth/login_page/cubit/login_cubit.dart';
-import 'package:primary_school/features/auth/login_page/widgets/textfield_login_widget.dart';
-import 'package:primary_school/features/auth/login_page/widgets/textfield_password_widget.dart';
+import 'package:primary_school/features/auth/cubit/login_cubit.dart';
+import 'package:primary_school/features/auth/pages/forgot_password_page/forgot_password_page.dart';
+import 'package:primary_school/features/auth/pages/login_page/widgets/textfield_login_widget.dart';
+import 'package:primary_school/features/auth/pages/login_page/widgets/textfield_password_widget.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({
@@ -26,8 +25,8 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<LoginCubit>(),
-      child: BlocListener<LoginCubit, LoginState>(
+      create: (context) => getIt<AuthCubit>(),
+      child: BlocListener<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state.errorMessage.isNotEmpty) {
             ScaffoldMessenger.of(context).showSnackBar(
@@ -38,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
             );
           }
         },
-        child: BlocBuilder<LoginCubit, LoginState>(
+        child: BlocBuilder<AuthCubit, AuthState>(
           builder: (context, state) {
             return Scaffold(
                 backgroundColor: AppColors.primaryColor,
@@ -121,14 +120,14 @@ class _LoginPageState extends State<LoginPage> {
                                 onPressed: () async {
                                   if (isCreatingAccount == true) {
                                     context
-                                        .read<LoginCubit>()
+                                        .read<AuthCubit>()
                                         .createUserAccount(
                                           email: widget.emailController.text,
                                           password:
                                               widget.passwordController.text,
                                         );
                                   } else {
-                                    context.read<LoginCubit>().signIn(
+                                    context.read<AuthCubit>().signIn(
                                           email: widget.emailController.text,
                                           password:
                                               widget.passwordController.text,

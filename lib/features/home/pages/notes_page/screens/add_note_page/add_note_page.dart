@@ -4,7 +4,7 @@ import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
-import 'package:primary_school/features/home/pages/notes_page/screens/add_note_page/add_page_buttons.dart';
+import 'package:primary_school/features/home/pages/notes_page/screens/add_note_page/widgets/add_page_buttons.dart';
 import 'package:primary_school/features/home/pages/notes_page/screens/add_note_page/cubit/add_note_cubit.dart';
 
 
