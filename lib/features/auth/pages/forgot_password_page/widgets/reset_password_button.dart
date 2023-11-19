@@ -15,16 +15,19 @@ class ReserPasswordButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () {
-        context
-            .read<AuthCubit>()
-            .resetPasswordd(email: emailController.text);
+        context.read<AuthCubit>().resetPasswordd(email: emailController.text);
       },
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.greenLogoColor,
+        elevation: 2,
+        minimumSize: const Size(350, 50),
       ),
       child: const Text(
-        'Zresetuj hasło',
-        style: TextStyle(color: Colors.white),
+        'Wyślij link',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 16,
+        ),
       ),
     );
   }

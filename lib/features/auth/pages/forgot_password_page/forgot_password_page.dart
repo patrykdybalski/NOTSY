@@ -52,12 +52,22 @@ class ForgotPasswordPage extends StatelessWidget {
           },
           builder: (context, state) {
             return Padding(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 4.0,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    'Podaj swój adres email, otrzymasz link do resetu hasła.',
+                    'Zresetuj hasło',
+                    style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  const Text(
+                    'Wprowadź adres email, na który zostanie wysłany link do resetu hasła.',
                     style: TextStyle(
                       fontSize: 16,
                     ),
@@ -65,28 +75,14 @@ class ForgotPasswordPage extends StatelessWidget {
                   const SizedBox(
                     height: 16,
                   ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          blurRadius: 1,
-                          spreadRadius: 1,
-                          offset: const Offset(0, 1.0),
-                          color: Colors.grey.withOpacity(0.4),
-                        )
-                      ],
-                    ),
-                    child: EmailTextField(emailController: emailController),
+                  EmailTextField(
+                    emailController: emailController,
                   ),
                   const SizedBox(
                     height: 16,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 180.0),
-                    child:
-                        ReserPasswordButton(emailController: emailController),
+                  ReserPasswordButton(
+                    emailController: emailController,
                   )
                 ],
               ),
