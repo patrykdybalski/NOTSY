@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/domain/repositories/login_auth/login_auth_repository.dart';
-part 'login_state.dart';
+part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit(this._loginAuthRepository)
@@ -24,19 +24,16 @@ class AuthCubit extends Cubit<AuthState> {
       );
     }
   }
+
   Future<void> signOut() async {
     try {
       await _loginAuthRepository.signOut();
       emit(
-        AuthState(
-         
-         
-        ),
+        AuthState(),
       );
     } catch (error) {
       emit(
         AuthState(
-          
           errorMessage: error.toString(),
         ),
       );

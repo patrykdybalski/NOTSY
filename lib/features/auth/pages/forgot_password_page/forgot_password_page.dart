@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/app/constans/colors.dart';
-import 'package:primary_school/features/auth/cubit/login_cubit.dart';
+import 'package:primary_school/features/auth/cubit/auth_cubit.dart';
 import 'package:primary_school/features/auth/pages/forgot_password_page/widgets/email_textfield_widget.dart';
 import 'package:primary_school/features/auth/pages/forgot_password_page/widgets/reset_password_button.dart';
 

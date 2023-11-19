@@ -1,4 +1,4 @@
-part of 'login_cubit.dart';
+part of 'auth_cubit.dart';
 
 class AuthState {
   AuthState({

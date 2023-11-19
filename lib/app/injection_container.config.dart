@@ -29,7 +29,7 @@ import 'package:primary_school/domain/repositories/note/note_repository.dart'
     as _i8;
 import 'package:primary_school/domain/repositories/weather/weather_repository.dart'
     as _i21;
-import 'package:primary_school/features/auth/cubit/login_cubit.dart' as _i14;
+import 'package:primary_school/features/auth/cubit/auth_cubit.dart' as _i14;
 import 'package:primary_school/features/home/pages/event_page/event_page/cubit/event_cubit.dart'
     as _i18;
 import 'package:primary_school/features/home/pages/event_page/screens/add_event_dialog/cubit/add_event_cubit.dart'

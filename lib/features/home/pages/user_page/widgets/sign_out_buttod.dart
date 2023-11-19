@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/injection_container.dart';
-import 'package:primary_school/features/auth/cubit/login_cubit.dart';
+import 'package:primary_school/features/auth/cubit/auth_cubit.dart';
 
 class SignOutButton extends StatelessWidget {
   const SignOutButton({

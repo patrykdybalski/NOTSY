@@ -15,27 +15,26 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-var currentIndex = 0;
-
 class _HomePageState extends State<HomePage> {
+  var currentIndex = 0;
+  late final List<Widget> screens;
+
+  @override
+  void initState() {
+    super.initState();
+    screens = [
+      const EventPage(),
+      const NotesPage(),
+      const WeatherPage(),
+      const UserPage(),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.primaryColor,
-      body: Builder(
-        builder: (context) {
-          if (currentIndex == 0) {
-            return const EventPage();
-          }
-          if (currentIndex == 1) {
-            return const NotesPage();
-          }
-          if (currentIndex == 2) {
-            return const WeatherPage();
-          }
-          return const UserPage();
-        },
-      ),
+      body: screens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.shifting,
         elevation: 10,
