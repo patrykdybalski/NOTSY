@@ -23,6 +23,7 @@ class AddEventCubit extends Cubit<AddEventState> {
         selectedDay,
         selectedTime,
       );
+
       emit(
         const AddEventState(saved: true),
       );

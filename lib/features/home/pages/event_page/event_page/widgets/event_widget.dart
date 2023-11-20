@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
+import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
+import 'package:primary_school/features/home/pages/event_page/event_page/cubit/event_cubit.dart';
 
 class EventWidget extends StatefulWidget {
   const EventWidget({
@@ -19,6 +22,9 @@ class EventWidget extends StatefulWidget {
 class _EventWidgetState extends State<EventWidget> {
   @override
   Widget build(BuildContext context) {
+    bool isEventDateExpired =
+        widget.eventModel.selectedDay.isBefore(DateTime.now());
+
     return Padding(
       padding: const EdgeInsets.only(
         left: 8,
@@ -37,19 +43,68 @@ class _EventWidgetState extends State<EventWidget> {
         ),
         collapsedShape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
-          side: const BorderSide(
+          side: BorderSide(
             width: 1.2,
-            color: AppColors.accentColor,
+            color: isEventDateExpired ? Colors.red : AppColors.secondaryColor,
           ),
         ),
         tilePadding: const EdgeInsets.symmetric(
           vertical: 4.0,
           horizontal: 8.0,
         ),
-        leading: const Icon(
-          Icons.task_alt_outlined,
-          color: AppColors.redColor,
-        ),
+        leading: IconButton(
+            highlightColor: AppColors.greenColor.withOpacity(0.2),
+            icon: isEventDateExpired
+                ? const Icon(
+                    Icons.flag_outlined,
+                    color: Colors.red,
+                  )
+                : const Icon(
+                    Icons.task_alt_outlined,
+                    color: AppColors.secondaryColor,
+                  ),
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: const Text('Oznaczyć jako ukończone?'),
+                      titleTextStyle: TextStyles.textStyle2(20),
+                      elevation: 20,
+                      backgroundColor: AppColors.primaryColor,
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Text(
+                            'Nie',
+                            style: TextStyles.textStyle1(16),
+                          ),
+                        ),
+                        BlocProvider(
+                          create: (context) => getIt<EventCubit>(),
+                          child: BlocBuilder<EventCubit, EventState>(
+                            builder: (context, state) {
+                              return TextButton(
+                                onPressed: () {
+                                  context.read<EventCubit>().remove(
+                                        documentID: widget.eventModel.id,
+                                      );
+                                  Navigator.of(context).pop();
+                                },
+                                child: Text(
+                                  'Tak',
+                                  style: TextStyles.textStyle1(16),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    );
+                  });
+            }),
         title: Text(
           widget.eventModel.title,
           style: TextStyles.textStyle2(15),

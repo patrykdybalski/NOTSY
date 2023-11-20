@@ -9,7 +9,6 @@ import 'package:primary_school/features/home/pages/event_page/event_page/cubit/e
 import 'package:primary_school/features/home/pages/event_page/event_page/widgets/event_widget.dart';
 import 'package:primary_school/features/home/pages/event_page/screens/edit_event_screen/edit_event_screen.dart';
 
-
 class SlidableEventWidget extends StatelessWidget {
   const SlidableEventWidget({
     super.key,
@@ -31,7 +30,7 @@ class SlidableEventWidget extends StatelessWidget {
                 context: context,
                 builder: ((context) {
                   return AlertDialog(
-                    title: const Text('Oznaczyć jako ukończone?'),
+                    title: const Text('Usunąć wybraną pozycję?'),
                     titleTextStyle: TextStyles.textStyle2(20),
                     elevation: 20,
                     backgroundColor: AppColors.primaryColor,
@@ -46,7 +45,7 @@ class SlidableEventWidget extends StatelessWidget {
                         ),
                       ),
                       BlocProvider(
-                        create: (context) =>getIt<EventCubit>(),
+                        create: (context) => getIt<EventCubit>(),
                         child: BlocBuilder<EventCubit, EventState>(
                           builder: (context, state) {
                             return TextButton(
@@ -70,10 +69,10 @@ class SlidableEventWidget extends StatelessWidget {
               );
             },
             padding: const EdgeInsets.all(0),
-            label: 'Ukończone',
+            label: 'Usuń',
             icon: Icons.task_alt_outlined,
             backgroundColor: AppColors.primaryColor,
-            foregroundColor: AppColors.greenLogoColor,
+            foregroundColor: AppColors.redColor,
             spacing: 5,
           ),
           SlidableAction(

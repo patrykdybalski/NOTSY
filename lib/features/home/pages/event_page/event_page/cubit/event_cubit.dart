@@ -8,6 +8,7 @@ part 'event_state.dart';
 
 
 class EventCubit extends Cubit<EventState> {
+   bool isNoteAdded = false; // Pole przechowujące informację o dodanej notatce
   EventCubit(this._eventsRepository)
       : super(
           const EventState(),
