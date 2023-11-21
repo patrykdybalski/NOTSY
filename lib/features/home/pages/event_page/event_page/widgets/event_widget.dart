@@ -22,8 +22,8 @@ class EventWidget extends StatefulWidget {
 class _EventWidgetState extends State<EventWidget> {
   @override
   Widget build(BuildContext context) {
-    bool isEventDateExpired =
-        widget.eventModel.selectedDay.isBefore(DateTime.now());
+    bool isEventDateExpired = widget.eventModel.selectedDay
+        .isBefore(DateTime.now().subtract(const Duration(days: 1)));
 
     return Padding(
       padding: const EdgeInsets.only(
@@ -43,10 +43,9 @@ class _EventWidgetState extends State<EventWidget> {
         ),
         collapsedShape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
-          side: BorderSide(
-            width: 1.2,
-            color: isEventDateExpired ? Colors.red : AppColors.secondaryColor,
-          ),
+          side: isEventDateExpired
+              ? const BorderSide(width: 1.8, color: AppColors.redColor3)
+              : const BorderSide(width: 1.2, color: AppColors.redColor),
         ),
         tilePadding: const EdgeInsets.symmetric(
           vertical: 4.0,
@@ -55,23 +54,25 @@ class _EventWidgetState extends State<EventWidget> {
         leading: IconButton(
             highlightColor: AppColors.greenColor.withOpacity(0.2),
             icon: isEventDateExpired
-                ? const Icon(
-                    Icons.flag_outlined,
-                    color: Colors.red,
+                ? Text(
+                    'Minęło',
+                    style: TextStyles.textStyleRed(14),
                   )
                 : const Icon(
-                    Icons.task_alt_outlined,
-                    color: AppColors.secondaryColor,
+                    Icons.check_circle_outline_outlined,
+                    color: AppColors.redColor,
+                    size: 30,
                   ),
             onPressed: () {
               showDialog(
                   context: context,
                   builder: (context) {
                     return AlertDialog(
-                      title: const Text('Oznaczyć jako ukończone?'),
-                      titleTextStyle: TextStyles.textStyle2(20),
+                      title: const Text('Potwierdzasz jako ukończone?'),
+                      actionsAlignment: MainAxisAlignment.end,
+                      titleTextStyle: TextStyles.textStyle2(18),
                       elevation: 20,
-                      backgroundColor: AppColors.primaryColor,
+                      backgroundColor: AppColors.whiteColor,
                       actions: [
                         TextButton(
                           onPressed: () {

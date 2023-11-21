@@ -5,7 +5,7 @@ import 'package:primary_school/app/core/enums.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
 part 'note_state.dart';
- 
+
 class NoteCubit extends Cubit<NoteState> {
   NoteCubit(this._noteRepository)
       : super(const NoteState(

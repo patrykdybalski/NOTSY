@@ -68,6 +68,7 @@ class SlidableEventWidget extends StatelessWidget {
                 }),
               );
             },
+            borderRadius: BorderRadius.circular(16),
             padding: const EdgeInsets.all(0),
             label: 'Usuń',
             icon: Icons.task_alt_outlined,
@@ -84,6 +85,7 @@ class SlidableEventWidget extends StatelessWidget {
             backgroundColor: AppColors.primaryColor,
             foregroundColor: AppColors.secondaryColor,
             spacing: 5,
+            borderRadius: BorderRadius.circular(16),
           ),
         ],
       ),

@@ -20,7 +20,7 @@ class SignInOrCreateAccountButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.greenLogoColor,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(24.0),
         ),
         minimumSize: const Size(
           280,

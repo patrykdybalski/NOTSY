@@ -11,6 +11,7 @@ class AppColors {
   static const Color dayColor = Color(0xFF006633);
   static const Color redColor = Color(0xFFb06218);
   static const Color redColor2 = Color.fromARGB(255, 193, 64, 28);
+  static const Color redColor3 = Color.fromARGB(255, 175, 50, 15);
   static const Color whiteColor = Color.fromARGB(255, 238, 235, 235);
 
   static const Color selectedDayColor = Color(0xFF006633);

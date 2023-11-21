@@ -4,7 +4,6 @@ import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/features/home/pages/notes_page/screens/add_note_page/add_note_page.dart';
 import 'package:primary_school/features/home/pages/notes_page/screens/general_notes/general_notes.dart';
 
-
 class NotesPage extends StatefulWidget {
   const NotesPage({Key? key}) : super(key: key);
 
@@ -37,7 +36,7 @@ class _NotesPageState extends State<NotesPage>
         child: const Icon(
           Icons.add,
           size: 30,
-          color: AppColors.whiteColor,
+          color: Color.fromARGB(255, 239, 232, 232),
         ),
       ),
       body: const GeneralNotes(),

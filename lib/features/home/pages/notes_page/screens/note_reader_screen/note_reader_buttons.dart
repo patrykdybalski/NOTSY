@@ -4,8 +4,8 @@ import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
-import 'package:primary_school/features/home/pages/notes_page/notes_page/cubit/note_cubit.dart';
 import 'package:primary_school/features/home/pages/notes_page/screens/edit_note_screen/edit_note_screen.dart';
+import 'package:primary_school/features/home/pages/notes_page/screens/general_notes/cubit/note_cubit.dart';
 
 class NoteReaderButtons {
   final BuildContext context;
