@@ -32,12 +32,12 @@ class _EventPageState extends State<EventPage> {
         titleTextStyle: TextStyles.textStyle2(24),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: AppColors.redColor,
+        backgroundColor: AppColors.greenLogoColor,
         onPressed: () {
           _showDialog();
         },
         child: const Icon(
-          Icons.add,
+          Icons.edit_calendar_outlined,
           size: 30,
           color: Colors.white,
         ),

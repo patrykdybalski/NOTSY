@@ -42,7 +42,7 @@ class _UserPageState extends State<UserPage> {
             ),
             ListTile(
               onTap: () {},
-              leading: const Text('Edytuj profil'),
+              leading: const Text('Ukończone zadania'),
               leadingAndTrailingTextStyle: TextStyles.textStyle1(16),
               trailing: const Icon(Icons.navigate_next_outlined),
             ),

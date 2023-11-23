@@ -42,4 +42,14 @@ class TextStyles {
       fontWeight: FontWeight.w800,
     );
   }
+
+  static textStyleWhite1(
+    double size,
+  ) {
+    return GoogleFonts.domine(
+      color: Colors.white,
+      fontSize: size,
+      fontWeight: FontWeight.w800,
+    );
+  }
 }

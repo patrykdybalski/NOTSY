@@ -45,7 +45,7 @@ class _EventWidgetState extends State<EventWidget> {
           borderRadius: BorderRadius.circular(16),
           side: isEventDateExpired
               ? const BorderSide(width: 1.8, color: AppColors.redColor3)
-              : const BorderSide(width: 1.2, color: AppColors.redColor),
+              : const BorderSide(width: 1.4, color: AppColors.greenLoginColor),
         ),
         tilePadding: const EdgeInsets.symmetric(
           vertical: 4.0,
@@ -54,13 +54,14 @@ class _EventWidgetState extends State<EventWidget> {
         leading: IconButton(
             highlightColor: AppColors.greenColor.withOpacity(0.2),
             icon: isEventDateExpired
-                ? Text(
-                    'Minęło',
-                    style: TextStyles.textStyleRed(14),
+                ? const Icon(
+                    Icons.indeterminate_check_box_outlined,
+                    color: AppColors.redColor3,
+                    size: 30,
                   )
                 : const Icon(
-                    Icons.check_circle_outline_outlined,
-                    color: AppColors.redColor,
+                    Icons.check_box_outline_blank_outlined,
+                    color: AppColors.greenLoginColor,
                     size: 30,
                   ),
             onPressed: () {

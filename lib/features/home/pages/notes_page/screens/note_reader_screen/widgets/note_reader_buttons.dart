@@ -36,7 +36,7 @@ class NoteReaderButtons {
       child: const Icon(
         Icons.chevron_left_outlined,
         color: AppColors.redColor2,
-        size: 30,
+        size: 38,
       ),
     );
   }
@@ -90,7 +90,7 @@ class NoteReaderButtons {
       child: const Icon(
         Icons.delete_forever_outlined,
         color: AppColors.secondaryColor,
-        size: 25,
+        size: 30,
       ),
     );
   }
@@ -111,7 +111,7 @@ class NoteReaderButtons {
       child: const Icon(
         Icons.edit_outlined,
         color: AppColors.greenColor,
-        size: 25,
+        size: 30,
       ),
     );
   }

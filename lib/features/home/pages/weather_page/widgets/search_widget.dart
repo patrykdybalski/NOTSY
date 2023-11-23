@@ -59,7 +59,7 @@ class SearchWidget extends StatelessWidget {
                     .getWeatherModel(city: _controller.text);
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.redColor,
+                backgroundColor: AppColors.greenLogoColor,
                 elevation: 1.5,
                 shadowColor: AppColors.primaryColor,
                 shape: RoundedRectangleBorder(
@@ -70,7 +70,7 @@ class SearchWidget extends StatelessWidget {
               ),
               child: Text(
                 'Sprawdź',
-                style: TextStyles.textStyleWhite(13),
+                style: TextStyles.textStyleWhite1(13),
               )),
         ],
       ),

@@ -39,13 +39,13 @@ class AddPageButtons {
       onPressed: () {
         Navigator.of(context).pop();
       },
-      backgroundColor: AppColors.primaryColor,
+      backgroundColor: selectedColor,
       mini: true,
       heroTag: null,
       child: const Icon(
         Icons.chevron_left_outlined,
         color: AppColors.redColor2,
-        size: 30,
+        size: 38,
       ),
     );
   }
@@ -55,12 +55,12 @@ class AddPageButtons {
       onPressed: () {
         return colorPickerDialog(context);
       },
-      backgroundColor: AppColors.primaryColor,
+      backgroundColor: selectedColor,
       mini: true,
       child: const Icon(
         Icons.color_lens_outlined,
         color: AppColors.selectedDayColor,
-        size: 25,
+        size: 30,
       ),
     );
   }
@@ -79,13 +79,13 @@ class AddPageButtons {
             );
         context.read<NoteCubit>().start();
       },
-      backgroundColor: AppColors.primaryColor,
+      backgroundColor: selectedColor,
       heroTag: null,
       mini: true,
       child: const Icon(
         Icons.check_outlined,
         color: AppColors.greenColor,
-        size: 25,
+        size: 30,
       ),
     );
   }

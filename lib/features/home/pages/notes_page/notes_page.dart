@@ -34,9 +34,9 @@ class _NotesPageState extends State<NotesPage>
           ));
         },
         child: const Icon(
-          Icons.add,
+          Icons.note_add_outlined,
           size: 30,
-          color: Color.fromARGB(255, 239, 232, 232),
+          color: Colors.white,
         ),
       ),
       body: const GeneralNotes(),

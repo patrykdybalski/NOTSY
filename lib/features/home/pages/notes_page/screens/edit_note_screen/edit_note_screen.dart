@@ -29,7 +29,7 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<EditNoteCubit>(),
-      child: BlocListener<EditNoteCubit, EditNoteState>(
+      child: BlocConsumer<EditNoteCubit, EditNoteState>(
         listener: (context, state) {
           if (state.saved) {
             Navigator.of(context).popUntil((route) => route.isFirst);
@@ -43,37 +43,35 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
             ));
           }
         },
-        child: BlocBuilder<EditNoteCubit, EditNoteState>(
-          builder: (context, state) {
-            return Scaffold(
-              backgroundColor: AppColors.primaryColor,
-              floatingActionButton: EditPageButtons(
-                      context: context,
-                      title: _title,
-                      subtitle: _subtitle,
-                      createdDate: widget.noteModel.createdDate,
-                      updatedDate: updatedDate,
-                      selectedColor: widget.noteModel.color,
-                      id: widget.id)
-                  .buildFabButtons(),
-              floatingActionButtonLocation:
-                  FloatingActionButtonLocation.miniCenterFloat,
-              body: _AddNotePageBody(
-                noteModel: widget.noteModel,
-                onTitleChanged: (newValue) {
-                  setState(() {
-                    _title = newValue;
-                  });
-                },
-                onSubtitleChange: (newValue) {
-                  setState(() {
-                    _subtitle = newValue;
-                  });
-                },
-              ),
-            );
-          },
-        ),
+        builder: (context, state) {
+          return Scaffold(
+            backgroundColor: AppColors.primaryColor,
+            floatingActionButton: EditPageButtons(
+                    context: context,
+                    title: _title,
+                    subtitle: _subtitle,
+                    createdDate: widget.noteModel.createdDate,
+                    updatedDate: updatedDate,
+                    selectedColor: widget.noteModel.color,
+                    id: widget.id)
+                .buildFabButtons(),
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.miniCenterFloat,
+            body: _AddNotePageBody(
+              noteModel: widget.noteModel,
+              onTitleChanged: (newValue) {
+                setState(() {
+                  _title = newValue;
+                });
+              },
+              onSubtitleChange: (newValue) {
+                setState(() {
+                  _subtitle = newValue;
+                });
+              },
+            ),
+          );
+        },
       ),
     );
   }
