@@ -5,7 +5,7 @@ import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
-import 'package:primary_school/features/home/pages/notes_page/screens/note_reader_screen/note_reader_buttons.dart';
+import 'package:primary_school/features/home/pages/notes_page/screens/note_reader_screen/widgets/note_reader_buttons.dart';
 
 import 'cubit/reader_screen_cubit.dart';
 
@@ -22,42 +22,43 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<ReaderScreenCubit>(),
-      child: BlocListener<ReaderScreenCubit, ReaderScreenState>(
-        listener: (context, state) {
-          if (state.delete) {
-            Navigator.of(context).popUntil((route) => route.isFirst);
-          }
-          if (state.errorMessage.isNotEmpty) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(
-                  state.errorMessage,
-                ),
-                backgroundColor: AppColors.redColor,
+      child: BlocConsumer<ReaderScreenCubit, ReaderScreenState>(
+         listener: (context, state) {
+        if (state.delete) {
+          Navigator.of(context).popUntil(
+            (route) => route.isFirst,
+          );
+        }
+        if (state.errorMessage.isNotEmpty) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                state.errorMessage,
               ),
-            );
-          }
+              backgroundColor: AppColors.redColor,
+            ),
+          );
+        }
+      },
+        builder: (context, state) {
+          
+          return Scaffold(
+            backgroundColor: widget.noteModel.color,
+            floatingActionButton: NoteReaderButtons(
+                    context: context, noteModel: widget.noteModel)
+                .buildFabButtons(context),
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.miniCenterFloat,
+            body: NoteReaderScreenBody(
+              title: widget.noteModel.title,
+              subtitle: widget.noteModel.subtitle,
+              createdDate: widget.noteModel.createdDate,
+              updatedDate: widget.noteModel.updatedDate,
+              color: widget.noteModel.color,
+              id: widget.noteModel.id,
+            ),
+          );
         },
-        child: BlocBuilder<ReaderScreenCubit, ReaderScreenState>(
-          builder: (context, state) {
-            return Scaffold(
-              backgroundColor: widget.noteModel.color,
-              floatingActionButton: NoteReaderButtons(
-                      context: context, noteModel: widget.noteModel)
-                  .buildFabButtons(context),
-              floatingActionButtonLocation:
-                  FloatingActionButtonLocation.miniCenterFloat,
-              body: NoteReaderScreenBody(
-                title: widget.noteModel.title,
-                subtitle: widget.noteModel.subtitle,
-                createdDate: widget.noteModel.createdDate,
-                updatedDate: widget.noteModel.updatedDate,
-                color: widget.noteModel.color,
-                id: widget.noteModel.id,
-              ),
-            );
-          },
-        ),
       ),
     );
   }
