@@ -30,7 +30,7 @@ class NoteReaderButtons {
       onPressed: () {
         Navigator.of(context).pop();
       },
-      backgroundColor: AppColors.primaryColor,
+      backgroundColor: noteModel.color,
       mini: true,
       heroTag: null,
       child: const Icon(
@@ -48,7 +48,7 @@ class NoteReaderButtons {
             context: context,
             builder: ((context) {
               return BlocProvider(
-                create: (context) =>getIt<NoteCubit>(),
+                create: (context) => getIt<NoteCubit>(),
                 child: BlocBuilder<NoteCubit, NoteState>(
                   builder: (context, state) {
                     return AlertDialog(
@@ -84,7 +84,7 @@ class NoteReaderButtons {
               );
             }));
       },
-      backgroundColor: AppColors.primaryColor,
+      backgroundColor: noteModel.color,
       mini: true,
       heroTag: null,
       child: const Icon(
@@ -105,7 +105,7 @@ class NoteReaderButtons {
           ),
         ));
       },
-      backgroundColor: AppColors.primaryColor,
+      backgroundColor: noteModel.color,
       mini: true,
       heroTag: null,
       child: const Icon(

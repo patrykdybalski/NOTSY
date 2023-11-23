@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/core/enums.dart';
 import 'package:primary_school/app/injection_container.dart';
-import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/features/home/pages/notes_page/screens/general_notes/cubit/note_cubit.dart';
 import 'package:primary_school/features/home/pages/notes_page/screens/general_notes/widgets/note_item.dart';
 
@@ -16,9 +15,8 @@ class GeneralNotes extends StatefulWidget {
 class _GeneralNotesState extends State<GeneralNotes> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.primaryColor,
-      body: BlocProvider(
+    
+      return BlocProvider(
         create: (context) => getIt<NoteCubit>()..start(),
         child: BlocBuilder<NoteCubit, NoteState>(
           builder: (context, state) {
@@ -63,7 +61,7 @@ class _GeneralNotesState extends State<GeneralNotes> {
             }
           },
         ),
-      ),
+      
     );
   }
 }

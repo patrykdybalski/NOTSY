@@ -18,7 +18,7 @@ class _UserPageState extends State<UserPage> {
       backgroundColor: AppColors.primaryColor,
       appBar: AppBar(
         title: const Text('Mój profil'),
-        titleTextStyle: TextStyles.textStyleRed(24),
+        titleTextStyle: TextStyles.textStyle2(24),
         centerTitle: true,
         backgroundColor: AppColors.primaryColor,
       ),

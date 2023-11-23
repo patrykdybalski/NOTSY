@@ -23,30 +23,30 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
     return BlocProvider(
       create: (context) => getIt<ReaderScreenCubit>(),
       child: BlocConsumer<ReaderScreenCubit, ReaderScreenState>(
-         listener: (context, state) {
-        if (state.delete) {
-          Navigator.of(context).popUntil(
-            (route) => route.isFirst,
-          );
-        }
-        if (state.errorMessage.isNotEmpty) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                state.errorMessage,
+        listener: (context, state) {
+          if (state.delete) {
+            Navigator.of(context).popUntil(
+              (route) => route.isFirst,
+            );
+          }
+          if (state.errorMessage.isNotEmpty) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  state.errorMessage,
+                ),
+                backgroundColor: AppColors.redColor,
               ),
-              backgroundColor: AppColors.redColor,
-            ),
-          );
-        }
-      },
+            );
+          }
+        },
         builder: (context, state) {
-          
           return Scaffold(
             backgroundColor: widget.noteModel.color,
             floatingActionButton: NoteReaderButtons(
-                    context: context, noteModel: widget.noteModel)
-                .buildFabButtons(context),
+              context: context,
+              noteModel: widget.noteModel,
+            ).buildFabButtons(context),
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.miniCenterFloat,
             body: NoteReaderScreenBody(
