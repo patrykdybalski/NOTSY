@@ -7,14 +7,16 @@ part 'weather_cubit.freezed.dart';
 part 'weather_state.dart';
 
 class WeatherCubit extends Cubit<WeatherState> {
-  WeatherCubit(this._weatherRepository) : super( WeatherState());
+  WeatherCubit(this._weatherRepository) : super(WeatherState());
 
   final WeatherRepository _weatherRepository;
 
   Future<void> getWeatherModel({
     required String city,
   }) async {
-    emit( WeatherState(status: Status.loading));
+    emit(WeatherState(
+      status: Status.loading,
+    ));
     try {
       final weatherModel = await _weatherRepository.getWeatherModel(city: city);
       emit(
