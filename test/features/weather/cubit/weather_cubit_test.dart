@@ -18,27 +18,50 @@ void main() {
   });
 
   group('getWeatherModel', () {
-    setUp(() {
-      when(() => repository.getWeatherModel(city: 'Warszawa')).thenAnswer(
-          (_) async => WeatherModel(Location('Warszawa', 'Poland'),
-              Current(10, Condition('Sunny'), 10, 'N', 1000, 10, 10, 10, 10)));
-    });
-
-    blocTest<WeatherCubit, WeatherState>(
-      'emits Status.loading then Status.succes with weatherModel(city)',
-      build: () => sut,
-      act: (cubit) => cubit.getWeatherModel(city: 'Warszawa'),
-      expect: (() => {
-            WeatherState(status: Status.loading),
-            WeatherState(
-              status: Status.success,
-              model: WeatherModel(
+    group('success', () {
+      setUp(() {
+        when(() => repository.getWeatherModel(city: 'Warszawa')).thenAnswer(
+            (_) async => WeatherModel(
                 Location('Warszawa', 'Poland'),
-                Current(10, Condition('Sunny'), 10, 'N', 1000, 10, 10, 10, 10),
+                Current(
+                    10, Condition('Sunny'), 10, 'N', 1000, 10, 10, 10, 10)));
+      });
+
+      blocTest<WeatherCubit, WeatherState>(
+        'emits Status.loading then Status.success with weatherModel(city)',
+        build: () => sut,
+        act: (cubit) => cubit.getWeatherModel(city: 'Warszawa'),
+        expect: (() => {
+              WeatherState(status: Status.loading),
+              WeatherState(
+                status: Status.success,
+                model: WeatherModel(
+                  Location('Warszawa', 'Poland'),
+                  Current(
+                      10, Condition('Sunny'), 10, 'N', 1000, 10, 10, 10, 10),
+                ),
               ),
-            ),
-          }),
-    );
+            }),
+      );
+    });
+    group('failure', () {
+      setUp(() {
+        when(() => repository.getWeatherModel(city: 'Warszawa'))
+            .thenThrow(Exception('test-exception-error'));
+      });
+
+      blocTest<WeatherCubit, WeatherState>(
+        'emits Status.loading then Status.error with errorMessage',
+        build: () => sut,
+        act: (cubit) => cubit.getWeatherModel(city: 'Warszawa'),
+        expect: (() => {
+              WeatherState(status: Status.loading),
+              WeatherState(
+                  status: Status.error,
+                  errorMessage: 'Exception: test-exception-error'),
+            }),
+      );
+    });
   });
   //1
   //2
