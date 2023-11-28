@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/constans/colors.dart';
+import 'package:primary_school/domain/models/note_model/note_model.dart';
+
 import 'package:primary_school/features/home/pages/notes_page/screens/edit_note_screen/cubit/edit_note_cubit.dart';
 
 class EditPageButtons {
@@ -11,6 +13,7 @@ class EditPageButtons {
   final DateTime? updatedDate;
   final Color selectedColor;
   final String id;
+  final NoteModel noteModel;
 
   EditPageButtons({
     required this.context,
@@ -20,6 +23,7 @@ class EditPageButtons {
     required this.updatedDate,
     required this.selectedColor,
     required this.id,
+    required this.noteModel,
   });
 
   Row buildFabButtons() {
@@ -51,11 +55,11 @@ class EditPageButtons {
   FloatingActionButton buildSaveButton() {
     return FloatingActionButton(
       onPressed: () {
-        final newTitle = title ?? title;
-        final newSubtitle = subtitle ?? subtitle;
+        final newTitle = title ?? noteModel.title;
+        final newSubtitle = subtitle ?? noteModel.subtitle;
         context.read<EditNoteCubit>().edit(
-              newTitle!,
-              newSubtitle!,
+              newTitle,
+              newSubtitle,
               createdDate,
               updatedDate!,
               id,

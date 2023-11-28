@@ -25,6 +25,13 @@ String? _subtitle;
 final DateTime updatedDate = DateTime.now();
 
 class _EditNoteScreenState extends State<EditNoteScreen> {
+  void startNewNote() {
+    setState(() {
+      _title = null;
+      _subtitle = null;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -33,6 +40,7 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
         listener: (context, state) {
           if (state.saved) {
             Navigator.of(context).popUntil((route) => route.isFirst);
+            startNewNote(); // Zerowanie pól po zapisaniu
           }
           if (state.errorMessage.isNotEmpty) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -53,7 +61,8 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
                     createdDate: widget.noteModel.createdDate,
                     updatedDate: updatedDate,
                     selectedColor: widget.noteModel.color,
-                    id: widget.id)
+                    id: widget.id,
+                    noteModel: widget.noteModel)
                 .buildFabButtons(),
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.miniCenterFloat,

@@ -7,8 +7,6 @@ import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/features/home/pages/notes_page/screens/add_note_page/widgets/add_page_buttons.dart';
 import 'package:primary_school/features/home/pages/notes_page/screens/add_note_page/cubit/add_note_cubit.dart';
 
-
-
 class AddNotePage extends StatefulWidget {
   const AddNotePage({super.key});
 
@@ -41,7 +39,7 @@ class _AddNotePageState extends State<AddNotePage> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<AddNoteCubit>(),
-      child: BlocListener<AddNoteCubit, AddNoteState>(
+      child: BlocConsumer<AddNoteCubit, AddNoteState>(
         listener: (context, state) {
           if (state.saved) {
             startNewNote(); // Zerowanie pól po zapisaniu
@@ -57,37 +55,35 @@ class _AddNotePageState extends State<AddNotePage> {
             ));
           }
         },
-        child: BlocBuilder<AddNoteCubit, AddNoteState>(
-          builder: (context, state) {
-            return Scaffold(
-              backgroundColor: AppColors.primaryColor,
-              floatingActionButton: AddPageButtons(
-                context: context,
-                title: _title,
-                subtitle: _subtitle,
-                createdDate: _createdDate,
-                updatedDate: _updatedDate,
-                selectedColor: _selectedColor,
-                colorPickerDialog: colorPickerDialog,
-              ).buildFabButtons(context),
-              floatingActionButtonLocation:
-                  FloatingActionButtonLocation.miniCenterFloat,
-              body: _AddNotePageBody(
-                onTitleChanged: (newValue) {
-                  setState(() {
-                    _title = newValue;
-                  });
-                },
-                onSubtitleChange: (newValue) {
-                  setState(() {
-                    _subtitle = newValue;
-                  });
-                },
-                selectedColor: _selectedColor,
-              ),
-            );
-          },
-        ),
+        builder: (context, state) {
+          return Scaffold(
+            backgroundColor: AppColors.primaryColor,
+            floatingActionButton: AddPageButtons(
+              context: context,
+              title: _title,
+              subtitle: _subtitle,
+              createdDate: _createdDate,
+              updatedDate: _updatedDate,
+              selectedColor: _selectedColor,
+              colorPickerDialog: colorPickerDialog,
+            ).buildFabButtons(context),
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.miniCenterFloat,
+            body: _AddNotePageBody(
+              onTitleChanged: (newValue) {
+                setState(() {
+                  _title = newValue;
+                });
+              },
+              onSubtitleChange: (newValue) {
+                setState(() {
+                  _subtitle = newValue;
+                });
+              },
+              selectedColor: _selectedColor,
+            ),
+          );
+        },
       ),
     );
   }

@@ -24,15 +24,15 @@ class NoteRemoteDataSource {
           return querySnapshot.docs.map(
             (doc) {
               return NoteModel(
-                title: doc['title'],
-                subtitle: doc['subtitle'],
-                createdDate: (doc['createdDate'] as Timestamp).toDate(),
-                updatedDate: (doc['updatedDate'] as Timestamp).toDate(),
-                color: Color(int.parse(
+                doc['title'],
+                 doc['subtitle'],
+                 (doc['createdDate'] as Timestamp).toDate(),
+                 (doc['updatedDate'] as Timestamp).toDate(),
+                 Color(int.parse(
                   doc['color'] ??
                       '0xFF000000', // Parsuj string jako int i konwertuj na Color
                 )),
-                id: doc.id,
+              doc.id,
               );
             },
           ).toList();
