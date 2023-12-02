@@ -1,10 +1,11 @@
 part of 'auth_cubit.dart';
 
-class AuthState {
-  AuthState({
-    this.errorMessage = '',
-    this.saved = false,
-  });
-  final String errorMessage;
-  final bool saved;
+@freezed
+class AuthState with _$AuthState {
+  factory AuthState({
+   @Default('')   String errorMessage,
+  
+   @Default(false)  bool saved,
+  }) = _AuthState;
 }
+

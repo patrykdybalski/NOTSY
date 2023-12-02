@@ -4,19 +4,15 @@ import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/domain/models/weather_model/weather_model.dart';
 import 'package:weather_icons/weather_icons.dart';
 
-class WeatherInfoWidget
- extends StatefulWidget {
-  const WeatherInfoWidget
-  ({required this.weatherModel, super.key});
+class WeatherInfoWidget extends StatefulWidget {
+  const WeatherInfoWidget({required this.weatherModel, super.key});
   final WeatherModel? weatherModel;
 
   @override
-  State<WeatherInfoWidget
-  > createState() => _FirstTabState();
+  State<WeatherInfoWidget> createState() => _FirstTabState();
 }
 
-class _FirstTabState extends State<WeatherInfoWidget
-> {
+class _FirstTabState extends State<WeatherInfoWidget> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -65,19 +61,16 @@ class _FirstTabState extends State<WeatherInfoWidget
                         ),
                         width: 150,
                         height: 115,
-                        child: Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: Text(
-                                  '${widget.weatherModel?.current.condition.text}',
-                                  style: TextStyles.textStyleWhite(19),
-                                ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Text(
+                                '${widget.weatherModel?.current.condition.text}',
+                                style: TextStyles.textStyleWhite(19),
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
                     ),

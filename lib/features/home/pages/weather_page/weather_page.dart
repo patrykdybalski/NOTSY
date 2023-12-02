@@ -8,7 +8,6 @@ import 'package:primary_school/features/home/pages/weather_page/cubit/weather_cu
 import 'package:primary_school/features/home/pages/weather_page/widgets/search_widget.dart';
 import 'package:primary_school/features/home/pages/weather_page/widgets/weather_info_widget.dart';
 
-
 class WeatherPage extends StatelessWidget {
   const WeatherPage({super.key});
 
@@ -19,11 +18,14 @@ class WeatherPage extends StatelessWidget {
       child: BlocConsumer<WeatherCubit, WeatherState>(
         listener: (context, state) {
           if (state.status == Status.error) {
-            final errorMessage = state.errorMessage ?? 'Unknown error';
-            ScaffoldMessenger.of(context).showSnackBar(
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(
               SnackBar(
-                content: Text(errorMessage),
+                content: Text(state.errorMessage ?? 'Unknown error'),
                 backgroundColor: AppColors.redColor,
+                showCloseIcon: true,
+                duration: const Duration(seconds: 3),
               ),
             );
           }
@@ -57,6 +59,3 @@ class WeatherPage extends StatelessWidget {
     );
   }
 }
-
-
-
