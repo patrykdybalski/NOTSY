@@ -1,11 +1,14 @@
 part of 'reader_screen_cubit.dart';
 
-@immutable
-class ReaderScreenState {
-  const ReaderScreenState({
-    this.delete = false,
-    this.errorMessage = '',
-  });
-  final bool delete;
-  final String errorMessage;
+@freezed
+class ReaderScreenState with _$ReaderScreenState {
+  factory ReaderScreenState({
+     @Default(false)  bool delete,
+   @Default('')   String errorMessage,
+  
+  
+  }) = _ReaderScreenState;
 }
+
+
+
