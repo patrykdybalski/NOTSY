@@ -1,12 +1,13 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:primary_school/domain/repositories/event/events_repository.dart';
 part 'add_event_state.dart';
+part 'add_event_cubit.freezed.dart';
 
 class AddEventCubit extends Cubit<AddEventState> {
   AddEventCubit(this._eventsRepository)
       : super(
-          const AddEventState(),
+           AddEventState(),
         );
   final EventsRepository _eventsRepository;
 
@@ -25,7 +26,7 @@ class AddEventCubit extends Cubit<AddEventState> {
       );
 
       emit(
-        const AddEventState(saved: true),
+         AddEventState(saved: true),
       );
     } catch (error) {
       emit(
