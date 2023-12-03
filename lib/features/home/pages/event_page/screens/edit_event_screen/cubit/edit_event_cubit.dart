@@ -1,6 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:primary_school/domain/repositories/event/events_repository.dart';
 part 'edit_event_state.dart';
+part 'edit_event_cubit.freezed.dart';
 
 
 class EditEventCubit extends Cubit<EditEventState> {
