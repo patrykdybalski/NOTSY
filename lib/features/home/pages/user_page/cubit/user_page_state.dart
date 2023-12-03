@@ -1,11 +1,10 @@
 part of 'user_page_cubit.dart';
 
-@immutable
-class UserPageState {
-  const UserPageState({
-    this.status = Status.initial,
-    this.errorMessage = '',
-  });
-  final Status status;
-  final String errorMessage;
+@freezed
+class UserPageState with _$UserPageState {
+  factory UserPageState({
+    
+    @Default(Status.initial) Status status,
+    @Default('') String errorMessage,
+  }) = _UserPageState;
 }
