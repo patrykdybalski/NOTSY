@@ -15,53 +15,51 @@ class GeneralNotes extends StatefulWidget {
 class _GeneralNotesState extends State<GeneralNotes> {
   @override
   Widget build(BuildContext context) {
-    
-      return BlocProvider(
-        create: (context) => getIt<NoteCubit>()..start(),
-        child: BlocBuilder<NoteCubit, NoteState>(
-          builder: (context, state) {
-            final noteModels = state.noteItems;
-            switch (state.status) {
-              case Status.initial:
-                return const Center(
-                  child: Text('Initial state'),
-                );
-              case Status.loading:
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              case Status.success:
-                return GridView(
-                  reverse: false,
-                  padding: const EdgeInsets.all(10),
-                  scrollDirection: Axis.vertical,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 15,
-                    crossAxisSpacing: 15,
-                    childAspectRatio: 0.8,
-                  ),
-                  children: [
-                    for (final noteModel in noteModels) ...[
-                      NoteItem(
-                        noteModel: noteModel,
-                      ),
-                    ],
-                  ],
-                );
-              case Status.error:
-                return Center(
-                  child: Text(
-                    state.errorMessage ?? 'Unknown error',
-                    style: const TextStyle(
-                      color: Colors.red,
+    return BlocProvider(
+      create: (context) => getIt<NoteCubit>()..start(),
+      child: BlocBuilder<NoteCubit, NoteState>(
+        builder: (context, state) {
+          final noteModels = state.noteItems;
+          switch (state.status) {
+            case Status.initial:
+              return const Center(
+                child: Text('Initial state'),
+              );
+            case Status.loading:
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            case Status.success:
+              return GridView(
+                reverse: false,
+                padding: const EdgeInsets.all(10),
+                scrollDirection: Axis.vertical,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 15,
+                  crossAxisSpacing: 15,
+                  childAspectRatio: 0.8,
+                ),
+                children: [
+                  for (final noteModel in noteModels) ...[
+                    NoteItem(
+                      noteModel: noteModel,
                     ),
+                  ],
+                ],
+              );
+            case Status.error:
+              return Center(
+                child: Text(
+                  state.errorMessage,
+                  style: const TextStyle(
+                    color: Colors.red,
                   ),
-                );
-            }
-          },
-        ),
-      
+                ),
+              );
+          }
+        },
+      ),
     );
   }
 }

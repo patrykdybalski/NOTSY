@@ -1,14 +1,15 @@
 import 'dart:async';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:primary_school/app/core/enums.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
 import 'package:primary_school/domain/repositories/note/note_repository.dart';
 part 'note_state.dart';
+part 'note_cubit.freezed.dart';
 
 class NoteCubit extends Cubit<NoteState> {
   NoteCubit(this._noteRepository)
-      : super(const NoteState(
+      : super( NoteState(
           noteItems: [],
           status: Status.initial,
           errorMessage: '',
@@ -18,7 +19,7 @@ class NoteCubit extends Cubit<NoteState> {
 
   Future<void> start() async {
     emit(
-      const NoteState(
+       NoteState(
         status: Status.loading,
       ),
     );
@@ -43,7 +44,7 @@ class NoteCubit extends Cubit<NoteState> {
       await _noteRepository.delete(
         id: id,
       );
-      emit(const NoteState(
+      emit( NoteState(
         status: Status.success,
       ));
     } catch (error) {
