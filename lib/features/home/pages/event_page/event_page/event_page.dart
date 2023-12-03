@@ -78,7 +78,7 @@ class _EventPageState extends State<EventPage> {
               case Status.error:
                 return Center(
                   child: Text(
-                    state.errorMessage ?? 'Unknown error',
+                    state.errorMessage ,
                     style: const TextStyle(
                       color: Colors.red,
                     ),

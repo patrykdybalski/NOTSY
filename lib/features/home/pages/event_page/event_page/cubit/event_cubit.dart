@@ -1,17 +1,18 @@
 import 'dart:async';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:primary_school/app/core/enums.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
 import 'package:primary_school/domain/repositories/event/events_repository.dart';
 part 'event_state.dart';
+part 'event_cubit.freezed.dart';
 
 
 class EventCubit extends Cubit<EventState> {
    bool isNoteAdded = false; // Pole przechowujące informację o dodanej notatce
   EventCubit(this._eventsRepository)
       : super(
-          const EventState(),
+           EventState(),
         );
   final EventsRepository _eventsRepository;
 
@@ -19,7 +20,7 @@ class EventCubit extends Cubit<EventState> {
 
   Future<void> start() async {
     emit(
-      const EventState(
+       EventState(
         status: Status.loading,
       ),
     );
