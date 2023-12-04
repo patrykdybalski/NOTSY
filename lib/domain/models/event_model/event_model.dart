@@ -1,19 +1,20 @@
 import 'package:intl/intl.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+part 'event_model.freezed.dart';
 
-class EventModel {
-  EventModel({
-    required this.title,
-    required this.subtitle,
-    required this.selectedDay,
-    required this.selectedTime,
-    required this.id,
-  });
-  final String title;
-  final String subtitle;
-  final DateTime selectedDay;
-  final DateTime selectedTime;
-  final String id;
-
+@freezed
+class EventModel with _$EventModel {
+  const EventModel._();
+  factory EventModel(
+     { required String title,
+      required String subtitle,
+      required DateTime selectedDay,
+  required DateTime selectedTime,
+  required String id,
+    }
+    
+  ) = _EventModel;
+  
   String selectedDayFormatted() {
     return DateFormat.MMMMd().format(selectedDay);
   }
@@ -30,12 +31,10 @@ class EventModel {
     return DateFormat.Hm().format(selectedTime);
   }
 
-  List<EventModel> eventLoader(DateTime day) {
-    return eventLoader(day);
+ 
   }
 
-  List<EventModel> eventLoaderr(DateTime day) {
-    final List<EventModel> events = [];
-    return events.where((event) => event.selectedDay == day).toList();
-  }
-}
+ 
+
+
+
