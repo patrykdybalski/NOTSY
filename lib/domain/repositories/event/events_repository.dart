@@ -1,8 +1,6 @@
 import 'package:primary_school/domain/models/event_model/event_model.dart';
 import '../../../data/remote_data_sources_firebase/event_remote_data_source.dart';
 
-
-
 class EventsRepository {
   EventsRepository(this._eventRemoteDataSource);
 
