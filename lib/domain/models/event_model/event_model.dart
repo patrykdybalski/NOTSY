@@ -5,16 +5,14 @@ part 'event_model.freezed.dart';
 @freezed
 class EventModel with _$EventModel {
   const EventModel._();
-  factory EventModel(
-     { required String title,
-      required String subtitle,
-      required DateTime selectedDay,
-  required DateTime selectedTime,
-  required String id,
-    }
-    
-  ) = _EventModel;
-  
+  factory EventModel({
+    required String title,
+    required String subtitle,
+    required DateTime selectedDay,
+    required DateTime selectedTime,
+    required String id,
+  }) = _EventModel;
+
   String selectedDayFormatted() {
     return DateFormat.MMMMd().format(selectedDay);
   }
@@ -30,11 +28,4 @@ class EventModel with _$EventModel {
   String selectedTimeFormatted() {
     return DateFormat.Hm().format(selectedTime);
   }
-
- 
-  }
-
- 
-
-
-
+}
