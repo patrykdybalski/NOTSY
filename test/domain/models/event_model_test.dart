@@ -2,7 +2,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
 
 void main() {
-  test('should selectedDayFormatted() return date with correct format ', () {
+  test('should selectedDayFormatted() return date/time with correct format ',
+      () {
     final model = EventModel(
       title: 'Task',
       subtitle: 'Task description',

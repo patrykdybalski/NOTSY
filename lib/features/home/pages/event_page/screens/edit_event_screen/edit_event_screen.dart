@@ -5,12 +5,9 @@ import 'package:intl/intl.dart';
 import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
-import 'package:primary_school/features/home/pages/event_page/screens/edit_event_screen/widgets/date_button/date_button_widget.dart';
-import 'package:primary_school/features/home/pages/event_page/screens/edit_event_screen/widgets/subtitle_widget/subtitle_widget.dart';
-import 'package:primary_school/features/home/pages/event_page/screens/edit_event_screen/widgets/time_button/time_button_widget.dart';
-
+import 'package:primary_school/features/home/pages/event_page/screens/edit_event_screen/widgets/content_dialog/content_dialog.dart';
+import 'package:primary_school/features/home/pages/event_page/screens/edit_event_screen/widgets/save_edit_button/save_edit_button.dart';
 import 'cubit/edit_event_cubit.dart';
-import 'widgets/title_widget/title_widget.dart';
 
 class EditEventScreen extends StatefulWidget {
   const EditEventScreen({
@@ -61,7 +58,14 @@ class _EditEventScreenState extends State<EditEventScreen> {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(13),
             ),
-            content: _ContentDialog(
+            actionsAlignment: MainAxisAlignment.spaceBetween,
+            actionsPadding: const EdgeInsets.only(
+              top: 0,
+              bottom: 3.0,
+              left: 5,
+              right: 5,
+            ),
+            content: ContentDialog(
               onTitleChanged: (newValue) {
                 setState(
                   () {
@@ -100,50 +104,14 @@ class _EditEventScreenState extends State<EditEventScreen> {
                     ),
               eventModel: widget.eventModel,
             ),
-            actionsAlignment: MainAxisAlignment.spaceBetween,
-            actionsPadding: const EdgeInsets.only(
-              top: 0,
-              bottom: 3.0,
-              left: 5,
-              right: 5,
-            ),
             actions: [
-              TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Text(
-                    'Anuluj',
-                    style: GoogleFonts.domine(
-                      color: AppColors.redColor,
-                      fontSize: 15,
-                      fontWeight: FontWeight.w800,
-                    ),
-                  )),
-              TextButton(
-                onPressed: () {
-                  final newTitle = _title ?? widget.eventModel.title;
-                  final newSubtitle = _subtitle ?? widget.eventModel.subtitle;
-                  final newSelectedDay =
-                      _selectedDay ?? widget.eventModel.selectedDay;
-                  final newSelectedTime =
-                      _selectedTime ?? widget.eventModel.selectedTime;
-                  context.read<EditEventCubit>().edit(
-                        newTitle,
-                        newSubtitle,
-                        newSelectedDay,
-                        newSelectedTime,
-                        widget.eventModel.id,
-                      );
-                },
-                child: Text(
-                  'Zapisz edycję',
-                  style: GoogleFonts.domine(
-                    color: AppColors.accentColor,
-                    fontSize: 15,
-                    fontWeight: FontWeight.w800,
-                  ),
-                ),
+              const BackEditButton(),
+              SaveEditButton(
+                title: _title,
+                widget: widget,
+                subtitle: _subtitle,
+                selectedDay: _selectedDay,
+                selectedTime: _selectedTime,
               ),
             ],
           );
@@ -153,55 +121,25 @@ class _EditEventScreenState extends State<EditEventScreen> {
   }
 }
 
-class _ContentDialog extends StatelessWidget {
-  const _ContentDialog({
-    Key? key,
-    required this.onTitleChanged,
-    required this.onSubtitleChanged,
-    required this.onDayChanged,
-    required this.onTimeChanged,
-    required this.selectedTimeFormatted,
-    required this.selectedDateFormatted,
-    required this.eventModel,
-  }) : super(key: key);
-
-  final Function(String?) onTitleChanged;
-  final Function(String?) onSubtitleChanged;
-  final Function(DateTime?) onDayChanged;
-  final Function(DateTime?) onTimeChanged;
-  final String? selectedDateFormatted;
-  final String? selectedTimeFormatted;
-  final EventModel eventModel;
+class BackEditButton extends StatelessWidget {
+  const BackEditButton({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        EditTitleWidget(
-          eventModel: eventModel,
-          onTitleChanged: onTitleChanged,
+    return TextButton(
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+      child: Text(
+        'Anuluj',
+        style: GoogleFonts.domine(
+          color: AppColors.redColor,
+          fontSize: 15,
+          fontWeight: FontWeight.w800,
         ),
-        const SizedBox(
-          height: 10,
-        ),
-        EditSubtitleWidget(
-          eventModel: eventModel,
-          onSubtitleChanged: onSubtitleChanged,
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        EditDateButton(
-          selectedDateFormatted: selectedDateFormatted,
-          eventModel: eventModel,
-          onDayChanged: onDayChanged,
-        ),
-        EditTimeButton(
-          selectedTimeFormatted: selectedTimeFormatted,
-          eventModel: eventModel,
-          onTimeChanged: onTimeChanged,
-        ),
-      ],
+      ),
     );
   }
 }
