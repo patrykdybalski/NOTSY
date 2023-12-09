@@ -17,10 +17,16 @@ void main() {
   });
 
   group('getNotesStream', () {
-    test('description', () {
-      when(
-        () => dataSource.getNotesData(),
-      ).thenAnswer((_) => Stream.value([
+    test('should call _noteRemoteDataSource.getNotesData() method', () {
+      when(() => dataSource.getNotesData()).thenAnswer((_) => Stream.value([]));
+
+      sut.getNotesStream();
+
+      verify(() => dataSource.getNotesData()).called(1);
+    });
+
+    test('should get note data from Firebase', () {
+      when(() => dataSource.getNotesData()).thenAnswer((_) => Stream.value([
             NoteModel(
                 'title',
                 'subtitle',
@@ -29,6 +35,7 @@ void main() {
                 const Color(0xFF42A5F5),
                 'id')
           ]));
+
       final result = sut.getNotesStream();
 
       expect(
@@ -42,6 +49,69 @@ void main() {
                 const Color(0xFF42A5F5),
                 'id')
           ]));
+    });
+  });
+
+  group('add', () {
+    test('should call _noteRemoteDataSource.addNotes() method', () async {
+      when(() => dataSource.addNotes(
+            'title',
+            'subtitle',
+            DateTime(DateTime.now().year, 6, 23),
+            DateTime(DateTime.now().year, 6, 23),
+            const Color(0xFF42A5F5),
+          )).thenAnswer((_) async => []);
+
+      await sut.add(
+        'title',
+        'subtitle',
+        DateTime(DateTime.now().year, 6, 23),
+        DateTime(DateTime.now().year, 6, 23),
+        const Color(0xFF42A5F5),
+      );
+
+      verify(() => dataSource.addNotes(
+          'title',
+          'subtitle',
+          DateTime(DateTime.now().year, 6, 23),
+          DateTime(DateTime.now().year, 6, 23),
+          const Color(0xFF42A5F5))).called(1);
+    });
+  });
+
+  group('edit', () {
+    test('should call _noteRemoteDataSource.editNotes() method', () async {
+      when(() => dataSource.editNotes(
+          'title',
+          'subtitle',
+          DateTime(DateTime.now().year, 6, 23),
+          DateTime(DateTime.now().year, 6, 23),
+          'id')).thenAnswer((_) async => []);
+
+      await sut.edit(
+        'title',
+        'subtitle',
+        DateTime(DateTime.now().year, 6, 23),
+        DateTime(DateTime.now().year, 6, 23),
+        'id',
+      );
+
+      verify(() => dataSource.editNotes(
+          'title',
+          'subtitle',
+          DateTime(DateTime.now().year, 6, 23),
+          DateTime(DateTime.now().year, 6, 23),
+          'id')).called(1);
+    });
+  });
+
+  group('delete', () {
+    test('should call _noteRemoteDataSource.delete() method', () async {
+      when(() => dataSource.deleteNotes('id')).thenAnswer((_) async => []);
+
+      await sut.delete(id: 'id');
+
+      verify(() => dataSource.deleteNotes('id')).called(1);
     });
   });
 }
