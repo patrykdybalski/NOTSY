@@ -28,12 +28,13 @@ void main() {
     test('should get note data from Firebase', () {
       when(() => dataSource.getNotesData()).thenAnswer((_) => Stream.value([
             NoteModel(
-                'title',
-                'subtitle',
-                DateTime(DateTime.now().year, 6, 23),
-                DateTime(DateTime.now().year, 6, 23),
-                const Color(0xFF42A5F5),
-                'id')
+              'title',
+              'subtitle',
+              DateTime(DateTime.now().year, 6, 23),
+              DateTime(DateTime.now().year, 6, 23),
+              const Color(0xFF42A5F5),
+              'id',
+            )
           ]));
 
       final result = sut.getNotesStream();
@@ -42,12 +43,13 @@ void main() {
           result,
           emits([
             NoteModel(
-                'title',
-                'subtitle',
-                DateTime(DateTime.now().year, 6, 23),
-                DateTime(DateTime.now().year, 6, 23),
-                const Color(0xFF42A5F5),
-                'id')
+              'title',
+              'subtitle',
+              DateTime(DateTime.now().year, 6, 23),
+              DateTime(DateTime.now().year, 6, 23),
+              const Color(0xFF42A5F5),
+              'id',
+            )
           ]));
     });
   });
@@ -82,11 +84,12 @@ void main() {
   group('edit', () {
     test('should call _noteRemoteDataSource.editNotes() method', () async {
       when(() => dataSource.editNotes(
-          'title',
-          'subtitle',
-          DateTime(DateTime.now().year, 6, 23),
-          DateTime(DateTime.now().year, 6, 23),
-          'id')).thenAnswer((_) async => []);
+            'title',
+            'subtitle',
+            DateTime(DateTime.now().year, 6, 23),
+            DateTime(DateTime.now().year, 6, 23),
+            'id',
+          )).thenAnswer((_) async => []);
 
       await sut.edit(
         'title',
@@ -97,11 +100,12 @@ void main() {
       );
 
       verify(() => dataSource.editNotes(
-          'title',
-          'subtitle',
-          DateTime(DateTime.now().year, 6, 23),
-          DateTime(DateTime.now().year, 6, 23),
-          'id')).called(1);
+            'title',
+            'subtitle',
+            DateTime(DateTime.now().year, 6, 23),
+            DateTime(DateTime.now().year, 6, 23),
+            'id',
+          )).called(1);
     });
   });
 

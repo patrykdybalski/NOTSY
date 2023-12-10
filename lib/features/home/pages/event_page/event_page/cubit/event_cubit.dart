@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:primary_school/app/core/enums.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
-import 'package:primary_school/domain/repositories/event/events_repository.dart';
+import 'package:primary_school/domain/repositories/event/event_repository.dart';
 part 'event_state.dart';
 part 'event_cubit.freezed.dart';
 
@@ -14,7 +14,7 @@ class EventCubit extends Cubit<EventState> {
       : super(
            EventState(),
         );
-  final EventsRepository _eventsRepository;
+  final EventRepository _eventsRepository;
 
   StreamSubscription? _streamSubscription;
 

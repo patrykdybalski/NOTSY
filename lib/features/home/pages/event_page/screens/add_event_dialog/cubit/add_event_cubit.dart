@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:primary_school/domain/repositories/event/events_repository.dart';
+import 'package:primary_school/domain/repositories/event/event_repository.dart';
 part 'add_event_state.dart';
 part 'add_event_cubit.freezed.dart';
 
@@ -9,7 +9,7 @@ class AddEventCubit extends Cubit<AddEventState> {
       : super(
            AddEventState(),
         );
-  final EventsRepository _eventsRepository;
+  final EventRepository _eventsRepository;
 
   Future<void> add(
     String? title,

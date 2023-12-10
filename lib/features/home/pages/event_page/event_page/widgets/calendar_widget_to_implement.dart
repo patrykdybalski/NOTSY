@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/data/remote_data_sources_firebase/event_remote_data_source.dart';
-import 'package:primary_school/domain/repositories/event/events_repository.dart';
+import 'package:primary_school/domain/repositories/event/event_repository.dart';
 import 'package:primary_school/features/home/pages/event_page/screens/add_event_dialog/cubit/add_event_cubit.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -24,7 +24,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AddEventCubit(EventsRepository(
+      create: (context) => AddEventCubit(EventRepository(
         EventRemoteDataSource(),
       )),
       child: BlocBuilder<AddEventCubit, AddEventState>(

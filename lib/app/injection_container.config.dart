@@ -21,7 +21,7 @@ import 'package:primary_school/data/remote_data_sources_firebase/login_auth_data
     as _i5;
 import 'package:primary_school/data/remote_data_sources_firebase/note_remote_data_source.dart'
     as _i7;
-import 'package:primary_school/domain/repositories/event/events_repository.dart'
+import 'package:primary_school/domain/repositories/event/event_repository.dart'
     as _i4;
 import 'package:primary_school/domain/repositories/login_auth/login_auth_repository.dart'
     as _i6;
@@ -62,8 +62,8 @@ extension GetItInjectableX on _i1.GetIt {
     );
     final registerModule = _$RegisterModule();
     gh.factory<_i3.EventRemoteDataSource>(() => _i3.EventRemoteDataSource());
-    gh.factory<_i4.EventsRepository>(
-        () => _i4.EventsRepository(gh<_i3.EventRemoteDataSource>()));
+    gh.factory<_i4.EventRepository>(
+        () => _i4.EventRepository(gh<_i3.EventRemoteDataSource>()));
     gh.factory<_i5.LoginAuthDataSource>(() => _i5.LoginAuthDataSource());
     gh.factory<_i6.LoginAuthRepository>(
         () => _i6.LoginAuthRepository(gh<_i5.LoginAuthDataSource>()));
@@ -79,7 +79,7 @@ extension GetItInjectableX on _i1.GetIt {
     );
     gh.factory<_i11.UserPageCubit>(() => _i11.UserPageCubit());
     gh.factory<_i12.AddEventCubit>(
-        () => _i12.AddEventCubit(gh<_i4.EventsRepository>()));
+        () => _i12.AddEventCubit(gh<_i4.EventRepository>()));
     gh.factory<_i13.AddNoteCubit>(
         () => _i13.AddNoteCubit(gh<_i8.NoteRepository>()));
     gh.factory<_i14.AuthCubit>(
@@ -87,11 +87,11 @@ extension GetItInjectableX on _i1.GetIt {
     gh.lazySingleton<_i15.Dio>(
         () => registerModule.dio(gh<String>(instanceName: 'BaseUrl')));
     gh.factory<_i16.EditEventCubit>(
-        () => _i16.EditEventCubit(gh<_i4.EventsRepository>()));
+        () => _i16.EditEventCubit(gh<_i4.EventRepository>()));
     gh.factory<_i17.EditNoteCubit>(
         () => _i17.EditNoteCubit(gh<_i8.NoteRepository>()));
     gh.factory<_i18.EventCubit>(
-        () => _i18.EventCubit(gh<_i4.EventsRepository>()));
+        () => _i18.EventCubit(gh<_i4.EventRepository>()));
     gh.factory<_i19.NoteCubit>(() => _i19.NoteCubit(gh<_i8.NoteRepository>()));
     gh.factory<_i20.WeatherRemoteRetrofitDataSource>(
         () => _i20.WeatherRemoteRetrofitDataSource(gh<_i15.Dio>()));
