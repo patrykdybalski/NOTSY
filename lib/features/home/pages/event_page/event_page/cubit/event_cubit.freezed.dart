@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$EventState {
   List<EventModel> get calendarItems => throw _privateConstructorUsedError;
   Status get status => throw _privateConstructorUsedError;
-  String get errorMessage => throw _privateConstructorUsedError;
+  String? get errorMessage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventStateCopyWith<EventState> get copyWith =>
@@ -32,7 +32,7 @@ abstract class $EventStateCopyWith<$Res> {
       _$EventStateCopyWithImpl<$Res, EventState>;
   @useResult
   $Res call(
-      {List<EventModel> calendarItems, Status status, String errorMessage});
+      {List<EventModel> calendarItems, Status status, String? errorMessage});
 }
 
 /// @nodoc
@@ -50,7 +50,7 @@ class _$EventStateCopyWithImpl<$Res, $Val extends EventState>
   $Res call({
     Object? calendarItems = null,
     Object? status = null,
-    Object? errorMessage = null,
+    Object? errorMessage = freezed,
   }) {
     return _then(_value.copyWith(
       calendarItems: null == calendarItems
@@ -61,10 +61,10 @@ class _$EventStateCopyWithImpl<$Res, $Val extends EventState>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as Status,
-      errorMessage: null == errorMessage
+      errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -78,7 +78,7 @@ abstract class _$$EventStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<EventModel> calendarItems, Status status, String errorMessage});
+      {List<EventModel> calendarItems, Status status, String? errorMessage});
 }
 
 /// @nodoc
@@ -94,7 +94,7 @@ class __$$EventStateImplCopyWithImpl<$Res>
   $Res call({
     Object? calendarItems = null,
     Object? status = null,
-    Object? errorMessage = null,
+    Object? errorMessage = freezed,
   }) {
     return _then(_$EventStateImpl(
       calendarItems: null == calendarItems
@@ -105,10 +105,10 @@ class __$$EventStateImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as Status,
-      errorMessage: null == errorMessage
+      errorMessage: freezed == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -119,7 +119,7 @@ class _$EventStateImpl implements _EventState {
   _$EventStateImpl(
       {final List<EventModel> calendarItems = const [],
       this.status = Status.initial,
-      this.errorMessage = ''})
+      this.errorMessage})
       : _calendarItems = calendarItems;
 
   final List<EventModel> _calendarItems;
@@ -135,8 +135,7 @@ class _$EventStateImpl implements _EventState {
   @JsonKey()
   final Status status;
   @override
-  @JsonKey()
-  final String errorMessage;
+  final String? errorMessage;
 
   @override
   String toString() {
@@ -173,14 +172,14 @@ abstract class _EventState implements EventState {
   factory _EventState(
       {final List<EventModel> calendarItems,
       final Status status,
-      final String errorMessage}) = _$EventStateImpl;
+      final String? errorMessage}) = _$EventStateImpl;
 
   @override
   List<EventModel> get calendarItems;
   @override
   Status get status;
   @override
-  String get errorMessage;
+  String? get errorMessage;
   @override
   @JsonKey(ignore: true)
   _$$EventStateImplCopyWith<_$EventStateImpl> get copyWith =>

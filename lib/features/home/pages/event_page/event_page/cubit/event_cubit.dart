@@ -7,20 +7,17 @@ import 'package:primary_school/domain/repositories/event/event_repository.dart';
 part 'event_state.dart';
 part 'event_cubit.freezed.dart';
 
-
 class EventCubit extends Cubit<EventState> {
-   bool isNoteAdded = false; // Pole przechowujące informację o dodanej notatce
-  EventCubit(this._eventsRepository)
-      : super(
-           EventState(),
-        );
+  bool isNoteAdded = false; // Pole przechowujące informację o dodanej notatce
+  EventCubit(this._eventsRepository) : super(EventState());
+  
   final EventRepository _eventsRepository;
 
   StreamSubscription? _streamSubscription;
 
   Future<void> start() async {
     emit(
-       EventState(
+      EventState(
         status: Status.loading,
       ),
     );

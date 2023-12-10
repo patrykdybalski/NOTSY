@@ -20,11 +20,21 @@ void main() {
   group('getWeatherModel', () {
     group('success', () {
       setUp(() {
-        when(() => repository.getWeatherModel(city: 'Warszawa')).thenAnswer(
-            (_) async => WeatherModel(
-                Location('Warszawa', 'Poland'),
-                Current(
-                    10, Condition('Sunny'), 10, 'N', 1000, 10, 10, 10, 10)));
+        when(() => repository.getWeatherModel(city: 'Warszawa'))
+            .thenAnswer((_) async => WeatherModel(
+                  Location('Warszawa', 'Poland'),
+                  Current(
+                    10,
+                    Condition('Sunny'),
+                    10,
+                    'N',
+                    1000,
+                    10,
+                    10,
+                    10,
+                    10,
+                  ),
+                ));
       });
 
       blocTest<WeatherCubit, WeatherState>(
@@ -36,11 +46,10 @@ void main() {
               WeatherState(
                 status: Status.success,
                 model: WeatherModel(
-                  Location('Warszawa', 'Poland'),
-                  Current(
-                      10, Condition('Sunny'), 10, 'N', 1000, 10, 10, 10, 10),
-                ),
-              ),
+                    Location('Warszawa', 'Poland'),
+                    Current(
+                        10, Condition('Sunny'), 10, 'N', 1000, 10, 10, 10, 10)),
+              )
             }),
       );
     });
@@ -55,10 +64,12 @@ void main() {
         build: () => sut,
         act: (cubit) => cubit.getWeatherModel(city: 'Warszawa'),
         expect: (() => {
-              WeatherState(status: Status.loading),
-              WeatherState(
-                  status: Status.error,
-                  errorMessage: 'Exception: test-exception-error'),
+            
+                WeatherState(status: Status.loading),
+                WeatherState(
+                    status: Status.error,
+                    errorMessage: 'Exception: test-exception-error'),
+              
             }),
       );
     });
