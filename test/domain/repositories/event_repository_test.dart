@@ -113,7 +113,7 @@ void main() {
     test('should call_eventRemoteDataSource.deleteNote() method', () async {
       when(() => dataSource.deleteNote(id: 'id')).thenAnswer((_) async => []);
 
-      sut.delete(id: 'id');
+      sut.deleteEvent(id: 'id');
 
       verify(() => dataSource.deleteNote(id: 'id')).called(1);
     });

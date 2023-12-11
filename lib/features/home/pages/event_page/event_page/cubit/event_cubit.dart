@@ -44,7 +44,7 @@ class EventCubit extends Cubit<EventState> {
 
   Future<void> remove({required String documentID}) async {
     try {
-      await _eventsRepository.delete(id: documentID);
+      await _eventsRepository.deleteEvent(id: documentID);
     } catch (error) {
       emit(
         EventState(

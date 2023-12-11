@@ -65,4 +65,36 @@ void main() {
       );
     });
   });
+
+  group('remove', () {
+    group('succes', () {
+      setUp(() {
+        when(() => repository.deleteEvent(id: 'id'))
+            .thenAnswer((_) async => []);
+      });
+      blocTest(
+        'delete event',
+        build: () => sut,
+        act: (cubit) => cubit.remove(documentID: 'id'),
+        expect: () => [],
+      );
+    });
+    group('failure', () {
+      setUp(() {
+        when(() => repository.deleteEvent(id: 'id')).thenThrow(testError);
+      });
+
+      blocTest<EventCubit, EventState>(
+        'emits  Status.error with errorMessage',
+        build: () => sut,
+        act: (cubit) => cubit.remove(documentID: 'id'),
+        expect: () => [
+          EventState(
+            status: Status.error,
+            errorMessage: testErrorMessage,
+          ),
+        ],
+      );
+    });
+  });
 }

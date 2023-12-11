@@ -40,7 +40,7 @@ class EventRepository {
     );
   }
 
-  Future<void> delete({required String id}) async {
+  Future<void> deleteEvent({required String id}) async {
     await _eventRemoteDataSource.deleteNote(id: id);
   }
 
