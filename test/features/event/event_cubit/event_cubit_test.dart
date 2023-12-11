@@ -16,20 +16,21 @@ void main() {
     repository = MockEventRepository();
     sut = EventCubit(repository);
   });
+  final testEventModel = EventModel(
+    title: 'title',
+    subtitle: 'subtitle',
+    selectedDay: DateTime(DateTime.now().year, 6, 23),
+    selectedTime: DateTime(DateTime.now().year, 6, 23),
+    id: 'id',
+  );
+  final testError = Exception('error');
+  const testErrorMessage = 'Exception: error';
 
   group('start()', () {
     group('succes', () {
       setUp(() {
         when(() => repository.getEventsStream())
-            .thenAnswer((_) => Stream.value([
-                  EventModel(
-                    title: 'title',
-                    subtitle: 'subtitle',
-                    selectedDay: DateTime(DateTime.now().year, 6, 23),
-                    selectedTime: DateTime(DateTime.now().year, 6, 23),
-                    id: 'id',
-                  )
-                ]));
+            .thenAnswer((_) => Stream.value([testEventModel]));
       });
 
       blocTest<EventCubit, EventState>(
@@ -40,22 +41,14 @@ void main() {
                 EventState(status: Status.loading),
                 EventState(
                   status: Status.success,
-                  calendarItems: [
-                    EventModel(
-                      title: 'title',
-                      subtitle: 'subtitle',
-                      selectedDay: DateTime(DateTime.now().year, 6, 23),
-                      selectedTime: DateTime(DateTime.now().year, 6, 23),
-                      id: 'id',
-                    )
-                  ],
+                  calendarItems: [testEventModel],
                 )
               }));
     });
     group('failure', () {
       setUp(() {
         when(() => repository.getEventsStream())
-            .thenAnswer((_) => Stream.error(Exception('error')));
+            .thenAnswer((_) => Stream.error(testError));
       });
 
       blocTest<EventCubit, EventState>(
@@ -66,7 +59,7 @@ void main() {
           EventState(status: Status.loading),
           EventState(
             status: Status.error,
-            errorMessage: 'Exception: error',
+            errorMessage: testErrorMessage,
           ),
         ],
       );

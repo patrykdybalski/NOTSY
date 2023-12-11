@@ -15,6 +15,27 @@ void main() {
     sut = EventRepository(dataSource);
   });
 
+  final testEventModel = EventModel(
+    title: 'title',
+    subtitle: 'subtitle',
+    selectedDay: DateTime(DateTime.now().year, 6, 23),
+    selectedTime: DateTime(DateTime.now().year, 6, 23),
+    id: 'id',
+  );
+  final editEventTestData = [
+    'title',
+    'subtitle',
+    DateTime.now().subtract(const Duration(days: 10)),
+    DateTime.now().subtract(const Duration(days: 5)),
+  ];
+  final addEventTestData = [
+    'title',
+    'subtitle',
+    DateTime.now().subtract(const Duration(days: 10)),
+    DateTime.now().subtract(const Duration(days: 5)),
+    'id',
+  ];
+
   group('getEventsStream', () {
     test('should call_eventRemoteDataSource.getEventsData() method', () {
       when(() => dataSource.getEventsData())
@@ -26,53 +47,36 @@ void main() {
     });
 
     test('should get event data from Firebase', () {
-      when(() => dataSource.getEventsData()).thenAnswer((_) => Stream.value([
-            EventModel(
-              title: 'title',
-              subtitle: 'subtitle',
-              selectedDay: DateTime(DateTime.now().year, 6, 23),
-              selectedTime: DateTime(DateTime.now().year, 6, 23),
-              id: 'id',
-            )
-          ]));
+      when(() => dataSource.getEventsData())
+          .thenAnswer((_) => Stream.value([testEventModel]));
 
       final result = sut.getEventsStream();
 
-      expect(
-          result,
-          emits([
-            EventModel(
-              title: 'title',
-              subtitle: 'subtitle',
-              selectedDay: DateTime(DateTime.now().year, 6, 23),
-              selectedTime: DateTime(DateTime.now().year, 6, 23),
-              id: 'id',
-            )
-          ]));
+      expect(result, emits([testEventModel]));
     });
   });
 
   group('addEvent', () {
     test('should call _eventRemoteDataSource.addEventData method', () async {
       when(() => dataSource.addEventData(
-            'title',
-            'subtitle',
-            DateTime(DateTime.now().year, 6, 23),
-            DateTime(DateTime.now().year, 6, 23),
+            editEventTestData[0] as String?,
+            editEventTestData[1] as String?,
+            editEventTestData[2] as DateTime?,
+            editEventTestData[3] as DateTime?,
           )).thenAnswer((_) async => []);
 
       await sut.addEvent(
-        'title',
-        'subtitle',
-        DateTime(DateTime.now().year, 6, 23),
-        DateTime(DateTime.now().year, 6, 23),
+        editEventTestData[0] as String?,
+        editEventTestData[1] as String?,
+        editEventTestData[2] as DateTime?,
+        editEventTestData[3] as DateTime?,
       );
 
       verify(() => dataSource.addEventData(
-            'title',
-            'subtitle',
-            DateTime(DateTime.now().year, 6, 23),
-            DateTime(DateTime.now().year, 6, 23),
+            editEventTestData[0] as String?,
+            editEventTestData[1] as String?,
+            editEventTestData[2] as DateTime?,
+            editEventTestData[3] as DateTime?,
           )).called(1);
     });
   });
@@ -80,27 +84,27 @@ void main() {
   group('editNote', () {
     test('should call_eventRemoteDataSource.editNoteData() method', () async {
       when(() => dataSource.editNoteData(
-            'title',
-            'subtitle',
-            DateTime(DateTime.now().year, 6, 23),
-            DateTime(DateTime.now().year, 6, 23),
-            'id',
+            addEventTestData[0] as String?,
+            addEventTestData[1] as String?,
+            addEventTestData[2] as DateTime?,
+            addEventTestData[3] as DateTime?,
+            addEventTestData[4] as String,
           )).thenAnswer((_) async => []);
 
       sut.editNote(
-        'title',
-        'subtitle',
-        DateTime(DateTime.now().year, 6, 23),
-        DateTime(DateTime.now().year, 6, 23),
-        'id',
+        addEventTestData[0] as String?,
+        addEventTestData[1] as String?,
+        addEventTestData[2] as DateTime?,
+        addEventTestData[3] as DateTime?,
+        addEventTestData[4] as String,
       );
 
       verify(() => dataSource.editNoteData(
-            'title',
-            'subtitle',
-            DateTime(DateTime.now().year, 6, 23),
-            DateTime(DateTime.now().year, 6, 23),
-            'id',
+            addEventTestData[0] as String?,
+            addEventTestData[1] as String?,
+            addEventTestData[2] as DateTime?,
+            addEventTestData[3] as DateTime?,
+            addEventTestData[4] as String,
           )).called(1);
     });
   });
