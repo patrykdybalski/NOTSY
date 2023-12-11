@@ -14,22 +14,24 @@ void main() {
     sut = LoginAuthRepository(dataSource);
   });
 
+  final userDataTest = ['abc@gmail.com', 'abc111'];
+
   group('createUser', () {
     test('should call _loginAuthDataSource.createUserAccount() method',
         () async {
       when(() => dataSource.createUserAccount(
-            email: 'abc@gmail.com',
-            password: '111',
+            email: userDataTest[0],
+            password: userDataTest[1],
           )).thenAnswer((_) async => []);
 
       await sut.createUser(
-        email: 'abc@gmail.com',
-        password: '111',
+        email: userDataTest[0],
+        password: userDataTest[1],
       );
 
       verify(() => dataSource.createUserAccount(
-            email: 'abc@gmail.com',
-            password: '111',
+            email: userDataTest[0],
+            password: userDataTest[1],
           )).called(1);
     });
   });
@@ -37,18 +39,18 @@ void main() {
   group('signInUser', () {
     test('should call _loginAuthDataSource.signIn() method', () async {
       when(() => dataSource.signIn(
-            email: 'abc@gmail.com',
-            password: '111',
+            email: userDataTest[0],
+            password: userDataTest[1],
           )).thenAnswer((_) async => []);
 
       await sut.signInUser(
-        email: 'abc@gmail.com',
-        password: '111',
+        email: userDataTest[0],
+        password: userDataTest[1],
       );
 
       verify(() => dataSource.signIn(
-            email: 'abc@gmail.com',
-            password: '111',
+            email: userDataTest[0],
+            password: userDataTest[1],
           )).called(1);
     });
   });
@@ -67,13 +69,15 @@ void main() {
     test('should call _loginAuthDataSource.passwordResetData() method',
         () async {
       when(() => dataSource.passwordResetData(
-            email: 'abc@gmail.com',
+            email: userDataTest[0],
           )).thenAnswer((_) async => []);
 
-      await sut.resetPassword(email: 'abc@gmail.com');
+      await sut.resetPassword(
+        email: userDataTest[0],
+      );
 
       verify(() => dataSource.passwordResetData(
-            email: 'abc@gmail.com',
+            email: userDataTest[0],
           )).called(1);
     });
   });
