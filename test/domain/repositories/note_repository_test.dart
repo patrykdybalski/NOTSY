@@ -16,6 +16,30 @@ void main() {
     sut = NoteRepository(dataSource);
   });
 
+  final testNoteModel = NoteModel(
+    'title',
+    'subtitle',
+    DateTime(DateTime.now().year, 6, 23),
+    DateTime(DateTime.now().year, 6, 23),
+    const Color(0xFF42A5F5),
+    'id',
+  );
+
+  final testAddNotesData = [
+    'title',
+    'subtitle',
+    DateTime(DateTime.now().year, 6, 23),
+    DateTime(DateTime.now().year, 6, 23),
+    const Color(0xFF42A5F5)
+  ];
+  final testEditNotesData = [
+    'title',
+    'subtitle',
+    DateTime(DateTime.now().year, 6, 23),
+    DateTime(DateTime.now().year, 6, 23),
+    'id'
+  ];
+
   group('getNotesStream', () {
     test('should call _noteRemoteDataSource.getNotesData() method', () {
       when(() => dataSource.getNotesData()).thenAnswer((_) => Stream.value([]));
@@ -27,84 +51,67 @@ void main() {
 
     test('should get note data from Firebase', () {
       when(() => dataSource.getNotesData()).thenAnswer((_) => Stream.value([
-            NoteModel(
-              'title',
-              'subtitle',
-              DateTime(DateTime.now().year, 6, 23),
-              DateTime(DateTime.now().year, 6, 23),
-              const Color(0xFF42A5F5),
-              'id',
-            )
+            testNoteModel,
           ]));
 
       final result = sut.getNotesStream();
 
-      expect(
-          result,
-          emits([
-            NoteModel(
-              'title',
-              'subtitle',
-              DateTime(DateTime.now().year, 6, 23),
-              DateTime(DateTime.now().year, 6, 23),
-              const Color(0xFF42A5F5),
-              'id',
-            )
-          ]));
+      expect(result, emits([testNoteModel]));
     });
   });
 
   group('add', () {
     test('should call _noteRemoteDataSource.addNotes() method', () async {
       when(() => dataSource.addNotes(
-            'title',
-            'subtitle',
-            DateTime(DateTime.now().year, 6, 23),
-            DateTime(DateTime.now().year, 6, 23),
-            const Color(0xFF42A5F5),
+            testAddNotesData[0] as String,
+            testAddNotesData[1] as String,
+            testAddNotesData[2] as DateTime,
+            testAddNotesData[3] as DateTime,
+            testAddNotesData[4] as Color,
           )).thenAnswer((_) async => []);
 
       await sut.add(
-        'title',
-        'subtitle',
-        DateTime(DateTime.now().year, 6, 23),
-        DateTime(DateTime.now().year, 6, 23),
-        const Color(0xFF42A5F5),
+        testAddNotesData[0] as String,
+        testAddNotesData[1] as String,
+        testAddNotesData[2] as DateTime,
+        testAddNotesData[3] as DateTime,
+        testAddNotesData[4] as Color,
       );
 
       verify(() => dataSource.addNotes(
-          'title',
-          'subtitle',
-          DateTime(DateTime.now().year, 6, 23),
-          DateTime(DateTime.now().year, 6, 23),
-          const Color(0xFF42A5F5))).called(1);
+            testAddNotesData[0] as String,
+            testAddNotesData[1] as String,
+            testAddNotesData[2] as DateTime,
+            testAddNotesData[3] as DateTime,
+            testAddNotesData[4] as Color,
+          )).called(1);
     });
   });
 
   group('edit', () {
     test('should call _noteRemoteDataSource.editNotes() method', () async {
       when(() => dataSource.editNotes(
-            'title',
-            'subtitle',
-            DateTime(DateTime.now().year, 6, 23),
-            DateTime(DateTime.now().year, 6, 23),
-            'id',
+            testEditNotesData[0] as String,
+            testEditNotesData[1] as String,
+            testEditNotesData[2] as DateTime,
+            testEditNotesData[3] as DateTime,
+            testEditNotesData[4] as String,
           )).thenAnswer((_) async => []);
 
       await sut.edit(
-        'title',
-        'subtitle',
-        DateTime(DateTime.now().year, 6, 23),
-        DateTime(DateTime.now().year, 6, 23),
-        'id',
+        testEditNotesData[0] as String,
+        testEditNotesData[1] as String,
+        testEditNotesData[2] as DateTime,
+        testEditNotesData[3] as DateTime,
+        testEditNotesData[4] as String,
       );
 
       verify(() => dataSource.editNotes(
-            'title',
-            'subtitle',
-            DateTime(DateTime.now().year, 6, 23),
-            DateTime(DateTime.now().year, 6, 23),
-            'id',
+            testEditNotesData[0] as String,
+            testEditNotesData[1] as String,
+            testEditNotesData[2] as DateTime,
+            testEditNotesData[3] as DateTime,
+            testEditNotesData[4] as String,
           )).called(1);
     });
   });
