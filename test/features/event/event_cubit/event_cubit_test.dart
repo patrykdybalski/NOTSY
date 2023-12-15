@@ -72,7 +72,7 @@ void main() {
         when(() => repository.deleteEvent(id: 'id'))
             .thenAnswer((_) async => []);
       });
-      blocTest(
+      blocTest<EventCubit, EventState>(
         'delete event',
         build: () => sut,
         act: (cubit) => cubit.remove(documentID: 'id'),
