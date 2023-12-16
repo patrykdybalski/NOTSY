@@ -49,20 +49,8 @@ class _LoginPageState extends State<LoginPage> {
                     right: 20,
                   ),
                   child: Column(children: [
-                    Container(
-                      height: 250,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('images/last_check_logo1.png'),
-                        ),
-                      ),
-                    ),
-                    Text(
-                      isCreatingAccount == true
-                          ? 'Zarejestruj się'
-                          : 'Zaloguj się',
-                      style: TextStyles.textStyle2(34),
-                    ),
+                    const LogoImageContainer(),
+                    LogInRegiserText(isCreatingAccount: isCreatingAccount),
                     const SizedBox(
                       height: 24,
                     ),
@@ -79,61 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                           16,
                         ),
                         child: Column(
-                          children: [
-                            TextFieldLogin(widget: widget),
-                            TextFieldPassword(widget: widget),
-                            ResetPasswordButton(
-                              isCreatingAccount: isCreatingAccount,
-                            ),
-                            SignInOrCreateAccountButton(
-                              isCreatingAccount: isCreatingAccount,
-                              widget: widget,
-                            ),
-                            const SizedBox(
-                              height: 16,
-                            ),
-                            if (isCreatingAccount == false) ...[
-                              TextButton(
-                                style: TextButton.styleFrom(
-                                  foregroundColor: AppColors.greenColor,
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    isCreatingAccount = true;
-                                  });
-                                },
-                                child: const Text(
-                                  'Utwórz konto',
-                                  style: TextStyle(
-                                    color: AppColors.greenLogoColor,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ),
-                            ],
-                            if (isCreatingAccount == true) ...[
-                              TextButton(
-                                style: TextButton.styleFrom(
-                                  foregroundColor: AppColors.greenLoginColor,
-                                ),
-                                onPressed: () {
-                                  setState(() {
-                                    isCreatingAccount = false;
-                                  });
-                                },
-                                child: const Text(
-                                  'Mam juz konto',
-                                  style: TextStyle(
-                                    color: AppColors.greenLogoColor,
-                                    fontSize: 16,
-                                  ),
-                                ),
-                              ),
-                            ],
-                            const SizedBox(
-                              height: 10,
-                            ),
-                          ],
+                          children: loginPageViewOfBool,
                         ),
                       ),
                     ),
@@ -141,6 +75,97 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ));
         },
+      ),
+    );
+  }
+
+  List<Widget> get loginPageViewOfBool {
+    return [
+      TextFieldLogin(widget: widget),
+      TextFieldPassword(widget: widget),
+      ResetPasswordButton(isCreatingAccount: isCreatingAccount),
+      SignInOrCreateAccountButton(
+        isCreatingAccount: isCreatingAccount,
+        widget: widget,
+      ),
+      const SizedBox(
+        height: 16,
+      ),
+      if (isCreatingAccount == false) ...[
+        TextButton(
+          style: TextButton.styleFrom(
+            foregroundColor: AppColors.greenColor,
+          ),
+          onPressed: () {
+            setState(() {
+              isCreatingAccount = true;
+            });
+          },
+          child: const Text(
+            'Utwórz konto',
+            style: TextStyle(
+              color: AppColors.greenLogoColor,
+              fontSize: 16,
+            ),
+          ),
+        ),
+      ],
+      if (isCreatingAccount == true) ...[
+        TextButton(
+          style: TextButton.styleFrom(
+            foregroundColor: AppColors.greenLoginColor,
+          ),
+          onPressed: () {
+            setState(() {
+              isCreatingAccount = false;
+            });
+          },
+          child: const Text(
+            'Mam juz konto',
+            style: TextStyle(
+              color: AppColors.greenLogoColor,
+              fontSize: 16,
+            ),
+          ),
+        ),
+      ],
+      const SizedBox(
+        height: 10,
+      ),
+    ];
+  }
+}
+
+class LogInRegiserText extends StatelessWidget {
+  const LogInRegiserText({
+    super.key,
+    required this.isCreatingAccount,
+  });
+
+  final bool isCreatingAccount;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      isCreatingAccount == true ? 'Zarejestruj się' : 'Zaloguj się',
+      style: TextStyles.textStyle2(34),
+    );
+  }
+}
+
+class LogoImageContainer extends StatelessWidget {
+  const LogoImageContainer({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 250,
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('images/last_check_logo1.png'),
+        ),
       ),
     );
   }

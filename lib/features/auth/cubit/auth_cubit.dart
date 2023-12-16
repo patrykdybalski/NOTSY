@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:primary_school/domain/repositories/login_auth/login_auth_repository.dart';
 part 'auth_state.dart';
-part  'auth_cubit.freezed.dart';
+part 'auth_cubit.freezed.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit(this._loginAuthRepository)
@@ -18,6 +18,9 @@ class AuthCubit extends Cubit<AuthState> {
         email: email,
         password: password,
       );
+      emit(
+        AuthState(saved: true),
+      );
     } catch (error) {
       emit(
         AuthState(
@@ -31,7 +34,7 @@ class AuthCubit extends Cubit<AuthState> {
     try {
       await _loginAuthRepository.signOut();
       emit(
-        AuthState(),
+        AuthState(saved: true),
       );
     } catch (error) {
       emit(
@@ -48,6 +51,9 @@ class AuthCubit extends Cubit<AuthState> {
       await _loginAuthRepository.createUser(
         email: email,
         password: password,
+      );
+      emit(
+        AuthState(saved: true),
       );
     } catch (error) {
       emit(
