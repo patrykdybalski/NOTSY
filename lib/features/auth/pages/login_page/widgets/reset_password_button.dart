@@ -5,10 +5,7 @@ import 'package:primary_school/features/auth/pages/forgot_password_page/forgot_p
 class ResetPasswordButton extends StatelessWidget {
   const ResetPasswordButton({
     super.key,
-    required this.isCreatingAccount,
   });
-
-  final bool isCreatingAccount;
 
   @override
   Widget build(BuildContext context) {
@@ -17,16 +14,13 @@ class ResetPasswordButton extends StatelessWidget {
       children: [
         TextButton(
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) {
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
               return const ForgotPasswordPage();
             }));
           },
-          child: Text(
-            isCreatingAccount == true
-                ? ''
-                : 'Nie pamiętasz hasła?',
-            style: const TextStyle(
+          child: const Text(
+            'Nie pamiętasz hasła?',
+            style: TextStyle(
               color: AppColors.redColor,
             ),
           ),

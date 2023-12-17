@@ -4,8 +4,9 @@ import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/features/auth/cubit/auth_cubit.dart';
+import 'package:primary_school/features/auth/pages/create_user_page/create_user_page.dart';
 import 'package:primary_school/features/auth/pages/login_page/widgets/reset_password_button.dart';
-import 'package:primary_school/features/auth/pages/login_page/widgets/sign_in_or_create_account_button.dart';
+import 'package:primary_school/features/auth/pages/login_page/widgets/sign_in_button.dart';
 import 'package:primary_school/features/auth/pages/login_page/widgets/textfield_login_widget.dart';
 import 'package:primary_school/features/auth/pages/login_page/widgets/textfield_password_widget.dart';
 
@@ -21,8 +22,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  var isCreatingAccount = false;
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -48,108 +47,65 @@ class _LoginPageState extends State<LoginPage> {
                     left: 20,
                     right: 20,
                   ),
-                  child: Column(children: [
-                    const LogoImageContainer(),
-                    LogInRegiserText(isCreatingAccount: isCreatingAccount),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.5),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(
-                          4.0,
-                          0,
-                          4.0,
-                          16,
-                        ),
-                        child: Column(
-                          children: loginPageViewOfBool,
-                        ),
-                      ),
-                    ),
-                  ]),
+                  child: LoginPageBody(loginPageContext: widget),
                 ),
               ));
         },
       ),
     );
   }
-
-  List<Widget> get loginPageViewOfBool {
-    return [
-      TextFieldLogin(widget: widget),
-      TextFieldPassword(widget: widget),
-      ResetPasswordButton(isCreatingAccount: isCreatingAccount),
-      SignInOrCreateAccountButton(
-        isCreatingAccount: isCreatingAccount,
-        widget: widget,
-      ),
-      const SizedBox(
-        height: 16,
-      ),
-      if (isCreatingAccount == false) ...[
-        TextButton(
-          style: TextButton.styleFrom(
-            foregroundColor: AppColors.greenColor,
-          ),
-          onPressed: () {
-            setState(() {
-              isCreatingAccount = true;
-            });
-          },
-          child: const Text(
-            'Utwórz konto',
-            style: TextStyle(
-              color: AppColors.greenLogoColor,
-              fontSize: 16,
-            ),
-          ),
-        ),
-      ],
-      if (isCreatingAccount == true) ...[
-        TextButton(
-          style: TextButton.styleFrom(
-            foregroundColor: AppColors.greenLoginColor,
-          ),
-          onPressed: () {
-            setState(() {
-              isCreatingAccount = false;
-            });
-          },
-          child: const Text(
-            'Mam juz konto',
-            style: TextStyle(
-              color: AppColors.greenLogoColor,
-              fontSize: 16,
-            ),
-          ),
-        ),
-      ],
-      const SizedBox(
-        height: 10,
-      ),
-    ];
-  }
 }
 
-class LogInRegiserText extends StatelessWidget {
-  const LogInRegiserText({
+class LoginPageBody extends StatelessWidget {
+  const LoginPageBody({
     super.key,
-    required this.isCreatingAccount,
+    required this.loginPageContext,
   });
 
-  final bool isCreatingAccount;
-
+  final LoginPage loginPageContext;
   @override
   Widget build(BuildContext context) {
-    return Text(
-      isCreatingAccount == true ? 'Zarejestruj się' : 'Zaloguj się',
-      style: TextStyles.textStyle2(34),
-    );
+    return Column(children: [
+      const LogoImageContainer(),
+      Text(
+        'Zaloguj się',
+        style: TextStyles.textStyle2(34),
+      ),
+      const SizedBox(height: 24),
+      Container(
+        decoration: BoxDecoration(
+          color: Colors.white.withOpacity(0.5),
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(4.0, 0, 4.0, 16),
+          child: Column(children: [
+            TextFieldLogin(widget: loginPageContext),
+            TextFieldPassword(widget: loginPageContext),
+            const ResetPasswordButton(),
+            SignInButton(widget: loginPageContext),
+            const SizedBox(height: 16),
+            TextButton(
+              style:
+                  TextButton.styleFrom(foregroundColor: AppColors.greenColor),
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => CreateUserPage(),
+                ));
+              },
+              child: const Text('Utwórz konto',
+                  style: TextStyle(
+                    color: AppColors.greenLogoColor,
+                    fontSize: 16,
+                  )),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+          ]),
+        ),
+      ),
+    ]);
   }
 }
 
