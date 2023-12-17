@@ -10,18 +10,13 @@ import 'package:primary_school/features/auth/pages/login_page/widgets/sign_in_bu
 import 'package:primary_school/features/auth/pages/login_page/widgets/textfield_login_widget.dart';
 import 'package:primary_school/features/auth/pages/login_page/widgets/textfield_password_widget.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends StatelessWidget {
   LoginPage({
     super.key,
   });
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -47,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
                     left: 20,
                     right: 20,
                   ),
-                  child: LoginPageBody(loginPageContext: widget),
+                  child: LoginPageBody(loginPageContext: LoginPage()),
                 ),
               ));
         },

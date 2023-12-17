@@ -9,18 +9,13 @@ import 'package:primary_school/features/auth/pages/create_user_page/widgets/text
 import 'package:primary_school/features/auth/pages/create_user_page/widgets/textfield_create_password.dart';
 import 'package:primary_school/features/auth/pages/login_page/login_page.dart';
 
-class CreateUserPage extends StatefulWidget {
+class CreateUserPage extends StatelessWidget {
   CreateUserPage({
     super.key,
   });
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  @override
-  State<CreateUserPage> createState() => _CreateUserPageState();
-}
-
-class _CreateUserPageState extends State<CreateUserPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -60,7 +55,7 @@ class _CreateUserPageState extends State<CreateUserPage> {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(4.0, 0, 4.0, 16),
-                        child: CreatePageBody(createUserPage: widget),
+                        child: CreatePageBody(createUserPage: CreateUserPage()),
                       ),
                     ),
                   ]),
