@@ -2,10 +2,8 @@ import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 
-
-@injectable  
+@injectable
 class LoginAuthDataSource {
-  
   Future<void> createUserAccount({
     required String email,
     required String password,
@@ -48,5 +46,9 @@ class LoginAuthDataSource {
     } on FirebaseAuthException catch (error) {
       throw Exception(error);
     }
+  }
+
+  Stream<User?> start() {
+    return FirebaseAuth.instance.authStateChanges();
   }
 }

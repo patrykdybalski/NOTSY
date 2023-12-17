@@ -72,7 +72,8 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i8.NoteRepository(gh<_i7.NoteRemoteDataSource>()));
     gh.factory<_i9.ReaderScreenCubit>(
         () => _i9.ReaderScreenCubit(gh<_i8.NoteRepository>()));
-    gh.factory<_i10.RootCubit>(() => _i10.RootCubit());
+    gh.factory<_i10.RootCubit>(
+        () => _i10.RootCubit(gh<_i6.LoginAuthRepository>()));
     gh.factory<String>(
       () => registerModule.baseUrl,
       instanceName: 'BaseUrl',

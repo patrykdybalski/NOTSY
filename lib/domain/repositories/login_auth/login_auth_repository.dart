@@ -1,6 +1,6 @@
 import 'dart:async';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:primary_school/data/remote_data_sources_firebase/login_auth_data_source.dart';
-
 
 class LoginAuthRepository {
   LoginAuthRepository(this._loginAuthDataSource);
@@ -33,5 +33,9 @@ class LoginAuthRepository {
 
   Future<void> resetPassword({required String email}) async {
     await _loginAuthDataSource.passwordResetData(email: email);
+  }
+
+  Stream<User?> start() {
+    return _loginAuthDataSource.start();
   }
 }

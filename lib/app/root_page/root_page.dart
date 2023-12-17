@@ -42,11 +42,7 @@ class RootPage extends StatelessWidget {
               ),
             );
           }
-          if (state.isLoadnig) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
+
           final user = state.user;
           if (user == null) {
             return LoginPage();
