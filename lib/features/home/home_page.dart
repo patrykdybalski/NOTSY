@@ -53,16 +53,12 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             label: 'Plany',
             backgroundColor: AppColors.primaryColor,
-            icon: Icon(
-              Icons.calendar_month_outlined,
-            ),
+            icon: Icon(Icons.calendar_month_outlined),
           ),
           BottomNavigationBarItem(
             label: 'Notatki',
             backgroundColor: AppColors.primaryColor,
-            icon: Icon(
-              Icons.text_snippet_outlined,
-            ),
+            icon: Icon(Icons.text_snippet_outlined),
           ),
           BottomNavigationBarItem(
             label: 'Pogoda',
@@ -70,10 +66,9 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.wb_cloudy_outlined),
           ),
           BottomNavigationBarItem(
-            label: 'Profil',
-            backgroundColor: AppColors.primaryColor,
-            icon: Icon(Icons.account_box_outlined),
-          ),
+              label: 'Profil',
+              backgroundColor: AppColors.primaryColor,
+              icon: Icon(Icons.account_box_outlined)),
         ],
       ),
     );
