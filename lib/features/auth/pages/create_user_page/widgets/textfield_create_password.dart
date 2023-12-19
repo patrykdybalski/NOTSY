@@ -3,9 +3,9 @@ import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/features/auth/pages/create_user_page/create_user_page.dart';
 
 class TextFieldCreatePassword extends StatefulWidget {
-  const TextFieldCreatePassword({
+  const TextFieldCreatePassword(
+    this.createUserPage, {
     super.key,
-    required this.createUserPage,
   });
 
   final CreateUserPage createUserPage;

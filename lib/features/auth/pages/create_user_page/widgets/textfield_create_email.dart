@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/features/auth/pages/create_user_page/create_user_page.dart';
 
-
 class TextFieldCreateEmail extends StatelessWidget {
-  const TextFieldCreateEmail({
+  const TextFieldCreateEmail(
+    this.createUserPage, {
     super.key,
-    required this.createUserPage,
   });
 
   final CreateUserPage createUserPage;

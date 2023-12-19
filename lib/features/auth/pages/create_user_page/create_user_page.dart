@@ -7,7 +7,6 @@ import 'package:primary_school/features/auth/cubit/auth_cubit.dart';
 import 'package:primary_school/features/auth/pages/create_user_page/widgets/create_account_button.dart';
 import 'package:primary_school/features/auth/pages/create_user_page/widgets/textfield_create_email.dart';
 import 'package:primary_school/features/auth/pages/create_user_page/widgets/textfield_create_password.dart';
-import 'package:primary_school/features/auth/pages/login_page/login_page.dart';
 
 class CreateUserPage extends StatelessWidget {
   CreateUserPage({
@@ -55,7 +54,7 @@ class CreateUserPage extends StatelessWidget {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(4.0, 0, 4.0, 16),
-                        child: CreatePageBody(createUserPage: CreateUserPage()),
+                        child: CreatePageBody(CreateUserPage()),
                       ),
                     ),
                   ]),
@@ -68,9 +67,9 @@ class CreateUserPage extends StatelessWidget {
 }
 
 class CreatePageBody extends StatelessWidget {
-  const CreatePageBody({
+  const CreatePageBody(
+    this.createUserPage, {
     super.key,
-    required this.createUserPage,
   });
 
   final CreateUserPage createUserPage;
@@ -79,29 +78,38 @@ class CreatePageBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TextFieldCreateEmail(createUserPage: createUserPage),
-        TextFieldCreatePassword(createUserPage: createUserPage),
+        TextFieldCreateEmail(createUserPage),
+        TextFieldCreatePassword(createUserPage),
         const SizedBox(height: 32),
-        CreateAccountButton(createUserPage: createUserPage),
+        CreateAccountButton(createUserPage),
         const SizedBox(height: 16),
-        TextButton(
-          style: TextButton.styleFrom(
-            foregroundColor: AppColors.greenLoginColor,
-          ),
-          onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => LoginPage(),
-            ));
-          },
-          child: const Text(
-            'Mam juz konto',
-            style: TextStyle(
-              color: AppColors.greenLogoColor,
-              fontSize: 16,
-            ),
-          ),
-        )
+        const BackToLoginPageButton()
       ],
+    );
+  }
+}
+
+class BackToLoginPageButton extends StatelessWidget {
+  const BackToLoginPageButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      style: TextButton.styleFrom(
+        foregroundColor: AppColors.greenLoginColor,
+      ),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+      child: const Text(
+        'Mam juz konto',
+        style: TextStyle(
+          color: AppColors.greenLogoColor,
+          fontSize: 16,
+        ),
+      ),
     );
   }
 }

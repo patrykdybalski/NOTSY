@@ -6,8 +6,13 @@ import 'package:primary_school/features/auth/cubit/auth_cubit.dart';
 import 'package:primary_school/features/auth/pages/create_user_page/create_user_page.dart';
 
 class CreateAccountButton extends StatelessWidget {
-  const CreateAccountButton({super.key, required this.createUserPage});
+  const CreateAccountButton(
+    this.createUserPage, {
+    super.key,
+  });
+
   final CreateUserPage createUserPage;
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
