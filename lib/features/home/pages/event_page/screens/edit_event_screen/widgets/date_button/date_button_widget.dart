@@ -29,6 +29,7 @@ class EditDateButton extends StatelessWidget {
       onPressed: () async {
         DateTime? selectedDate = await showDatePicker(
           context: context,
+          locale: const Locale("pl", "PL"),
           initialDatePickerMode: DatePickerMode.day,
           initialDate: eventModel.selectedDay,
           firstDate: DateTime.now(),

@@ -6,6 +6,7 @@ import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/features/auth/pages/login_page/login_page.dart';
 import 'package:primary_school/features/home/home_page.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -20,15 +21,16 @@ class MyApp extends StatelessWidget {
         primaryColor: AppColors.primaryColor,
         useMaterial3: true,
       ),
-      localizationsDelegates: const[
-    GlobalMaterialLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-  ],
-  supportedLocales: const[
-    Locale('en'), // English
-    Locale('pl'), // Polish
-  ],
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en'), // English
+        Locale('pl'), // Polish
+      ],
       home: const RootPage(),
     );
   }

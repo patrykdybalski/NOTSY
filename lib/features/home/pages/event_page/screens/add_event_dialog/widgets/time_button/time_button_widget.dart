@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
@@ -45,4 +44,3 @@ class TimeButton extends StatelessWidget {
     );
   }
 }
-

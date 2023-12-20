@@ -26,6 +26,7 @@ class DayButton extends StatelessWidget {
       onPressed: () async {
         final selectedDate = await showDatePicker(
           initialEntryMode: DatePickerEntryMode.calendar,
+          locale: const Locale("pl", "PL"),
           context: context,
           initialDate: DateTime.now(),
           firstDate: DateTime.now(),
