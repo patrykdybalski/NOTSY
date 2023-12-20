@@ -1,11 +1,12 @@
 import 'package:flutter/widgets.dart';
-
+ 
 class ResponsiveLayout extends StatelessWidget {
-  const ResponsiveLayout(
-      {super.key,
-      required this.ultrawide,
-      required this.wide,
-      required this.narrow});
+  const ResponsiveLayout({
+    super.key,
+    required this.ultrawide,
+    required this.wide,
+    required this.narrow,
+  });
 
   final Widget ultrawide;
   final Widget wide;
@@ -27,3 +28,5 @@ class ResponsiveLayout extends StatelessWidget {
     );
   }
 }
+
+//too implement in future

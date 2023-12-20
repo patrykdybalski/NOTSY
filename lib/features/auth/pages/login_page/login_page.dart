@@ -42,7 +42,9 @@ class LoginPage extends StatelessWidget {
                     left: 20,
                     right: 20,
                   ),
-                  child: LoginPageBody(loginPageContext: LoginPage()),
+                  child: LoginPageBody(
+                    loginPageContext: LoginPage(),
+                  ),
                 ),
               ));
         },
