@@ -3,15 +3,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/features/auth/cubit/auth_cubit.dart';
-import 'package:primary_school/features/auth/pages/login_page/login_page.dart';
 
 class SignInButton extends StatelessWidget {
   const SignInButton({
+    required this.emailController,
+    required this.passwordController,
     super.key,
-    required this.widget,
+   
   });
 
-  final LoginPage widget;
+  final TextEditingController emailController;
+   final TextEditingController passwordController;
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +31,8 @@ class SignInButton extends StatelessWidget {
             ),
             onPressed: () async {
               context.read<AuthCubit>().signIn(
-                    email: widget.emailController.text,
-                    password: widget.passwordController.text,
+                    email: emailController.text,
+                    password: passwordController.text,
                   );
             },
             child: const Text(

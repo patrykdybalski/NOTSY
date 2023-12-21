@@ -22,12 +22,10 @@ class CreateUserPage extends StatelessWidget {
       child: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state.errorMessage.isNotEmpty) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(state.errorMessage),
-                backgroundColor: Colors.red.shade300,
-              ),
-            );
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text(state.errorMessage),
+              backgroundColor: Colors.red.shade300,
+            ));
           }
         },
         builder: (context, state) {
@@ -35,11 +33,7 @@ class CreateUserPage extends StatelessWidget {
               backgroundColor: AppColors.primaryColor,
               body: SingleChildScrollView(
                 child: Padding(
-                  padding: const EdgeInsets.only(
-                    top: 20.0,
-                    left: 20,
-                    right: 20,
-                  ),
+                  padding: const EdgeInsets.all(20),
                   child: Column(children: [
                     const LogoImageContainer(),
                     Text(
@@ -54,7 +48,10 @@ class CreateUserPage extends StatelessWidget {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(4.0, 0, 4.0, 16),
-                        child: CreatePageBody(CreateUserPage()),
+                        child: CreatePageBody(
+                          emailController: emailController,
+                          passwordController: passwordController,
+                        ),
                       ),
                     ),
                   ]),
@@ -67,23 +64,28 @@ class CreateUserPage extends StatelessWidget {
 }
 
 class CreatePageBody extends StatelessWidget {
-  const CreatePageBody(
-    this.createUserPage, {
+  const CreatePageBody({
+    required this.emailController,
+    required this.passwordController,
     super.key,
   });
-
-  final CreateUserPage createUserPage;
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TextFieldCreateEmail(createUserPage),
-        TextFieldCreatePassword(createUserPage),
+        TextFieldCreateEmail(emailController: emailController),
+        TextFieldCreatePassword(passwordController: passwordController),
         const SizedBox(height: 32),
-        CreateAccountButton(createUserPage),
+        CreateAccountButton(
+          emailController: emailController,
+          passwordController: passwordController,
+        ),
         const SizedBox(height: 16),
-        const BackToLoginPageButton()
+        const BackToLoginPageButton(),
+        const SizedBox(height: 16),
       ],
     );
   }
@@ -100,9 +102,6 @@ class BackToLoginPageButton extends StatelessWidget {
       style: TextButton.styleFrom(
         foregroundColor: AppColors.greenLoginColor,
       ),
-      onPressed: () {
-        Navigator.of(context).pop();
-      },
       child: const Text(
         'Mam juz konto',
         style: TextStyle(
@@ -110,6 +109,9 @@ class BackToLoginPageButton extends StatelessWidget {
           fontSize: 16,
         ),
       ),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
     );
   }
 }

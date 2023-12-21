@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:primary_school/app/constans/colors.dart';
-import 'package:primary_school/features/auth/pages/login_page/login_page.dart';
 
 class TextFieldPassword extends StatefulWidget {
   const TextFieldPassword({
     super.key,
-    required this.widget,
+    
+    required this.passwordController,
   });
 
-  final LoginPage widget;
+  
+  final TextEditingController passwordController;
 
   @override
   State<TextFieldPassword> createState() => _TextFieldPasswordState();
@@ -41,7 +42,8 @@ class _TextFieldPasswordState extends State<TextFieldPassword> {
           ],
         ),
         child: TextField(
-          controller: widget.widget.passwordController,
+           controller: widget.passwordController,
+         
           keyboardType: TextInputType.text,
           obscureText: obscureText,
           obscuringCharacter: '*',

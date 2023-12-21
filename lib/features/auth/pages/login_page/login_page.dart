@@ -37,13 +37,10 @@ class LoginPage extends StatelessWidget {
               backgroundColor: AppColors.primaryColor,
               body: SingleChildScrollView(
                 child: Padding(
-                  padding: const EdgeInsets.only(
-                    top: 20.0,
-                    left: 20,
-                    right: 20,
-                  ),
+                  padding: const EdgeInsets.all(20),
                   child: LoginPageBody(
-                    loginPageContext: LoginPage(),
+                    emailController: emailController,
+                    passwordController: passwordController,
                   ),
                 ),
               ));
@@ -55,11 +52,13 @@ class LoginPage extends StatelessWidget {
 
 class LoginPageBody extends StatelessWidget {
   const LoginPageBody({
+    required this.emailController,
+    required this.passwordController,
     super.key,
-    required this.loginPageContext,
   });
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
 
-  final LoginPage loginPageContext;
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -77,25 +76,15 @@ class LoginPageBody extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.fromLTRB(4.0, 0, 4.0, 16),
           child: Column(children: [
-            TextFieldLogin(widget: loginPageContext),
-            TextFieldPassword(widget: loginPageContext),
+            TextFieldLogin(emailController: emailController),
+            TextFieldPassword(passwordController: passwordController),
             const ResetPasswordButton(),
-            SignInButton(widget: loginPageContext),
-            const SizedBox(height: 16),
-            TextButton(
-              style:
-                  TextButton.styleFrom(foregroundColor: AppColors.greenColor),
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => CreateUserPage(),
-                ));
-              },
-              child: const Text('Utwórz konto',
-                  style: TextStyle(
-                    color: AppColors.greenLogoColor,
-                    fontSize: 16,
-                  )),
+            SignInButton(
+              emailController: emailController,
+              passwordController: passwordController,
             ),
+            const SizedBox(height: 16),
+            const CreateAccountButton(),
             const SizedBox(
               height: 10,
             ),
@@ -103,6 +92,29 @@ class LoginPageBody extends StatelessWidget {
         ),
       ),
     ]);
+  }
+}
+
+class CreateAccountButton extends StatelessWidget {
+  const CreateAccountButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      style: TextButton.styleFrom(foregroundColor: AppColors.greenColor),
+      onPressed: () {
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => CreateUserPage(),
+        ));
+      },
+      child: const Text('Utwórz konto',
+          style: TextStyle(
+            color: AppColors.greenLogoColor,
+            fontSize: 16,
+          )),
+    );
   }
 }
 

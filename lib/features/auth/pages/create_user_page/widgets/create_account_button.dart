@@ -3,15 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/features/auth/cubit/auth_cubit.dart';
-import 'package:primary_school/features/auth/pages/create_user_page/create_user_page.dart';
 
 class CreateAccountButton extends StatelessWidget {
-  const CreateAccountButton(
-    this.createUserPage, {
+  const CreateAccountButton({
+    required this.emailController,
+    required this.passwordController,
     super.key,
   });
-
-  final CreateUserPage createUserPage;
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +29,8 @@ class CreateAccountButton extends StatelessWidget {
             ),
             onPressed: () async {
               context.read<AuthCubit>().createUserAccount(
-                    email: createUserPage.emailController.text,
-                    password: createUserPage.passwordController.text,
+                    email: emailController.text,
+                    password: passwordController.text,
                   );
             },
             child: const Text(

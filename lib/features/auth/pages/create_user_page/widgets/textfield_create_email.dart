@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:primary_school/app/constans/colors.dart';
-import 'package:primary_school/features/auth/pages/create_user_page/create_user_page.dart';
 
 class TextFieldCreateEmail extends StatelessWidget {
   const TextFieldCreateEmail(
-    this.createUserPage, {
+     {
+      required this.emailController,
+    
     super.key,
   });
 
-  final CreateUserPage createUserPage;
+ final TextEditingController emailController;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class TextFieldCreateEmail extends StatelessWidget {
           ],
         ),
         child: TextField(
-          controller: createUserPage.emailController,
+          controller: emailController,
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
             filled: true,

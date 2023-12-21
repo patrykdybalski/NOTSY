@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:primary_school/app/constans/colors.dart';
-import 'package:primary_school/features/auth/pages/login_page/login_page.dart';
 
 class TextFieldLogin extends StatelessWidget {
   const TextFieldLogin({
+    required this.emailController,
     super.key,
-    required this.widget,
   });
 
-  final LoginPage widget;
+  final TextEditingController emailController;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +27,7 @@ class TextFieldLogin extends StatelessWidget {
           ],
         ),
         child: TextField(
-          controller: widget.emailController,
+          controller: emailController,
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
             filled: true,
