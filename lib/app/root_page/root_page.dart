@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:primary_school/app/core/config.dart';
 import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/app/root_page/cubit/root_cubit.dart';
 import 'package:primary_school/app/constans/colors.dart';
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: Config.debugShowCheckedModeBanner,
       title: 'Last Check Only',
       theme: ThemeData(
         primarySwatch: Colors.blue,
