@@ -16,25 +16,70 @@ class WeatherPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<WeatherCubit>(),
-      child: BlocConsumer<WeatherCubit, WeatherState>(
-        listener: (context, state) {
-          if (state.status == Status.error) {
-            ScaffoldMessenger.of(
-              context,
-            ).showSnackBar(
-              SnackBar(
-                content: Text(state.errorMessage ?? 'Unknown error'),
-                backgroundColor: AppColors.redColor,
-                showCloseIcon: true,
-                duration: const Duration(seconds: 3),
+      child:
+          BlocConsumer<WeatherCubit, WeatherState>(listener: (context, state) {
+        // if (state.status == Status.error) {
+        //
+        // }
+      }, builder: (context, state) {
+        final weatherModel = state.model;
+        switch (state.status) {
+          case Status.initial:
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SearchWidget(),
+                const SizedBox(height: 16),
+                const WarningOfCityName()
+              ],
+            );
+          case Status.loading:
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+
+          case Status.error:
+            return Center(
+              child: Text(
+                state.errorMessage ?? 'Unknown error',
+                style: const TextStyle(
+                  color: Colors.red,
+                ),
               ),
             );
-          }
-        },
-        builder: (context, state) {
-          final weatherModel = state.model;
-          return WeatherBody(weatherModel);
-        },
+
+          case Status.success:
+            return WeatherBody(weatherModel);
+        }
+      }),
+    );
+  }
+}
+
+class WarningOfCityName extends StatelessWidget {
+  const WarningOfCityName({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 300,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(13),
+      ),
+      child: Column(
+        children: [
+          Text(
+            'Wersja testowa',
+            style: TextStyles.textStyleRed(20),
+          ),
+          const SizedBox(height: 16),
+          Text(
+            'Wpisując nazwę, zamień polskie znaki: ą = a, ę = e, ó = o, ż = z, ń = n ...',
+            style: TextStyles.textStyle2(16),
+          ),
+        ],
       ),
     );
   }
