@@ -4,6 +4,7 @@ import 'package:primary_school/app/core/enums.dart';
 import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
+import 'package:primary_school/domain/models/weather_model/weather_model.dart';
 import 'package:primary_school/features/home/pages/weather_page/cubit/weather_cubit.dart';
 import 'package:primary_school/features/home/pages/weather_page/widgets/search_widget.dart';
 import 'package:primary_school/features/home/pages/weather_page/widgets/weather_info_widget.dart';
@@ -32,29 +33,42 @@ class WeatherPage extends StatelessWidget {
         },
         builder: (context, state) {
           final weatherModel = state.model;
-          return Scaffold(
-            resizeToAvoidBottomInset: true,
-            backgroundColor: AppColors.primaryColor,
-            appBar: AppBar(
-              title: const Text('Progonza pogody'),
-              titleTextStyle: TextStyles.textStyle2(24),
-              centerTitle: true,
-              backgroundColor: AppColors.primaryColor,
-              forceMaterialTransparency: true,
-            ),
-            body: Column(
-              children: [
-                if (weatherModel != null)
-                  Expanded(
-                    child: WeatherInfoWidget(
-                      weatherModel: weatherModel,
-                    ),
-                  ),
-                SearchWidget(),
-              ],
-            ),
-          );
+          return WeatherBody(weatherModel);
         },
+      ),
+    );
+  }
+}
+
+class WeatherBody extends StatelessWidget {
+  const WeatherBody(
+    this.weatherModel, {
+    Key? key,
+  }) : super(key: key);
+  final WeatherModel? weatherModel;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      resizeToAvoidBottomInset: true,
+      backgroundColor: AppColors.primaryColor,
+      appBar: AppBar(
+        title: const Text('Progonza pogody'),
+        titleTextStyle: TextStyles.textStyle2(24),
+        centerTitle: true,
+        backgroundColor: AppColors.primaryColor,
+        forceMaterialTransparency: true,
+      ),
+      body: Column(
+        children: [
+          if (weatherModel != null)
+            Expanded(
+              child: WeatherInfoWidget(
+                weatherModel: weatherModel,
+              ),
+            ),
+          SearchWidget(),
+        ],
       ),
     );
   }
