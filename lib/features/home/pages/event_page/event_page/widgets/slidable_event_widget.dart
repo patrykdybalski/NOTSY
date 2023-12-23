@@ -90,7 +90,7 @@ class SlidableEventWidget extends StatelessWidget {
         ],
       ),
       child: EventWidget(
-       eventModel,
+        eventModel,
       ),
     );
   }

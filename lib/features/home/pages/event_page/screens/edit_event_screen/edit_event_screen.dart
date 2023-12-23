@@ -49,6 +49,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
             scrollable: true,
             titlePadding: const EdgeInsets.all(5),
             backgroundColor: AppColors.primaryColor,
+            surfaceTintColor: Colors.transparent,
             contentPadding: const EdgeInsets.only(
               top: 15.0,
               left: 10.0,

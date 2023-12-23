@@ -20,11 +20,11 @@ class EditDateButton extends StatelessWidget {
     return ElevatedButton.icon(
       label: Text(
         selectedDateFormatted ?? eventModel.selectedEditDayFormatted(),
-        style: TextStyles.textStyle2(13),
+        style: TextStyles.textStyleWhite(14),
       ),
       icon: const Icon(
         Icons.calendar_month_outlined,
-        color: AppColors.secondaryColor,
+        color: AppColors.whiteColor,
       ),
       onPressed: () async {
         DateTime? selectedDate = await showDatePicker(
@@ -41,7 +41,7 @@ class EditDateButton extends StatelessWidget {
         onDayChanged(selectedDate);
       },
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.primaryColor,
+        backgroundColor: AppColors.redColor,
         elevation: 1.5,
         shadowColor: AppColors.accentColor,
         shape: RoundedRectangleBorder(

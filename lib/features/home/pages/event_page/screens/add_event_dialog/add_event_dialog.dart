@@ -168,15 +168,11 @@ class _ContentDialog extends StatelessWidget {
         TitleWidget(
           onTitleChanged: onTitleChanged,
         ),
-        const SizedBox(
-          height: 10,
-        ),
+        const SizedBox(height: 10),
         SubtitleWidget(
           onSubtitleChanged: onSubtitleChanged,
         ),
-        const SizedBox(
-          height: 15,
-        ),
+        const SizedBox(height: 15),
         DayButton(
           selectedDateFormatted: selectedDateFormatted,
           onDayChanged: onDayChanged,

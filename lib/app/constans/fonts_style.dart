@@ -9,7 +9,17 @@ class TextStyles {
     return GoogleFonts.domine(
       color: AppColors.secondaryColor,
       fontSize: size,
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.normal,
+    );
+  }
+
+  static textStyle3(
+    double size,
+  ) {
+    return GoogleFonts.domine(
+      color: AppColors.secondaryColor,
+      fontSize: size,
+      fontWeight: FontWeight.bold,
     );
   }
 
@@ -29,7 +39,7 @@ class TextStyles {
     return GoogleFonts.domine(
       color: AppColors.redColor,
       fontSize: size,
-      fontWeight: FontWeight.w800,
+      fontWeight: FontWeight.normal,
     );
   }
 
@@ -39,7 +49,7 @@ class TextStyles {
     return GoogleFonts.domine(
       color: AppColors.whiteColor,
       fontSize: size,
-      fontWeight: FontWeight.w800,
+      fontWeight: FontWeight.normal,
     );
   }
 

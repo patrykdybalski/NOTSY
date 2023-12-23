@@ -36,4 +36,6 @@ class AppColors {
     Color.fromARGB(255, 222, 185, 255),
     Color(0xFFFFDAB9),
   ];
+  static const Color primaryColor1 = Color.fromARGB(255, 236, 250, 215);
 }
+ 

@@ -127,7 +127,7 @@ class LogoImageContainer extends StatelessWidget {
       height: 250,
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('images/last_check_logo1.png'),
+          image: AssetImage('assets/images/last_check_logo1.png'),
         ),
       ),
     );

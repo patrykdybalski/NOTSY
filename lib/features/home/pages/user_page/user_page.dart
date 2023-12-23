@@ -27,7 +27,7 @@ class _UserPageState extends State<UserPage> {
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
           const SizedBox(height: 8),
           const CircleAvatar(
-            backgroundImage: AssetImage('images/last_check_logo1.png'),
+            backgroundImage: AssetImage('assets/images/last_check_logo1.png'),
             radius: 130,
           ),
           const SizedBox(height: 8),
