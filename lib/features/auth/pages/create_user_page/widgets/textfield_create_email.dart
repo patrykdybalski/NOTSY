@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:primary_school/app/constans/colors.dart';
 
 class TextFieldCreateEmail extends StatelessWidget {
-  const TextFieldCreateEmail(
-     {
-      required this.emailController,
-    
+  const TextFieldCreateEmail({
+    required this.onEmailChanged,
     super.key,
   });
 
- final TextEditingController emailController;
+  final Function(String?) onEmailChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +27,7 @@ class TextFieldCreateEmail extends StatelessWidget {
           ],
         ),
         child: TextField(
-          controller: emailController,
+          onChanged: onEmailChanged,
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
             filled: true,

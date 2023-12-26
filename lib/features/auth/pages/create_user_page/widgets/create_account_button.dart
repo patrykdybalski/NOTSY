@@ -6,18 +6,40 @@ import 'package:primary_school/features/auth/cubit/auth_cubit.dart';
 
 class CreateAccountButton extends StatelessWidget {
   const CreateAccountButton({
-    required this.emailController,
-    required this.passwordController,
+    required this.email,
+    required this.password,
     super.key,
   });
-  final TextEditingController emailController;
-  final TextEditingController passwordController;
+  final String? email;
+  final String? password;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<AuthCubit>(),
-      child: BlocBuilder<AuthCubit, AuthState>(
+      child: BlocConsumer<AuthCubit, AuthState>(
+        listener: (context, state) {
+          if (state.saved) {
+            Navigator.of(context).pop(context);
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(
+                content: Text(
+                  'Pomyślnie utworzono konto!',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                backgroundColor: AppColors.redColor,
+              ),
+            );
+          }
+          if (state.errorMessage.isNotEmpty) {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Text(state.errorMessage),
+              backgroundColor: Colors.red.shade300,
+            ));
+          }
+        },
         builder: (context, state) {
           return ElevatedButton(
             style: ElevatedButton.styleFrom(
@@ -29,8 +51,8 @@ class CreateAccountButton extends StatelessWidget {
             ),
             onPressed: () async {
               context.read<AuthCubit>().createUserAccount(
-                    email: 'sokolpono20@wp.pl',
-                    password: 'sokolpono20@',
+                    email: email!,
+                    password: password!,
                   );
             },
             child: const Text(

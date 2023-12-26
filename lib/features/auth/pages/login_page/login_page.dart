@@ -45,7 +45,9 @@ class _LoginPageBodyState extends State<_LoginPageBody> {
             borderRadius: BorderRadius.circular(20),
           ),
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(4.0, 0, 4.0, 0),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 4.0,
+            ),
             child: Column(children: [
               TextFieldLogin(
                 onEmailChanged: (newValue) {
@@ -83,7 +85,7 @@ class CreateAccountButton extends StatelessWidget {
       style: TextButton.styleFrom(foregroundColor: AppColors.greenColor),
       onPressed: () {
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => CreateUserPage(),
+          builder: (context) => const CreateUserPage(),
         ));
       },
       child: const Text('Utwórz konto',

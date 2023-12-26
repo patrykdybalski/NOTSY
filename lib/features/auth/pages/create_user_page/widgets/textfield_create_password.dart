@@ -3,11 +3,11 @@ import 'package:primary_school/app/constans/colors.dart';
 
 class TextFieldCreatePassword extends StatefulWidget {
   const TextFieldCreatePassword({
-    required this.passwordController,
+    required this.onPasswordChanged,
     super.key,
   });
 
-  final TextEditingController passwordController;
+  final Function(String?) onPasswordChanged;
 
   @override
   State<TextFieldCreatePassword> createState() => _TextFieldPasswordState();
@@ -40,7 +40,7 @@ class _TextFieldPasswordState extends State<TextFieldCreatePassword> {
           ],
         ),
         child: TextField(
-          controller: widget.passwordController,
+          onChanged: widget.onPasswordChanged,
           keyboardType: TextInputType.text,
           obscureText: obscureText,
           obscuringCharacter: '*',

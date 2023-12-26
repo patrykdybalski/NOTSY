@@ -32,7 +32,7 @@ class ForgotPasswordPage extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                  backgroundColor: AppColors.greenLogoColor,
+                  backgroundColor: AppColors.redColor,
                 ),
               );
             }
