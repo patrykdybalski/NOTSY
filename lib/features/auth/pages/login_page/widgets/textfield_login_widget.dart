@@ -3,11 +3,11 @@ import 'package:primary_school/app/constans/colors.dart';
 
 class TextFieldLogin extends StatelessWidget {
   const TextFieldLogin({
-    required this.emailController,
+    required this.onEmailChanged,
     super.key,
   });
 
-  final TextEditingController emailController;
+  final Function(String?) onEmailChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class TextFieldLogin extends StatelessWidget {
           ],
         ),
         child: TextField(
-          controller: emailController,
+          onChanged: onEmailChanged,
           keyboardType: TextInputType.emailAddress,
           decoration: InputDecoration(
             filled: true,

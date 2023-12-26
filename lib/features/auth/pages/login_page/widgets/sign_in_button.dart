@@ -5,34 +5,44 @@ import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/features/auth/cubit/auth_cubit.dart';
 
 class SignInButton extends StatelessWidget {
-  const SignInButton({
-    required this.emailController,
-    required this.passwordController,
+  const SignInButton(
+    this.email,
+    this.password, {
     super.key,
-   
   });
 
-  final TextEditingController emailController;
-   final TextEditingController passwordController;
+  final String? email;
+  final String? password;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => getIt<AuthCubit>(),
-      child: BlocBuilder<AuthCubit, AuthState>(
+      child: BlocConsumer<AuthCubit, AuthState>(
+        listener: (context, state) {
+          if (state.errorMessage.isNotEmpty) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  state.errorMessage,
+                ),
+                backgroundColor: AppColors.redColor,
+              ),
+            );
+          }
+        },
         builder: (context, state) {
           return ElevatedButton(
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.greenLogoColor,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(24.0),
-              ),
+                  borderRadius: BorderRadius.circular(24.0)),
               minimumSize: const Size(280, 40),
             ),
-            onPressed: () async {
+            onPressed: () {
               context.read<AuthCubit>().signIn(
-                    email: emailController.text,
-                    password: passwordController.text,
+                    email: email!,
+                    password: password!,
                   );
             },
             child: const Text(

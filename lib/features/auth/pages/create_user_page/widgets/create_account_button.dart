@@ -29,8 +29,8 @@ class CreateAccountButton extends StatelessWidget {
             ),
             onPressed: () async {
               context.read<AuthCubit>().createUserAccount(
-                    email: emailController.text,
-                    password: passwordController.text,
+                    email: 'sokolpono20@wp.pl',
+                    password: 'sokolpono20@',
                   );
             },
             child: const Text(

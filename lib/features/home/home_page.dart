@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
+import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/features/home/cubit/home_page_cubit.dart';
 import 'package:primary_school/features/home/pages/event_page/event_page/event_page.dart';
 import 'package:primary_school/features/home/pages/notes_page/notes_page.dart';
@@ -16,7 +17,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomePageCubit(),
+      create: (context) => getIt<HomePageCubit>(),
       child: BlocBuilder<HomePageCubit, HomePageState>(
         builder: (context, state) {
           return Scaffold(
