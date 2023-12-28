@@ -106,7 +106,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
                 child: Text(
                   'Anuluj',
                   style: GoogleFonts.domine(
-                    color: AppColors.redColor2,
+                    color: AppColors.redColor,
                     fontSize: 15,
                     fontWeight: FontWeight.w800,
                   ),
@@ -129,7 +129,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
                 child: Text(
                   'Zapisz',
                   style: GoogleFonts.domine(
-                    color: AppColors.accentColor,
+                    color: AppColors.greenColor,
                     fontSize: 15,
                     fontWeight: FontWeight.w800,
                   ),

@@ -34,13 +34,13 @@ class TitleWidget extends StatelessWidget {
         disabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(
-              color: AppColors.accentColor,
+              color: AppColors.greenColor,
               width: 0.3,
             )),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: const BorderSide(
-            color: AppColors.accentColor,
+            color: AppColors.greenColor,
             width: 0.6,
           ),
         ),

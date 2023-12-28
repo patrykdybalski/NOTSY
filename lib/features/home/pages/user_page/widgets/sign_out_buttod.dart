@@ -21,7 +21,7 @@ class SignOutButton extends StatelessWidget {
               context.read<AuthCubit>().signOut();
             },
             style: TextButton.styleFrom(
-              backgroundColor: AppColors.greenLogoColor,
+              backgroundColor: AppColors.greenColor,
             ),
             child: Text('Wyloguj',
                 style: GoogleFonts.domine(

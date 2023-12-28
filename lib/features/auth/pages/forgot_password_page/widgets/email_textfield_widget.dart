@@ -33,7 +33,7 @@ class EmailTextField extends StatelessWidget {
           prefixIcon: const Icon(Icons.email),
           prefixIconColor: MaterialStateColor.resolveWith(
             (states) => states.contains(MaterialState.focused)
-                ? AppColors.greenLogoColor
+                ? AppColors.greenColor
                 : Colors.grey,
           ),
           fillColor: Colors.white,
@@ -44,7 +44,7 @@ class EmailTextField extends StatelessWidget {
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: const BorderSide(
-              color: AppColors.greenLoginColor,
+              color: AppColors.greenColor,
               width: 0.6,
             ),
           ),

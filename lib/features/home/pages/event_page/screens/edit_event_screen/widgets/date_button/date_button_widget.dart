@@ -24,7 +24,7 @@ class EditDateButton extends StatelessWidget {
       ),
       icon: const Icon(
         Icons.calendar_month_outlined,
-        color: AppColors.whiteColor,
+        color: AppColors.secondaryColor,
       ),
       onPressed: () async {
         DateTime? selectedDate = await showDatePicker(
@@ -43,7 +43,7 @@ class EditDateButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.redColor,
         elevation: 1.5,
-        shadowColor: AppColors.accentColor,
+        shadowColor: AppColors.greenColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
             8.0,

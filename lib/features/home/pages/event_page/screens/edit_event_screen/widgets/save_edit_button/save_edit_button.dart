@@ -46,7 +46,7 @@ class SaveEditButton extends StatelessWidget {
       child: Text(
         'Zapisz edycję',
         style: GoogleFonts.domine(
-          color: AppColors.accentColor,
+          color: AppColors.greenColor,
           fontSize: 15,
           fontWeight: FontWeight.w800,
         ),

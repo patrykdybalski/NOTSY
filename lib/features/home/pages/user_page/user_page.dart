@@ -26,13 +26,10 @@ class _UserPageState extends State<UserPage> {
       body: SingleChildScrollView(
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
           const SizedBox(height: 8),
-          const CircleAvatar(
-            backgroundImage: AssetImage('assets/images/last_check_logo1.png'),
-            radius: 130,
-          ),
-          const SizedBox(height: 8),
+          const Image(image: AssetImage('assets/images/logo@1.png')),
+          const SizedBox(height: 32),
           const SignOutButton(),
-          const SizedBox(height: 40),
+          const SizedBox(height: 64),
           ListTile(
             onTap: () {},
             leading: const Text('Ukończone zadania'),
@@ -51,7 +48,7 @@ class _UserPageState extends State<UserPage> {
             leadingAndTrailingTextStyle: TextStyles.textStyle1(16),
             trailing: const Icon(Icons.navigate_next_outlined),
           ),
-          const SizedBox(height: 30),
+          const SizedBox(height: 64),
           Text(Config.configMessage),
         ]),
       ),

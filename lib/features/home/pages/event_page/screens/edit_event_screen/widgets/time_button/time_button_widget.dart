@@ -24,7 +24,7 @@ class EditTimeButton extends StatelessWidget {
       ),
       icon: const Icon(
         Icons.more_time_rounded,
-        color: AppColors.whiteColor,
+        color: AppColors.secondaryColor,
       ),
       onPressed: () async {
         TimeOfDay? selectedTime = await showTimePicker(
@@ -41,9 +41,9 @@ class EditTimeButton extends StatelessWidget {
         }
       },
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.greenLoginColor,
+        backgroundColor: AppColors.greenColor,
         elevation: 1.5,
-        shadowColor: AppColors.accentColor,
+        shadowColor: AppColors.greenColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
             8.0,

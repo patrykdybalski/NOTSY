@@ -30,14 +30,14 @@ class _EventPageState extends State<EventPage> {
         title: const Text('Zaplanowane'),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: AppColors.greenLogoColor,
+        backgroundColor: AppColors.greenColor,
         onPressed: () {
           _showDialog();
         },
         child: const Icon(
           Icons.edit_calendar_outlined,
           size: 30,
-          color: Colors.white,
+          color: AppColors.primaryColor,
         ),
       ),
       body: BlocProvider(

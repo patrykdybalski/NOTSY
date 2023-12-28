@@ -69,7 +69,7 @@ class _TextFieldPasswordState extends State<TextFieldPassword> {
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: const BorderSide(
-                color: AppColors.greenLoginColor,
+                color: AppColors.greenColor,
                 width: 0.6,
               ),
             ),

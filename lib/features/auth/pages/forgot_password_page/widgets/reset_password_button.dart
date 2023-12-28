@@ -18,7 +18,7 @@ class ReserPasswordButton extends StatelessWidget {
         context.read<AuthCubit>().resetPasswordd(email: emailController.text);
       },
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.greenLogoColor,
+        backgroundColor: AppColors.greenColor,
         elevation: 2,
         minimumSize: const Size(350, 50),
       ),

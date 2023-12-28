@@ -27,10 +27,10 @@ class HomePage extends StatelessWidget {
               type: BottomNavigationBarType.shifting,
               elevation: 10,
               backgroundColor: AppColors.primaryColor,
-              selectedItemColor: AppColors.redColor,
+              selectedItemColor: AppColors.secondaryColor,
               unselectedItemColor: AppColors.secondaryColor,
-              unselectedLabelStyle: TextStyles.textStyle2(13),
-              selectedLabelStyle: TextStyles.textStyle2(13),
+              unselectedLabelStyle: TextStyles.textStyle2(14),
+              selectedLabelStyle: TextStyles.textStyle2(14),
               currentIndex: state.currentIndex,
               onTap: (index) =>
                   context.read<HomePageCubit>().changeIndex(index),

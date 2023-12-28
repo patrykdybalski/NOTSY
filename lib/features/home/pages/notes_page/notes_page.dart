@@ -26,7 +26,7 @@ class _NotesPageState extends State<NotesPage>
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: AppColors.greenLogoColor,
+        backgroundColor: AppColors.greenColor,
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => const AddNotePage(),

@@ -85,7 +85,7 @@ class CheckWeatherButton extends StatelessWidget {
           context.read<WeatherCubit>().getWeatherModel(city: controller.text);
         },
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.greenLogoColor,
+          backgroundColor: AppColors.greenColor,
           elevation: 1.5,
           shadowColor: AppColors.primaryColor,
           shape: RoundedRectangleBorder(

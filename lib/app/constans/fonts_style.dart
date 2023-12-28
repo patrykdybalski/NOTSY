@@ -6,7 +6,7 @@ class TextStyles {
   static textStyle1(
     double size,
   ) {
-    return GoogleFonts.domine(
+    return GoogleFonts.poppins(
       color: AppColors.secondaryColor,
       fontSize: size,
       fontWeight: FontWeight.normal,
@@ -16,8 +16,18 @@ class TextStyles {
   static textStyle3(
     double size,
   ) {
-    return GoogleFonts.domine(
+    return GoogleFonts.poppins(
       color: AppColors.secondaryColor,
+      fontSize: size,
+      fontWeight: FontWeight.bold,
+    );
+  }
+
+  static textStyleBlue1(
+    double size,
+  ) {
+    return GoogleFonts.poppins(
+      color: AppColors.blueAccent,
       fontSize: size,
       fontWeight: FontWeight.bold,
     );
@@ -26,17 +36,17 @@ class TextStyles {
   static textStyle2(
     double size,
   ) {
-    return GoogleFonts.domine(
+    return GoogleFonts.poppins(
       color: AppColors.secondaryColor,
       fontSize: size,
-      fontWeight: FontWeight.w800,
+      fontWeight: FontWeight.bold,
     );
   }
 
   static textStyleRed(
     double size,
   ) {
-    return GoogleFonts.domine(
+    return GoogleFonts.poppins(
       color: AppColors.redColor,
       fontSize: size,
       fontWeight: FontWeight.normal,
@@ -46,8 +56,8 @@ class TextStyles {
   static textStyleWhite(
     double size,
   ) {
-    return GoogleFonts.domine(
-      color: AppColors.whiteColor,
+    return GoogleFonts.poppins(
+      color: AppColors.secondaryColor,
       fontSize: size,
       fontWeight: FontWeight.normal,
     );
@@ -56,10 +66,10 @@ class TextStyles {
   static textStyleWhite1(
     double size,
   ) {
-    return GoogleFonts.domine(
+    return GoogleFonts.poppins(
       color: Colors.white,
       fontSize: size,
-      fontWeight: FontWeight.w800,
+      fontWeight: FontWeight.bold,
     );
   }
 }

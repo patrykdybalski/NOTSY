@@ -73,7 +73,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
     return CalendarStyle(
       outsideDaysVisible: false,
       defaultTextStyle: const TextStyle(
-        color: AppColors.dayColor,
+        color: AppColors.greenColor,
       ),
       selectedDecoration: const BoxDecoration(
         gradient: LinearGradient(
@@ -102,7 +102,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
       ),
       todayTextStyle: const TextStyle(
         fontSize: 15,
-        color: AppColors.dayColor,
+        color: AppColors.greenColor,
       ),
       weekendTextStyle: const TextStyle(
         color: AppColors.redColor,
@@ -120,7 +120,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
         color: AppColors.primaryColor,
       ),
       weekdayStyle: TextStyle(
-        color: AppColors.dayColor,
+        color: AppColors.greenColor,
         fontSize: 12,
       ),
       weekendStyle: TextStyle(
@@ -138,32 +138,32 @@ class _CalendarWidgetState extends State<CalendarWidget> {
       titleTextStyle: const TextStyle(
         fontWeight: FontWeight.bold,
         fontSize: 17,
-        color: AppColors.accentColor,
+        color: AppColors.greenColor,
       ),
       titleCentered: true,
       headerPadding: const EdgeInsets.all(1),
       leftChevronIcon: const Icon(
         Icons.chevron_left_outlined,
         size: 25,
-        color: AppColors.accentColor,
+        color: AppColors.greenColor,
       ),
       rightChevronIcon: const Icon(
         Icons.chevron_right_outlined,
         size: 25,
-        color: AppColors.accentColor,
+        color: AppColors.greenColor,
       ),
       formatButtonShowsNext: true,
       formatButtonPadding: const EdgeInsets.all(5),
       formatButtonTextStyle: const TextStyle(
         fontWeight: FontWeight.w500,
-        color: AppColors.accentColor,
+        color: AppColors.greenColor,
         fontSize: 10,
       ),
       formatButtonDecoration: const BoxDecoration(
         color: AppColors.primaryColor,
         border: Border.fromBorderSide(
           BorderSide(
-            color: AppColors.dayColor,
+            color: AppColors.greenColor,
             width: 0.5,
           ),
         ),

@@ -12,9 +12,13 @@ class CreateUserPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: AppColors.primaryColor,
-      body: _CreatePagebody(),
+      appBar: AppBar(
+        backgroundColor: AppColors.primaryColor,
+        forceMaterialTransparency: true,
+      ),
+      body: const _CreatePagebody(),
     );
   }
 }
@@ -34,7 +38,10 @@ class _CreatePagebodyState extends State<_CreatePagebody> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 20,
+          vertical: 0,
+        ),
         child: Column(children: [
           const LogoImageContainer(),
           Container(
@@ -60,7 +67,7 @@ class _CreatePagebodyState extends State<_CreatePagebody> {
                         });
                       },
                     ),
-                    const SizedBox(height: 32),
+                    const SizedBox(height: 38),
                     CreateAccountButton(
                       email: email,
                       password: password,
@@ -86,12 +93,12 @@ class BackToLoginPageButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       style: TextButton.styleFrom(
-        foregroundColor: AppColors.greenLoginColor,
+        foregroundColor: AppColors.greenColor,
       ),
       child: const Text(
         'Mam juz konto',
         style: TextStyle(
-          color: AppColors.greenLogoColor,
+          color: AppColors.greenColor,
           fontSize: 16,
         ),
       ),
@@ -111,19 +118,36 @@ class LogoImageContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          height: 250,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/last_check_logo1.png'),
-            ),
-          ),
+        const Image(
+          image: AssetImage('assets/images/logo@1.png'),
         ),
+        const SizedBox(height: 6),
         Text(
-          'Zarejestruj się!',
-          style: TextStyles.textStyle2(28),
+          'HOOKiT.',
+          style: TextStyles.textStyle2(34),
         ),
-        const SizedBox(height: 24),
+        const SizedBox(height: 32),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(
+              'Uwtórz konto,',
+              style: TextStyles.textStyleBlue1(22),
+              textAlign: TextAlign.left,
+            ),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(
+              'Zapraszamy!',
+              style: TextStyles.textStyle2(18),
+              textAlign: TextAlign.left,
+            ),
+          ],
+        ),
+        const SizedBox(height: 6),
       ],
     );
   }

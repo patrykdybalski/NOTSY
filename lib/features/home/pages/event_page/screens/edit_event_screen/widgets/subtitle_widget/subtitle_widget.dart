@@ -43,14 +43,14 @@ class EditSubtitleWidget extends StatelessWidget {
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: const BorderSide(
-            color: AppColors.darkGreen,
+            color: AppColors.greenColor,
             width: 0.3,
           ),
         ),
         disabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(
-              color: AppColors.darkGreen,
+              color: AppColors.greenColor,
               width: 0.3,
             )),
       ),

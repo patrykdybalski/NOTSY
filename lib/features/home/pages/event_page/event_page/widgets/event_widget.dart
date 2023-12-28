@@ -37,14 +37,14 @@ class _EventWidgetState extends State<EventWidget> {
           borderRadius: BorderRadius.circular(16.0),
           side: const BorderSide(
             color: AppColors.redColor,
-            width: 0.6,
+            width: 1.4,
           ),
         ),
         collapsedShape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
           side: isEventDateExpired
-              ? const BorderSide(width: 1.8, color: AppColors.redColor3)
-              : const BorderSide(width: 1.4, color: AppColors.greenLoginColor),
+              ? const BorderSide(width: 1.4, color: AppColors.redColor)
+              : const BorderSide(width: 1.4, color: AppColors.greenColor),
         ),
         tilePadding: const EdgeInsets.symmetric(
           vertical: 4.0,
@@ -102,7 +102,7 @@ class SubtitleWidget extends StatelessWidget {
             border: Border(
               top: BorderSide.none,
               left: BorderSide(
-                color: AppColors.accentColor,
+                color: AppColors.greenColor,
               ),
             ),
           ),
@@ -172,12 +172,12 @@ class CheckBoxWidget extends StatelessWidget {
         icon: isEventDateExpired
             ? const Icon(
                 Icons.indeterminate_check_box_outlined,
-                color: AppColors.redColor3,
+                color: AppColors.redColor,
                 size: 30,
               )
             : const Icon(
                 Icons.check_box_outline_blank_outlined,
-                color: AppColors.greenLoginColor,
+                color: AppColors.greenColor,
                 size: 30,
               ),
         onPressed: () {
@@ -189,7 +189,7 @@ class CheckBoxWidget extends StatelessWidget {
                   actionsAlignment: MainAxisAlignment.end,
                   titleTextStyle: TextStyles.textStyle2(18),
                   elevation: 20,
-                  backgroundColor: AppColors.whiteColor,
+                  backgroundColor: AppColors.primaryColor,
                   actions: [
                     TextButton(
                       onPressed: () {

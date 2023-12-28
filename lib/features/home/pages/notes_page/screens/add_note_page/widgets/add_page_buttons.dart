@@ -43,7 +43,7 @@ class AddPageButtons {
       heroTag: null,
       child: const Icon(
         Icons.chevron_left_outlined,
-        color: AppColors.redColor2,
+        color: AppColors.redColor,
         size: 38,
       ),
     );
@@ -58,7 +58,7 @@ class AddPageButtons {
       mini: true,
       child: const Icon(
         Icons.color_lens_outlined,
-        color: AppColors.selectedDayColor,
+        color: AppColors.greenColor,
         size: 30,
       ),
     );

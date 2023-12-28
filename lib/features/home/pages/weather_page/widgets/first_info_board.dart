@@ -79,7 +79,7 @@ class FirstInfoBoard extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: const [
           BoxShadow(
-            color: AppColors.whiteColor,
+            color: AppColors.secondaryColor,
             blurRadius: 0.8,
             spreadRadius: 0.5,
           )

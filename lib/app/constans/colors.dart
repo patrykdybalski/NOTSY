@@ -1,41 +1,20 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const Color primaryColor = Color(0xFFFAEBD7);
-
-  static const Color secondaryColor = Color.fromARGB(255, 18, 18, 19);
-  static const Color greenLoginColor = Color(0xff7fab72);
-  static const Color greenLogoColor = Color(0xff81CD34);
-  static const Color greenColor = Color(0xff01D68E);
-  static const Color darkGreen = Color(0xFF006633);
-  static const Color accentColor = Color(0xFF006633);
-  static const Color dayColor = Color(0xFF006633);
-  static const Color redColor = Color(0xFFb06218);
-  static const Color redColor1 = Color.fromARGB(255, 64, 176, 24);
-  static const Color redColor2 = Color.fromARGB(255, 193, 64, 28);
-  static const Color redColor3 = Color.fromARGB(255, 175, 50, 15);
-  static const Color whiteColor = Color.fromARGB(255, 238, 235, 235);
-
-  static const Color selectedDayColor = Color(0xFF006633);
-
-  static Gradient fabGradient = const LinearGradient(
-    colors: [
-      Color.fromARGB(255, 193, 64, 28),
-      Color.fromARGB(255, 242, 242, 11),
-      Color(0xff01D68E),
-    ],
-  );
+  static const Color primaryColor = Color(0xFFf9f6ee);
+  static const Color secondaryColor = Color(0xFF0A0A0F);
+  static const Color blueAccent = Color(0xFF12B8FF);
+  static const Color greenColor = Color(0xFF3EB075);
+  static const Color redColor = Color(0xFF8F2B2B);
 
   static List<Color> availableColors = const [
-    Color.fromARGB(255, 255, 185, 185),
-    Color.fromARGB(255, 214, 231, 213),
-    Color(0xFFFCD8CC),
+    Color(0xFFAED6F1),
     Color(0xFFA5DBDD),
-    Color(0xFFFFFACD),
-    Color.fromARGB(255, 215, 255, 185),
-    Color.fromARGB(255, 222, 185, 255),
-    Color(0xFFFFDAB9),
+    Color(0xFFABEBC6),
+    Color(0xFFA9DFBF),
+    Color(0xFFFFCC80),
+    Color(0xFFFFF176),
+    Color(0xFFCE93D8),
+    Color(0xFFE1BEE7),
   ];
-  static const Color primaryColor1 = Color.fromARGB(255, 236, 250, 215);
 }
- 

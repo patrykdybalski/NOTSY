@@ -17,7 +17,7 @@ class DayButton extends StatelessWidget {
     return ElevatedButton.icon(
       icon: const Icon(
         Icons.calendar_month_outlined,
-        color: AppColors.whiteColor,
+        color: AppColors.secondaryColor,
       ),
       label: Text(
         selectedDateFormatted ?? 'Wybierz dzień',

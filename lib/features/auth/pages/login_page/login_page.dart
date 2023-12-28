@@ -14,9 +14,13 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
         backgroundColor: AppColors.primaryColor,
-        body: SingleChildScrollView(
+        appBar: AppBar(
+          backgroundColor: AppColors.primaryColor,
+          forceMaterialTransparency: true,
+        ),
+        body: const SingleChildScrollView(
           child: _LoginPageBody(),
         ));
   }
@@ -36,7 +40,10 @@ class _LoginPageBodyState extends State<_LoginPageBody> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 20,
+        vertical: 0,
+      ),
       child: Column(children: [
         const LogoImageContainer(),
         Container(
@@ -90,7 +97,7 @@ class CreateAccountButton extends StatelessWidget {
       },
       child: const Text('Utwórz konto',
           style: TextStyle(
-            color: AppColors.greenLogoColor,
+            color: AppColors.greenColor,
             fontSize: 16,
           )),
     );
@@ -106,19 +113,36 @@ class LogoImageContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          height: 250,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/last_check_logo1.png'),
-            ),
-          ),
+        const Image(
+          image: AssetImage('assets/images/logo@1.png'),
         ),
+        const SizedBox(height: 6),
         Text(
-          'Witaj ponownie!',
-          style: TextStyles.textStyle2(28),
+          'HOOKiT.',
+          style: TextStyles.textStyle2(34),
         ),
-        const SizedBox(height: 24),
+        const SizedBox(height: 32),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(
+              'Witaj ponownie,',
+              style: TextStyles.textStyleBlue1(22),
+              textAlign: TextAlign.left,
+            ),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(
+              'Zaloguj się!',
+              style: TextStyles.textStyle2(18),
+              textAlign: TextAlign.left,
+            ),
+          ],
+        ),
+        const SizedBox(height: 6),
       ],
     );
   }

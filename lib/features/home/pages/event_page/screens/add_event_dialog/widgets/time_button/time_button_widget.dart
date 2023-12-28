@@ -17,7 +17,7 @@ class TimeButton extends StatelessWidget {
     return ElevatedButton.icon(
       icon: const Icon(
         Icons.more_time_rounded,
-        color: AppColors.whiteColor,
+        color: AppColors.secondaryColor,
       ),
       label: Text(
         selectedTimeFormatted ?? 'Dodaj godzinę',
@@ -33,8 +33,8 @@ class TimeButton extends StatelessWidget {
         onTimeChanged(selectedTime as DateTime);
       },
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.greenLoginColor,
-        shadowColor: AppColors.darkGreen,
+        backgroundColor: AppColors.greenColor,
+        shadowColor: AppColors.greenColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
             12.0,

@@ -43,7 +43,7 @@ class CreateAccountButton extends StatelessWidget {
         builder: (context, state) {
           return ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.greenLogoColor,
+              backgroundColor: AppColors.greenColor,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(24.0),
               ),
