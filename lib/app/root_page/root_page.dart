@@ -20,6 +20,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         primaryColor: AppColors.primaryColor,
+        appBarTheme: const AppBarTheme(
+          centerTitle: true,
+          backgroundColor: AppColors.primaryColor,
+          shadowColor: AppColors.secondaryColor,
+          elevation: 3.5,
+        ),
         useMaterial3: true,
       ),
       localizationsDelegates: const [

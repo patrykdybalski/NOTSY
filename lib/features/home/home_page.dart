@@ -22,12 +22,13 @@ class HomePage extends StatelessWidget {
         builder: (context, state) {
           return Scaffold(
             backgroundColor: AppColors.primaryColor,
+            appBar: _getAppBar(context, state.currentIndex),
             body: _getBody(context, state.currentIndex),
             bottomNavigationBar: BottomNavigationBar(
               type: BottomNavigationBarType.shifting,
-              elevation: 10,
+              elevation: 15,
               backgroundColor: AppColors.primaryColor,
-              selectedItemColor: AppColors.secondaryColor,
+              selectedItemColor: AppColors.greenColor,
               unselectedItemColor: AppColors.secondaryColor,
               unselectedLabelStyle: TextStyles.textStyle2(14),
               selectedLabelStyle: TextStyles.textStyle2(14),
@@ -74,6 +75,58 @@ class HomePage extends StatelessWidget {
         return const UserPage();
       default:
         return _buildErrorView(context);
+    }
+  }
+
+  PreferredSizeWidget _getAppBar(BuildContext context, int currentIndex) {
+    PreferredSizeWidget appBar({required String text1, required String text2}) {
+      return AppBar(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Image(
+              image: AssetImage('assets/images/logo@0_5.png'),
+              height: 40,
+              width: 40,
+            ),
+            Text(
+              text1,
+              style: TextStyles.textStyle1(28),
+            ),
+            Text(
+              text2,
+              style: TextStyles.textStyle2(28),
+            ),
+          ],
+        ),
+        shadowColor: AppColors.secondaryColor,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                AppColors.blueAccent,
+                AppColors.greenColor,
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              transform: GradientRotation(240),
+            ),
+          ),
+        ),
+      );
+    }
+
+    switch (currentIndex) {
+      case 0:
+        return appBar(text1: 'Hook', text2: 'Planner');
+      case 1:
+        return appBar(text1: 'Hook', text2: 'Notes');
+      case 2:
+        return appBar(text1: 'Hook', text2: 'Pogoda');
+      case 3:
+        return appBar(text1: '', text2: 'Profil');
+      default:
+        return AppBar();
     }
   }
 

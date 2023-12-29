@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/core/enums.dart';
 import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/app/constans/colors.dart';
-import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/features/home/pages/event_page/event_page/cubit/event_cubit.dart';
 import 'package:primary_school/features/home/pages/event_page/event_page/widgets/slidable_event_widget.dart';
 import 'package:primary_school/features/home/pages/event_page/screens/add_event_dialog/add_event_dialog.dart';
@@ -21,14 +20,7 @@ class _EventPageState extends State<EventPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.primaryColor,
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: AppColors.primaryColor,
-        forceMaterialTransparency: true,
-        titleTextStyle: TextStyles.textStyle2(24),
-        title: const Text('Zaplanowane'),
-      ),
+      backgroundColor: AppColors.primaryColor2,
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.greenColor,
         onPressed: () {
@@ -67,12 +59,12 @@ class _EventPageState extends State<EventPage> {
               case Status.success:
                 return ListView(
                   children: [
-                    const SizedBox(height: 15),
+                    const SizedBox(height: 24),
                     Column(
                       children: [
                         for (final eventModel in eventModels) ...[
                           SlidableEventWidget(eventModel: eventModel),
-                          const SizedBox(height: 10),
+                          const SizedBox(height: 12),
                         ],
                       ],
                     ),
