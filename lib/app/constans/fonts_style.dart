@@ -33,6 +33,16 @@ class TextStyles {
     );
   }
 
+  static textStyleGreen1(
+    double size,
+  ) {
+    return GoogleFonts.poppins(
+      color: AppColors.greenColor,
+      fontSize: size,
+      fontWeight: FontWeight.bold,
+    );
+  }
+
   static textStyle2(
     double size,
   ) {

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/app/core/config.dart';
 
@@ -16,16 +15,9 @@ class _UserPageState extends State<UserPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.primaryColor,
-      appBar: AppBar(
-        title: const Text('Mój profil'),
-        titleTextStyle: TextStyles.textStyle2(24),
-        centerTitle: true,
-        backgroundColor: AppColors.primaryColor,
-      ),
       body: SingleChildScrollView(
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-          const SizedBox(height: 8),
+          const SizedBox(height: 32),
           const Image(image: AssetImage('assets/images/logo@1.png')),
           const SizedBox(height: 32),
           const SignOutButton(),

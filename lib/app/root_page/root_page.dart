@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         primaryColor: AppColors.primaryColor,
+        scaffoldBackgroundColor: AppColors.primaryColor,
         appBarTheme: const AppBarTheme(
           centerTitle: true,
           backgroundColor: AppColors.primaryColor,

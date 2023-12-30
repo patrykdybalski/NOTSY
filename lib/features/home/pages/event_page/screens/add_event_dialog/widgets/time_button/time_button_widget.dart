@@ -21,7 +21,7 @@ class TimeButton extends StatelessWidget {
       ),
       label: Text(
         selectedTimeFormatted ?? 'Dodaj godzinę',
-        style: TextStyles.textStyleWhite(13),
+        style: TextStyles.textStyle2(13),
       ),
       onPressed: () async {
         TimeOfDay? selectedTime = await showTimePicker(
@@ -33,8 +33,8 @@ class TimeButton extends StatelessWidget {
         onTimeChanged(selectedTime as DateTime);
       },
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.greenColor,
-        shadowColor: AppColors.greenColor,
+        backgroundColor: AppColors.primaryColor3,
+        shadowColor: AppColors.secondaryColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
             12.0,

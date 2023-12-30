@@ -168,7 +168,7 @@ class CheckBoxWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-        highlightColor: AppColors.greenColor.withOpacity(0.2),
+        highlightColor: AppColors.greenColor.withOpacity(0.5),
         icon: isEventDateExpired
             ? const Icon(
                 Icons.indeterminate_check_box_outlined,
@@ -176,7 +176,7 @@ class CheckBoxWidget extends StatelessWidget {
                 size: 30,
               )
             : const Icon(
-                Icons.check_box_outline_blank_outlined,
+                Icons.check_box_outlined,
                 color: AppColors.greenColor,
                 size: 30,
               ),
@@ -188,7 +188,7 @@ class CheckBoxWidget extends StatelessWidget {
                   title: const Text('Potwierdzasz jako ukończone?'),
                   actionsAlignment: MainAxisAlignment.end,
                   titleTextStyle: TextStyles.textStyle2(18),
-                  elevation: 20,
+                  elevation: 10,
                   backgroundColor: AppColors.primaryColor,
                   actions: [
                     TextButton(
@@ -213,7 +213,7 @@ class CheckBoxWidget extends StatelessWidget {
                             },
                             child: Text(
                               'Tak',
-                              style: TextStyles.textStyle1(16),
+                              style: TextStyles.textStyleGreen1(16),
                             ),
                           );
                         },

@@ -21,7 +21,7 @@ class DayButton extends StatelessWidget {
       ),
       label: Text(
         selectedDateFormatted ?? 'Wybierz dzień',
-        style: TextStyles.textStyleWhite(13),
+        style: TextStyles.textStyle2(13),
       ),
       onPressed: () async {
         final selectedDate = await showDatePicker(
@@ -37,8 +37,8 @@ class DayButton extends StatelessWidget {
         onDayChanged(selectedDate);
       },
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.redColor,
-        shadowColor: Colors.white,
+        backgroundColor: AppColors.primaryColor3,
+        shadowColor: AppColors.secondaryColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
             12.0,

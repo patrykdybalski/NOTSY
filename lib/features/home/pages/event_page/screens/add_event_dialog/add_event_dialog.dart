@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
@@ -52,14 +52,14 @@ class _AddEventDialogState extends State<AddEventDialog> {
             surfaceTintColor: Colors.transparent,
             shadowColor: AppColors.primaryColor,
             contentPadding: const EdgeInsets.only(
-              top: 16.0,
+              top: 32.0,
               left: 16.0,
-              right: 8.0,
+              right: 16.0,
             ),
-            actionsAlignment: MainAxisAlignment.spaceBetween,
+            actionsAlignment: MainAxisAlignment.spaceAround,
             actionsPadding: const EdgeInsets.only(
               top: 8,
-              bottom: 4.0,
+              bottom: 8.0,
             ),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
@@ -103,14 +103,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text(
-                  'Anuluj',
-                  style: GoogleFonts.domine(
-                    color: AppColors.redColor,
-                    fontSize: 15,
-                    fontWeight: FontWeight.w800,
-                  ),
-                ),
+                child: Text('Anuluj', style: TextStyles.textStyleRed(16)),
               ),
               TextButton(
                 onPressed: () {
@@ -128,11 +121,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
                 },
                 child: Text(
                   'Zapisz',
-                  style: GoogleFonts.domine(
-                    color: AppColors.greenColor,
-                    fontSize: 15,
-                    fontWeight: FontWeight.w800,
-                  ),
+                  style: TextStyles.textStyleGreen1(16),
                 ),
               ),
             ],

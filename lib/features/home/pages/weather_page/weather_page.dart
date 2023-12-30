@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/core/enums.dart';
 import 'package:primary_school/app/injection_container.dart';
-import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/domain/models/weather_model/weather_model.dart';
 import 'package:primary_school/features/home/pages/weather_page/cubit/weather_cubit.dart';
@@ -64,14 +63,6 @@ class WeatherBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      backgroundColor: AppColors.primaryColor,
-      appBar: AppBar(
-        title: const Text('Progonza pogody'),
-        titleTextStyle: TextStyles.textStyle2(24),
-        centerTitle: true,
-        backgroundColor: AppColors.primaryColor,
-        forceMaterialTransparency: true,
-      ),
       body: Column(
         children: [
           if (weatherModel != null)

@@ -124,7 +124,31 @@ class HomePage extends StatelessWidget {
       case 2:
         return appBar(text1: 'Hook', text2: 'Pogoda');
       case 3:
-        return appBar(text1: '', text2: 'Profil');
+        return AppBar(
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Profil',
+                style: TextStyles.textStyle2(28),
+              ),
+            ],
+          ),
+          shadowColor: AppColors.secondaryColor,
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  AppColors.blueAccent,
+                  AppColors.greenColor,
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                transform: GradientRotation(240),
+              ),
+            ),
+          ),
+        );
       default:
         return AppBar();
     }

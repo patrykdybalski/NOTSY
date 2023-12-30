@@ -32,7 +32,10 @@ class _GeneralNotesState extends State<GeneralNotes> {
             case Status.success:
               return GridView(
                 reverse: false,
-                padding: const EdgeInsets.all(10),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 24,
+                  horizontal: 12,
+                ),
                 scrollDirection: Axis.vertical,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,

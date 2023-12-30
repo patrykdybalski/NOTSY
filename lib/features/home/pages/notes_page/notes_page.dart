@@ -15,7 +15,6 @@ class _NotesPageState extends State<NotesPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.primaryColor,
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.greenColor,
         onPressed: () {
