@@ -5,9 +5,9 @@ import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/app/root_page/cubit/root_cubit.dart';
 import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/features/auth/pages/login_page/login_page.dart';
-import 'package:primary_school/features/home/home_page.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:primary_school/features/home/home_page/home_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

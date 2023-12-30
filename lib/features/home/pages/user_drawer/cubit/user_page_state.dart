@@ -1,10 +1,10 @@
 part of 'user_page_cubit.dart';
 
 @freezed
-class UserPageState with _$UserPageState {
-  factory UserPageState({
+class UserDrawerState with _$UserDrawerState {
+  factory UserDrawerState({
     
     @Default(Status.initial) Status status,
     @Default('') String errorMessage,
-  }) = _UserPageState;
+  }) = _UserDrawerState;
 }

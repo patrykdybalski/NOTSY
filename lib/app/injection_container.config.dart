@@ -30,7 +30,8 @@ import 'package:primary_school/domain/repositories/note/note_repository.dart'
 import 'package:primary_school/domain/repositories/weather/weather_repository.dart'
     as _i22;
 import 'package:primary_school/features/auth/cubit/auth_cubit.dart' as _i15;
-import 'package:primary_school/features/home/cubit/home_page_cubit.dart' as _i5;
+import 'package:primary_school/features/home/home_page/cubit/home_page_cubit.dart'
+    as _i5;
 import 'package:primary_school/features/home/pages/event_page/event_page/cubit/event_cubit.dart'
     as _i19;
 import 'package:primary_school/features/home/pages/event_page/screens/add_event_dialog/cubit/add_event_cubit.dart'
@@ -45,7 +46,7 @@ import 'package:primary_school/features/home/pages/notes_page/screens/general_no
     as _i20;
 import 'package:primary_school/features/home/pages/notes_page/screens/note_reader_screen/cubit/reader_screen_cubit.dart'
     as _i10;
-import 'package:primary_school/features/home/pages/user_page/cubit/user_page_cubit.dart'
+import 'package:primary_school/features/home/pages/user_drawer/cubit/user_page_cubit.dart'
     as _i12;
 import 'package:primary_school/features/home/pages/weather_page/cubit/weather_cubit.dart'
     as _i23;
@@ -80,7 +81,7 @@ extension GetItInjectableX on _i1.GetIt {
       () => registerModule.baseUrl,
       instanceName: 'BaseUrl',
     );
-    gh.factory<_i12.UserPageCubit>(() => _i12.UserPageCubit());
+    gh.factory<_i12.UserDrawerCubit>(() => _i12.UserDrawerCubit());
     gh.factory<_i13.AddEventCubit>(
         () => _i13.AddEventCubit(gh<_i4.EventRepository>()));
     gh.factory<_i14.AddNoteCubit>(
