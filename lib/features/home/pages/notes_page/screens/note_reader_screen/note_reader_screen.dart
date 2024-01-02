@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/app/constans/colors.dart';
@@ -85,8 +86,15 @@ class NoteReaderScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color: color,
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            AppColors.primaryColor,
+            AppColors.primaryColor2,
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.center,
+        ),
       ),
       child: Padding(
         padding: const EdgeInsets.all(15.0),
@@ -94,7 +102,11 @@ class NoteReaderScreenBody extends StatelessWidget {
           children: [
             Text(
               title,
-              style: TextStyles.textStyle2(20),
+              style: GoogleFonts.poppins(
+                color: color,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             const Divider(
               color: AppColors.redColor,

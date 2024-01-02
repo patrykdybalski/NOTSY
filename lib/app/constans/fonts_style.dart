@@ -43,8 +43,28 @@ class TextStyles {
     );
   }
 
+  static textStyleGreen2(
+    double size,
+  ) {
+    return GoogleFonts.poppins(
+      color: AppColors.greenColor,
+      fontSize: size,
+      fontWeight: FontWeight.normal,
+    );
+  }
+
   static textStyle2(
     double size,
+  ) {
+    return GoogleFonts.poppins(
+      color: AppColors.secondaryColor,
+      fontSize: size,
+      fontWeight: FontWeight.bold,
+    );
+  }
+  static editNoteTextStyle(
+    double size,
+    Color color,
   ) {
     return GoogleFonts.poppins(
       color: AppColors.secondaryColor,
@@ -62,6 +82,16 @@ class TextStyles {
       fontWeight: FontWeight.normal,
     );
   }
+   static textStyleRed2(
+    double size,
+  ) {
+    return GoogleFonts.poppins(
+      color: AppColors.redColor,
+      fontSize: size,
+      fontWeight: FontWeight.bold,
+    );
+  }
+
 
   static textStyleWhite(
     double size,

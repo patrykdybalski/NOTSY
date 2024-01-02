@@ -14,7 +14,7 @@ class EventModel with _$EventModel {
   }) = _EventModel;
 
   String selectedDayFormatted() {
-    return DateFormat.MMMMd('pl').format(selectedDay);
+    return DateFormat.Md('pl').format(selectedDay);
   }
 
   String selectedDayFormatted2() {

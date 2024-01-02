@@ -30,7 +30,7 @@ class NoteReaderButtons {
       onPressed: () {
         Navigator.of(context).pop();
       },
-      backgroundColor: noteModel.color,
+      backgroundColor: AppColors.primaryColor,
       mini: true,
       heroTag: null,
       child: const Icon(
@@ -84,7 +84,7 @@ class NoteReaderButtons {
               );
             }));
       },
-      backgroundColor: noteModel.color,
+      backgroundColor: AppColors.primaryColor,
       mini: true,
       heroTag: null,
       child: const Icon(
@@ -105,7 +105,7 @@ class NoteReaderButtons {
           ),
         ));
       },
-      backgroundColor: noteModel.color,
+      backgroundColor: AppColors.primaryColor,
       mini: true,
       heroTag: null,
       child: const Icon(

@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:primary_school/app/constans/colors.dart';
-import 'package:primary_school/app/constans/fonts_style.dart';
-import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
-import 'package:primary_school/features/home/pages/event_page/event_page/cubit/event_cubit.dart';
+import 'package:primary_school/features/home/pages/event_page/event_page/widgets/event_widget_components.dart';
 
 class EventWidget extends StatefulWidget {
   const EventWidget(
@@ -27,201 +23,48 @@ class _EventWidgetState extends State<EventWidget> {
 
     return Padding(
       padding: const EdgeInsets.symmetric(
-        vertical: 3,
+        vertical: 8,
         horizontal: 8,
       ),
-      child: ExpansionTile(
-        initiallyExpanded: false,
-        backgroundColor: AppColors.primaryColor,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16.0),
-          side: const BorderSide(
-            color: AppColors.redColor,
-            width: 1.4,
-          ),
-        ),
-        collapsedShape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-          side: isEventDateExpired
-              ? const BorderSide(width: 1.4, color: AppColors.redColor)
-              : const BorderSide(width: 1.4, color: AppColors.greenColor),
-        ),
-        tilePadding: const EdgeInsets.symmetric(
-          vertical: 4.0,
-          horizontal: 8.0,
-        ),
-        leading: CheckBoxWidget(isEventDateExpired, widget),
-        title: TtileWidget(widget),
-        trailing: SelectedDateWidget(widget),
-        children: [
-          SubtitleWidget(widget),
-        ],
-      ),
-    );
-  }
-}
-
-class TtileWidget extends StatelessWidget {
-  const TtileWidget(
-    this.widget, {
-    super.key,
-  });
-
-  final EventWidget widget;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      widget.eventModel.title,
-      style: TextStyles.textStyle2(15),
-    );
-  }
-}
-
-class SubtitleWidget extends StatelessWidget {
-  const SubtitleWidget(
-    this.widget, {
-    super.key,
-  });
-
-  final EventWidget widget;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          padding: const EdgeInsets.all(8),
-          margin: const EdgeInsets.only(
-            left: 24.0,
-            right: 8,
-            bottom: 24,
-          ),
-          width: 290,
-          decoration: const BoxDecoration(
-            border: Border(
-              top: BorderSide.none,
-              left: BorderSide(
-                color: AppColors.greenColor,
-              ),
+      child: Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            boxShadow: const [
+              BoxShadow(
+                  color: AppColors.primaryColor3,
+                  blurRadius: 1,
+                  offset: Offset(0, 1)),
+              BoxShadow(
+                  color: AppColors.primaryColor3,
+                  blurRadius: 0.2,
+                  offset: Offset(2, 0))
+            ]),
+        child: ExpansionTile(
+          initiallyExpanded: false,
+          backgroundColor: AppColors.primaryColor3,
+          collapsedBackgroundColor: AppColors.primaryColor3,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12.0),
+            side: const BorderSide(
+              color: AppColors.primaryColor,
+              width: 0.1,
             ),
           ),
-          child: Text(
-            widget.eventModel.subtitle,
-            style: GoogleFonts.domine(
-              color: AppColors.secondaryColor,
-              fontSize: 16,
-            ),
+          collapsedShape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
           ),
+          tilePadding: const EdgeInsets.symmetric(
+            vertical: 3.0,
+            horizontal: 3.0,
+          ),
+          leading: CheckBoxWidget(widget),
+          title: TtileWidget(widget),
+          trailing: SelectedDateWidget(widget, isEventDateExpired),
+          children: [
+            SubtitleWidget(widget),
+          ],
         ),
-      ],
-    );
-  }
-}
-
-class SelectedDateWidget extends StatelessWidget {
-  const SelectedDateWidget(
-    this.widget, {
-    super.key,
-  });
-
-  final EventWidget widget;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: 2.0,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            widget.eventModel.selectedDayFormatted(),
-            style: TextStyles.textStyle2(13),
-          ),
-          Text(
-            "${widget.eventModel.selectedDayFormatted2()}, ${widget.eventModel.selectedTimeFormatted()}",
-            style: GoogleFonts.domine(
-              color: AppColors.secondaryColor,
-              fontSize: 11,
-              fontWeight: FontWeight.w800,
-            ),
-          ),
-        ],
       ),
     );
-  }
-}
-
-class CheckBoxWidget extends StatelessWidget {
-  const CheckBoxWidget(
-    this.isEventDateExpired,
-    this.widget, {
-    super.key,
-  });
-
-  final bool isEventDateExpired;
-  final EventWidget widget;
-
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-        highlightColor: AppColors.greenColor.withOpacity(0.5),
-        icon: isEventDateExpired
-            ? const Icon(
-                Icons.indeterminate_check_box_outlined,
-                color: AppColors.redColor,
-                size: 30,
-              )
-            : const Icon(
-                Icons.check_box_outlined,
-                color: AppColors.greenColor,
-                size: 30,
-              ),
-        onPressed: () {
-          showDialog(
-              context: context,
-              builder: (context) {
-                return AlertDialog(
-                  title: const Text('Potwierdzasz jako ukończone?'),
-                  actionsAlignment: MainAxisAlignment.end,
-                  titleTextStyle: TextStyles.textStyle2(18),
-                  elevation: 10,
-                  backgroundColor: AppColors.primaryColor,
-                  actions: [
-                    TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: Text(
-                        'Nie',
-                        style: TextStyles.textStyle1(16),
-                      ),
-                    ),
-                    BlocProvider(
-                      create: (context) => getIt<EventCubit>(),
-                      child: BlocBuilder<EventCubit, EventState>(
-                        builder: (context, state) {
-                          return TextButton(
-                            onPressed: () {
-                              context.read<EventCubit>().remove(
-                                    documentID: widget.eventModel.id,
-                                  );
-                              Navigator.of(context).pop();
-                            },
-                            child: Text(
-                              'Tak',
-                              style: TextStyles.textStyleGreen1(16),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                  ],
-                );
-              });
-        });
   }
 }

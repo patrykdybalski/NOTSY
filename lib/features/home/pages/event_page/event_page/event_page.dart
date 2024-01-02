@@ -20,7 +20,7 @@ class _EventPageState extends State<EventPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.primaryColor2,
+      backgroundColor: AppColors.primaryColor,
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.greenColor,
         onPressed: () {
@@ -64,10 +64,11 @@ class _EventPageState extends State<EventPage> {
                       children: [
                         for (final eventModel in eventModels) ...[
                           SlidableEventWidget(eventModel: eventModel),
-                          const SizedBox(height: 12),
+                          const SizedBox(height: 6),
                         ],
                       ],
                     ),
+                    const SizedBox(height: 50),
                   ],
                 );
             }

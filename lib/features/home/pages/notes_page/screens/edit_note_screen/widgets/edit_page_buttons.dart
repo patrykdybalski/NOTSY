@@ -41,7 +41,7 @@ class EditPageButtons {
       onPressed: () {
         Navigator.of(context).pop();
       },
-      backgroundColor: selectedColor,
+      backgroundColor: AppColors.primaryColor,
       mini: true,
       heroTag: null,
       child: const Icon(
@@ -65,7 +65,7 @@ class EditPageButtons {
               id,
             );
       },
-      backgroundColor: selectedColor,
+      backgroundColor: AppColors.primaryColor,
       heroTag: null,
       mini: true,
       child: const Icon(

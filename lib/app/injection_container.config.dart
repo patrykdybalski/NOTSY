@@ -46,7 +46,7 @@ import 'package:primary_school/features/home/pages/notes_page/screens/general_no
     as _i20;
 import 'package:primary_school/features/home/pages/notes_page/screens/note_reader_screen/cubit/reader_screen_cubit.dart'
     as _i10;
-import 'package:primary_school/features/home/pages/user_drawer/cubit/user_page_cubit.dart'
+import 'package:primary_school/features/home/pages/user_drawer/cubit/user_drawer_cubit.dart'
     as _i12;
 import 'package:primary_school/features/home/pages/weather_page/cubit/weather_cubit.dart'
     as _i23;

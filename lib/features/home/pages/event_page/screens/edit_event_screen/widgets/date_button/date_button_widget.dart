@@ -20,7 +20,7 @@ class EditDateButton extends StatelessWidget {
     return ElevatedButton.icon(
       label: Text(
         selectedDateFormatted ?? eventModel.selectedEditDayFormatted(),
-        style: TextStyles.textStyleWhite(14),
+        style: TextStyles.textStyle1(14),
       ),
       icon: const Icon(
         Icons.calendar_month_outlined,
@@ -41,12 +41,12 @@ class EditDateButton extends StatelessWidget {
         onDayChanged(selectedDate);
       },
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.redColor,
-        elevation: 1.5,
-        shadowColor: AppColors.greenColor,
+        backgroundColor: AppColors.primaryColor3,
+        elevation: 1,
+        shadowColor: AppColors.secondaryColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
-            8.0,
+            12.0,
           ),
         ),
       ),

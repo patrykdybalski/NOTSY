@@ -20,7 +20,7 @@ class EditTimeButton extends StatelessWidget {
     return ElevatedButton.icon(
       label: Text(
         selectedTimeFormatted ?? eventModel.selectedTimeFormatted(),
-        style: TextStyles.textStyleWhite(14),
+        style: TextStyles.textStyle1(14),
       ),
       icon: const Icon(
         Icons.more_time_rounded,
@@ -41,12 +41,11 @@ class EditTimeButton extends StatelessWidget {
         }
       },
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.greenColor,
-        elevation: 1.5,
-        shadowColor: AppColors.greenColor,
+        backgroundColor: AppColors.primaryColor3,
+        shadowColor: AppColors.secondaryColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
-            8.0,
+            12.0,
           ),
         ),
       ),

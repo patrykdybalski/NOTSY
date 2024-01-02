@@ -1,10 +1,6 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:primary_school/app/constans/colors.dart';
+import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/features/home/pages/event_page/screens/edit_event_screen/cubit/edit_event_cubit.dart';
 import 'package:primary_school/features/home/pages/event_page/screens/edit_event_screen/edit_event_screen.dart';
 
@@ -44,12 +40,8 @@ class SaveEditButton extends StatelessWidget {
             );
       },
       child: Text(
-        'Zapisz edycję',
-        style: GoogleFonts.domine(
-          color: AppColors.greenColor,
-          fontSize: 15,
-          fontWeight: FontWeight.w800,
-        ),
+        'Zapisz',
+        style: TextStyles.textStyleGreen1(16),
       ),
     );
   }

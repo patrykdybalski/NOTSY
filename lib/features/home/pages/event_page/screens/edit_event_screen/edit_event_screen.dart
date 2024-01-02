@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:primary_school/app/constans/colors.dart';
+import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
 import 'package:primary_school/features/home/pages/event_page/screens/edit_event_screen/widgets/content_dialog/content_dialog.dart';
@@ -51,20 +51,18 @@ class _EditEventScreenState extends State<EditEventScreen> {
             backgroundColor: AppColors.primaryColor,
             surfaceTintColor: Colors.transparent,
             contentPadding: const EdgeInsets.only(
-              top: 15.0,
-              left: 10.0,
-              right: 10.0,
+              top: 24.0,
+              left: 16.0,
+              right: 16.0,
             ),
             shadowColor: AppColors.primaryColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(13),
             ),
-            actionsAlignment: MainAxisAlignment.spaceBetween,
+            actionsAlignment: MainAxisAlignment.spaceAround,
             actionsPadding: const EdgeInsets.only(
-              top: 0,
+              top: 8,
               bottom: 3.0,
-              left: 5,
-              right: 5,
             ),
             content: ContentDialog(
               onTitleChanged: (newValue) {
@@ -133,14 +131,7 @@ class BackEditButton extends StatelessWidget {
       onPressed: () {
         Navigator.of(context).pop();
       },
-      child: Text(
-        'Anuluj',
-        style: GoogleFonts.domine(
-          color: AppColors.redColor,
-          fontSize: 15,
-          fontWeight: FontWeight.w800,
-        ),
-      ),
+      child: Text('Anuluj', style: TextStyles.textStyleRed(16)),
     );
   }
 }

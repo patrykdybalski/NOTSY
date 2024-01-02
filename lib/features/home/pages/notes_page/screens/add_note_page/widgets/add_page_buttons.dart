@@ -38,7 +38,7 @@ class AddPageButtons {
       onPressed: () {
         Navigator.of(context).pop();
       },
-      backgroundColor: selectedColor,
+      backgroundColor: AppColors.primaryColor,
       mini: true,
       heroTag: null,
       child: const Icon(
@@ -54,11 +54,11 @@ class AddPageButtons {
       onPressed: () {
         return colorPickerDialog(context);
       },
-      backgroundColor: selectedColor,
+      backgroundColor: AppColors.primaryColor,
       mini: true,
       child: const Icon(
         Icons.color_lens_outlined,
-        color: AppColors.greenColor,
+        color: AppColors.blueAccent,
         size: 30,
       ),
     );
@@ -77,7 +77,7 @@ class AddPageButtons {
               selectedColor,
             );
       },
-      backgroundColor: selectedColor,
+      backgroundColor: AppColors.primaryColor,
       heroTag: null,
       mini: true,
       child: const Icon(

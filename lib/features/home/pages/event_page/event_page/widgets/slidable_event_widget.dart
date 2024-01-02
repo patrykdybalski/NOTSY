@@ -69,7 +69,7 @@ class SlidableEventWidget extends StatelessWidget {
               );
             },
             borderRadius: BorderRadius.circular(16),
-            padding: const EdgeInsets.all(0),
+            padding: const EdgeInsets.all(2),
             label: 'Usuń',
             icon: Icons.task_alt_outlined,
             backgroundColor: AppColors.primaryColor,

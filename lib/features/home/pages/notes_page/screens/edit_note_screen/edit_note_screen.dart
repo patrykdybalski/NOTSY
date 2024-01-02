@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
@@ -102,7 +103,15 @@ class _EditNotePageBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: noteModel.color,
+        gradient: LinearGradient(
+          colors: [
+            noteModel.color,
+            AppColors.primaryColor,
+            AppColors.primaryColor2,
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.center,
+        ),
       ),
       child: Padding(
         padding: const EdgeInsets.all(15.0),
@@ -115,7 +124,11 @@ class _EditNotePageBody extends StatelessWidget {
               minLines: 1,
               maxLines: 4,
               maxLength: 120,
-              style: TextStyles.textStyle2(20),
+              style: GoogleFonts.poppins(
+                color: noteModel.color,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
               decoration: const InputDecoration(
                 counterText: '',
                 enabled: true,

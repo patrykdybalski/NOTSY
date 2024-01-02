@@ -14,47 +14,56 @@ class EditTitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      textAlign: TextAlign.justify,
-      initialValue: eventModel.title,
-      onChanged: onTitleChanged,
-      autofocus: true,
-      maxLength: 50,
-      maxLines: 2,
-      minLines: 1,
-      keyboardType: TextInputType.text,
-      cursorColor: Colors.white10,
-      cursorRadius: const Radius.circular(12),
-      style: const TextStyle(
-        color: AppColors.secondaryColor,
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        gradient: const LinearGradient(colors: [
+          AppColors.primaryColor2,
+          AppColors.primaryColor2,
+          AppColors.primaryColor3
+        ]),
       ),
-      decoration: InputDecoration(
-        labelText: 'Tytuł',
-        filled: true,
-        fillColor: Colors.white10,
-        labelStyle: const TextStyle(
+      child: TextFormField(
+        textAlign: TextAlign.justify,
+        initialValue: eventModel.title,
+        onChanged: onTitleChanged,
+        autofocus: true,
+        maxLines: 2,
+        minLines: 1,
+        keyboardType: TextInputType.text,
+        cursorColor: Colors.white10,
+        cursorRadius: const Radius.circular(12),
+        style: const TextStyle(
           color: AppColors.secondaryColor,
-          fontSize: 18,
         ),
-        focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: const BorderSide(
-              color: AppColors.redColor,
-              width: 1.0,
-            )),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(
-            color: AppColors.greenColor,
-            width: 0.3,
+        decoration: InputDecoration(
+          labelText: 'Tytuł',
+          filled: true,
+          fillColor: Colors.white10,
+          labelStyle: const TextStyle(
+            color: AppColors.secondaryColor,
+            fontSize: 18,
           ),
-        ),
-        disabledBorder: OutlineInputBorder(
+          focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: const BorderSide(
+                color: AppColors.redColor,
+                width: 1.0,
+              )),
+          enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(
               color: AppColors.greenColor,
               width: 0.3,
-            )),
+            ),
+          ),
+          disabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: const BorderSide(
+                color: AppColors.greenColor,
+                width: 0.3,
+              )),
+        ),
       ),
     );
   }

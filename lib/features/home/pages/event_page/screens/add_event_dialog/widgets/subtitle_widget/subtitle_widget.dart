@@ -14,12 +14,13 @@ class SubtitleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          gradient: const LinearGradient(colors: [
-            AppColors.primaryColor,
-            AppColors.primaryColor2,
-            AppColors.primaryColor3
-          ])),
+        borderRadius: BorderRadius.circular(12),
+        gradient: const LinearGradient(colors: [
+          AppColors.primaryColor2,
+          AppColors.primaryColor2,
+          AppColors.primaryColor3
+        ]),
+      ),
       child: TextFormField(
         onChanged: onSubtitleChanged,
 

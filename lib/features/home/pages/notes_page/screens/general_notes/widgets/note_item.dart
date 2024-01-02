@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
@@ -45,17 +46,23 @@ class _NoteItemState extends State<NoteItem> {
         width: 175,
         decoration: BoxDecoration(
           color: widget.noteModel.color,
-          boxShadow: [
+          borderRadius: BorderRadius.circular(12),
+          gradient: const LinearGradient(
+            colors: [
+              AppColors.primaryColor2,
+              AppColors.primaryColor2,
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+          boxShadow: const [
             BoxShadow(
-              color: Colors.grey.shade500,
-              spreadRadius: 0.2,
-              blurRadius: 0.3,
-              offset: const Offset(0.3, 0.3), // Przesunięcie cienia w dół
+              color: Colors.black26,
+              spreadRadius: 0.3,
+              blurRadius: 0.2,
+              offset: Offset(0, 0.8),
             ),
           ],
-          borderRadius: BorderRadius.circular(
-            12,
-          ),
         ),
         child: Padding(
           padding: const EdgeInsets.all(
@@ -72,7 +79,11 @@ class _NoteItemState extends State<NoteItem> {
                       maxLines: 4,
                       softWrap: true,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyles.textStyle2(12),
+                      style: GoogleFonts.poppins(
+                        color: widget.noteModel.color,
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ],
@@ -86,7 +97,7 @@ class _NoteItemState extends State<NoteItem> {
                 child: Text(
                   widget.noteModel.subtitle,
                   overflow: TextOverflow.fade,
-                  style: TextStyles.textStyle1(12),
+                  style: TextStyles.textStyle1(13),
                 ),
               ),
             ],

@@ -21,7 +21,7 @@ class TimeButton extends StatelessWidget {
       ),
       label: Text(
         selectedTimeFormatted ?? 'Dodaj godzinę',
-        style: TextStyles.textStyle2(13),
+        style: TextStyles.textStyle1(14),
       ),
       onPressed: () async {
         TimeOfDay? selectedTime = await showTimePicker(
@@ -29,6 +29,12 @@ class TimeButton extends StatelessWidget {
           initialEntryMode: TimePickerEntryMode.dial,
           initialTime: TimeOfDay.now(),
         );
+        if (selectedTime != null) {
+          DateTime now = DateTime.now();
+          DateTime dateTime = DateTime(now.year, now.month, now.day,
+              selectedTime.hour, selectedTime.minute);
+          onTimeChanged(dateTime);
+        }
 
         onTimeChanged(selectedTime as DateTime);
       },

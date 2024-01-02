@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
@@ -18,14 +19,14 @@ String? _title;
 String? _subtitle;
 DateTime _createdDate = DateTime.now();
 DateTime _updatedDate = DateTime.now();
-Color _selectedColor = AppColors.primaryColor;
+Color _selectedColor = AppColors.secondaryColor;
 
 class _AddNotePageState extends State<AddNotePage> {
   @override
   void initState() {
     super.initState();
     _selectedColor =
-        AppColors.primaryColor; // Ustawienie domyślnego koloru na początku
+        AppColors.secondaryColor; // Ustawienie domyślnego koloru na początku
   }
 
   void startNewNote() {
@@ -131,8 +132,15 @@ class _AddNotePageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color: selectedColor,
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            AppColors.primaryColor,
+            AppColors.primaryColor2,
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.center,
+        ),
       ),
       child: Padding(
         padding: const EdgeInsets.all(15.0),
@@ -144,7 +152,11 @@ class _AddNotePageBody extends StatelessWidget {
               maxLines: 4,
               maxLength: 120,
               autofocus: true,
-              style: TextStyles.textStyle2(18),
+              style: GoogleFonts.poppins(
+                color: selectedColor,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
               decoration: const InputDecoration(
                 counterText: '',
                 hintText: 'Tytuł',

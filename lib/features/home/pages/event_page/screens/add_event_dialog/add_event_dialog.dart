@@ -52,13 +52,13 @@ class _AddEventDialogState extends State<AddEventDialog> {
             surfaceTintColor: Colors.transparent,
             shadowColor: AppColors.primaryColor,
             contentPadding: const EdgeInsets.only(
-              top: 32.0,
+              top: 24.0,
               left: 16.0,
               right: 16.0,
             ),
             actionsAlignment: MainAxisAlignment.spaceAround,
             actionsPadding: const EdgeInsets.only(
-              top: 8,
+              top: 20,
               bottom: 8.0,
             ),
             shape: RoundedRectangleBorder(
