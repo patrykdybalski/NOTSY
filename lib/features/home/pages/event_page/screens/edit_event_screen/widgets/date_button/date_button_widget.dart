@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
 
@@ -22,9 +21,9 @@ class EditDateButton extends StatelessWidget {
         selectedDateFormatted ?? eventModel.selectedEditDayFormatted(),
         style: TextStyles.textStyle1(14),
       ),
-      icon: const Icon(
+      icon: Icon(
         Icons.calendar_month_outlined,
-        color: AppColors.secondaryColor,
+        color: Theme.of(context).colorScheme.inversePrimary,
       ),
       onPressed: () async {
         DateTime? selectedDate = await showDatePicker(
@@ -41,9 +40,9 @@ class EditDateButton extends StatelessWidget {
         onDayChanged(selectedDate);
       },
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.primaryColor3,
-        elevation: 1,
-        shadowColor: AppColors.secondaryColor,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
+        shadowColor: Theme.of(context).colorScheme.secondary,
+        elevation: 1.5,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
             12.0,

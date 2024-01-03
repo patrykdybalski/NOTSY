@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:primary_school/app/constans/theme/theme_provider.dart';
 import 'package:primary_school/app/core/config.dart';
 import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/app/root_page/cubit/root_cubit.dart';
-import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/features/auth/pages/login_page/login_page.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:primary_school/features/home/home_page/home_page.dart';
+import 'package:provider/provider.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -17,18 +18,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: Config.debugShowCheckedModeBanner,
       title: 'Last Check Only',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        primaryColor: AppColors.primaryColor,
-        scaffoldBackgroundColor: AppColors.primaryColor,
-        appBarTheme: const AppBarTheme(
-          centerTitle: true,
-          backgroundColor: AppColors.primaryColor,
-          shadowColor: AppColors.secondaryColor,
-          elevation: 3.5,
-        ),
-        useMaterial3: true,
-      ),
+      theme: Provider.of<ThemeProvider>(context).themeData,
+      
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,

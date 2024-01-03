@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
 
 class TimeButton extends StatelessWidget {
@@ -15,9 +14,9 @@ class TimeButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
-      icon: const Icon(
+      icon: Icon(
         Icons.more_time_rounded,
-        color: AppColors.secondaryColor,
+        color: Theme.of(context).colorScheme.inversePrimary,
       ),
       label: Text(
         selectedTimeFormatted ?? 'Dodaj godzinę',
@@ -39,12 +38,10 @@ class TimeButton extends StatelessWidget {
         onTimeChanged(selectedTime as DateTime);
       },
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.primaryColor3,
-        shadowColor: AppColors.secondaryColor,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
+        shadowColor: Theme.of(context).colorScheme.secondary,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(
-            12.0,
-          ),
+          borderRadius: BorderRadius.circular(12.0),
         ),
       ),
     );

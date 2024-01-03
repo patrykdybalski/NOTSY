@@ -3,11 +3,31 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:primary_school/app/constans/colors.dart';
 
 class TextStyles {
+  static appBarStyle1(
+    double size,
+  ) {
+    return GoogleFonts.dmSerifText(
+      color: Colors.grey.shade800,
+      fontSize: size,
+      fontWeight: FontWeight.bold,
+    );
+  }
+
+  static appBarStyle2(
+    double size,
+  ) {
+    return GoogleFonts.dmSerifText(
+      color: Colors.grey.shade800,
+      fontSize: size,
+      fontWeight: FontWeight.bold,
+    );
+  }
+
   static textStyle1(
     double size,
   ) {
     return GoogleFonts.poppins(
-      color: AppColors.secondaryColor,
+      color: Colors.grey.shade800,
       fontSize: size,
       fontWeight: FontWeight.normal,
     );
@@ -17,7 +37,17 @@ class TextStyles {
     double size,
   ) {
     return GoogleFonts.poppins(
-      color: AppColors.secondaryColor,
+      color: Colors.grey.shade800,
+      fontSize: size,
+      fontWeight: FontWeight.w600,
+    );
+  }
+
+  static textStyleBlue2(
+    double size,
+  ) {
+    return GoogleFonts.poppins(
+      color: AppColors.blueAccent,
       fontSize: size,
       fontWeight: FontWeight.bold,
     );
@@ -29,7 +59,7 @@ class TextStyles {
     return GoogleFonts.poppins(
       color: AppColors.blueAccent,
       fontSize: size,
-      fontWeight: FontWeight.bold,
+      fontWeight: FontWeight.normal,
     );
   }
 
@@ -62,6 +92,7 @@ class TextStyles {
       fontWeight: FontWeight.bold,
     );
   }
+
   static editNoteTextStyle(
     double size,
     Color color,
@@ -82,7 +113,8 @@ class TextStyles {
       fontWeight: FontWeight.normal,
     );
   }
-   static textStyleRed2(
+
+  static textStyleRed2(
     double size,
   ) {
     return GoogleFonts.poppins(
@@ -91,7 +123,6 @@ class TextStyles {
       fontWeight: FontWeight.bold,
     );
   }
-
 
   static textStyleWhite(
     double size,

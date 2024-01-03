@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/core/enums.dart';
 import 'package:primary_school/app/injection_container.dart';
-import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/features/home/pages/event_page/event_page/cubit/event_cubit.dart';
 import 'package:primary_school/features/home/pages/event_page/event_page/widgets/slidable_event_widget.dart';
 import 'package:primary_school/features/home/pages/event_page/screens/add_event_dialog/add_event_dialog.dart';
@@ -20,16 +19,15 @@ class _EventPageState extends State<EventPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.primaryColor,
       floatingActionButton: FloatingActionButton(
-        backgroundColor: AppColors.greenColor,
+        backgroundColor: Theme.of(context).colorScheme.tertiary,
         onPressed: () {
           _showDialog();
         },
-        child: const Icon(
+        child: Icon(
           Icons.edit_calendar_outlined,
           size: 30,
-          color: AppColors.primaryColor,
+          color: Theme.of(context).colorScheme.inversePrimary,
         ),
       ),
       body: BlocProvider(
@@ -51,8 +49,8 @@ class _EventPageState extends State<EventPage> {
                 return Center(
                   child: Text(
                     state.errorMessage ?? 'Unknown error',
-                    style: const TextStyle(
-                      color: Colors.red,
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.error,
                     ),
                   ),
                 );

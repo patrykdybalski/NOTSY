@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
 
 class DayButton extends StatelessWidget {
@@ -15,9 +14,9 @@ class DayButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
-      icon: const Icon(
+      icon: Icon(
         Icons.calendar_month_outlined,
-        color: AppColors.secondaryColor,
+        color: Theme.of(context).colorScheme.inversePrimary,
       ),
       label: Text(
         selectedDateFormatted ?? 'Wybierz dzień',
@@ -25,7 +24,7 @@ class DayButton extends StatelessWidget {
       ),
       onPressed: () async {
         final selectedDate = await showDatePicker(
-          initialEntryMode: DatePickerEntryMode.calendar,
+          initialDatePickerMode: DatePickerMode.day,
           locale: const Locale("pl", "PL"),
           context: context,
           initialDate: DateTime.now(),
@@ -37,9 +36,9 @@ class DayButton extends StatelessWidget {
         onDayChanged(selectedDate);
       },
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.primaryColor3,
-        shadowColor: AppColors.secondaryColor,
-        elevation: 1,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
+        shadowColor: Theme.of(context).colorScheme.secondary,
+        elevation: 1.5,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
             12.0,

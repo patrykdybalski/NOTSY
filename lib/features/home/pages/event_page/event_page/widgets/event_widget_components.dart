@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/features/home/pages/event_page/event_page/cubit/event_cubit.dart';
@@ -18,7 +17,7 @@ class TtileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       widget.eventModel.title,
-      style: TextStyles.textStyle2(14),
+      style: TextStyles.textStyle3(16),
     );
   }
 }
@@ -43,16 +42,16 @@ class SubtitleWidget extends StatelessWidget {
             bottom: 24,
           ),
           width: 290,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             border: Border(
               top: BorderSide.none,
               left: BorderSide(
-                color: AppColors.secondaryColor,
+                color: Theme.of(context).colorScheme.inversePrimary,
               ),
             ),
           ),
           child: Text(widget.eventModel.subtitle,
-              style: TextStyles.textStyle1(17)),
+              style: TextStyles.textStyle1(16)),
         ),
       ],
     );
@@ -74,16 +73,16 @@ class SelectedDateWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          '${widget.eventModel.selectedDayFormatted2()} ${widget.eventModel.selectedDayFormatted()} ',
+          '${widget.eventModel.selectedDayFormatted2()}${widget.eventModel.selectedDayFormatted()} ',
           style: isEventDateExpired
-              ? TextStyles.textStyleRed2(13)
-              : TextStyles.textStyle2(13),
+              ? TextStyles.textStyleRed2(14)
+              : TextStyles.textStyle1(14),
         ),
         Text(
           widget.eventModel.selectedTimeFormatted(),
           style: isEventDateExpired
-              ? TextStyles.textStyleRed2(13)
-              : TextStyles.textStyleGreen2(13),
+              ? TextStyles.textStyleRed2(14)
+              : TextStyles.textStyle1(14),
         ),
       ],
     );
@@ -110,7 +109,7 @@ class _CheckBoxWidgetState extends State<CheckBoxWidget> {
     return Checkbox(
         value: isChecked,
         tristate: false,
-        activeColor: AppColors.greenColor,
+        activeColor: Theme.of(context).colorScheme.tertiary,
         onChanged: (newBool) {
           setState(() {
             isChecked = newBool;
@@ -121,9 +120,9 @@ class _CheckBoxWidgetState extends State<CheckBoxWidget> {
                 return AlertDialog(
                   title: const Text('Potwierdzasz jako ukończone?'),
                   actionsAlignment: MainAxisAlignment.end,
-                  titleTextStyle: TextStyles.textStyle2(18),
-                  elevation: 10,
-                  backgroundColor: AppColors.primaryColor,
+                  titleTextStyle: TextStyles.textStyle2(20),
+                  elevation: 20,
+                  backgroundColor: Theme.of(context).colorScheme.background,
                   actions: [
                     TextButton(
                       onPressed: () {
@@ -153,7 +152,7 @@ class _CheckBoxWidgetState extends State<CheckBoxWidget> {
                             },
                             child: Text(
                               'Tak',
-                              style: TextStyles.textStyleGreen1(16),
+                              style: TextStyles.textStyleBlue1(16),
                             ),
                           );
                         },

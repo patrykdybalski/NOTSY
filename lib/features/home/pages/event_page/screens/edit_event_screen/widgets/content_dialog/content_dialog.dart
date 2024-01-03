@@ -5,7 +5,6 @@ import 'package:primary_school/features/home/pages/event_page/screens/edit_event
 import 'package:primary_school/features/home/pages/event_page/screens/edit_event_screen/widgets/time_button/time_button_widget.dart';
 import 'package:primary_school/features/home/pages/event_page/screens/edit_event_screen/widgets/title_widget/title_widget.dart';
 
-
 class ContentDialog extends StatelessWidget {
   const ContentDialog({
     Key? key,
@@ -35,7 +34,7 @@ class ContentDialog extends StatelessWidget {
           onTitleChanged: onTitleChanged,
         ),
         const SizedBox(
-          height: 10,
+          height: 20,
         ),
         EditSubtitleWidget(
           eventModel: eventModel,

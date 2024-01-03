@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
 
@@ -22,14 +21,15 @@ class EditTimeButton extends StatelessWidget {
         selectedTimeFormatted ?? eventModel.selectedTimeFormatted(),
         style: TextStyles.textStyle1(14),
       ),
-      icon: const Icon(
+      icon: Icon(
         Icons.more_time_rounded,
-        color: AppColors.secondaryColor,
+        color: Theme.of(context).colorScheme.inversePrimary,
       ),
       onPressed: () async {
         TimeOfDay? selectedTime = await showTimePicker(
           context: context,
           initialEntryMode: TimePickerEntryMode.dial,
+          
           initialTime: TimeOfDay.fromDateTime(eventModel.selectedTime),
         );
 
@@ -41,8 +41,9 @@ class EditTimeButton extends StatelessWidget {
         }
       },
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.primaryColor3,
-        shadowColor: AppColors.secondaryColor,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
+        shadowColor: Theme.of(context).colorScheme.secondary,
+        elevation: 1.5,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
             12.0,

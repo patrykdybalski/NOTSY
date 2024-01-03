@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:primary_school/app/constans/colors.dart';
-import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
 import 'package:primary_school/features/home/pages/event_page/screens/edit_event_screen/widgets/content_dialog/content_dialog.dart';
@@ -39,7 +37,7 @@ class _EditEventScreenState extends State<EditEventScreen> {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(state.errorMessage),
-                backgroundColor: Colors.red,
+                backgroundColor: Theme.of(context).colorScheme.error,
               ),
             );
           }
@@ -48,14 +46,14 @@ class _EditEventScreenState extends State<EditEventScreen> {
           return AlertDialog(
             scrollable: true,
             titlePadding: const EdgeInsets.all(5),
-            backgroundColor: AppColors.primaryColor,
             surfaceTintColor: Colors.transparent,
             contentPadding: const EdgeInsets.only(
               top: 24.0,
               left: 16.0,
               right: 16.0,
+              bottom: 24,
             ),
-            shadowColor: AppColors.primaryColor,
+            shadowColor: Colors.transparent,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(13),
             ),
@@ -120,18 +118,4 @@ class _EditEventScreenState extends State<EditEventScreen> {
   }
 }
 
-class BackEditButton extends StatelessWidget {
-  const BackEditButton({
-    super.key,
-  });
 
-  @override
-  Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: () {
-        Navigator.of(context).pop();
-      },
-      child: Text('Anuluj', style: TextStyles.textStyleRed(16)),
-    );
-  }
-}

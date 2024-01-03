@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/features/home/home_page/cubit/home_page_cubit.dart';
@@ -22,15 +21,15 @@ class HomePage extends StatelessWidget {
         builder: (context, state) {
           return Scaffold(
             drawer: const DrawerWidget(),
-            backgroundColor: AppColors.primaryColor,
+            backgroundColor: Theme.of(context).colorScheme.background,
             appBar: _getAppBar(context, state.currentIndex),
             body: _getBody(context, state.currentIndex),
             bottomNavigationBar: BottomNavigationBar(
               type: BottomNavigationBarType.shifting,
               elevation: 15,
-              backgroundColor: AppColors.primaryColor,
-              selectedItemColor: AppColors.greenColor,
-              unselectedItemColor: AppColors.secondaryColor,
+              backgroundColor: Theme.of(context).colorScheme.background,
+              selectedItemColor: Theme.of(context).colorScheme.tertiary,
+              unselectedItemColor: Theme.of(context).colorScheme.inversePrimary,
               unselectedLabelStyle: TextStyles.textStyle2(14),
               selectedLabelStyle: TextStyles.textStyle2(14),
               currentIndex: state.currentIndex,
@@ -39,17 +38,14 @@ class HomePage extends StatelessWidget {
               items: const [
                 BottomNavigationBarItem(
                   label: 'Plany',
-                  backgroundColor: AppColors.primaryColor,
                   icon: Icon(Icons.calendar_month_outlined),
                 ),
                 BottomNavigationBarItem(
                   label: 'Notatki',
-                  backgroundColor: AppColors.primaryColor,
                   icon: Icon(Icons.text_snippet_outlined),
                 ),
                 BottomNavigationBarItem(
                   label: 'Pogoda',
-                  backgroundColor: AppColors.primaryColor,
                   icon: Icon(Icons.wb_cloudy_outlined),
                 ),
               ],
@@ -78,47 +74,34 @@ class HomePage extends StatelessWidget {
     PreferredSizeWidget appBar({required String text1, required String text2}) {
       return AppBar(
         title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const Image(
-              image: AssetImage('assets/images/logo@0_5.png'),
-              height: 40,
-              width: 40,
-            ),
+            const SizedBox(width: 5),
+            //
             Text(
               text1,
-              style: TextStyles.textStyle1(28),
+              style: TextStyles.appBarStyle2(28),
             ),
             Text(
               text2,
-              style: TextStyles.textStyle2(28),
+              style: TextStyles.appBarStyle1(28),
             ),
           ],
         ),
-        shadowColor: AppColors.secondaryColor,
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                AppColors.blueAccent,
-                AppColors.greenColor,
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              transform: GradientRotation(240),
-            ),
-          ),
-        ),
+        shadowColor: Theme.of(context).colorScheme.secondary,
+        centerTitle: false,
+        backgroundColor: Theme.of(context).colorScheme.background,
+        elevation: 2,
       );
     }
 
     switch (currentIndex) {
       case 0:
-        return appBar(text1: 'Hook', text2: 'Planner');
+        return appBar(text1: 'Hook', text2: 'Plan');
       case 1:
-        return appBar(text1: 'Hook', text2: 'Notes');
+        return appBar(text1: 'Hook', text2: 'Note');
       case 2:
-        return appBar(text1: 'Hook', text2: 'Pogoda');
+        return appBar(text1: 'Hook', text2: 'Weather');
 
       default:
         return AppBar();
@@ -130,15 +113,20 @@ class HomePage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text(
+          Text(
             'Coś poszło nie tak!',
-            style: TextStyle(color: Colors.red),
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.error,
+            ),
           ),
           TextButton(
             onPressed: () {
               context.read<HomePageCubit>().changeIndex(0);
             },
-            child: const Text('Powrót'),
+            child: Text(
+              'Powrót',
+              style: TextStyles.textStyle1(14),
+            ),
           ),
         ],
       ),

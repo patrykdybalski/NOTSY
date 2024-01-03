@@ -41,8 +41,24 @@ class SaveEditButton extends StatelessWidget {
       },
       child: Text(
         'Zapisz',
-        style: TextStyles.textStyleGreen1(16),
+        style: TextStyles.textStyleBlue2(16),
       ),
+    );
+  }
+}
+
+class BackEditButton extends StatelessWidget {
+  const BackEditButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+      child: Text('Anuluj', style: TextStyles.textStyleRed(16)),
     );
   }
 }

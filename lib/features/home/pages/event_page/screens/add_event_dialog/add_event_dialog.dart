@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/app/injection_container.dart';
-import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
 import 'package:primary_school/features/home/pages/event_page/screens/add_event_dialog/cubit/add_event_cubit.dart';
 import 'package:primary_school/features/home/pages/event_page/screens/add_event_dialog/widgets/date_button/date_button_widget.dart';
@@ -40,7 +39,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(state.errorMessage),
-                backgroundColor: Colors.red,
+                backgroundColor: Theme.of(context).colorScheme.error,
               ),
             );
           }
@@ -48,13 +47,13 @@ class _AddEventDialogState extends State<AddEventDialog> {
         builder: (context, state) {
           return AlertDialog(
             scrollable: true,
-            backgroundColor: AppColors.primaryColor,
             surfaceTintColor: Colors.transparent,
-            shadowColor: AppColors.primaryColor,
+            shadowColor: Colors.transparent,
             contentPadding: const EdgeInsets.only(
-              top: 24.0,
+              top: 32.0,
               left: 16.0,
               right: 16.0,
+              bottom: 32.0,
             ),
             actionsAlignment: MainAxisAlignment.spaceAround,
             actionsPadding: const EdgeInsets.only(
@@ -103,7 +102,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text('Anuluj', style: TextStyles.textStyleRed(16)),
+                child: Text('Anuluj', style: TextStyles.textStyle1(16)),
               ),
               TextButton(
                 onPressed: () {
@@ -121,7 +120,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
                 },
                 child: Text(
                   'Zapisz',
-                  style: TextStyles.textStyleGreen1(16),
+                  style: TextStyles.textStyleBlue2(16),
                 ),
               ),
             ],
@@ -157,7 +156,7 @@ class _ContentDialog extends StatelessWidget {
         TitleWidget(
           onTitleChanged: onTitleChanged,
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 20),
         SubtitleWidget(
           onSubtitleChanged: onSubtitleChanged,
         ),

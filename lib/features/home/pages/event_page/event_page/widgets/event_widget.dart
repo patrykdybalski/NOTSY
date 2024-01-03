@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
 import 'package:primary_school/features/home/pages/event_page/event_page/widgets/event_widget_components.dart';
 
@@ -27,31 +26,26 @@ class _EventWidgetState extends State<EventWidget> {
         horizontal: 8,
       ),
       child: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            boxShadow: const [
-              BoxShadow(
-                  color: AppColors.primaryColor3,
-                  blurRadius: 1,
-                  offset: Offset(0, 1)),
-              BoxShadow(
-                  color: AppColors.primaryColor3,
-                  blurRadius: 0.2,
-                  offset: Offset(2, 0))
-            ]),
+        decoration:
+            BoxDecoration(borderRadius: BorderRadius.circular(12), boxShadow: [
+          BoxShadow(
+              color: Theme.of(context).colorScheme.secondary,
+              blurRadius: 0.7,
+              offset: const Offset(1, 2)),
+          BoxShadow(
+              color: Theme.of(context).colorScheme.primary,
+              blurRadius: 0.5,
+              offset: const Offset(1, 0))
+        ]),
         child: ExpansionTile(
           initiallyExpanded: false,
-          backgroundColor: AppColors.primaryColor3,
-          collapsedBackgroundColor: AppColors.primaryColor3,
+          backgroundColor: Theme.of(context).colorScheme.secondary,
+          collapsedBackgroundColor: Theme.of(context).colorScheme.primary,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12.0),
-            side: const BorderSide(
-              color: AppColors.primaryColor,
-              width: 0.1,
-            ),
           ),
           collapsedShape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(12.0),
           ),
           tilePadding: const EdgeInsets.symmetric(
             vertical: 3.0,

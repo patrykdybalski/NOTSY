@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:primary_school/app/constans/colors.dart';
+import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
 
 class EditTitleWidget extends StatelessWidget {
@@ -16,13 +16,19 @@ class EditTitleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        gradient: const LinearGradient(colors: [
-          AppColors.primaryColor2,
-          AppColors.primaryColor2,
-          AppColors.primaryColor3
-        ]),
-      ),
+          borderRadius: BorderRadius.circular(12),
+          color: Theme.of(context).colorScheme.primary,
+          boxShadow: [
+            BoxShadow(
+                color: Theme.of(context).colorScheme.secondary,
+                blurRadius: 1,
+                spreadRadius: 1,
+                offset: const Offset(1, 2)),
+            BoxShadow(
+                color: Theme.of(context).colorScheme.primary,
+                blurRadius: 0.5,
+                offset: const Offset(1, 0))
+          ]),
       child: TextFormField(
         textAlign: TextAlign.justify,
         initialValue: eventModel.title,
@@ -31,38 +37,25 @@ class EditTitleWidget extends StatelessWidget {
         maxLines: 2,
         minLines: 1,
         keyboardType: TextInputType.text,
-        cursorColor: Colors.white10,
+        cursorColor: Theme.of(context).colorScheme.inversePrimary,
         cursorRadius: const Radius.circular(12),
-        style: const TextStyle(
-          color: AppColors.secondaryColor,
-        ),
+        style: TextStyles.textStyle2(16),
         decoration: InputDecoration(
           labelText: 'Tytuł',
-          filled: true,
-          fillColor: Colors.white10,
-          labelStyle: const TextStyle(
-            color: AppColors.secondaryColor,
-            fontSize: 18,
-          ),
+          labelStyle: TextStyles.textStyle2(16),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(
-                color: AppColors.redColor,
-                width: 1.0,
+              borderSide: BorderSide(
+                color: Theme.of(context).colorScheme.secondary,
+                width: 0.3,
               )),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: const BorderSide(
-              color: AppColors.greenColor,
+            borderSide: BorderSide(
+              color: Theme.of(context).colorScheme.secondary,
               width: 0.3,
             ),
           ),
-          disabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(
-                color: AppColors.greenColor,
-                width: 0.3,
-              )),
         ),
       ),
     );
