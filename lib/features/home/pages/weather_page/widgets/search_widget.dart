@@ -34,35 +34,48 @@ class CityTextController extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: TextField(
-        controller: controller,
-        decoration: InputDecoration(
-          label: Text(
-            'Miasto',
-            style: TextStyles.textStyle2(13),
-          ),
-          hintText: 'Podaj nazwę ',
-          hintStyle: TextStyles.textStyle2(13),
-          focusedBorder: OutlineInputBorder(
+      child: Container(
+        decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
-            borderSide: const BorderSide(
-              color: AppColors.redColor,
+            color: Theme.of(context).colorScheme.primary,
+            boxShadow: [
+              BoxShadow(
+                  color: Theme.of(context).colorScheme.secondary,
+                  blurRadius: 1,
+                  spreadRadius: 1,
+                  offset: const Offset(1, 2)),
+              BoxShadow(
+                  color: Theme.of(context).colorScheme.primary,
+                  blurRadius: 0.5,
+                  offset: const Offset(1, 0))
+            ]),
+        child: TextField(
+          controller: controller,
+          cursorColor: Theme.of(context).colorScheme.inversePrimary,
+          decoration: InputDecoration(
+            label: Text(
+              'Miejscowość',
+              style: TextStyles.textStyle1(13),
             ),
-          ),
-          disabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
-            borderSide: const BorderSide(
-              color: AppColors.redColor,
+            hintText: 'Podaj nazwę ',
+            hintStyle: TextStyles.textStyle1(13),
+            filled: true,
+            fillColor: Theme.of(context).colorScheme.primary,
+            prefixIcon: const Icon(Icons.gps_not_fixed_outlined),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: BorderSide(
+                color: Theme.of(context).colorScheme.primary,
+                width: 0.3,
+              ),
             ),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
-            borderSide: const BorderSide(
-              color: AppColors.redColor,
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: BorderSide(
+                color: Theme.of(context).colorScheme.primary,
+                width: 0.3,
+              ),
             ),
-          ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
           ),
         ),
       ),
@@ -85,7 +98,7 @@ class CheckWeatherButton extends StatelessWidget {
           context.read<WeatherCubit>().getWeatherModel(city: controller.text);
         },
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.greenColor,
+          backgroundColor: Theme.of(context).colorScheme.tertiary,
           elevation: 1.5,
           shadowColor: AppColors.primaryColor,
           shape: RoundedRectangleBorder(
@@ -96,7 +109,7 @@ class CheckWeatherButton extends StatelessWidget {
         ),
         child: Text(
           'Sprawdź',
-          style: TextStyles.textStyleWhite1(13),
+          style: TextStyles.textStyle2(14),
         ));
   }
 }

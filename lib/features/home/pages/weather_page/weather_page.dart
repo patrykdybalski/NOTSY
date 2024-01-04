@@ -37,8 +37,8 @@ class WeatherPage extends StatelessWidget {
               return Center(
                 child: Text(
                   state.errorMessage ?? 'Unknown error',
-                  style: const TextStyle(
-                    color: Colors.red,
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.error,
                   ),
                 ),
               );
@@ -96,9 +96,9 @@ class WarningOfCityName extends StatelessWidget {
             'Wersja testowa',
             style: TextStyles.textStyleRed(20),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 10),
           Text(
-            'Wpisując nazwę, zamień polskie znaki: ą = a, ę = e, ó = o, ż = z, ń = n ...',
+            'Wpisując nazwę, zamień polskie znaki: ó = o, ż = z, ń = n...',
             style: TextStyles.textStyle2(16),
           ),
         ],

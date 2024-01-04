@@ -21,7 +21,7 @@ class SecondInfoBoard extends StatelessWidget {
                 const SizedBox(width: 3),
                 Text(
                   weatherModel?.current.windDir ?? 'null',
-                  style: TextStyles.textStyleRed(13),
+                  style: TextStyles.textStyleRed2(14),
                 ),
               ],
             ),
@@ -32,7 +32,7 @@ class SecondInfoBoard extends StatelessWidget {
                 const SizedBox(width: 3),
                 Text(
                   '${weatherModel?.current.cloud} %',
-                  style: TextStyles.textStyleRed(13),
+                  style: TextStyles.textStyleRed2(14),
                 ),
               ],
             ),
@@ -47,7 +47,7 @@ class SecondInfoBoard extends StatelessWidget {
                 const SizedBox(width: 3),
                 Text(
                   '${weatherModel?.current.windMph} km/h',
-                  style: TextStyles.textStyleRed(13),
+                  style: TextStyles.textStyleRed2(14),
                 ),
               ],
             ),
@@ -58,7 +58,7 @@ class SecondInfoBoard extends StatelessWidget {
                 const SizedBox(width: 3),
                 Text(
                   '${weatherModel?.current.precipMm} mm',
-                  style: TextStyles.textStyleRed(13),
+                  style: TextStyles.textStyleRed2(14),
                 ),
               ],
             ),
@@ -73,7 +73,7 @@ class SecondInfoBoard extends StatelessWidget {
                 const SizedBox(width: 3),
                 Text(
                   '${weatherModel?.current.pressureMb} hPa',
-                  style: TextStyles.textStyleRed(13),
+                  style: TextStyles.textStyleRed2(14),
                 ),
               ],
             ),
@@ -84,7 +84,7 @@ class SecondInfoBoard extends StatelessWidget {
                 const SizedBox(width: 3),
                 Text(
                   '${weatherModel?.current.humidity} %',
-                  style: TextStyles.textStyleRed(13),
+                  style: TextStyles.textStyleRed2(14),
                 ),
               ],
             ),
