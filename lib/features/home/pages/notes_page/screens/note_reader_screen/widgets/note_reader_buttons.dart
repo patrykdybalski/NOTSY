@@ -30,12 +30,12 @@ class NoteReaderButtons {
       onPressed: () {
         Navigator.of(context).pop();
       },
-      backgroundColor: AppColors.primaryColor,
+      backgroundColor: Theme.of(context).colorScheme.secondary,
       mini: true,
       heroTag: null,
-      child: const Icon(
+      child: Icon(
         Icons.chevron_left_outlined,
-        color: AppColors.redColor,
+        color: Theme.of(context).colorScheme.inversePrimary,
         size: 38,
       ),
     );
@@ -53,7 +53,6 @@ class NoteReaderButtons {
                   builder: (context, state) {
                     return AlertDialog(
                       elevation: 20,
-                      backgroundColor: noteModel.color,
                       title: const Text('Usunąć notatkę?'),
                       titleTextStyle: TextStyles.textStyle2(20),
                       actions: [
@@ -63,7 +62,7 @@ class NoteReaderButtons {
                           },
                           child: Text(
                             'Nie',
-                            style: TextStyles.textStyle1(16),
+                            style: TextStyles.textStyle2(16),
                           ),
                         ),
                         TextButton(
@@ -84,12 +83,12 @@ class NoteReaderButtons {
               );
             }));
       },
-      backgroundColor: AppColors.primaryColor,
+      backgroundColor: Theme.of(context).colorScheme.secondary,
       mini: true,
       heroTag: null,
-      child: const Icon(
+      child: Icon(
         Icons.delete_forever_outlined,
-        color: AppColors.secondaryColor,
+        color: Theme.of(context).colorScheme.inversePrimary,
         size: 30,
       ),
     );
@@ -105,56 +104,14 @@ class NoteReaderButtons {
           ),
         ));
       },
-      backgroundColor: AppColors.primaryColor,
+      backgroundColor: Theme.of(context).colorScheme.secondary,
       mini: true,
       heroTag: null,
-      child: const Icon(
+      child: Icon(
         Icons.edit_outlined,
-        color: AppColors.greenColor,
+        color: Theme.of(context).colorScheme.tertiary,
         size: 30,
       ),
     );
   }
 }
-
-// SpeedDial buildSpeedDialButton(BuildContext context) {
-//   return SpeedDial(
-//     animatedIcon: AnimatedIcons.menu_close,
-//     buttonSize: const Size.square(40.0),
-//     backgroundColor: AppColors.secondaryColor,
-//     overlayColor: const Color.fromARGB(255, 105, 224, 224),
-//     overlayOpacity: 0.3,
-//     spacing: 8,
-//     closeManually: false,
-//     children: [
-//       SpeedDialChild(
-//         child: const Icon(
-//           Icons.mode_edit_outline_outlined,
-//         ),
-//         label: 'Edytuj',
-//         backgroundColor: AppColors.greenColor,
-//         onTap: () {
-//           Navigator.of(context).push(MaterialPageRoute(
-//             builder: (builder) => EditNoteScreen(
-//               noteModel: widget.noteModel,
-//               id: widget.noteModel.id,
-//             ),
-//           ));
-//           _refreshScreen();
-//         },
-//       ),
-//       SpeedDialChild(
-//         child: const Icon(
-//           Icons.delete_forever_outlined,
-//         ),
-//         label: 'Usuń',
-//         backgroundColor: const Color.fromARGB(255, 176, 70, 24),
-//         onTap: () {
-//           context.read<ReaderScreenCubit>().remove(
-//                 id: widget.noteModel.id,
-//               );
-//         },
-//       ),
-//     ],
-//   );
-// }

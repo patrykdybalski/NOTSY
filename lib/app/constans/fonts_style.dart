@@ -26,7 +26,7 @@ class TextStyles {
   static textStyle1(
     double size,
   ) {
-    return GoogleFonts.poppins(
+    return GoogleFonts.roboto(
       color: Colors.grey.shade800,
       fontSize: size,
       fontWeight: FontWeight.normal,
@@ -36,17 +36,17 @@ class TextStyles {
   static textStyle3(
     double size,
   ) {
-    return GoogleFonts.poppins(
+    return GoogleFonts.roboto(
       color: Colors.grey.shade800,
       fontSize: size,
-      fontWeight: FontWeight.w600,
+      fontWeight: FontWeight.bold,
     );
   }
 
   static textStyleBlue2(
     double size,
   ) {
-    return GoogleFonts.poppins(
+    return GoogleFonts.roboto(
       color: AppColors.blueAccent,
       fontSize: size,
       fontWeight: FontWeight.bold,
@@ -56,7 +56,7 @@ class TextStyles {
   static textStyleBlue1(
     double size,
   ) {
-    return GoogleFonts.poppins(
+    return GoogleFonts.roboto(
       color: AppColors.blueAccent,
       fontSize: size,
       fontWeight: FontWeight.normal,
@@ -66,7 +66,7 @@ class TextStyles {
   static textStyleGreen1(
     double size,
   ) {
-    return GoogleFonts.poppins(
+    return GoogleFonts.roboto(
       color: AppColors.greenColor,
       fontSize: size,
       fontWeight: FontWeight.bold,
@@ -76,7 +76,7 @@ class TextStyles {
   static textStyleGreen2(
     double size,
   ) {
-    return GoogleFonts.poppins(
+    return GoogleFonts.roboto(
       color: AppColors.greenColor,
       fontSize: size,
       fontWeight: FontWeight.normal,
@@ -86,7 +86,7 @@ class TextStyles {
   static textStyle2(
     double size,
   ) {
-    return GoogleFonts.poppins(
+    return GoogleFonts.roboto(
       color: AppColors.secondaryColor,
       fontSize: size,
       fontWeight: FontWeight.bold,
@@ -97,7 +97,7 @@ class TextStyles {
     double size,
     Color color,
   ) {
-    return GoogleFonts.poppins(
+    return GoogleFonts.roboto(
       color: AppColors.secondaryColor,
       fontSize: size,
       fontWeight: FontWeight.bold,
@@ -107,7 +107,7 @@ class TextStyles {
   static textStyleRed(
     double size,
   ) {
-    return GoogleFonts.poppins(
+    return GoogleFonts.roboto(
       color: AppColors.redColor,
       fontSize: size,
       fontWeight: FontWeight.normal,
@@ -117,7 +117,7 @@ class TextStyles {
   static textStyleRed2(
     double size,
   ) {
-    return GoogleFonts.poppins(
+    return GoogleFonts.roboto(
       color: AppColors.redColor,
       fontSize: size,
       fontWeight: FontWeight.bold,

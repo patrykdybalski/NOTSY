@@ -47,14 +47,15 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text(
                 state.errorMessage,
+                style: TextStyles.appBarStyle2(14),
               ),
-              backgroundColor: AppColors.redColor,
+              backgroundColor: Theme.of(context).colorScheme.error,
             ));
           }
         },
         builder: (context, state) {
           return Scaffold(
-            backgroundColor: AppColors.primaryColor,
+            backgroundColor: Theme.of(context).colorScheme.background,
             floatingActionButton: EditPageButtons(
                     context: context,
                     title: _title,
@@ -103,15 +104,7 @@ class _EditNotePageBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            noteModel.color,
-            AppColors.primaryColor,
-            AppColors.primaryColor2,
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.center,
-        ),
+        color: Theme.of(context).colorScheme.primary,
       ),
       child: Padding(
         padding: const EdgeInsets.all(15.0),
@@ -120,35 +113,39 @@ class _EditNotePageBody extends StatelessWidget {
             TextFormField(
               initialValue: noteModel.title,
               onChanged: onTitleChanged,
+              cursorColor: Theme.of(context).colorScheme.inversePrimary,
               autofocus: true,
               minLines: 1,
               maxLines: 4,
               maxLength: 120,
-              style: GoogleFonts.poppins(
+              style: GoogleFonts.roboto(
                 color: noteModel.color,
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 counterText: '',
                 enabled: true,
                 enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: AppColors.redColor, width: 0.8),
+                  borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.secondary,
+                      width: 0.8),
                 ),
                 focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: AppColors.redColor, width: 1.2),
+                  borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.secondary,
+                      width: 0.8),
                 ),
               ),
             ),
-            const SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 10),
             TextFormField(
               initialValue: noteModel.subtitle,
               onChanged: onSubtitleChange,
+              cursorColor: Theme.of(context).colorScheme.inversePrimary,
               minLines: 1,
               maxLines: 1000,
-              style: TextStyles.textStyle1(16),
+              style: TextStyles.textStyle1(18),
               decoration: const InputDecoration(
                 hintText: 'Wpisz treść notatki',
                 border: InputBorder.none,

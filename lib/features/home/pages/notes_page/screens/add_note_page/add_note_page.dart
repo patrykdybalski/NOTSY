@@ -25,8 +25,7 @@ class _AddNotePageState extends State<AddNotePage> {
   @override
   void initState() {
     super.initState();
-    _selectedColor =
-        AppColors.secondaryColor; // Ustawienie domyślnego koloru na początku
+    _selectedColor = AppColors.secondaryColor;
   }
 
   void startNewNote() {
@@ -51,14 +50,15 @@ class _AddNotePageState extends State<AddNotePage> {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text(
                 state.errorMessage,
+                style: TextStyles.textStyle2(14),
               ),
-              backgroundColor: AppColors.redColor,
+              backgroundColor: Theme.of(context).colorScheme.error,
             ));
           }
         },
         builder: (context, state) {
           return Scaffold(
-            backgroundColor: AppColors.primaryColor,
+            backgroundColor: Theme.of(context).colorScheme.primary,
             floatingActionButton: AddPageButtons(
               context: context,
               title: _title,
@@ -94,12 +94,12 @@ class _AddNotePageState extends State<AddNotePage> {
         useSafeArea: true,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         showDragHandle: true,
-        backgroundColor: AppColors.primaryColor,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
         builder: (context) {
           return Container(
             height: 220,
             padding: const EdgeInsets.all(16.0),
-            color: AppColors.primaryColor,
+            color: Theme.of(context).colorScheme.primary,
             child: buildColorPicekr(),
           );
         },
@@ -131,64 +131,54 @@ class _AddNotePageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            AppColors.primaryColor,
-            AppColors.primaryColor2,
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.center,
-        ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: ListView(
-          children: [
-            TextField(
-              onChanged: onTitleChanged,
-              minLines: 1,
-              maxLines: 4,
-              maxLength: 120,
-              autofocus: true,
-              style: GoogleFonts.poppins(
-                color: selectedColor,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-              decoration: const InputDecoration(
-                counterText: '',
-                hintText: 'Tytuł',
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: AppColors.redColor,
-                    width: 1.2,
-                  ),
+    return Padding(
+      padding: const EdgeInsets.all(15.0),
+      child: ListView(
+        children: [
+          TextField(
+            onChanged: onTitleChanged,
+            minLines: 1,
+            maxLines: 4,
+            maxLength: 120,
+            autofocus: true,
+            cursorColor: Theme.of(context).colorScheme.inversePrimary,
+            style: GoogleFonts.roboto(
+              color: selectedColor,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+            decoration: InputDecoration(
+              counterText: '',
+              hintText: 'Tytuł',
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: Theme.of(context).colorScheme.inversePrimary,
+                  width: 0.8,
                 ),
-                enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: AppColors.redColor,
-                    width: 0.8,
-                  ),
+              ),
+              enabledBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: Theme.of(context).colorScheme.inversePrimary,
+                  width: 0.8,
                 ),
               ),
             ),
-            const SizedBox(
-              height: 20,
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          TextFormField(
+            onChanged: onSubtitleChange,
+            cursorColor: Theme.of(context).colorScheme.inversePrimary,
+            minLines: 1,
+            maxLines: 200,
+            style: TextStyles.textStyle1(18),
+            decoration: const InputDecoration(
+              hintText: 'Wpisz treść notatki',
+              border: InputBorder.none,
             ),
-            TextFormField(
-              onChanged: onSubtitleChange,
-              minLines: 1,
-              maxLines: 200,
-              style: TextStyles.textStyle1(18),
-              decoration: const InputDecoration(
-                hintText: 'Wpisz treść notatki',
-                border: InputBorder.none,
-              ),
-            )
-          ],
-        ),
+          )
+        ],
       ),
     );
   }

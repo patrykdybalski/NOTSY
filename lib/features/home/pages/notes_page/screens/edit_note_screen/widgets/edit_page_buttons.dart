@@ -41,13 +41,13 @@ class EditPageButtons {
       onPressed: () {
         Navigator.of(context).pop();
       },
-      backgroundColor: AppColors.primaryColor,
+      backgroundColor: Theme.of(context).colorScheme.secondary,
       mini: true,
       heroTag: null,
-      child: const Icon(
+      child: Icon(
         Icons.chevron_left_outlined,
-        color: AppColors.redColor,
-        size: 38,
+        color: Theme.of(context).colorScheme.inversePrimary,
+        size: 34,
       ),
     );
   }
@@ -65,12 +65,12 @@ class EditPageButtons {
               id,
             );
       },
-      backgroundColor: AppColors.primaryColor,
+      backgroundColor: Theme.of(context).colorScheme.secondary,
       heroTag: null,
       mini: true,
-      child: const Icon(
+      child: Icon(
         Icons.check_outlined,
-        color: AppColors.greenColor,
+        color: Theme.of(context).colorScheme.tertiary,
         size: 30,
       ),
     );

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
@@ -18,15 +17,13 @@ class DeleteNotesDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          getIt<NoteCubit>()..start(),
+      create: (context) => getIt<NoteCubit>()..start(),
       child: BlocBuilder<NoteCubit, NoteState>(
         builder: (context, state) {
           return AlertDialog(
             title: const Text('Usunąć notatkę?'),
             titleTextStyle: TextStyles.textStyle2(20),
             elevation: 20,
-            backgroundColor: widget.noteModel.color,
             actions: [
               TextButton(
                 onPressed: () {
@@ -34,7 +31,7 @@ class DeleteNotesDialog extends StatelessWidget {
                 },
                 child: Text(
                   'Nie',
-                  style: TextStyles.textStyle1(16),
+                  style: TextStyles.textStyle2(16),
                 ),
               ),
               TextButton(

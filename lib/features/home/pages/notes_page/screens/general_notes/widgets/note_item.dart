@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
 import 'package:primary_school/features/home/pages/notes_page/screens/general_notes/widgets/delete_notes_dialog.dart';
@@ -43,31 +42,21 @@ class _NoteItemState extends State<NoteItem> {
       },
       child: Container(
         height: 200,
-        width: 175,
+        width: 200,
         decoration: BoxDecoration(
-          color: widget.noteModel.color,
           borderRadius: BorderRadius.circular(12),
-          gradient: const LinearGradient(
-            colors: [
-              AppColors.primaryColor2,
-              AppColors.primaryColor2,
-            ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
-          boxShadow: const [
+          color: Theme.of(context).colorScheme.primary,
+          boxShadow: [
             BoxShadow(
-              color: Colors.black26,
-              spreadRadius: 0.3,
+              color: Theme.of(context).colorScheme.secondary,
+              spreadRadius: 0.2,
               blurRadius: 0.2,
-              offset: Offset(0, 0.8),
+              offset: const Offset(0, 0.8),
             ),
           ],
         ),
         child: Padding(
-          padding: const EdgeInsets.all(
-            8.0,
-          ),
+          padding: const EdgeInsets.all(8.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -79,19 +68,19 @@ class _NoteItemState extends State<NoteItem> {
                       maxLines: 4,
                       softWrap: true,
                       overflow: TextOverflow.ellipsis,
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.roboto(
                         color: widget.noteModel.color,
                         fontSize: 13,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
                   ),
                 ],
               ),
-              const Divider(
-                color: AppColors.secondaryColor,
-                thickness: 0.5,
-                height: 5,
+              Divider(
+                color: Theme.of(context).colorScheme.secondary,
+                thickness: 0.7,
+                height: 1,
               ),
               Expanded(
                 child: Text(

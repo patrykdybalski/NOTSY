@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:primary_school/app/injection_container.dart';
-import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
 import 'package:primary_school/features/home/pages/notes_page/screens/note_reader_screen/widgets/note_reader_buttons.dart';
@@ -35,15 +34,16 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
               SnackBar(
                 content: Text(
                   state.errorMessage,
+                  style: TextStyles.textStyle2(14),
                 ),
-                backgroundColor: AppColors.redColor,
+                backgroundColor: Theme.of(context).colorScheme.error,
               ),
             );
           }
         },
         builder: (context, state) {
           return Scaffold(
-            backgroundColor: widget.noteModel.color,
+            backgroundColor: Theme.of(context).colorScheme.background,
             floatingActionButton: NoteReaderButtons(
               context: context,
               noteModel: widget.noteModel,
@@ -86,15 +86,8 @@ class NoteReaderScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            AppColors.primaryColor,
-            AppColors.primaryColor2,
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.center,
-        ),
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.primary,
       ),
       child: Padding(
         padding: const EdgeInsets.all(15.0),
@@ -102,14 +95,14 @@ class NoteReaderScreenBody extends StatelessWidget {
           children: [
             Text(
               title,
-              style: GoogleFonts.poppins(
+              style: GoogleFonts.roboto(
                 color: color,
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const Divider(
-              color: AppColors.redColor,
+            Divider(
+              color: Theme.of(context).colorScheme.secondary,
               thickness: 0.8,
             ),
             Row(

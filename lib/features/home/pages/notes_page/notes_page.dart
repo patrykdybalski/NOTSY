@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/features/home/pages/notes_page/screens/add_note_page/add_note_page.dart';
 import 'package:primary_school/features/home/pages/notes_page/screens/general_notes/general_notes.dart';
 
@@ -16,17 +15,18 @@ class _NotesPageState extends State<NotesPage>
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        backgroundColor: AppColors.greenColor,
+        backgroundColor: Theme.of(context).colorScheme.tertiary,
         onPressed: () {
           Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => const AddNotePage(),
-              fullscreenDialog: true,
-              allowSnapshotting: true));
+            builder: (context) => const AddNotePage(),
+            fullscreenDialog: true,
+            allowSnapshotting: true,
+          ));
         },
-        child: const Icon(
+        child: Icon(
           Icons.note_add_outlined,
           size: 28,
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.inversePrimary,
         ),
       ),
       body: const GeneralNotes(),

@@ -31,16 +31,16 @@ class _GeneralNotesState extends State<GeneralNotes> {
               );
             case Status.success:
               return GridView(
-                reverse: false,
+                reverse: true,
                 padding: const EdgeInsets.symmetric(
-                  vertical: 24,
-                  horizontal: 12,
+                  vertical: 32,
+                  horizontal: 8,
                 ),
                 scrollDirection: Axis.vertical,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   mainAxisSpacing: 20,
-                  crossAxisSpacing: 20,
+                  crossAxisSpacing: 10,
                   childAspectRatio: 0.8,
                 ),
                 children: [
@@ -55,8 +55,8 @@ class _GeneralNotesState extends State<GeneralNotes> {
               return Center(
                 child: Text(
                   state.errorMessage,
-                  style: const TextStyle(
-                    color: Colors.red,
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.error,
                   ),
                 ),
               );
