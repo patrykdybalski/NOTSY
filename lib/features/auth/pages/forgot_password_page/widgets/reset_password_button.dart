@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:primary_school/app/constans/colors.dart';
+import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/features/auth/cubit/auth_cubit.dart';
 
 class ReserPasswordButton extends StatelessWidget {
@@ -18,15 +18,15 @@ class ReserPasswordButton extends StatelessWidget {
         context.read<AuthCubit>().resetPasswordd(email: emailController.text);
       },
       style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.greenColor,
+        backgroundColor: Theme.of(context).colorScheme.tertiary,
         elevation: 2,
         minimumSize: const Size(350, 50),
       ),
-      child: const Text(
+      child: Text(
         'Wyślij link',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 16,
+        style: TextStyles.textStyle2(
+          16,
+          Theme.of(context).colorScheme.primary,
         ),
       ),
     );

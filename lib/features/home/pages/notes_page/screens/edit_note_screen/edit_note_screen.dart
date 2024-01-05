@@ -46,7 +46,10 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text(
                 state.errorMessage,
-                style: TextStyles.appBarStyle2(14),
+                style: TextStyles.appBarStyle2(
+                  14,
+                  Theme.of(context).colorScheme.inversePrimary,
+                ),
               ),
               backgroundColor: Theme.of(context).colorScheme.error,
             ));
@@ -144,7 +147,10 @@ class _EditNotePageBody extends StatelessWidget {
               cursorColor: Theme.of(context).colorScheme.inversePrimary,
               minLines: 1,
               maxLines: 1000,
-              style: TextStyles.textStyle1(18),
+              style: TextStyles.textStyle1(
+                18,
+                Theme.of(context).colorScheme.inversePrimary,
+              ),
               decoration: const InputDecoration(
                 hintText: 'Wpisz treść notatki',
                 border: InputBorder.none,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:primary_school/app/constans/colors.dart';
 
 class TextFieldCreatePassword extends StatefulWidget {
   const TextFieldCreatePassword({
@@ -68,10 +67,7 @@ class _TextFieldPasswordState extends State<TextFieldCreatePassword> {
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: const BorderSide(
-                color: AppColors.greenColor,
-                width: 0.6,
-              ),
+              
             ),
           ),
         ),

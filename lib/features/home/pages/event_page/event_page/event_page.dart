@@ -27,7 +27,7 @@ class _EventPageState extends State<EventPage> {
         child: Icon(
           Icons.edit_calendar_outlined,
           size: 30,
-          color: Theme.of(context).colorScheme.inversePrimary,
+          color: Theme.of(context).colorScheme.primary,
         ),
       ),
       body: BlocProvider(

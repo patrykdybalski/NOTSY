@@ -93,13 +93,17 @@ class WarningOfCityName extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            'Wersja testowa',
-            style: TextStyles.textStyleRed(20),
+            '',
+            style:
+                TextStyles.textStyle1(20, Theme.of(context).colorScheme.error),
           ),
           const SizedBox(height: 10),
           Text(
             'Wpisując nazwę, zamień polskie znaki: ó = o, ż = z, ń = n...',
-            style: TextStyles.textStyle2(16),
+            style: TextStyles.textStyle2(
+              16,
+              Theme.of(context).colorScheme.inversePrimary,
+            ),
           ),
         ],
       ),

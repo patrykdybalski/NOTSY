@@ -19,7 +19,10 @@ class EditDateButton extends StatelessWidget {
     return ElevatedButton.icon(
       label: Text(
         selectedDateFormatted ?? eventModel.selectedEditDayFormatted(),
-        style: TextStyles.textStyle1(14),
+        style: TextStyles.textStyle1(
+          14,
+          Theme.of(context).colorScheme.inversePrimary,
+        ),
       ),
       icon: Icon(
         Icons.calendar_month_outlined,

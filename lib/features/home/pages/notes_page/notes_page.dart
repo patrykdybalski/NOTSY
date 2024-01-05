@@ -26,7 +26,7 @@ class _NotesPageState extends State<NotesPage>
         child: Icon(
           Icons.note_add_outlined,
           size: 28,
-          color: Theme.of(context).colorScheme.inversePrimary,
+          color: Theme.of(context).colorScheme.primary,
         ),
       ),
       body: const GeneralNotes(),

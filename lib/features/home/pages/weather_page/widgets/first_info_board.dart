@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/domain/models/weather_model/weather_model.dart';
+import 'package:primary_school/features/home/pages/weather_page/widgets/second_info_board.dart';
+import 'package:primary_school/features/home/pages/weather_page/widgets/third_info_board.dart';
 
 class FirstInfoBoard extends StatelessWidget {
   const FirstInfoBoard(this.weatherModel, {super.key});
@@ -8,15 +10,21 @@ class FirstInfoBoard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double? tempInt = weatherModel?.current.tempC;
+    int? temperatureInCelsiusInteger = tempInt!.toInt();
     return Container(
-      height: 120,
+      height: 320,
+      width: 500,
       decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.primary,
           borderRadius: BorderRadius.circular(16),
-          gradient: LinearGradient(colors: [
-            Theme.of(context).colorScheme.primary,
-            Colors.blue.shade100,
-          ], begin: Alignment.bottomLeft, end: Alignment.topLeft),
+          gradient: LinearGradient(
+            colors: [
+              Theme.of(context).colorScheme.primary,
+              Colors.blue.shade100,
+            ],
+            begin: Alignment.bottomLeft,
+            end: Alignment.topLeft,
+          ),
           boxShadow: [
             BoxShadow(
                 color: Theme.of(context).colorScheme.secondary,
@@ -28,28 +36,66 @@ class FirstInfoBoard extends StatelessWidget {
                 blurRadius: 0.5,
                 offset: const Offset(1, 0))
           ]),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                '${weatherModel?.current.tempC}°C',
-                style: TextStyles.textStyle1(50),
-              ),
-              Text(
-                'Odczuwalne ${weatherModel?.current.feelslikeC}°C',
-                style: TextStyles.textStyle1(16),
-              ),
-            ],
-          ),
-          Image.asset(
-            getIconForName(weatherModel?.current.condition.text),
-            height: 80,
-          ),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16.0),
+        child: Column(
+          children: [
+            ThirdInfoBoard(weatherModel),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Image.asset(
+                  getIconForName(weatherModel?.current.condition.text),
+                  height: 90,
+                ),
+                SizedBox(
+                  width: 140,
+                  height: 140,
+                  child: Row(
+                    children: [
+                      Text(
+                        '$temperatureInCelsiusInteger',
+                        style: TextStyles.textStyle1(
+                          100,
+                          Theme.of(context).colorScheme.inversePrimary,
+                        ),
+                      ),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          const Text(''),
+                          const SizedBox(height: 10),
+                          Text(
+                            '°C',
+                            style: TextStyles.textStyle1(
+                              30,
+                              Theme.of(context).colorScheme.inversePrimary,
+                            ),
+                          ),
+                          const SizedBox(height: 2),
+                          Text(
+                            '${weatherModel?.current.feelslikeC}°C',
+                            style: TextStyles.textStyle2(
+                              17,
+                              Theme.of(context).colorScheme.tertiary,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            Divider(
+                endIndent: 80,
+                indent: 80,
+                thickness: 1,
+                color: Theme.of(context).colorScheme.secondary),
+            const SizedBox(height: 16),
+            SecondInfoBoard(weatherModel),
+          ],
+        ),
       ),
     );
   }

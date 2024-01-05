@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/features/auth/pages/create_user_page/create_user_page.dart';
 import 'package:primary_school/features/auth/pages/login_page/widgets/reset_password_button.dart';
@@ -15,9 +14,9 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: AppColors.primaryColor,
+        backgroundColor: Theme.of(context).colorScheme.background,
         appBar: AppBar(
-          backgroundColor: AppColors.primaryColor,
+          backgroundColor: Theme.of(context).colorScheme.background,
           forceMaterialTransparency: true,
         ),
         body: const SingleChildScrollView(
@@ -42,7 +41,6 @@ class _LoginPageBodyState extends State<_LoginPageBody> {
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 20,
-        vertical: 0,
       ),
       child: Column(children: [
         const LogoImageContainer(),
@@ -70,7 +68,7 @@ class _LoginPageBodyState extends State<_LoginPageBody> {
               }),
               const ResetPasswordButton(),
               SignInButton(email, password),
-              const SizedBox(height: 16),
+              const SizedBox(height: 8),
               const CreateAccountButton(),
               const SizedBox(height: 10),
             ]),
@@ -89,15 +87,17 @@ class CreateAccountButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      style: TextButton.styleFrom(foregroundColor: AppColors.greenColor),
+      style: TextButton.styleFrom(
+        foregroundColor: Theme.of(context).colorScheme.background,
+      ),
       onPressed: () {
         Navigator.of(context).push(MaterialPageRoute(
           builder: (context) => const CreateUserPage(),
         ));
       },
-      child: const Text('Utwórz konto',
+      child: Text('Utwórz konto',
           style: TextStyle(
-            color: AppColors.greenColor,
+            color: Theme.of(context).colorScheme.inversePrimary,
             fontSize: 16,
           )),
     );
@@ -118,8 +118,11 @@ class LogoImageContainer extends StatelessWidget {
         ),
         const SizedBox(height: 6),
         Text(
-          'HOOKiT.',
-          style: TextStyles.textStyle2(34),
+          'HOOKIT.',
+          style: TextStyles.textStyle2(
+            34,
+            Theme.of(context).colorScheme.inversePrimary,
+          ),
         ),
         const SizedBox(height: 32),
         Row(
@@ -127,7 +130,10 @@ class LogoImageContainer extends StatelessWidget {
           children: [
             Text(
               'Witaj ponownie,',
-              style: TextStyles.textStyleBlue1(22),
+              style: TextStyles.textStyle1(
+                22,
+                Theme.of(context).colorScheme.tertiary,
+              ),
               textAlign: TextAlign.left,
             ),
           ],
@@ -137,7 +143,10 @@ class LogoImageContainer extends StatelessWidget {
           children: [
             Text(
               'Zaloguj się!',
-              style: TextStyles.textStyle2(18),
+              style: TextStyles.textStyle2(
+                18,
+                Theme.of(context).colorScheme.inversePrimary,
+              ),
               textAlign: TextAlign.left,
             ),
           ],

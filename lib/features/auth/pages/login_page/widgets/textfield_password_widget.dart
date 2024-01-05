@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:primary_school/app/constans/colors.dart';
 
 class TextFieldPassword extends StatefulWidget {
   const TextFieldPassword({
@@ -28,14 +27,13 @@ class _TextFieldPasswordState extends State<TextFieldPassword> {
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
               blurRadius: 1,
               spreadRadius: 1,
               offset: const Offset(0, 1.0),
-              color: Colors.grey.withOpacity(0.4),
+              color: Colors.grey.withOpacity(0.2),
             )
           ],
         ),
@@ -44,6 +42,7 @@ class _TextFieldPasswordState extends State<TextFieldPassword> {
           keyboardType: TextInputType.text,
           obscureText: obscureText,
           obscuringCharacter: '*',
+          cursorColor: Theme.of(context).colorScheme.inversePrimary,
           decoration: InputDecoration(
             focusColor: Colors.amber,
             filled: true,
@@ -61,17 +60,13 @@ class _TextFieldPasswordState extends State<TextFieldPassword> {
                 toggleObscureText();
               },
             ),
-            fillColor: Colors.white,
+            fillColor: Colors.white70,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide.none,
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: const BorderSide(
-                color: AppColors.greenColor,
-                width: 0.6,
-              ),
             ),
           ),
         ),

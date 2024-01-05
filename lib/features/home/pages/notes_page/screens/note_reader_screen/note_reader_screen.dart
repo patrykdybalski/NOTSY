@@ -34,7 +34,10 @@ class _NoteReaderScreenState extends State<NoteReaderScreen> {
               SnackBar(
                 content: Text(
                   state.errorMessage,
-                  style: TextStyles.textStyle2(14),
+                  style: TextStyles.textStyle2(
+                    14,
+                    Theme.of(context).colorScheme.inversePrimary,
+                  ),
                 ),
                 backgroundColor: Theme.of(context).colorScheme.error,
               ),
@@ -112,11 +115,17 @@ class NoteReaderScreenBody extends StatelessWidget {
                   children: [
                     Text(
                       'utw. ${DateFormat('dd/MM/yyyy hh:mm').format(createdDate)}',
-                      style: TextStyles.textStyle1(9),
+                      style: TextStyles.textStyle1(
+                        9,
+                        Theme.of(context).colorScheme.inversePrimary,
+                      ),
                     ),
                     Text(
                       'edt. ${DateFormat('dd/MM/yyyy hh:mm').format(updatedDate)}',
-                      style: TextStyles.textStyle1(9),
+                      style: TextStyles.textStyle1(
+                        9,
+                        Theme.of(context).colorScheme.inversePrimary,
+                      ),
                     ),
                   ],
                 ),
@@ -127,7 +136,10 @@ class NoteReaderScreenBody extends StatelessWidget {
             ),
             Text(
               subtitle,
-              style: TextStyles.textStyle1(18),
+              style: TextStyles.textStyle1(
+                18,
+                Theme.of(context).colorScheme.inversePrimary,
+              ),
             ),
           ],
         ),

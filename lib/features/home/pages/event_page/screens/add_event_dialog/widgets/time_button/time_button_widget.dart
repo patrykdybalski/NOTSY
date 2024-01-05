@@ -20,7 +20,8 @@ class TimeButton extends StatelessWidget {
       ),
       label: Text(
         selectedTimeFormatted ?? 'Dodaj godzinę',
-        style: TextStyles.textStyle1(14),
+        style: TextStyles.textStyle1(14,
+                Theme.of(context).colorScheme.inversePrimary,),
       ),
       onPressed: () async {
         TimeOfDay? selectedTime = await showTimePicker(

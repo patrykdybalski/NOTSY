@@ -102,7 +102,11 @@ class _AddEventDialogState extends State<AddEventDialog> {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text('Anuluj', style: TextStyles.textStyle1(16)),
+                child: Text('Anuluj',
+                    style: TextStyles.textStyle1(
+                      16,
+                      Theme.of(context).colorScheme.inversePrimary,
+                    )),
               ),
               TextButton(
                 onPressed: () {
@@ -120,7 +124,8 @@ class _AddEventDialogState extends State<AddEventDialog> {
                 },
                 child: Text(
                   'Zapisz',
-                  style: TextStyles.textStyleBlue2(16),
+                  style: TextStyles.textStyle1(
+                      16, Theme.of(context).colorScheme.tertiary),
                 ),
               ),
             ],

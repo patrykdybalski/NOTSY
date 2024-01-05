@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
 
 class SubtitleWidget extends StatelessWidget {
@@ -36,13 +35,15 @@ class SubtitleWidget extends StatelessWidget {
         scrollPhysics: const ClampingScrollPhysics(),
         maxLines: 10,
         minLines: 3,
-        cursorColor: AppColors.secondaryColor,
+        cursorColor:  Theme.of(context).colorScheme.inversePrimary,
         cursorRadius: const Radius.circular(12),
-        style: TextStyles.textStyle1(16),
+        style: TextStyles.textStyle1(16,
+                Theme.of(context).colorScheme.inversePrimary,),
         decoration: InputDecoration(
           labelText: 'Szczegóły',
           alignLabelWithHint: true,
-          labelStyle: TextStyles.textStyle1(16),
+          labelStyle: TextStyles.textStyle1(16,
+                Theme.of(context).colorScheme.inversePrimary,),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(

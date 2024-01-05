@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/features/auth/cubit/auth_cubit.dart';
@@ -21,9 +20,13 @@ class SignOutButton extends StatelessWidget {
               context.read<AuthCubit>().signOut();
             },
             style: TextButton.styleFrom(
-              backgroundColor: AppColors.greenColor,
+              backgroundColor: Theme.of(context).colorScheme.tertiary,
             ),
-            child: Text('Wyloguj', style: TextStyles.textStyleWhite1(18)),
+            child: Text('Wyloguj',
+                style: TextStyles.textStyle2(
+                  18,
+                  Theme.of(context).colorScheme.primary,
+                )),
           );
         },
       ),

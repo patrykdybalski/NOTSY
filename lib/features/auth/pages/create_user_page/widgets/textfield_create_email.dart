@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:primary_school/app/constans/colors.dart';
 
 class TextFieldCreateEmail extends StatelessWidget {
   const TextFieldCreateEmail({
@@ -35,7 +34,7 @@ class TextFieldCreateEmail extends StatelessWidget {
             prefixIcon: const Icon(Icons.email),
             prefixIconColor: MaterialStateColor.resolveWith(
               (states) => states.contains(MaterialState.focused)
-                  ? AppColors.greenColor
+                  ? Theme.of(context).colorScheme.tertiary
                   : Colors.grey,
             ),
             fillColor: Colors.white,
@@ -45,10 +44,6 @@ class TextFieldCreateEmail extends StatelessWidget {
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: const BorderSide(
-                color: AppColors.greenColor,
-                width: 0.6,
-              ),
             ),
           ),
         ),

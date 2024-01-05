@@ -20,7 +20,10 @@ class DayButton extends StatelessWidget {
       ),
       label: Text(
         selectedDateFormatted ?? 'Wybierz dzień',
-        style: TextStyles.textStyle1(14),
+        style: TextStyles.textStyle1(
+          14,
+          Theme.of(context).colorScheme.inversePrimary,
+        ),
       ),
       onPressed: () async {
         final selectedDate = await showDatePicker(

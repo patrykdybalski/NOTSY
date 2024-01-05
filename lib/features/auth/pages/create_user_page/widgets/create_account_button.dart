@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/features/auth/cubit/auth_cubit.dart';
 
@@ -22,28 +21,28 @@ class CreateAccountButton extends StatelessWidget {
           if (state.saved) {
             Navigator.of(context).pop(context);
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
+              SnackBar(
                 content: Text(
                   'Pomyślnie utworzono konto!',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Theme.of(context).colorScheme.inversePrimary,
                   ),
                 ),
-                backgroundColor: AppColors.redColor,
+                backgroundColor: Theme.of(context).colorScheme.tertiary,
               ),
             );
           }
           if (state.errorMessage.isNotEmpty) {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text(state.errorMessage),
-              backgroundColor: Colors.red.shade300,
+              backgroundColor: Theme.of(context).colorScheme.error,
             ));
           }
         },
         builder: (context, state) {
           return ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.greenColor,
+              backgroundColor: Theme.of(context).colorScheme.tertiary,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(24.0),
               ),
@@ -55,10 +54,10 @@ class CreateAccountButton extends StatelessWidget {
                     password: password!,
                   );
             },
-            child: const Text(
+            child: Text(
               'Zarejestruj się',
               style: TextStyle(
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.primary,
                 fontSize: 16,
               ),
             ),

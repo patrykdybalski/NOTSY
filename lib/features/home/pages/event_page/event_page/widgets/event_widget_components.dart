@@ -17,7 +17,10 @@ class TtileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       widget.eventModel.title,
-      style: TextStyles.textStyle3(16),
+      style: TextStyles.textStyle2(
+        16,
+        Theme.of(context).colorScheme.inversePrimary,
+      ),
     );
   }
 }
@@ -51,7 +54,10 @@ class SubtitleWidget extends StatelessWidget {
             ),
           ),
           child: Text(widget.eventModel.subtitle,
-              style: TextStyles.textStyle1(16)),
+              style: TextStyles.textStyle1(
+                16,
+                Theme.of(context).colorScheme.inversePrimary,
+              )),
         ),
       ],
     );
@@ -75,14 +81,24 @@ class SelectedDateWidget extends StatelessWidget {
         Text(
           '${widget.eventModel.selectedDayFormatted2()}${widget.eventModel.selectedDayFormatted()} ',
           style: isEventDateExpired
-              ? TextStyles.textStyleRed2(14)
-              : TextStyles.textStyle1(14),
+              ? TextStyles.textStyle2(
+                  14, Theme.of(context).colorScheme.tertiary)
+              : TextStyles.textStyle1(
+                  14,
+                  Theme.of(context).colorScheme.inversePrimary,
+                ),
         ),
         Text(
           widget.eventModel.selectedTimeFormatted(),
           style: isEventDateExpired
-              ? TextStyles.textStyleRed2(14)
-              : TextStyles.textStyle1(14),
+              ? TextStyles.textStyle2(
+                  14,
+                  Theme.of(context).colorScheme.inversePrimary,
+                )
+              : TextStyles.textStyle1(
+                  14,
+                  Theme.of(context).colorScheme.inversePrimary,
+                ),
         ),
       ],
     );
@@ -120,7 +136,10 @@ class _CheckBoxWidgetState extends State<CheckBoxWidget> {
                 return AlertDialog(
                   title: const Text('Potwierdzasz jako ukończone?'),
                   actionsAlignment: MainAxisAlignment.end,
-                  titleTextStyle: TextStyles.textStyle2(20),
+                  titleTextStyle: TextStyles.textStyle2(
+                    20,
+                    Theme.of(context).colorScheme.inversePrimary,
+                  ),
                   elevation: 20,
                   backgroundColor: Theme.of(context).colorScheme.background,
                   actions: [
@@ -133,7 +152,10 @@ class _CheckBoxWidgetState extends State<CheckBoxWidget> {
                       },
                       child: Text(
                         'Nie',
-                        style: TextStyles.textStyle1(16),
+                        style: TextStyles.textStyle1(
+                          16,
+                          Theme.of(context).colorScheme.inversePrimary,
+                        ),
                       ),
                     ),
                     BlocProvider(
@@ -152,7 +174,10 @@ class _CheckBoxWidgetState extends State<CheckBoxWidget> {
                             },
                             child: Text(
                               'Tak',
-                              style: TextStyles.textStyleBlue1(16),
+                              style: TextStyles.textStyle1(
+                                16,
+                                Theme.of(context).colorScheme.tertiary,
+                              ),
                             ),
                           );
                         },

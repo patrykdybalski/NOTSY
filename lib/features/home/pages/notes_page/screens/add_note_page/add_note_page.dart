@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
@@ -19,15 +18,9 @@ String? _title;
 String? _subtitle;
 DateTime _createdDate = DateTime.now();
 DateTime _updatedDate = DateTime.now();
-Color _selectedColor = AppColors.secondaryColor;
+Color _selectedColor = Colors.grey.shade700;
 
 class _AddNotePageState extends State<AddNotePage> {
-  @override
-  void initState() {
-    super.initState();
-    _selectedColor = AppColors.secondaryColor;
-  }
-
   void startNewNote() {
     setState(() {
       _title = null;
@@ -50,7 +43,10 @@ class _AddNotePageState extends State<AddNotePage> {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text(
                 state.errorMessage,
-                style: TextStyles.textStyle2(14),
+                style: TextStyles.textStyle2(
+                  14,
+                  Theme.of(context).colorScheme.inversePrimary,
+                ),
               ),
               backgroundColor: Theme.of(context).colorScheme.error,
             ));
@@ -94,10 +90,10 @@ class _AddNotePageState extends State<AddNotePage> {
         useSafeArea: true,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         showDragHandle: true,
-        backgroundColor: Theme.of(context).colorScheme.secondary,
+        backgroundColor: Theme.of(context).colorScheme.background,
         builder: (context) {
           return Container(
-            height: 220,
+            height: 110,
             padding: const EdgeInsets.all(16.0),
             color: Theme.of(context).colorScheme.primary,
             child: buildColorPicekr(),
@@ -142,10 +138,9 @@ class _AddNotePageBody extends StatelessWidget {
             maxLength: 120,
             autofocus: true,
             cursorColor: Theme.of(context).colorScheme.inversePrimary,
-            style: GoogleFonts.roboto(
-              color: selectedColor,
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
+            style: TextStyles.textStyle2(
+              18,
+              selectedColor,
             ),
             decoration: InputDecoration(
               counterText: '',
@@ -172,7 +167,10 @@ class _AddNotePageBody extends StatelessWidget {
             cursorColor: Theme.of(context).colorScheme.inversePrimary,
             minLines: 1,
             maxLines: 200,
-            style: TextStyles.textStyle1(18),
+            style: TextStyles.textStyle1(
+              18,
+              Theme.of(context).colorScheme.inversePrimary,
+            ),
             decoration: const InputDecoration(
               hintText: 'Wpisz treść notatki',
               border: InputBorder.none,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:primary_school/app/constans/colors.dart';
+import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/features/home/pages/user_drawer/widgets/drawer_tile.dart';
+import 'package:primary_school/features/home/pages/user_drawer/widgets/settings.dart';
 import 'package:primary_school/features/home/pages/user_drawer/widgets/sign_out_buttod.dart';
 
 class DrawerWidget extends StatelessWidget {
@@ -13,28 +14,50 @@ class DrawerWidget extends StatelessWidget {
       width: 250,
       child: Column(
         children: [
-          const DrawerHeader(
-            child: Icon(
-              Icons.person,
-              size: 110,
-              color: AppColors.greenColor,
+          DrawerHeader(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Image(
+                  image: AssetImage('assets/images/Logo@0_75.png'),
+                  width: 100,
+                ),
+                Text(
+                  'HooKit',
+                  style: TextStyles.appBarStyle1(
+                      30, Theme.of(context).colorScheme.inversePrimary),
+                ),
+              ],
             ),
           ),
           DrawerTile(
             title: 'Strona główna',
-            leadnig: const Icon(Icons.home),
+            leadnig: Icon(
+              Icons.home,
+              color: Theme.of(context).colorScheme.inversePrimary,
+            ),
             onTap: () {
               Navigator.of(context).pop();
             },
           ),
           DrawerTile(
             title: 'Ustawienia',
-            leadnig: const Icon(Icons.settings),
-            onTap: () {},
+            leadnig: Icon(
+              Icons.settings,
+              color: Theme.of(context).colorScheme.inversePrimary,
+            ),
+            onTap: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: ((context) => const MySettings())));
+            },
           ),
           DrawerTile(
             title: 'Oceń nas',
-            leadnig: const Icon(Icons.swap_vertical_circle_rounded),
+            leadnig: Icon(
+              Icons.swap_vertical_circle_rounded,
+              color: Theme.of(context).colorScheme.inversePrimary,
+            ),
             onTap: () {},
           ),
           const SizedBox(height: 200),

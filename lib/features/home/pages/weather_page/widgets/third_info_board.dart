@@ -15,7 +15,10 @@ class ThirdInfoBoard extends StatelessWidget {
         const Icon(Icons.location_on_outlined),
         Text(
           ' ${weatherModel?.location.nameWithCountry} ',
-          style: TextStyles.textStyle2(18),
+          style: TextStyles.textStyle2(
+            18,
+            Theme.of(context).colorScheme.error,
+          ),
         ),
       ],
     );

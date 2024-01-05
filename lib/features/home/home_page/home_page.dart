@@ -30,8 +30,14 @@ class HomePage extends StatelessWidget {
               backgroundColor: Theme.of(context).colorScheme.background,
               selectedItemColor: Theme.of(context).colorScheme.tertiary,
               unselectedItemColor: Theme.of(context).colorScheme.inversePrimary,
-              unselectedLabelStyle: TextStyles.textStyle2(14),
-              selectedLabelStyle: TextStyles.textStyle2(14),
+              unselectedLabelStyle: TextStyles.textStyle2(
+                14,
+                Theme.of(context).colorScheme.inversePrimary,
+              ),
+              selectedLabelStyle: TextStyles.textStyle2(
+                14,
+                Theme.of(context).colorScheme.inversePrimary,
+              ),
               currentIndex: state.currentIndex,
               onTap: (index) =>
                   context.read<HomePageCubit>().changeIndex(index),
@@ -71,25 +77,17 @@ class HomePage extends StatelessWidget {
   }
 
   PreferredSizeWidget _getAppBar(BuildContext context, int currentIndex) {
-    PreferredSizeWidget appBar({required String text1, required String text2}) {
+    PreferredSizeWidget appBar({required String text2}) {
       return AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            const SizedBox(width: 5),
-            //
-            Text(
-              text1,
-              style: TextStyles.appBarStyle2(28),
-            ),
-            Text(
-              text2,
-              style: TextStyles.appBarStyle1(28),
-            ),
-          ],
+        title: Text(
+          text2,
+          style: TextStyles.appBarStyle1(
+            28,
+            Theme.of(context).colorScheme.inversePrimary,
+          ),
         ),
         shadowColor: Theme.of(context).colorScheme.secondary,
-        centerTitle: false,
+        centerTitle: true,
         backgroundColor: Theme.of(context).colorScheme.background,
         elevation: 2,
       );
@@ -97,11 +95,11 @@ class HomePage extends StatelessWidget {
 
     switch (currentIndex) {
       case 0:
-        return appBar(text1: 'Hook', text2: 'Plan');
+        return appBar(text2: 'Plan');
       case 1:
-        return appBar(text1: 'Hook', text2: 'Note');
+        return appBar(text2: 'Notatka');
       case 2:
-        return appBar(text1: 'Hook', text2: 'Weather');
+        return appBar(text2: 'Pogoda');
 
       default:
         return AppBar();
@@ -125,7 +123,10 @@ class HomePage extends StatelessWidget {
             },
             child: Text(
               'Powrót',
-              style: TextStyles.textStyle1(14),
+              style: TextStyles.textStyle1(
+                14,
+                Theme.of(context).colorScheme.inversePrimary,
+              ),
             ),
           ),
         ],

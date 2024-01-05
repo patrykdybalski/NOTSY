@@ -40,7 +40,7 @@ class EditPageButtons {
       onPressed: () {
         Navigator.of(context).pop();
       },
-      backgroundColor: Theme.of(context).colorScheme.secondary,
+      backgroundColor: Theme.of(context).colorScheme.primary,
       mini: true,
       heroTag: null,
       child: Icon(
@@ -64,7 +64,7 @@ class EditPageButtons {
               id,
             );
       },
-      backgroundColor: Theme.of(context).colorScheme.secondary,
+      backgroundColor: Theme.of(context).colorScheme.primary,
       heroTag: null,
       mini: true,
       child: Icon(

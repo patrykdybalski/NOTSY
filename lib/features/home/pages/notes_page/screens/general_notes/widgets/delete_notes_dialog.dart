@@ -21,8 +21,10 @@ class DeleteNotesDialog extends StatelessWidget {
       child: BlocBuilder<NoteCubit, NoteState>(
         builder: (context, state) {
           return AlertDialog(
+            backgroundColor: Theme.of(context).colorScheme.background,
             title: const Text('Usunąć notatkę?'),
-            titleTextStyle: TextStyles.textStyle2(20),
+            titleTextStyle: TextStyles.textStyle2(
+                20, Theme.of(context).colorScheme.inversePrimary),
             elevation: 20,
             actions: [
               TextButton(
@@ -31,7 +33,8 @@ class DeleteNotesDialog extends StatelessWidget {
                 },
                 child: Text(
                   'Nie',
-                  style: TextStyles.textStyle2(16),
+                  style: TextStyles.textStyle2(
+                      16, Theme.of(context).colorScheme.inversePrimary),
                 ),
               ),
               TextButton(
@@ -41,7 +44,8 @@ class DeleteNotesDialog extends StatelessWidget {
                 },
                 child: Text(
                   'Tak',
-                  style: TextStyles.textStyle1(16),
+                  style: TextStyles.textStyle1(
+                      16, Theme.of(context).colorScheme.inversePrimary),
                 ),
               ),
             ],

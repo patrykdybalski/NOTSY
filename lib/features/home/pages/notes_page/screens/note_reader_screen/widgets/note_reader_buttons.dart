@@ -29,7 +29,7 @@ class NoteReaderButtons {
       onPressed: () {
         Navigator.of(context).pop();
       },
-      backgroundColor: Theme.of(context).colorScheme.secondary,
+      backgroundColor: Theme.of(context).colorScheme.primary,
       mini: true,
       heroTag: null,
       child: Icon(
@@ -53,7 +53,10 @@ class NoteReaderButtons {
                     return AlertDialog(
                       elevation: 20,
                       title: const Text('Usunąć notatkę?'),
-                      titleTextStyle: TextStyles.textStyle2(20),
+                      titleTextStyle: TextStyles.textStyle2(
+                        20,
+                        Theme.of(context).colorScheme.inversePrimary,
+                      ),
                       actions: [
                         TextButton(
                           onPressed: () {
@@ -61,7 +64,10 @@ class NoteReaderButtons {
                           },
                           child: Text(
                             'Nie',
-                            style: TextStyles.textStyle2(16),
+                            style: TextStyles.textStyle2(
+                              16,
+                              Theme.of(context).colorScheme.inversePrimary,
+                            ),
                           ),
                         ),
                         TextButton(
@@ -72,7 +78,10 @@ class NoteReaderButtons {
                           },
                           child: Text(
                             'Tak',
-                            style: TextStyles.textStyle1(16),
+                            style: TextStyles.textStyle1(
+                              16,
+                              Theme.of(context).colorScheme.inversePrimary,
+                            ),
                           ),
                         ),
                       ],
@@ -82,7 +91,7 @@ class NoteReaderButtons {
               );
             }));
       },
-      backgroundColor: Theme.of(context).colorScheme.secondary,
+      backgroundColor: Theme.of(context).colorScheme.primary,
       mini: true,
       heroTag: null,
       child: Icon(
@@ -103,7 +112,7 @@ class NoteReaderButtons {
           ),
         ));
       },
-      backgroundColor: Theme.of(context).colorScheme.secondary,
+      backgroundColor: Theme.of(context).colorScheme.primary,
       mini: true,
       heroTag: null,
       child: Icon(

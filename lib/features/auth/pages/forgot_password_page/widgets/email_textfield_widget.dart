@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:primary_school/app/constans/colors.dart';
 
 class EmailTextField extends StatelessWidget {
   const EmailTextField({
@@ -27,13 +26,14 @@ class EmailTextField extends StatelessWidget {
       child: TextField(
         controller: emailController,
         keyboardType: TextInputType.emailAddress,
+        cursorColor: Theme.of(context).colorScheme.inversePrimary,
         decoration: InputDecoration(
           filled: true,
           hintText: 'Email',
           prefixIcon: const Icon(Icons.email),
           prefixIconColor: MaterialStateColor.resolveWith(
             (states) => states.contains(MaterialState.focused)
-                ? AppColors.greenColor
+                ? Theme.of(context).colorScheme.tertiary
                 : Colors.grey,
           ),
           fillColor: Colors.white,
@@ -43,8 +43,8 @@ class EmailTextField extends StatelessWidget {
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
-            borderSide: const BorderSide(
-              color: AppColors.greenColor,
+            borderSide: BorderSide(
+              color: Theme.of(context).colorScheme.primary,
               width: 0.6,
             ),
           ),

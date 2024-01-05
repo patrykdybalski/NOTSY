@@ -41,7 +41,10 @@ class SlidableEventWidget extends StatelessWidget {
           builder: ((context) {
             return AlertDialog(
               title: const Text('Usunąć wybraną pozycję?'),
-              titleTextStyle: TextStyles.textStyle2(20),
+              titleTextStyle: TextStyles.textStyle2(
+                20,
+                Theme.of(context).colorScheme.inversePrimary,
+              ),
               elevation: 20,
               backgroundColor: Theme.of(context).colorScheme.background,
               actions: [
@@ -51,7 +54,10 @@ class SlidableEventWidget extends StatelessWidget {
                   },
                   child: Text(
                     'Nie',
-                    style: TextStyles.textStyle1(16),
+                    style: TextStyles.textStyle1(
+                      16,
+                      Theme.of(context).colorScheme.inversePrimary,
+                    ),
                   ),
                 ),
                 BlocProvider(
@@ -67,7 +73,10 @@ class SlidableEventWidget extends StatelessWidget {
                         },
                         child: Text(
                           'Tak',
-                          style: TextStyles.textStyle2(16),
+                          style: TextStyles.textStyle2(
+                            16,
+                            Theme.of(context).colorScheme.inversePrimary,
+                          ),
                         ),
                       );
                     },

@@ -17,8 +17,11 @@ class WeatherCubit extends Cubit<WeatherState> {
     emit(WeatherState(
       status: Status.loading,
     ));
+    String cityNameWithoutPolishChars = replacePolishCharacters(city);
     try {
-      final weatherModel = await _weatherRepository.getWeatherModel(city: city);
+      final weatherModel = await _weatherRepository.getWeatherModel(
+        city: cityNameWithoutPolishChars,
+      );
       emit(
         WeatherState(
           model: weatherModel,
@@ -33,5 +36,25 @@ class WeatherCubit extends Cubit<WeatherState> {
         ),
       );
     }
+  }
+
+  String replacePolishCharacters(String input) {
+    Map<String, String> polishCharacters = {
+      'ą': 'a',
+      'ć': 'c',
+      'ę': 'e',
+      'ł': 'l',
+      'ń': 'n',
+      'ó': 'o',
+      'ś': 's',
+      'ż': 'z',
+      'ź': 'z',
+    };
+
+    polishCharacters.forEach((key, value) {
+      input = input.replaceAll(key, value);
+    });
+
+    return input;
   }
 }

@@ -34,10 +34,16 @@ class TitleWidget extends StatelessWidget {
         minLines: 1,
         cursorColor: Theme.of(context).colorScheme.inversePrimary,
         cursorRadius: const Radius.circular(12),
-        style: TextStyles.textStyle2(16),
+        style: TextStyles.textStyle2(
+          16,
+          Theme.of(context).colorScheme.inversePrimary,
+        ),
         decoration: InputDecoration(
           labelText: 'Temat',
-          labelStyle: TextStyles.textStyle2(16),
+          labelStyle: TextStyles.textStyle2(
+            16,
+            Theme.of(context).colorScheme.inversePrimary,
+          ),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(

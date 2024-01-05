@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
-import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/data/remote_data_sources_firebase/event_remote_data_source.dart';
 import 'package:primary_school/domain/repositories/event/event_repository.dart';
 import 'package:primary_school/features/home/pages/event_page/screens/add_event_dialog/cubit/add_event_cubit.dart';
@@ -73,14 +72,12 @@ class _CalendarWidgetState extends State<CalendarWidget> {
     return CalendarStyle(
       outsideDaysVisible: false,
       defaultTextStyle: const TextStyle(
-        color: AppColors.greenColor,
+        color: Colors.white,
       ),
       selectedDecoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            AppColors.primaryColor,
-            AppColors.greenColor,
-            AppColors.primaryColor,
+            Colors.white,
           ],
           begin: Alignment.topLeft,
           end: Alignment.centerRight,
@@ -97,18 +94,18 @@ class _CalendarWidgetState extends State<CalendarWidget> {
         shape: BoxShape.circle,
         border: Border.all(
           width: 1,
-          color: AppColors.greenColor,
+          color: Colors.white,
         ),
       ),
       todayTextStyle: const TextStyle(
         fontSize: 15,
-        color: AppColors.greenColor,
+        color: Colors.white,
       ),
       weekendTextStyle: const TextStyle(
-        color: AppColors.redColor,
+        color: Colors.white,
       ),
       rowDecoration: BoxDecoration(
-        color: AppColors.primaryColor,
+        color: Colors.white,
         borderRadius: BorderRadius.circular(12),
       ),
     );
@@ -117,14 +114,14 @@ class _CalendarWidgetState extends State<CalendarWidget> {
   DaysOfWeekStyle daysOfWeekStyle() {
     return const DaysOfWeekStyle(
       decoration: BoxDecoration(
-        color: AppColors.primaryColor,
+        color: Colors.white,
       ),
       weekdayStyle: TextStyle(
-        color: AppColors.greenColor,
+        color: Colors.white,
         fontSize: 12,
       ),
       weekendStyle: TextStyle(
-        color: AppColors.redColor,
+        color: Colors.white,
         fontSize: 12,
       ),
     );
@@ -138,32 +135,32 @@ class _CalendarWidgetState extends State<CalendarWidget> {
       titleTextStyle: const TextStyle(
         fontWeight: FontWeight.bold,
         fontSize: 17,
-        color: AppColors.greenColor,
+        color: Colors.white,
       ),
       titleCentered: true,
       headerPadding: const EdgeInsets.all(1),
       leftChevronIcon: const Icon(
         Icons.chevron_left_outlined,
         size: 25,
-        color: AppColors.greenColor,
+        color: Colors.white,
       ),
       rightChevronIcon: const Icon(
         Icons.chevron_right_outlined,
         size: 25,
-        color: AppColors.greenColor,
+        color: Colors.white,
       ),
       formatButtonShowsNext: true,
       formatButtonPadding: const EdgeInsets.all(5),
       formatButtonTextStyle: const TextStyle(
         fontWeight: FontWeight.w500,
-        color: AppColors.greenColor,
+        color: Colors.white,
         fontSize: 10,
       ),
       formatButtonDecoration: const BoxDecoration(
-        color: AppColors.primaryColor,
+        color: Colors.white,
         border: Border.fromBorderSide(
           BorderSide(
-            color: AppColors.greenColor,
+            color: Colors.white,
             width: 0.5,
           ),
         ),

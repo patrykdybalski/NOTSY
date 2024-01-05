@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/features/home/pages/weather_page/cubit/weather_cubit.dart';
 
@@ -55,13 +54,19 @@ class CityTextController extends StatelessWidget {
           decoration: InputDecoration(
             label: Text(
               'Miejscowość',
-              style: TextStyles.textStyle1(13),
+              style: TextStyles.textStyle1(
+                13,
+                Theme.of(context).colorScheme.inversePrimary,
+              ),
             ),
             hintText: 'Podaj nazwę ',
-            hintStyle: TextStyles.textStyle1(13),
+            hintStyle: TextStyles.textStyle1(
+              13,
+              Theme.of(context).colorScheme.inversePrimary,
+            ),
             filled: true,
             fillColor: Theme.of(context).colorScheme.primary,
-            prefixIcon: const Icon(Icons.gps_not_fixed_outlined),
+            prefixIcon: const Icon(Icons.gps_fixed_outlined),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(
@@ -100,7 +105,7 @@ class CheckWeatherButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: Theme.of(context).colorScheme.tertiary,
           elevation: 1.5,
-          shadowColor: AppColors.primaryColor,
+          shadowColor: Theme.of(context).colorScheme.inversePrimary,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(
               16.0,
@@ -109,7 +114,10 @@ class CheckWeatherButton extends StatelessWidget {
         ),
         child: Text(
           'Sprawdź',
-          style: TextStyles.textStyle2(14),
+          style: TextStyles.textStyle2(
+            14,
+            Theme.of(context).colorScheme.primary,
+          ),
         ));
   }
 }

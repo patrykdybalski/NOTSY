@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/features/auth/cubit/auth_cubit.dart';
 
@@ -26,7 +25,7 @@ class SignInButton extends StatelessWidget {
                 content: Text(
                   state.errorMessage,
                 ),
-                backgroundColor: AppColors.redColor,
+                backgroundColor: Theme.of(context).colorScheme.error,
               ),
             );
           }
@@ -34,7 +33,7 @@ class SignInButton extends StatelessWidget {
         builder: (context, state) {
           return ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.greenColor,
+              backgroundColor: Theme.of(context).colorScheme.tertiary,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(24.0)),
               minimumSize: const Size(280, 40),
@@ -45,10 +44,10 @@ class SignInButton extends StatelessWidget {
                     password: password!,
                   );
             },
-            child: const Text(
+            child: Text(
               'Zaloguj się ',
               style: TextStyle(
-                color: Colors.white,
+                color: Theme.of(context).colorScheme.primary,
                 fontSize: 16,
               ),
             ),

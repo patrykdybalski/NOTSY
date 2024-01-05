@@ -10,18 +10,21 @@ class SecondInfoBoard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
-                const BoxedIcon(WeatherIcons.wind),
+                const BoxedIcon(WeatherIcons.wind_direction),
                 const SizedBox(width: 3),
                 Text(
                   weatherModel?.current.windDir ?? 'null',
-                  style: TextStyles.textStyleRed2(14),
+                  style: TextStyles.textStyle2(
+                    14,
+                    Theme.of(context).colorScheme.error,
+                  ),
                 ),
               ],
             ),
@@ -32,7 +35,10 @@ class SecondInfoBoard extends StatelessWidget {
                 const SizedBox(width: 3),
                 Text(
                   '${weatherModel?.current.cloud} %',
-                  style: TextStyles.textStyleRed2(14),
+                  style: TextStyles.textStyle2(
+                    14,
+                    Theme.of(context).colorScheme.error,
+                  ),
                 ),
               ],
             ),
@@ -47,7 +53,10 @@ class SecondInfoBoard extends StatelessWidget {
                 const SizedBox(width: 3),
                 Text(
                   '${weatherModel?.current.windMph} km/h',
-                  style: TextStyles.textStyleRed2(14),
+                  style: TextStyles.textStyle2(
+                    14,
+                    Theme.of(context).colorScheme.error,
+                  ),
                 ),
               ],
             ),
@@ -58,7 +67,10 @@ class SecondInfoBoard extends StatelessWidget {
                 const SizedBox(width: 3),
                 Text(
                   '${weatherModel?.current.precipMm} mm',
-                  style: TextStyles.textStyleRed2(14),
+                  style: TextStyles.textStyle2(
+                    14,
+                    Theme.of(context).colorScheme.error,
+                  ),
                 ),
               ],
             ),
@@ -73,7 +85,10 @@ class SecondInfoBoard extends StatelessWidget {
                 const SizedBox(width: 3),
                 Text(
                   '${weatherModel?.current.pressureMb} hPa',
-                  style: TextStyles.textStyleRed2(14),
+                  style: TextStyles.textStyle2(
+                    14,
+                    Theme.of(context).colorScheme.error,
+                  ),
                 ),
               ],
             ),
@@ -84,7 +99,10 @@ class SecondInfoBoard extends StatelessWidget {
                 const SizedBox(width: 3),
                 Text(
                   '${weatherModel?.current.humidity} %',
-                  style: TextStyles.textStyleRed2(14),
+                  style: TextStyles.textStyle2(
+                    14,
+                    Theme.of(context).colorScheme.error,
+                  ),
                 ),
               ],
             ),

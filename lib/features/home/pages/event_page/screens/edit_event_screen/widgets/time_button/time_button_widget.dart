@@ -19,7 +19,10 @@ class EditTimeButton extends StatelessWidget {
     return ElevatedButton.icon(
       label: Text(
         selectedTimeFormatted ?? eventModel.selectedTimeFormatted(),
-        style: TextStyles.textStyle1(14),
+        style: TextStyles.textStyle1(
+          14,
+          Theme.of(context).colorScheme.inversePrimary,
+        ),
       ),
       icon: Icon(
         Icons.more_time_rounded,
@@ -29,7 +32,6 @@ class EditTimeButton extends StatelessWidget {
         TimeOfDay? selectedTime = await showTimePicker(
           context: context,
           initialEntryMode: TimePickerEntryMode.dial,
-          
           initialTime: TimeOfDay.fromDateTime(eventModel.selectedTime),
         );
 

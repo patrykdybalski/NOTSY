@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:primary_school/app/constans/colors.dart';
+import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/features/auth/pages/forgot_password_page/forgot_password_page.dart';
 
 class ResetPasswordButton extends StatelessWidget {
@@ -18,10 +18,11 @@ class ResetPasswordButton extends StatelessWidget {
               return const ForgotPasswordPage();
             }));
           },
-          child: const Text(
+          child: Text(
             'Nie pamiętasz hasła?',
-            style: TextStyle(
-              color: AppColors.redColor,
+            style: TextStyles.textStyle1(
+              14,
+              Theme.of(context).colorScheme.error,
             ),
           ),
         ),

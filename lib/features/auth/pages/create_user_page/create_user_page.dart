@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/features/auth/pages/create_user_page/widgets/create_account_button.dart';
 import 'package:primary_school/features/auth/pages/create_user_page/widgets/textfield_create_email.dart';
@@ -13,9 +12,9 @@ class CreateUserPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.primaryColor,
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        backgroundColor: AppColors.primaryColor,
+        backgroundColor: Theme.of(context).colorScheme.background,
         forceMaterialTransparency: true,
       ),
       body: const _CreatePagebody(),
@@ -72,7 +71,7 @@ class _CreatePagebodyState extends State<_CreatePagebody> {
                       email: email,
                       password: password,
                     ),
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 8),
                     const BackToLoginPageButton(),
                     const SizedBox(height: 10),
                   ],
@@ -93,12 +92,12 @@ class BackToLoginPageButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       style: TextButton.styleFrom(
-        foregroundColor: AppColors.greenColor,
+        foregroundColor: Theme.of(context).colorScheme.secondary,
       ),
-      child: const Text(
-        'Mam juz konto',
+      child: Text(
+        'Mam już konto',
         style: TextStyle(
-          color: AppColors.greenColor,
+          color: Theme.of(context).colorScheme.inversePrimary,
           fontSize: 16,
         ),
       ),
@@ -123,8 +122,11 @@ class LogoImageContainer extends StatelessWidget {
         ),
         const SizedBox(height: 6),
         Text(
-          'HOOKiT.',
-          style: TextStyles.textStyle2(34),
+          'HOOKIT',
+          style: TextStyles.textStyle2(
+            34,
+            Theme.of(context).colorScheme.inversePrimary,
+          ),
         ),
         const SizedBox(height: 32),
         Row(
@@ -132,7 +134,10 @@ class LogoImageContainer extends StatelessWidget {
           children: [
             Text(
               'Uwtórz konto,',
-              style: TextStyles.textStyleBlue1(22),
+              style: TextStyles.textStyle1(
+                22,
+                Theme.of(context).colorScheme.tertiary,
+              ),
               textAlign: TextAlign.left,
             ),
           ],
@@ -142,7 +147,10 @@ class LogoImageContainer extends StatelessWidget {
           children: [
             Text(
               'Zapraszamy!',
-              style: TextStyles.textStyle2(18),
+              style: TextStyles.textStyle2(
+                18,
+                Theme.of(context).colorScheme.inversePrimary,
+              ),
               textAlign: TextAlign.left,
             ),
           ],

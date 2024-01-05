@@ -86,7 +86,10 @@ class _NoteItemState extends State<NoteItem> {
                 child: Text(
                   widget.noteModel.subtitle,
                   overflow: TextOverflow.fade,
-                  style: TextStyles.textStyle1(13),
+                  style: TextStyles.textStyle1(
+                    13,
+                    Theme.of(context).colorScheme.inversePrimary,
+                  ),
                 ),
               ),
             ],
