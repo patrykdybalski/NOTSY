@@ -124,7 +124,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
                 },
                 child: Text(
                   'Zapisz',
-                  style: TextStyles.textStyle1(
+                  style: TextStyles.textStyle2(
                       16, Theme.of(context).colorScheme.tertiary),
                 ),
               ),

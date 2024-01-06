@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:primary_school/app/constans/theme/theme.dart';
 import 'package:primary_school/app/constans/theme/theme_provider.dart';
 import 'package:primary_school/app/core/config.dart';
 import 'package:primary_school/app/injection_container.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: Config.debugShowCheckedModeBanner,
       title: 'Last Check Only',
       theme: Provider.of<ThemeProvider>(context).themeData,
-      
+      darkTheme: darkMode,
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,

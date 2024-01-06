@@ -31,7 +31,7 @@ class _GeneralNotesState extends State<GeneralNotes> {
               );
             case Status.success:
               return GridView(
-                reverse: true,
+                reverse: false,
                 padding: const EdgeInsets.symmetric(
                   vertical: 32,
                   horizontal: 8,

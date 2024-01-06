@@ -33,6 +33,36 @@ class EditTimeButton extends StatelessWidget {
           context: context,
           initialEntryMode: TimePickerEntryMode.dial,
           initialTime: TimeOfDay.fromDateTime(eventModel.selectedTime),
+          builder: (BuildContext context, Widget? child) {
+            ThemeData currentTheme = Theme.of(context);
+            return Theme(
+                data: Theme.of(context).copyWith(
+                  colorScheme: ColorScheme.light(
+                    inverseSurface: currentTheme.colorScheme.inversePrimary,
+                    inversePrimary: currentTheme.colorScheme.inversePrimary,
+                    onSecondary: currentTheme.colorScheme.inversePrimary,
+                    onPrimary: currentTheme.colorScheme.background,
+                    onBackground: currentTheme.colorScheme.secondary,
+                    onSurface: currentTheme.colorScheme.inversePrimary,
+                    background: currentTheme.colorScheme.tertiary,
+                    secondary: currentTheme.colorScheme.inversePrimary,
+                    primary: currentTheme.colorScheme.inversePrimary,
+                    tertiary: currentTheme.colorScheme.inversePrimary,
+                  ),
+                  timePickerTheme: TimePickerThemeData(
+                    hourMinuteTextColor:
+                        currentTheme.colorScheme.inversePrimary,
+                    hourMinuteColor: currentTheme.colorScheme.secondary,
+                    dayPeriodTextColor: currentTheme.colorScheme.inversePrimary,
+                    dayPeriodColor: currentTheme.colorScheme.secondary,
+                    dialHandColor: currentTheme.colorScheme.inversePrimary,
+                    dialBackgroundColor: currentTheme.colorScheme.secondary,
+                    entryModeIconColor: currentTheme.colorScheme.inversePrimary,
+                    backgroundColor: currentTheme.colorScheme.background,
+                  ),
+                ),
+                child: child!);
+          },
         );
 
         if (selectedTime != null) {

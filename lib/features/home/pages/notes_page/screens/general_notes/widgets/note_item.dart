@@ -70,7 +70,7 @@ class _NoteItemState extends State<NoteItem> {
                       overflow: TextOverflow.ellipsis,
                       style: GoogleFonts.roboto(
                         color: widget.noteModel.color,
-                        fontSize: 13,
+                        fontSize: 14,
                         fontWeight: FontWeight.w700,
                       ),
                     ),

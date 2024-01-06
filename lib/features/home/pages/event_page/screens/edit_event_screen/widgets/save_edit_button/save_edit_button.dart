@@ -42,7 +42,7 @@ class SaveEditButton extends StatelessWidget {
       child: Text(
         'Zapisz',
         style:
-            TextStyles.textStyle1(16, Theme.of(context).colorScheme.tertiary),
+            TextStyles.textStyle2(16, Theme.of(context).colorScheme.tertiary),
       ),
     );
   }
@@ -62,7 +62,7 @@ class BackEditButton extends StatelessWidget {
       child: Text('Anuluj',
           style: TextStyles.textStyle1(
             16,
-            Theme.of(context).colorScheme.error,
+            Theme.of(context).colorScheme.inversePrimary,
           )),
     );
   }

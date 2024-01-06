@@ -32,10 +32,41 @@ class DayButton extends StatelessWidget {
           context: context,
           initialDate: DateTime.now(),
           firstDate: DateTime.now(),
-          lastDate: DateTime.now().add(
-            const Duration(days: 365 * 10),
-          ),
+          lastDate: DateTime(3000),
+          builder: (BuildContext context, Widget? child) {
+            return Theme(
+                data: Theme.of(context).copyWith(
+                  colorScheme: ColorScheme.light(
+                    inverseSurface:
+                        Theme.of(context).colorScheme.inversePrimary,
+                    inversePrimary:
+                        Theme.of(context).colorScheme.inversePrimary,
+                    onSecondary: Theme.of(context).colorScheme.inversePrimary,
+                    onPrimary: Theme.of(context).colorScheme.background,
+                    onBackground: Theme.of(context).colorScheme.secondary,
+                    onSurface: Theme.of(context).colorScheme.inversePrimary,
+                    background: Theme.of(context).colorScheme.tertiary,
+                    secondary: Theme.of(context).colorScheme.inversePrimary,
+                    primary: Theme.of(context).colorScheme.inversePrimary,
+                    tertiary: Theme.of(context).colorScheme.inversePrimary,
+                  ),
+                  datePickerTheme: DatePickerThemeData(
+                    dayStyle: TextStyle(
+                      color: Theme.of(context).colorScheme.inversePrimary,
+                    ),
+                    headerBackgroundColor:
+                        Theme.of(context).colorScheme.secondary,
+                    backgroundColor: Theme.of(context).colorScheme.background,
+                    headerForegroundColor:
+                        Theme.of(context).colorScheme.inversePrimary,
+                    surfaceTintColor:
+                        Theme.of(context).colorScheme.inversePrimary,
+                  ),
+                ),
+                child: child!);
+          },
         );
+
         onDayChanged(selectedDate);
       },
       style: ElevatedButton.styleFrom(
