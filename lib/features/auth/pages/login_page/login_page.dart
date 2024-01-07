@@ -15,10 +15,6 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Theme.of(context).colorScheme.background,
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.background,
-          forceMaterialTransparency: true,
-        ),
         body: const SingleChildScrollView(
           child: _LoginPageBody(),
         ));
@@ -43,6 +39,7 @@ class _LoginPageBodyState extends State<_LoginPageBody> {
         horizontal: 20,
       ),
       child: Column(children: [
+        const SizedBox(height: 80),
         const LogoImageContainer(),
         Container(
           decoration: BoxDecoration(
@@ -115,6 +112,7 @@ class LogoImageContainer extends StatelessWidget {
       children: [
         const Image(
           image: AssetImage('assets/images/logo@1.png'),
+          height: 100,
         ),
         const SizedBox(height: 6),
         Text(

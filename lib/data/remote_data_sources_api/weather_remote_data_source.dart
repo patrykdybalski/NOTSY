@@ -4,14 +4,15 @@ import 'package:primary_school/domain/models/weather_model/weather_model.dart';
 import 'package:retrofit/retrofit.dart';
 part 'weather_remote_data_source.g.dart';
 
-@injectable  
+@injectable
 @RestApi()
-
 abstract class WeatherRemoteRetrofitDataSource {
   @factoryMethod
-  factory WeatherRemoteRetrofitDataSource(Dio dio) = _WeatherRemoteRetrofitDataSource;
+  factory WeatherRemoteRetrofitDataSource(Dio dio) =
+      _WeatherRemoteRetrofitDataSource;
 
-   @GET('/current.json?key=9518138900ee4740ad9193115230506&aqi=no')
+  @GET(
+      '/forecast.json?key=9518138900ee4740ad9193115230506&days=1&aqi=no&alerts=no')
   Future<WeatherModel> getCurrentWeather(@Query('q') String city);
 }
 

@@ -27,7 +27,6 @@ class _TextFieldPasswordState extends State<TextFieldCreatePassword> {
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
@@ -60,14 +59,13 @@ class _TextFieldPasswordState extends State<TextFieldCreatePassword> {
                 toggleObscureText();
               },
             ),
-            fillColor: Colors.white,
+            fillColor: Theme.of(context).colorScheme.background,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide.none,
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              
             ),
           ),
         ),

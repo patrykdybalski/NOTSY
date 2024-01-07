@@ -10,8 +10,7 @@ part of 'weather_remote_data_source.dart';
 
 class _WeatherRemoteRetrofitDataSource
     implements WeatherRemoteRetrofitDataSource {
-  _WeatherRemoteRetrofitDataSource(
-    this._dio, );
+  _WeatherRemoteRetrofitDataSource(this._dio);
 
   final Dio _dio;
 

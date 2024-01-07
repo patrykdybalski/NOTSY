@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:primary_school/app/core/enums.dart';
@@ -20,8 +21,7 @@ class WeatherCubit extends Cubit<WeatherState> {
     String cityNameWithoutPolishChars = replacePolishCharacters(city);
     try {
       final weatherModel = await _weatherRepository.getWeatherModel(
-        city: cityNameWithoutPolishChars,
-      );
+          city: cityNameWithoutPolishChars);
       emit(
         WeatherState(
           model: weatherModel,
@@ -29,10 +29,26 @@ class WeatherCubit extends Cubit<WeatherState> {
         ),
       );
     } catch (error) {
+      String errorMessageToShow = 'Wystąpił błąd';
+      // ignore: deprecated_member_use
+      if (error is DioError) {
+        // ignore: deprecated_member_use
+        DioError dioError = error;
+        if (dioError.response != null) {
+          int statusCode = dioError.response!.statusCode ?? 0;
+          
+          if (statusCode == 400) {
+            errorMessageToShow = 'Błędna nazwa miasta';
+          } else if (statusCode == 500) {
+            errorMessageToShow = 'Wystąpił inny błąd';
+          }
+      
+        }
+      }
       emit(
         WeatherState(
           status: Status.error,
-          errorMessage: error.toString(),
+          errorMessage: errorMessageToShow,
         ),
       );
     }

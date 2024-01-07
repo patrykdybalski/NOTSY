@@ -37,7 +37,7 @@ class TextFieldCreateEmail extends StatelessWidget {
                   ? Theme.of(context).colorScheme.tertiary
                   : Colors.grey,
             ),
-            fillColor: Colors.white,
+            fillColor: Theme.of(context).colorScheme.background,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide.none,

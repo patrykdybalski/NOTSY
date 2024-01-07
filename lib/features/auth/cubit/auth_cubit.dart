@@ -21,6 +21,7 @@ class AuthCubit extends Cubit<AuthState> {
       emit(
         AuthState(saved: true),
       );
+     
     } catch (error) {
       emit(
         AuthState(

@@ -13,10 +13,6 @@ class CreateUserPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.background,
-        forceMaterialTransparency: true,
-      ),
       body: const _CreatePagebody(),
     );
   }
@@ -42,6 +38,7 @@ class _CreatePagebodyState extends State<_CreatePagebody> {
           vertical: 0,
         ),
         child: Column(children: [
+           const SizedBox(height: 80),
           const LogoImageContainer(),
           Container(
             decoration: BoxDecoration(
@@ -119,6 +116,7 @@ class LogoImageContainer extends StatelessWidget {
       children: [
         const Image(
           image: AssetImage('assets/images/logo@1.png'),
+          height: 100,
         ),
         const SizedBox(height: 6),
         Text(

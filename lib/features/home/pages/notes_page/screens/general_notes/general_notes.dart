@@ -33,7 +33,7 @@ class _GeneralNotesState extends State<GeneralNotes> {
               return GridView(
                 reverse: false,
                 padding: const EdgeInsets.symmetric(
-                  vertical: 32,
+                  vertical: 24,
                   horizontal: 8,
                 ),
                 scrollDirection: Axis.vertical,

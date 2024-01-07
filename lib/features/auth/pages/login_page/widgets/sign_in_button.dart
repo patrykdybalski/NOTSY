@@ -22,9 +22,7 @@ class SignInButton extends StatelessWidget {
           if (state.errorMessage.isNotEmpty) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text(
-                  state.errorMessage,
-                ),
+                content: Text(state.errorMessage),
                 backgroundColor: Theme.of(context).colorScheme.error,
               ),
             );

@@ -38,15 +38,13 @@ class TextFieldLogin extends StatelessWidget {
                   ? Theme.of(context).colorScheme.tertiary
                   : Theme.of(context).colorScheme.secondary,
             ),
-            fillColor: Colors.white70,
+            fillColor: Theme.of(context).colorScheme.background,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide.none,
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-             
-              
             ),
           ),
         ),

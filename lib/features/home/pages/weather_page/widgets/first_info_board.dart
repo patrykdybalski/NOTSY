@@ -42,21 +42,21 @@ class FirstInfoBoard extends StatelessWidget {
           children: [
             ThirdInfoBoard(weatherModel),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Image.asset(
                   getIconForName(weatherModel?.current.condition.text),
                   height: 90,
                 ),
                 SizedBox(
-                  width: 140,
+                  width: 165,
                   height: 140,
                   child: Row(
                     children: [
                       Text(
                         '$temperatureInCelsiusInteger',
                         style: TextStyles.textStyle1(
-                          100,
+                          90,
                           Theme.of(context).colorScheme.inversePrimary,
                         ),
                       ),
@@ -74,7 +74,7 @@ class FirstInfoBoard extends StatelessWidget {
                           ),
                           const SizedBox(height: 2),
                           Text(
-                            '${weatherModel?.current.feelslikeC}°C',
+                            ' ${weatherModel?.current.feelslikeC}°C',
                             style: TextStyles.textStyle2(
                               17,
                               Theme.of(context).colorScheme.tertiary,

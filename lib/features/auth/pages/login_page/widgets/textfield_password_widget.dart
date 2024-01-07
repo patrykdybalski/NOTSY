@@ -60,7 +60,7 @@ class _TextFieldPasswordState extends State<TextFieldPassword> {
                 toggleObscureText();
               },
             ),
-            fillColor: Colors.white70,
+            fillColor: Theme.of(context).colorScheme.background,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
               borderSide: BorderSide.none,
