@@ -10,7 +10,8 @@ part of 'weather_remote_data_source.dart';
 
 class _WeatherRemoteRetrofitDataSource
     implements WeatherRemoteRetrofitDataSource {
-  _WeatherRemoteRetrofitDataSource(this._dio);
+  _WeatherRemoteRetrofitDataSource(
+    this._dio);
 
   final Dio _dio;
 
@@ -30,7 +31,7 @@ class _WeatherRemoteRetrofitDataSource
     )
             .compose(
               _dio.options,
-              '/current.json?key=9518138900ee4740ad9193115230506&aqi=no',
+              '/forecast.json?key=9518138900ee4740ad9193115230506&days=1&aqi=no&alerts=no',
               queryParameters: queryParameters,
               data: _data,
             )

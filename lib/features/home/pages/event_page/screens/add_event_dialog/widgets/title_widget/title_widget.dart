@@ -11,21 +11,10 @@ class TitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          color: Theme.of(context).colorScheme.primary,
-          boxShadow: [
-            BoxShadow(
-                color: Theme.of(context).colorScheme.secondary,
-                blurRadius: 1,
-                spreadRadius: 1,
-                offset: const Offset(1, 2)),
-            BoxShadow(
-                color: Theme.of(context).colorScheme.primary,
-                blurRadius: 0.5,
-                offset: const Offset(1, 0))
-          ]),
+    return Card(
+      color: Theme.of(context).colorScheme.primary.withOpacity(1),
+      elevation: 0.5,
+      surfaceTintColor: Colors.transparent,
       child: TextFormField(
         onChanged: onTitleChanged,
         autofocus: true,
@@ -46,14 +35,14 @@ class TitleWidget extends StatelessWidget {
           ),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(
-                color: Theme.of(context).colorScheme.secondary,
+              borderSide: const BorderSide(
+                color: Colors.transparent,
                 width: 0.3,
               )),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(
-              color: Theme.of(context).colorScheme.secondary,
+            borderSide: const BorderSide(
+              color: Colors.transparent,
               width: 0.3,
             ),
           ),

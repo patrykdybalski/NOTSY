@@ -25,18 +25,9 @@ class _EventWidgetState extends State<EventWidget> {
         vertical: 8,
         horizontal: 8,
       ),
-      child: Container(
-        decoration:
-            BoxDecoration(borderRadius: BorderRadius.circular(12), boxShadow: [
-          BoxShadow(
-              color: Theme.of(context).colorScheme.secondary,
-              blurRadius: 0.7,
-              offset: const Offset(1, 2)),
-          BoxShadow(
-              color: Theme.of(context).colorScheme.primary,
-              blurRadius: 0.5,
-              offset: const Offset(1, 0))
-        ]),
+      child: Card(
+        elevation: 0.5,
+        surfaceTintColor: Colors.transparent,
         child: ExpansionTile(
           initiallyExpanded: false,
           backgroundColor: Theme.of(context).colorScheme.secondary,

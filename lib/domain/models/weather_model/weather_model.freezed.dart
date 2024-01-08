@@ -22,6 +22,7 @@ WeatherModel _$WeatherModelFromJson(Map<String, dynamic> json) {
 mixin _$WeatherModel {
   Location get location => throw _privateConstructorUsedError;
   Current get current => throw _privateConstructorUsedError;
+  Forecast? get forecast => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,10 +36,11 @@ abstract class $WeatherModelCopyWith<$Res> {
           WeatherModel value, $Res Function(WeatherModel) then) =
       _$WeatherModelCopyWithImpl<$Res, WeatherModel>;
   @useResult
-  $Res call({Location location, Current current});
+  $Res call({Location location, Current current, Forecast? forecast});
 
   $LocationCopyWith<$Res> get location;
   $CurrentCopyWith<$Res> get current;
+  $ForecastCopyWith<$Res>? get forecast;
 }
 
 /// @nodoc
@@ -56,6 +58,7 @@ class _$WeatherModelCopyWithImpl<$Res, $Val extends WeatherModel>
   $Res call({
     Object? location = null,
     Object? current = null,
+    Object? forecast = freezed,
   }) {
     return _then(_value.copyWith(
       location: null == location
@@ -66,6 +69,10 @@ class _$WeatherModelCopyWithImpl<$Res, $Val extends WeatherModel>
           ? _value.current
           : current // ignore: cast_nullable_to_non_nullable
               as Current,
+      forecast: freezed == forecast
+          ? _value.forecast
+          : forecast // ignore: cast_nullable_to_non_nullable
+              as Forecast?,
     ) as $Val);
   }
 
@@ -84,6 +91,18 @@ class _$WeatherModelCopyWithImpl<$Res, $Val extends WeatherModel>
       return _then(_value.copyWith(current: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ForecastCopyWith<$Res>? get forecast {
+    if (_value.forecast == null) {
+      return null;
+    }
+
+    return $ForecastCopyWith<$Res>(_value.forecast!, (value) {
+      return _then(_value.copyWith(forecast: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -94,12 +113,14 @@ abstract class _$$WeatherModelImplCopyWith<$Res>
       __$$WeatherModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Location location, Current current});
+  $Res call({Location location, Current current, Forecast? forecast});
 
   @override
   $LocationCopyWith<$Res> get location;
   @override
   $CurrentCopyWith<$Res> get current;
+  @override
+  $ForecastCopyWith<$Res>? get forecast;
 }
 
 /// @nodoc
@@ -115,6 +136,7 @@ class __$$WeatherModelImplCopyWithImpl<$Res>
   $Res call({
     Object? location = null,
     Object? current = null,
+    Object? forecast = freezed,
   }) {
     return _then(_$WeatherModelImpl(
       null == location
@@ -125,6 +147,10 @@ class __$$WeatherModelImplCopyWithImpl<$Res>
           ? _value.current
           : current // ignore: cast_nullable_to_non_nullable
               as Current,
+      freezed == forecast
+          ? _value.forecast
+          : forecast // ignore: cast_nullable_to_non_nullable
+              as Forecast?,
     ));
   }
 }
@@ -132,7 +158,7 @@ class __$$WeatherModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$WeatherModelImpl implements _WeatherModel {
-  _$WeatherModelImpl(this.location, this.current);
+  _$WeatherModelImpl(this.location, this.current, this.forecast);
 
   factory _$WeatherModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$WeatherModelImplFromJson(json);
@@ -141,10 +167,12 @@ class _$WeatherModelImpl implements _WeatherModel {
   final Location location;
   @override
   final Current current;
+  @override
+  final Forecast? forecast;
 
   @override
   String toString() {
-    return 'WeatherModel(location: $location, current: $current)';
+    return 'WeatherModel(location: $location, current: $current, forecast: $forecast)';
   }
 
   @override
@@ -154,12 +182,14 @@ class _$WeatherModelImpl implements _WeatherModel {
             other is _$WeatherModelImpl &&
             (identical(other.location, location) ||
                 other.location == location) &&
-            (identical(other.current, current) || other.current == current));
+            (identical(other.current, current) || other.current == current) &&
+            (identical(other.forecast, forecast) ||
+                other.forecast == forecast));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, location, current);
+  int get hashCode => Object.hash(runtimeType, location, current, forecast);
 
   @JsonKey(ignore: true)
   @override
@@ -176,8 +206,8 @@ class _$WeatherModelImpl implements _WeatherModel {
 }
 
 abstract class _WeatherModel implements WeatherModel {
-  factory _WeatherModel(final Location location, final Current current) =
-      _$WeatherModelImpl;
+  factory _WeatherModel(final Location location, final Current current,
+      final Forecast? forecast) = _$WeatherModelImpl;
 
   factory _WeatherModel.fromJson(Map<String, dynamic> json) =
       _$WeatherModelImpl.fromJson;
@@ -186,6 +216,8 @@ abstract class _WeatherModel implements WeatherModel {
   Location get location;
   @override
   Current get current;
+  @override
+  Forecast? get forecast;
   @override
   @JsonKey(ignore: true)
   _$$WeatherModelImplCopyWith<_$WeatherModelImpl> get copyWith =>
@@ -640,6 +672,554 @@ abstract class _Condition implements Condition {
   @override
   @JsonKey(ignore: true)
   _$$ConditionImplCopyWith<_$ConditionImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Forecast _$ForecastFromJson(Map<String, dynamic> json) {
+  return _Forecast.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Forecast {
+  @JsonKey(name: "forecastday")
+  List<Forecastday> get forecastday => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ForecastCopyWith<Forecast> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ForecastCopyWith<$Res> {
+  factory $ForecastCopyWith(Forecast value, $Res Function(Forecast) then) =
+      _$ForecastCopyWithImpl<$Res, Forecast>;
+  @useResult
+  $Res call({@JsonKey(name: "forecastday") List<Forecastday> forecastday});
+}
+
+/// @nodoc
+class _$ForecastCopyWithImpl<$Res, $Val extends Forecast>
+    implements $ForecastCopyWith<$Res> {
+  _$ForecastCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? forecastday = null,
+  }) {
+    return _then(_value.copyWith(
+      forecastday: null == forecastday
+          ? _value.forecastday
+          : forecastday // ignore: cast_nullable_to_non_nullable
+              as List<Forecastday>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ForecastImplCopyWith<$Res>
+    implements $ForecastCopyWith<$Res> {
+  factory _$$ForecastImplCopyWith(
+          _$ForecastImpl value, $Res Function(_$ForecastImpl) then) =
+      __$$ForecastImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({@JsonKey(name: "forecastday") List<Forecastday> forecastday});
+}
+
+/// @nodoc
+class __$$ForecastImplCopyWithImpl<$Res>
+    extends _$ForecastCopyWithImpl<$Res, _$ForecastImpl>
+    implements _$$ForecastImplCopyWith<$Res> {
+  __$$ForecastImplCopyWithImpl(
+      _$ForecastImpl _value, $Res Function(_$ForecastImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? forecastday = null,
+  }) {
+    return _then(_$ForecastImpl(
+      forecastday: null == forecastday
+          ? _value._forecastday
+          : forecastday // ignore: cast_nullable_to_non_nullable
+              as List<Forecastday>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ForecastImpl implements _Forecast {
+  const _$ForecastImpl(
+      {@JsonKey(name: "forecastday")
+      required final List<Forecastday> forecastday})
+      : _forecastday = forecastday;
+
+  factory _$ForecastImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ForecastImplFromJson(json);
+
+  final List<Forecastday> _forecastday;
+  @override
+  @JsonKey(name: "forecastday")
+  List<Forecastday> get forecastday {
+    if (_forecastday is EqualUnmodifiableListView) return _forecastday;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_forecastday);
+  }
+
+  @override
+  String toString() {
+    return 'Forecast(forecastday: $forecastday)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ForecastImpl &&
+            const DeepCollectionEquality()
+                .equals(other._forecastday, _forecastday));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_forecastday));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ForecastImplCopyWith<_$ForecastImpl> get copyWith =>
+      __$$ForecastImplCopyWithImpl<_$ForecastImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ForecastImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Forecast implements Forecast {
+  const factory _Forecast(
+      {@JsonKey(name: "forecastday")
+      required final List<Forecastday> forecastday}) = _$ForecastImpl;
+
+  factory _Forecast.fromJson(Map<String, dynamic> json) =
+      _$ForecastImpl.fromJson;
+
+  @override
+  @JsonKey(name: "forecastday")
+  List<Forecastday> get forecastday;
+  @override
+  @JsonKey(ignore: true)
+  _$$ForecastImplCopyWith<_$ForecastImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Forecastday _$ForecastdayFromJson(Map<String, dynamic> json) {
+  return _Forecastday.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Forecastday {
+  @JsonKey(name: "date")
+  DateTime get date => throw _privateConstructorUsedError;
+  @JsonKey(name: "hour")
+  List<Hour> get hour => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ForecastdayCopyWith<Forecastday> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ForecastdayCopyWith<$Res> {
+  factory $ForecastdayCopyWith(
+          Forecastday value, $Res Function(Forecastday) then) =
+      _$ForecastdayCopyWithImpl<$Res, Forecastday>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: "date") DateTime date,
+      @JsonKey(name: "hour") List<Hour> hour});
+}
+
+/// @nodoc
+class _$ForecastdayCopyWithImpl<$Res, $Val extends Forecastday>
+    implements $ForecastdayCopyWith<$Res> {
+  _$ForecastdayCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? date = null,
+    Object? hour = null,
+  }) {
+    return _then(_value.copyWith(
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      hour: null == hour
+          ? _value.hour
+          : hour // ignore: cast_nullable_to_non_nullable
+              as List<Hour>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ForecastdayImplCopyWith<$Res>
+    implements $ForecastdayCopyWith<$Res> {
+  factory _$$ForecastdayImplCopyWith(
+          _$ForecastdayImpl value, $Res Function(_$ForecastdayImpl) then) =
+      __$$ForecastdayImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: "date") DateTime date,
+      @JsonKey(name: "hour") List<Hour> hour});
+}
+
+/// @nodoc
+class __$$ForecastdayImplCopyWithImpl<$Res>
+    extends _$ForecastdayCopyWithImpl<$Res, _$ForecastdayImpl>
+    implements _$$ForecastdayImplCopyWith<$Res> {
+  __$$ForecastdayImplCopyWithImpl(
+      _$ForecastdayImpl _value, $Res Function(_$ForecastdayImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? date = null,
+    Object? hour = null,
+  }) {
+    return _then(_$ForecastdayImpl(
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      hour: null == hour
+          ? _value._hour
+          : hour // ignore: cast_nullable_to_non_nullable
+              as List<Hour>,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$ForecastdayImpl implements _Forecastday {
+  const _$ForecastdayImpl(
+      {@JsonKey(name: "date") required this.date,
+      @JsonKey(name: "hour") required final List<Hour> hour})
+      : _hour = hour;
+
+  factory _$ForecastdayImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ForecastdayImplFromJson(json);
+
+  @override
+  @JsonKey(name: "date")
+  final DateTime date;
+  final List<Hour> _hour;
+  @override
+  @JsonKey(name: "hour")
+  List<Hour> get hour {
+    if (_hour is EqualUnmodifiableListView) return _hour;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_hour);
+  }
+
+  @override
+  String toString() {
+    return 'Forecastday(date: $date, hour: $hour)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ForecastdayImpl &&
+            (identical(other.date, date) || other.date == date) &&
+            const DeepCollectionEquality().equals(other._hour, _hour));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, date, const DeepCollectionEquality().hash(_hour));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ForecastdayImplCopyWith<_$ForecastdayImpl> get copyWith =>
+      __$$ForecastdayImplCopyWithImpl<_$ForecastdayImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$ForecastdayImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Forecastday implements Forecastday {
+  const factory _Forecastday(
+          {@JsonKey(name: "date") required final DateTime date,
+          @JsonKey(name: "hour") required final List<Hour> hour}) =
+      _$ForecastdayImpl;
+
+  factory _Forecastday.fromJson(Map<String, dynamic> json) =
+      _$ForecastdayImpl.fromJson;
+
+  @override
+  @JsonKey(name: "date")
+  DateTime get date;
+  @override
+  @JsonKey(name: "hour")
+  List<Hour> get hour;
+  @override
+  @JsonKey(ignore: true)
+  _$$ForecastdayImplCopyWith<_$ForecastdayImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Hour _$HourFromJson(Map<String, dynamic> json) {
+  return _Hour.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Hour {
+  @JsonKey(name: "time_epoch")
+  int get timeEpoch => throw _privateConstructorUsedError;
+  @JsonKey(name: "time")
+  String get time => throw _privateConstructorUsedError;
+  @JsonKey(name: "temp_c")
+  double get tempC => throw _privateConstructorUsedError;
+  @JsonKey(name: "condition")
+  Condition get condition => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $HourCopyWith<Hour> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $HourCopyWith<$Res> {
+  factory $HourCopyWith(Hour value, $Res Function(Hour) then) =
+      _$HourCopyWithImpl<$Res, Hour>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: "time_epoch") int timeEpoch,
+      @JsonKey(name: "time") String time,
+      @JsonKey(name: "temp_c") double tempC,
+      @JsonKey(name: "condition") Condition condition});
+
+  $ConditionCopyWith<$Res> get condition;
+}
+
+/// @nodoc
+class _$HourCopyWithImpl<$Res, $Val extends Hour>
+    implements $HourCopyWith<$Res> {
+  _$HourCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? timeEpoch = null,
+    Object? time = null,
+    Object? tempC = null,
+    Object? condition = null,
+  }) {
+    return _then(_value.copyWith(
+      timeEpoch: null == timeEpoch
+          ? _value.timeEpoch
+          : timeEpoch // ignore: cast_nullable_to_non_nullable
+              as int,
+      time: null == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
+              as String,
+      tempC: null == tempC
+          ? _value.tempC
+          : tempC // ignore: cast_nullable_to_non_nullable
+              as double,
+      condition: null == condition
+          ? _value.condition
+          : condition // ignore: cast_nullable_to_non_nullable
+              as Condition,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ConditionCopyWith<$Res> get condition {
+    return $ConditionCopyWith<$Res>(_value.condition, (value) {
+      return _then(_value.copyWith(condition: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$HourImplCopyWith<$Res> implements $HourCopyWith<$Res> {
+  factory _$$HourImplCopyWith(
+          _$HourImpl value, $Res Function(_$HourImpl) then) =
+      __$$HourImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: "time_epoch") int timeEpoch,
+      @JsonKey(name: "time") String time,
+      @JsonKey(name: "temp_c") double tempC,
+      @JsonKey(name: "condition") Condition condition});
+
+  @override
+  $ConditionCopyWith<$Res> get condition;
+}
+
+/// @nodoc
+class __$$HourImplCopyWithImpl<$Res>
+    extends _$HourCopyWithImpl<$Res, _$HourImpl>
+    implements _$$HourImplCopyWith<$Res> {
+  __$$HourImplCopyWithImpl(_$HourImpl _value, $Res Function(_$HourImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? timeEpoch = null,
+    Object? time = null,
+    Object? tempC = null,
+    Object? condition = null,
+  }) {
+    return _then(_$HourImpl(
+      timeEpoch: null == timeEpoch
+          ? _value.timeEpoch
+          : timeEpoch // ignore: cast_nullable_to_non_nullable
+              as int,
+      time: null == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
+              as String,
+      tempC: null == tempC
+          ? _value.tempC
+          : tempC // ignore: cast_nullable_to_non_nullable
+              as double,
+      condition: null == condition
+          ? _value.condition
+          : condition // ignore: cast_nullable_to_non_nullable
+              as Condition,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$HourImpl implements _Hour {
+  const _$HourImpl(
+      {@JsonKey(name: "time_epoch") required this.timeEpoch,
+      @JsonKey(name: "time") required this.time,
+      @JsonKey(name: "temp_c") required this.tempC,
+      @JsonKey(name: "condition") required this.condition});
+
+  factory _$HourImpl.fromJson(Map<String, dynamic> json) =>
+      _$$HourImplFromJson(json);
+
+  @override
+  @JsonKey(name: "time_epoch")
+  final int timeEpoch;
+  @override
+  @JsonKey(name: "time")
+  final String time;
+  @override
+  @JsonKey(name: "temp_c")
+  final double tempC;
+  @override
+  @JsonKey(name: "condition")
+  final Condition condition;
+
+  @override
+  String toString() {
+    return 'Hour(timeEpoch: $timeEpoch, time: $time, tempC: $tempC, condition: $condition)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$HourImpl &&
+            (identical(other.timeEpoch, timeEpoch) ||
+                other.timeEpoch == timeEpoch) &&
+            (identical(other.time, time) || other.time == time) &&
+            (identical(other.tempC, tempC) || other.tempC == tempC) &&
+            (identical(other.condition, condition) ||
+                other.condition == condition));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, timeEpoch, time, tempC, condition);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$HourImplCopyWith<_$HourImpl> get copyWith =>
+      __$$HourImplCopyWithImpl<_$HourImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$HourImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Hour implements Hour {
+  const factory _Hour(
+          {@JsonKey(name: "time_epoch") required final int timeEpoch,
+          @JsonKey(name: "time") required final String time,
+          @JsonKey(name: "temp_c") required final double tempC,
+          @JsonKey(name: "condition") required final Condition condition}) =
+      _$HourImpl;
+
+  factory _Hour.fromJson(Map<String, dynamic> json) = _$HourImpl.fromJson;
+
+  @override
+  @JsonKey(name: "time_epoch")
+  int get timeEpoch;
+  @override
+  @JsonKey(name: "time")
+  String get time;
+  @override
+  @JsonKey(name: "temp_c")
+  double get tempC;
+  @override
+  @JsonKey(name: "condition")
+  Condition get condition;
+  @override
+  @JsonKey(ignore: true)
+  _$$HourImplCopyWith<_$HourImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

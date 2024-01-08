@@ -32,33 +32,7 @@ class TimeButton extends StatelessWidget {
           initialTime: TimeOfDay.now(),
           builder: (BuildContext context, Widget? child) {
             ThemeData currentTheme = Theme.of(context);
-            return Theme(
-                data: Theme.of(context).copyWith(
-                  colorScheme: ColorScheme.light(
-                    inverseSurface: currentTheme.colorScheme.inversePrimary,
-                    inversePrimary: currentTheme.colorScheme.inversePrimary,
-                    onSecondary: currentTheme.colorScheme.inversePrimary,
-                    onPrimary: currentTheme.colorScheme.background,
-                    onBackground: currentTheme.colorScheme.secondary,
-                    onSurface: currentTheme.colorScheme.inversePrimary,
-                    background: currentTheme.colorScheme.tertiary,
-                    secondary: currentTheme.colorScheme.inversePrimary,
-                    primary: currentTheme.colorScheme.inversePrimary,
-                    tertiary: currentTheme.colorScheme.inversePrimary,
-                  ),
-                  timePickerTheme: TimePickerThemeData(
-                    hourMinuteTextColor:
-                        currentTheme.colorScheme.inversePrimary,
-                    hourMinuteColor: currentTheme.colorScheme.secondary,
-                    dayPeriodTextColor: currentTheme.colorScheme.inversePrimary,
-                    dayPeriodColor: currentTheme.colorScheme.secondary,
-                    dialHandColor: currentTheme.colorScheme.inversePrimary,
-                    dialBackgroundColor: currentTheme.colorScheme.secondary,
-                    entryModeIconColor: currentTheme.colorScheme.inversePrimary,
-                    backgroundColor: currentTheme.colorScheme.background,
-                  ),
-                ),
-                child: child!);
+            return timePickerTheme(context, currentTheme, child);
           },
         );
         if (selectedTime != null) {
@@ -73,10 +47,41 @@ class TimeButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         backgroundColor: Theme.of(context).colorScheme.secondary,
         shadowColor: Theme.of(context).colorScheme.secondary,
+        elevation: 3,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12.0),
         ),
       ),
     );
+  }
+
+  Theme timePickerTheme(
+      BuildContext context, ThemeData currentTheme, Widget? child) {
+    return Theme(
+        data: Theme.of(context).copyWith(
+          colorScheme: ColorScheme.light(
+            inverseSurface: currentTheme.colorScheme.inversePrimary,
+            inversePrimary: currentTheme.colorScheme.inversePrimary,
+            onSecondary: currentTheme.colorScheme.inversePrimary,
+            onPrimary: currentTheme.colorScheme.background,
+            onBackground: currentTheme.colorScheme.secondary,
+            onSurface: currentTheme.colorScheme.inversePrimary,
+            background: currentTheme.colorScheme.tertiary,
+            secondary: currentTheme.colorScheme.inversePrimary,
+            primary: currentTheme.colorScheme.inversePrimary,
+            tertiary: currentTheme.colorScheme.inversePrimary,
+          ),
+          timePickerTheme: TimePickerThemeData(
+            hourMinuteTextColor: currentTheme.colorScheme.inversePrimary,
+            hourMinuteColor: currentTheme.colorScheme.secondary,
+            dayPeriodTextColor: currentTheme.colorScheme.inversePrimary,
+            dayPeriodColor: currentTheme.colorScheme.secondary,
+            dialHandColor: currentTheme.colorScheme.inversePrimary,
+            dialBackgroundColor: currentTheme.colorScheme.secondary,
+            entryModeIconColor: currentTheme.colorScheme.inversePrimary,
+            backgroundColor: currentTheme.colorScheme.background,
+          ),
+        ),
+        child: child!);
   }
 }

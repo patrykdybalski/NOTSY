@@ -17,7 +17,7 @@ class ThirdInfoBoard extends StatelessWidget {
           ' ${weatherModel?.location.nameWithCountry} ',
           style: TextStyles.textStyle2(
             18,
-            Theme.of(context).colorScheme.error,
+            Theme.of(context).colorScheme.inversePrimary,
           ),
         ),
       ],

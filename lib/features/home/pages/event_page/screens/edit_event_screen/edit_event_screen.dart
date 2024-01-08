@@ -45,61 +45,58 @@ class _EditEventScreenState extends State<EditEventScreen> {
         builder: (context, state) {
           return AlertDialog(
             scrollable: true,
-            titlePadding: const EdgeInsets.all(5),
+            titlePadding: const EdgeInsets.all(10),
             surfaceTintColor: Colors.transparent,
-            contentPadding: const EdgeInsets.only(
-              top: 24.0,
-              left: 16.0,
-              right: 16.0,
-              bottom: 24,
+            actionsAlignment: MainAxisAlignment.spaceAround,
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 16,
             ),
-            shadowColor: Colors.transparent,
+            actionsPadding: const EdgeInsets.all(1),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(13),
             ),
-            actionsAlignment: MainAxisAlignment.spaceAround,
-            actionsPadding: const EdgeInsets.only(
-              top: 8,
-              bottom: 3.0,
-            ),
-            content: ContentDialog(
-              onTitleChanged: (newValue) {
-                setState(
-                  () {
-                    _title = newValue;
-                  },
-                );
-              },
-              onSubtitleChanged: (newValue) {
-                setState(
-                  () {
-                    _subtitle = newValue;
-                  },
-                );
-              },
-              onDayChanged: (newValue) {
-                setState(
-                  () {
-                    _selectedDay = newValue;
-                  },
-                );
-              },
-              onTimeChanged: (newValue) {
-                setState(() {
-                  _selectedTime = newValue;
-                });
-              },
-              selectedTimeFormatted: _selectedTime == null
-                  ? null
-                  : DateFormat.Hm().format(
-                      _selectedTime!,
-                    ),
-              selectedDateFormatted: _selectedDay == null
-                  ? null
-                  : DateFormat.yMd().format(
-                      _selectedDay!,
-                    ),
-              eventModel: widget.eventModel,
+            content: Padding(
+              padding: const EdgeInsets.all(1.0),
+              child: ContentDialog(
+                onTitleChanged: (newValue) {
+                  setState(
+                    () {
+                      _title = newValue;
+                    },
+                  );
+                },
+                onSubtitleChanged: (newValue) {
+                  setState(
+                    () {
+                      _subtitle = newValue;
+                    },
+                  );
+                },
+                onDayChanged: (newValue) {
+                  setState(
+                    () {
+                      _selectedDay = newValue;
+                    },
+                  );
+                },
+                onTimeChanged: (newValue) {
+                  setState(() {
+                    _selectedTime = newValue;
+                  });
+                },
+                selectedTimeFormatted: _selectedTime == null
+                    ? null
+                    : DateFormat.Hm().format(
+                        _selectedTime!,
+                      ),
+                selectedDateFormatted: _selectedDay == null
+                    ? null
+                    : DateFormat.yMd().format(
+                        _selectedDay!,
+                      ),
+                eventModel: widget.eventModel,
+              ),
             ),
             actions: [
               const BackEditButton(),
@@ -117,5 +114,3 @@ class _EditEventScreenState extends State<EditEventScreen> {
     );
   }
 }
-
-

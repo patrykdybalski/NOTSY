@@ -18,7 +18,7 @@ void main() {
 
   final testWeatherModel = WeatherModel(
     Location('Warszawa', 'Poland'),
-    Current(10, Condition('Sunny'), 10, 'N', 1000, 10, 10, 10, 10),
+    Current(10, Condition('Sunny'), 10, 'N', 1000, 10, 10, 10, 10), const Forecast(forecastday: [])
   );
 
   const String testCity = 'Warszawa';

@@ -7,6 +7,7 @@ class WeatherModel with _$WeatherModel {
   factory WeatherModel(
     Location location,
     Current current,
+    Forecast? forecast,
   ) = _WeatherModel;
 
   factory WeatherModel.fromJson(Map<String, dynamic> json) =>
@@ -40,6 +41,39 @@ class Condition with _$Condition {
 
   factory Condition.fromJson(Map<String, dynamic> json) =>
       _$ConditionFromJson(json);
+}
+
+@freezed
+class Forecast with _$Forecast {
+  const factory Forecast({
+    @JsonKey(name: "forecastday") required List<Forecastday> forecastday,
+  }) = _Forecast;
+
+  factory Forecast.fromJson(Map<String, dynamic> json) =>
+      _$ForecastFromJson(json);
+}
+
+@freezed
+class Forecastday with _$Forecastday {
+  const factory Forecastday({
+    @JsonKey(name: "date") required DateTime date,
+    @JsonKey(name: "hour") required List<Hour> hour,
+  }) = _Forecastday;
+
+  factory Forecastday.fromJson(Map<String, dynamic> json) =>
+      _$ForecastdayFromJson(json);
+}
+
+@freezed
+class Hour with _$Hour {
+  const factory Hour({
+    @JsonKey(name: "time_epoch") required int timeEpoch,
+    @JsonKey(name: "time") required String time,
+    @JsonKey(name: "temp_c") required double tempC,
+    @JsonKey(name: "condition") required Condition condition,
+  }) = _Hour;
+  
+  factory Hour.fromJson(Map<String, dynamic> json) => _$HourFromJson(json);
 }
 
 @freezed

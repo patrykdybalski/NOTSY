@@ -33,21 +33,18 @@ class ContentDialog extends StatelessWidget {
           eventModel: eventModel,
           onTitleChanged: onTitleChanged,
         ),
-        const SizedBox(
-          height: 20,
-        ),
+        const SizedBox(height: 16),
         EditSubtitleWidget(
           eventModel: eventModel,
           onSubtitleChanged: onSubtitleChanged,
         ),
-        const SizedBox(
-          height: 20,
-        ),
+        const SizedBox(height: 8),
         EditDateButton(
           selectedDateFormatted: selectedDateFormatted,
           eventModel: eventModel,
           onDayChanged: onDayChanged,
         ),
+        const SizedBox(height: 8),
         EditTimeButton(
           selectedTimeFormatted: selectedTimeFormatted,
           eventModel: eventModel,

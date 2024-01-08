@@ -94,7 +94,6 @@ class InitialWeatherPage extends StatelessWidget {
               ),
             ),
             SearchWidget(),
-            const SizedBox(height: 16),
           ],
         ),
       ),
@@ -112,8 +111,7 @@ class WeatherBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: true,
-      body: Column(
+      body: ListView(
         children: [
           if (weatherModel != null)
             Expanded(

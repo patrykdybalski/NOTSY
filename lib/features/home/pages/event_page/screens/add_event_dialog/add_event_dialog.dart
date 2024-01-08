@@ -48,54 +48,48 @@ class _AddEventDialogState extends State<AddEventDialog> {
           return AlertDialog(
             scrollable: true,
             surfaceTintColor: Colors.transparent,
-            shadowColor: Colors.transparent,
-            contentPadding: const EdgeInsets.only(
-              top: 32.0,
-              left: 16.0,
-              right: 16.0,
-              bottom: 32.0,
-            ),
+            contentPadding: const EdgeInsets.all(16),
             actionsAlignment: MainAxisAlignment.spaceAround,
-            actionsPadding: const EdgeInsets.only(
-              top: 20,
-              bottom: 8.0,
-            ),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
             ),
-            content: _ContentDialog(
-              onTitleChanged: (newValue) {
-                setState(
-                  () {
-                    _title = newValue;
-                  },
-                );
-              },
-              onSubtitleChanged: (newValue) {
-                setState(
-                  () {
-                    _subtitle = newValue;
-                  },
-                );
-              },
-              onDayChanged: (newValue) {
-                setState(
-                  () {
-                    _selectedDay = newValue;
-                  },
-                );
-              },
-              onTimeChanged: (newValue) {
-                setState(() {
-                  _selectedTime = newValue;
-                });
-              },
-              selectedTimeFormatted: _selectedTime == null
-                  ? null
-                  : DateFormat.Hm().format(_selectedTime!),
-              selectedDateFormatted: _selectedDay == null
-                  ? null
-                  : DateFormat.yMd().format(_selectedDay!),
+              actionsPadding: const EdgeInsets.all(1),
+            content: Padding(
+              padding: const EdgeInsets.all(1.0),
+              child: _ContentDialog(
+                onTitleChanged: (newValue) {
+                  setState(
+                    () {
+                      _title = newValue;
+                    },
+                  );
+                },
+                onSubtitleChanged: (newValue) {
+                  setState(
+                    () {
+                      _subtitle = newValue;
+                    },
+                  );
+                },
+                onDayChanged: (newValue) {
+                  setState(
+                    () {
+                      _selectedDay = newValue;
+                    },
+                  );
+                },
+                onTimeChanged: (newValue) {
+                  setState(() {
+                    _selectedTime = newValue;
+                  });
+                },
+                selectedTimeFormatted: _selectedTime == null
+                    ? null
+                    : DateFormat.Hm().format(_selectedTime!),
+                selectedDateFormatted: _selectedDay == null
+                    ? null
+                    : DateFormat.yMd().format(_selectedDay!),
+              ),
             ),
             actions: [
               TextButton(
@@ -104,7 +98,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
                 },
                 child: Text('Anuluj',
                     style: TextStyles.textStyle1(
-                      16,
+                      17,
                       Theme.of(context).colorScheme.inversePrimary,
                     )),
               ),
@@ -125,7 +119,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
                 child: Text(
                   'Zapisz',
                   style: TextStyles.textStyle2(
-                      16, Theme.of(context).colorScheme.tertiary),
+                      17, Theme.of(context).colorScheme.tertiary),
                 ),
               ),
             ],
@@ -161,19 +155,21 @@ class _ContentDialog extends StatelessWidget {
         TitleWidget(
           onTitleChanged: onTitleChanged,
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 16),
         SubtitleWidget(
           onSubtitleChanged: onSubtitleChanged,
         ),
-        const SizedBox(height: 15),
+        const SizedBox(height: 8),
         DayButton(
           selectedDateFormatted: selectedDateFormatted,
           onDayChanged: onDayChanged,
         ),
+        const SizedBox(height: 8),
         TimeButton(
           selectedTimeFormatted: selectedTimeFormatted,
           onTimeChanged: onTimeChanged,
         ),
+        const SizedBox(height: 8),
       ],
     );
   }

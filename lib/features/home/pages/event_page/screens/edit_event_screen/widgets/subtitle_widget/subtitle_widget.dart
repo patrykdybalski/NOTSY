@@ -14,21 +14,10 @@ class EditSubtitleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          color: Theme.of(context).colorScheme.primary,
-          boxShadow: [
-            BoxShadow(
-                color: Theme.of(context).colorScheme.secondary,
-                blurRadius: 1,
-                spreadRadius: 1,
-                offset: const Offset(1, 2)),
-            BoxShadow(
-                color: Theme.of(context).colorScheme.primary,
-                blurRadius: 0.5,
-                offset: const Offset(1, 0))
-          ]),
+    return Card(
+      color: Theme.of(context).colorScheme.primary.withOpacity(1),
+      elevation: 0.5,
+      surfaceTintColor: Colors.transparent,
       child: TextFormField(
         initialValue: eventModel.subtitle,
         onChanged: onSubtitleChanged,
@@ -38,11 +27,9 @@ class EditSubtitleWidget extends StatelessWidget {
         },
         maxLines: 10,
         minLines: 4,
-        scrollPhysics:
-            const ClampingScrollPhysics(), // Dodaj to, aby umożliwić przewijanie
+        scrollPhysics: const ClampingScrollPhysics(),
         cursorColor: Theme.of(context).colorScheme.inversePrimary,
         cursorRadius: const Radius.circular(12),
-
         style: TextStyles.textStyle1(
           16,
           Theme.of(context).colorScheme.inversePrimary,
@@ -57,14 +44,14 @@ class EditSubtitleWidget extends StatelessWidget {
           ),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(
-                color: Theme.of(context).colorScheme.secondary,
+              borderSide: const BorderSide(
+                color: Colors.transparent,
                 width: 0.3,
               )),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(
-              color: Theme.of(context).colorScheme.secondary,
+            borderSide: const BorderSide(
+              color: Colors.transparent,
               width: 0.3,
             ),
           ),

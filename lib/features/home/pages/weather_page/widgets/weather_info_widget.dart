@@ -9,17 +9,15 @@ class WeatherInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 24),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            FirstInfoBoard(weatherModel),
-            const SizedBox(height: 32),
-            const ForecastWeatherInfo(),
-          ],
-        ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: Column(
+        children: [
+          const SizedBox(height: 16),
+          FirstInfoBoard(weatherModel),
+          const SizedBox(height: 8),
+          ForecastWeatherInfo(weatherModel!),
+        ],
       ),
     );
   }
