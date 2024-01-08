@@ -53,7 +53,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
             ),
-              actionsPadding: const EdgeInsets.all(1),
+            actionsPadding: const EdgeInsets.all(1),
             content: Padding(
               padding: const EdgeInsets.all(1.0),
               child: _ContentDialog(

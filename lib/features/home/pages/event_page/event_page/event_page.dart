@@ -19,17 +19,7 @@ class _EventPageState extends State<EventPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Theme.of(context).colorScheme.tertiary,
-        onPressed: () {
-          _showDialog();
-        },
-        child: Icon(
-          Icons.edit_calendar_outlined,
-          size: 30,
-          color: Theme.of(context).colorScheme.primary,
-        ),
-      ),
+      floatingActionButton: showAddEventDialog(context),
       body: BlocProvider(
         create: (context) => getIt<EventCubit>()..start(),
         child: BlocBuilder<EventCubit, EventState>(
@@ -62,7 +52,6 @@ class _EventPageState extends State<EventPage> {
                       children: [
                         for (final eventModel in eventModels) ...[
                           SlidableEventWidget(eventModel: eventModel),
-                          const SizedBox(height: 6),
                         ],
                       ],
                     ),
@@ -72,6 +61,21 @@ class _EventPageState extends State<EventPage> {
             }
           },
         ),
+      ),
+    );
+  }
+
+  FloatingActionButton showAddEventDialog(BuildContext context) {
+    return FloatingActionButton(
+      backgroundColor: Theme.of(context).colorScheme.tertiary,
+      highlightElevation: 35,
+      onPressed: () {
+        _showDialog();
+      },
+      child: Icon(
+        Icons.edit_calendar_outlined,
+        size: 30,
+        color: Theme.of(context).colorScheme.primary,
       ),
     );
   }
