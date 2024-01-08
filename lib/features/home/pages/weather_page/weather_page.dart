@@ -56,32 +56,29 @@ class InitialWeatherPage extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 24),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
               height: 320,
               width: 500,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  gradient: LinearGradient(
-                    colors: [
-                      Theme.of(context).colorScheme.primary,
-                      Colors.blue.shade100,
-                    ],
-                    begin: Alignment.bottomLeft,
-                    end: Alignment.topLeft,
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                        color: Theme.of(context).colorScheme.secondary,
-                        blurRadius: 1,
-                        spreadRadius: 1,
-                        offset: const Offset(1, 2)),
-                    BoxShadow(
-                        color: Theme.of(context).colorScheme.primary,
-                        blurRadius: 0.5,
-                        offset: const Offset(1, 0))
-                  ]),
+                borderRadius: BorderRadius.circular(12),
+                gradient: LinearGradient(
+                  colors: [
+                    Colors.blue.shade50,
+                    Colors.blue.shade100,
+                  ],
+                  begin: Alignment.bottomLeft,
+                  end: Alignment.topLeft,
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.blue.shade100,
+                    blurRadius: 1,
+                    offset: const Offset(1, 0),
+                  )
+                ],
+              ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -111,16 +108,19 @@ class WeatherBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: [
-          if (weatherModel != null)
-            Expanded(
-              child: WeatherInfoWidget(
-                weatherModel: weatherModel,
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListView(
+          children: [
+            if (weatherModel != null)
+              Expanded(
+                child: WeatherInfoWidget(
+                  weatherModel: weatherModel,
+                ),
               ),
-            ),
-          SearchWidget(),
-        ],
+            SearchWidget(),
+          ],
+        ),
       ),
     );
   }

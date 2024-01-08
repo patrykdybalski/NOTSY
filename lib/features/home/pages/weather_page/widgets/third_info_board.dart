@@ -12,11 +12,14 @@ class ThirdInfoBoard extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Icon(Icons.location_on_outlined),
+        const Icon(
+          Icons.location_on_outlined,
+          size: 20,
+        ),
         Text(
           ' ${weatherModel?.location.nameWithCountry} ',
-          style: TextStyles.textStyle2(
-            18,
+          style: TextStyles.textStyle1(
+            16,
             Theme.of(context).colorScheme.inversePrimary,
           ),
         ),

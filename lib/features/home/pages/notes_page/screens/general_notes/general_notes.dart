@@ -39,8 +39,8 @@ class _GeneralNotesState extends State<GeneralNotes> {
                 scrollDirection: Axis.vertical,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  mainAxisSpacing: 20,
-                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 8,
+                  crossAxisSpacing: 8,
                   childAspectRatio: 0.8,
                 ),
                 children: [

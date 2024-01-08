@@ -11,7 +11,7 @@ class SearchWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.symmetric(vertical: 16.0),
       child: Row(
         children: [
           CityTextController(controller: _controller),
@@ -33,21 +33,10 @@ class CityTextController extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
-            color: Theme.of(context).colorScheme.primary,
-            boxShadow: [
-              BoxShadow(
-                  color: Theme.of(context).colorScheme.secondary,
-                  blurRadius: 1,
-                  spreadRadius: 1,
-                  offset: const Offset(1, 2)),
-              BoxShadow(
-                  color: Theme.of(context).colorScheme.primary,
-                  blurRadius: 0.5,
-                  offset: const Offset(1, 0))
-            ]),
+      child: Card(
+        color: Theme.of(context).colorScheme.primary.withOpacity(1),
+        elevation: 1,
+        surfaceTintColor: Colors.transparent,
         child: TextField(
           controller: controller,
           cursorColor: Theme.of(context).colorScheme.inversePrimary,
@@ -104,11 +93,11 @@ class CheckWeatherButton extends StatelessWidget {
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Theme.of(context).colorScheme.tertiary,
-          elevation: 1.5,
+          elevation: 3,
           shadowColor: Theme.of(context).colorScheme.inversePrimary,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(
-              16.0,
+              12.0,
             ),
           ),
         ),

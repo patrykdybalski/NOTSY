@@ -15,26 +15,23 @@ class FirstInfoBoard extends StatelessWidget {
     return Container(
       height: 285,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          gradient: LinearGradient(
-            colors: [
-              Theme.of(context).colorScheme.background,
-              Colors.blue.shade100,
-            ],
-            begin: Alignment.bottomLeft,
-            end: Alignment.topLeft,
-          ),
-          boxShadow: [
-            BoxShadow(
-                color: Theme.of(context).colorScheme.secondary,
-                blurRadius: 1,
-                spreadRadius: 1,
-                offset: const Offset(1, 2)),
-            BoxShadow(
-                color: Theme.of(context).colorScheme.primary,
-                blurRadius: 0.5,
-                offset: const Offset(1, 0))
-          ]),
+        borderRadius: BorderRadius.circular(16),
+        gradient: LinearGradient(
+          colors: [
+            Colors.blue.shade50,
+            Colors.blue.shade100,
+          ],
+          begin: Alignment.bottomLeft,
+          end: Alignment.topLeft,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.blue.shade100,
+            blurRadius: 1,
+            offset: const Offset(1, 0),
+          )
+        ],
+      ),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 16.0),
         child: Column(
@@ -42,12 +39,20 @@ class FirstInfoBoard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text(
-                  'Aktualnie:',
-                  style: TextStyles.textStyle2(
-                    18,
-                    Theme.of(context).colorScheme.inversePrimary,
-                  ),
+                Row(
+                  children: [
+                    const Icon(
+                      Icons.access_time,
+                      size: 20,
+                    ),
+                    Text(
+                      ' Aktualnie',
+                      style: TextStyles.textStyle1(
+                        16,
+                        Theme.of(context).colorScheme.inversePrimary,
+                      ),
+                    ),
+                  ],
                 ),
                 ThirdInfoBoard(weatherModel),
               ],

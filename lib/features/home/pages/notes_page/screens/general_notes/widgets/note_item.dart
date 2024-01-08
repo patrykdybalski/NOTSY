@@ -40,21 +40,10 @@ class _NoteItemState extends State<NoteItem> {
           }),
         );
       },
-      child: Container(
-        height: 200,
-        width: 200,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          color: Theme.of(context).colorScheme.primary,
-          boxShadow: [
-            BoxShadow(
-              color: Theme.of(context).colorScheme.secondary,
-              spreadRadius: 0.2,
-              blurRadius: 0.2,
-              offset: const Offset(0, 0.8),
-            ),
-          ],
-        ),
+      child: Card(
+        color: Theme.of(context).colorScheme.primary.withOpacity(1),
+        elevation: 1,
+        surfaceTintColor: Colors.transparent,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(

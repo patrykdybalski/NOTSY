@@ -9,16 +9,13 @@ class WeatherInfoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: Column(
-        children: [
-          const SizedBox(height: 16),
-          FirstInfoBoard(weatherModel),
-          const SizedBox(height: 8),
-          ForecastWeatherInfo(weatherModel!),
-        ],
-      ),
+    return Column(
+      children: [
+        const SizedBox(height: 16),
+        FirstInfoBoard(weatherModel),
+        const SizedBox(height: 8),
+        ForecastWeatherInfo(weatherModel!),
+      ],
     );
   }
 }

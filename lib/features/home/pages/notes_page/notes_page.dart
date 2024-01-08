@@ -13,23 +13,36 @@ class _NotesPageState extends State<NotesPage>
     with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Theme.of(context).colorScheme.tertiary,
-        onPressed: () {
-          Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => const AddNotePage(),
-            fullscreenDialog: true,
-            allowSnapshotting: true,
-          ));
-        },
-        child: Icon(
-          Icons.note_add_outlined,
-          size: 28,
-          color: Theme.of(context).colorScheme.primary,
-        ),
+    return const Scaffold(
+      floatingActionButton: AddNotePageButton(),
+      body: GeneralNotes(),
+    );
+  }
+}
+
+class AddNotePageButton extends StatelessWidget {
+  const AddNotePageButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      backgroundColor: Theme.of(context).colorScheme.tertiary,
+      elevation: 5,
+      highlightElevation: 35,
+      onPressed: () {
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => const AddNotePage(),
+          fullscreenDialog: true,
+          allowSnapshotting: true,
+        ));
+      },
+      child: Icon(
+        Icons.note_add_outlined,
+        size: 30,
+        color: Theme.of(context).colorScheme.primary,
       ),
-      body: const GeneralNotes(),
     );
   }
 }

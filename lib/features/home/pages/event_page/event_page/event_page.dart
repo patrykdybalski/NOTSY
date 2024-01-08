@@ -68,6 +68,7 @@ class _EventPageState extends State<EventPage> {
   FloatingActionButton showAddEventDialog(BuildContext context) {
     return FloatingActionButton(
       backgroundColor: Theme.of(context).colorScheme.tertiary,
+      elevation: 5,
       highlightElevation: 35,
       onPressed: () {
         _showDialog();
