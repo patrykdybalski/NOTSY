@@ -39,6 +39,9 @@ class CityTextController extends StatelessWidget {
         surfaceTintColor: Colors.transparent,
         child: TextField(
           controller: controller,
+          onTapOutside: (event) {
+            FocusScope.of(context).unfocus();
+          },
           cursorColor: Theme.of(context).colorScheme.inversePrimary,
           decoration: InputDecoration(
             label: Text(

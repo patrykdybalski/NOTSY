@@ -21,10 +21,7 @@ class _EventWidgetState extends State<EventWidget> {
         .isBefore(DateTime.now().subtract(const Duration(days: 1)));
 
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: 8,
-        horizontal: 8,
-      ),
+      padding: const EdgeInsets.all(8),
       child: Card(
         elevation: 0.5,
         surfaceTintColor: Colors.transparent,
@@ -32,9 +29,8 @@ class _EventWidgetState extends State<EventWidget> {
           initiallyExpanded: false,
           backgroundColor: Theme.of(context).colorScheme.secondary,
           collapsedBackgroundColor: Theme.of(context).colorScheme.primary,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12.0),
-          ),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
           collapsedShape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12.0),
           ),

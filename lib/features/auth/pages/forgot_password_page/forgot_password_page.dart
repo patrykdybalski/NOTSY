@@ -3,8 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/features/auth/cubit/auth_cubit.dart';
+import 'package:primary_school/features/auth/pages/forgot_password_page/widgets/back_button_widget.dart';
 import 'package:primary_school/features/auth/pages/forgot_password_page/widgets/email_textfield_widget.dart';
 import 'package:primary_school/features/auth/pages/forgot_password_page/widgets/reset_password_button.dart';
+import 'package:primary_school/features/auth/pages/forgot_password_page/widgets/reset_password_text_information.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
   const ForgotPasswordPage({super.key});
@@ -17,6 +19,7 @@ class ForgotPasswordPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.background,
         elevation: 0,
+        automaticallyImplyLeading: false,
       ),
       body: BlocProvider(
         create: (context) => getIt<AuthCubit>(),
@@ -58,34 +61,17 @@ class ForgotPasswordPage extends StatelessWidget {
             return Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 16,
-                vertical: 4.0,
               ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
-                    'Zresetuj hasło',
-                    style: TextStyles.textStyle2(
-                      26,
-                      Theme.of(context).colorScheme.inversePrimary,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    'Wprowadź adres email, na który zostanie wysłany link do resetu hasła.',
-                    style: TextStyles.textStyle1(
-                      16,
-                      Theme.of(context).colorScheme.inversePrimary,
-                    ),
-                  ),
+                  const ResetPasswordTextInformation(),
                   const SizedBox(height: 16),
-                  EmailTextField(
-                    emailController: emailController,
-                  ),
+                  EmailTextField(emailController: emailController),
+                  const SizedBox(height: 32),
+                  ReserPasswordButton(emailController: emailController),
                   const SizedBox(height: 16),
-                  ReserPasswordButton(
-                    emailController: emailController,
-                  )
+                  const BackButtonWidget(),
                 ],
               ),
             );

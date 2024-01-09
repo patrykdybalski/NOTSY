@@ -25,7 +25,7 @@ class ReserPasswordButton extends StatelessWidget {
       child: Text(
         'Wyślij link',
         style: TextStyles.textStyle2(
-          16,
+          17,
           Theme.of(context).colorScheme.primary,
         ),
       ),

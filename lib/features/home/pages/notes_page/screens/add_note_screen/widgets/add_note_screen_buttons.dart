@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:primary_school/features/home/pages/notes_page/screens/add_note_page/cubit/add_note_cubit.dart';
+import 'package:primary_school/features/home/pages/notes_page/screens/add_note_screen/cubit/add_note_cubit.dart';
 
-class AddPageButtons {
+class AddNoteScreenButtons {
   final BuildContext context;
   final String? title;
   final String? subtitle;
@@ -11,7 +11,7 @@ class AddPageButtons {
   Color selectedColor;
   final void Function(BuildContext) colorPickerDialog; // Dodajemy parametr
 
-  AddPageButtons({
+  AddNoteScreenButtons({
     required this.context,
     required this.title,
     required this.subtitle,

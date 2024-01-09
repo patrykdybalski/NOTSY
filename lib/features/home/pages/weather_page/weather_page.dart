@@ -4,8 +4,11 @@ import 'package:primary_school/app/core/enums.dart';
 import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/domain/models/weather_model/weather_model.dart';
 import 'package:primary_school/features/home/pages/weather_page/cubit/weather_cubit.dart';
+import 'package:primary_school/features/home/pages/weather_page/widgets/advert_container.dart';
 import 'package:primary_school/features/home/pages/weather_page/widgets/search_widget.dart';
 import 'package:primary_school/features/home/pages/weather_page/widgets/weather_info_widget.dart';
+
+import 'screens/initial_weather_screen.dart';
 
 class WeatherPage extends StatelessWidget {
   const WeatherPage({super.key});
@@ -18,7 +21,7 @@ class WeatherPage extends StatelessWidget {
         final weatherModel = state.model;
         switch (state.status) {
           case Status.initial:
-            return const InitialWeatherPage();
+            return const InitialWeatherScreen();
           case Status.loading:
             return Center(
               child: CircularProgressIndicator(
@@ -36,64 +39,11 @@ class WeatherPage extends StatelessWidget {
                 ),
               );
             });
-            return const InitialWeatherPage();
+            return const InitialWeatherScreen();
           case Status.success:
             return WeatherBody(weatherModel);
         }
       }),
-    );
-  }
-}
-
-class InitialWeatherPage extends StatelessWidget {
-  const InitialWeatherPage({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 24),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              height: 320,
-              width: 500,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                gradient: LinearGradient(
-                  colors: [
-                    Theme.of(context).colorScheme.outline,
-                    Theme.of(context).colorScheme.outlineVariant,
-                  ],
-                  begin: Alignment.bottomLeft,
-                  end: Alignment.topLeft,
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.blue.shade100,
-                    blurRadius: 1,
-                    offset: const Offset(1, 0),
-                  )
-                ],
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Image.asset(
-                    'assets/images/term.png',
-                    height: 200,
-                    width: 100,
-                  ),
-                ],
-              ),
-            ),
-            SearchWidget(),
-          ],
-        ),
-      ),
     );
   }
 }
@@ -113,12 +63,11 @@ class WeatherBody extends StatelessWidget {
         child: ListView(
           children: [
             if (weatherModel != null)
-              Expanded(
-                child: WeatherInfoWidget(
-                  weatherModel: weatherModel,
-                ),
+              WeatherInfoWidget(
+                weatherModel: weatherModel,
               ),
             SearchWidget(),
+            const AdvertContainer(),
           ],
         ),
       ),

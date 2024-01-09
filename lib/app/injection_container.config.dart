@@ -38,7 +38,7 @@ import 'package:primary_school/features/home/pages/event_page/screens/add_event_
     as _i13;
 import 'package:primary_school/features/home/pages/event_page/screens/edit_event_screen/cubit/edit_event_cubit.dart'
     as _i17;
-import 'package:primary_school/features/home/pages/notes_page/screens/add_note_page/cubit/add_note_cubit.dart'
+import 'package:primary_school/features/home/pages/notes_page/screens/add_note_screen/cubit/add_note_cubit.dart'
     as _i14;
 import 'package:primary_school/features/home/pages/notes_page/screens/edit_note_screen/cubit/edit_note_cubit.dart'
     as _i18;

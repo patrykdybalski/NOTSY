@@ -5,7 +5,7 @@ import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/domain/models/note_model/note_model.dart';
 import 'package:primary_school/features/home/pages/notes_page/screens/edit_note_screen/cubit/edit_note_cubit.dart';
-import 'package:primary_school/features/home/pages/notes_page/screens/edit_note_screen/widgets/edit_page_buttons.dart';
+import 'package:primary_school/features/home/pages/notes_page/screens/edit_note_screen/widgets/edit_note_screen_buttons.dart';
 
 class EditNoteScreen extends StatefulWidget {
   const EditNoteScreen({
@@ -58,7 +58,7 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
         builder: (context, state) {
           return Scaffold(
             backgroundColor: Theme.of(context).colorScheme.background,
-            floatingActionButton: EditPageButtons(
+            floatingActionButton: EditNoteScreenButtons(
                     context: context,
                     title: _title,
                     subtitle: _subtitle,

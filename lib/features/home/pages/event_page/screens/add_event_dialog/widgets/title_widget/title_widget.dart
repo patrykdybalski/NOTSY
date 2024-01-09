@@ -16,6 +16,9 @@ class TitleWidget extends StatelessWidget {
       elevation: 0.5,
       surfaceTintColor: Colors.transparent,
       child: TextFormField(
+        onTapOutside: (event) {
+          FocusScope.of(context).unfocus();
+        },
         onChanged: onTitleChanged,
         autofocus: true,
         keyboardType: TextInputType.text,
@@ -24,15 +27,11 @@ class TitleWidget extends StatelessWidget {
         cursorColor: Theme.of(context).colorScheme.inversePrimary,
         cursorRadius: const Radius.circular(12),
         style: TextStyles.textStyle2(
-          16,
-          Theme.of(context).colorScheme.inversePrimary,
-        ),
+            16, Theme.of(context).colorScheme.inversePrimary),
         decoration: InputDecoration(
           labelText: 'Temat',
           labelStyle: TextStyles.textStyle2(
-            16,
-            Theme.of(context).colorScheme.inversePrimary,
-          ),
+              16, Theme.of(context).colorScheme.inversePrimary),
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: const BorderSide(

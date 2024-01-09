@@ -4,14 +4,14 @@ import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/app/constans/colors.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
-import 'package:primary_school/features/home/pages/notes_page/screens/add_note_page/widgets/add_page_buttons.dart';
-import 'package:primary_school/features/home/pages/notes_page/screens/add_note_page/cubit/add_note_cubit.dart';
+import 'package:primary_school/features/home/pages/notes_page/screens/add_note_screen/cubit/add_note_cubit.dart';
+import 'package:primary_school/features/home/pages/notes_page/screens/add_note_screen/widgets/add_note_screen_buttons.dart';
 
-class AddNotePage extends StatefulWidget {
-  const AddNotePage({super.key});
+class AddNoteScreen extends StatefulWidget {
+  const AddNoteScreen({super.key});
 
   @override
-  State<AddNotePage> createState() => _AddNotePageState();
+  State<AddNoteScreen> createState() => _AddNoteScreenState();
 }
 
 String? _title;
@@ -20,7 +20,7 @@ DateTime _createdDate = DateTime.now();
 DateTime _updatedDate = DateTime.now();
 Color _selectedColor = Colors.grey.shade700;
 
-class _AddNotePageState extends State<AddNotePage> {
+class _AddNoteScreenState extends State<AddNoteScreen> {
   void startNewNote() {
     setState(() {
       _title = null;
@@ -55,7 +55,7 @@ class _AddNotePageState extends State<AddNotePage> {
         builder: (context, state) {
           return Scaffold(
             backgroundColor: Theme.of(context).colorScheme.primary,
-            floatingActionButton: AddPageButtons(
+            floatingActionButton: AddNoteScreenButtons(
               context: context,
               title: _title,
               subtitle: _subtitle,
@@ -66,7 +66,7 @@ class _AddNotePageState extends State<AddNotePage> {
             ).buildFabButtons(context),
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.miniCenterFloat,
-            body: _AddNotePageBody(
+            body: _AddNoteScreenBody(
               onTitleChanged: (newValue) {
                 setState(() {
                   _title = newValue;
@@ -113,8 +113,8 @@ class _AddNotePageState extends State<AddNotePage> {
   }
 }
 
-class _AddNotePageBody extends StatelessWidget {
-  const _AddNotePageBody({
+class _AddNoteScreenBody extends StatelessWidget {
+  const _AddNoteScreenBody({
     Key? key,
     required this.onTitleChanged,
     required this.onSubtitleChange,

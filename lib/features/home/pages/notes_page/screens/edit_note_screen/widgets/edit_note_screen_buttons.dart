@@ -4,7 +4,7 @@ import 'package:primary_school/domain/models/note_model/note_model.dart';
 
 import 'package:primary_school/features/home/pages/notes_page/screens/edit_note_screen/cubit/edit_note_cubit.dart';
 
-class EditPageButtons {
+class EditNoteScreenButtons {
   final BuildContext context;
   final String? title;
   final String? subtitle;
@@ -14,7 +14,7 @@ class EditPageButtons {
   final String id;
   final NoteModel noteModel;
 
-  EditPageButtons({
+  EditNoteScreenButtons({
     required this.context,
     required this.title,
     required this.subtitle,

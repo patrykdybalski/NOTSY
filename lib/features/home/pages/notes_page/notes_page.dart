@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:primary_school/features/home/pages/notes_page/screens/add_note_page/add_note_page.dart';
+import 'package:primary_school/features/home/pages/notes_page/screens/add_note_screen/add_note_screen.dart';
 import 'package:primary_school/features/home/pages/notes_page/screens/general_notes/general_notes.dart';
 
 class NotesPage extends StatefulWidget {
@@ -33,7 +33,7 @@ class AddNotePageButton extends StatelessWidget {
       highlightElevation: 35,
       onPressed: () {
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => const AddNotePage(),
+          builder: (context) => const AddNoteScreen(),
           fullscreenDialog: true,
           allowSnapshotting: true,
         ));
