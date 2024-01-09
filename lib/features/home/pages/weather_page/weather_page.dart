@@ -65,8 +65,8 @@ class InitialWeatherPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
                 gradient: LinearGradient(
                   colors: [
-                    Colors.blue.shade50,
-                    Colors.blue.shade100,
+                    Theme.of(context).colorScheme.outline,
+                    Theme.of(context).colorScheme.outlineVariant,
                   ],
                   begin: Alignment.bottomLeft,
                   end: Alignment.topLeft,

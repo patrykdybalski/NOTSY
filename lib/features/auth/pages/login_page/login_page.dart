@@ -41,11 +41,10 @@ class _LoginPageBodyState extends State<_LoginPageBody> {
       child: Column(children: [
         const SizedBox(height: 80),
         const LogoImageContainer(),
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.5),
-            borderRadius: BorderRadius.circular(20),
-          ),
+        Card(
+          color: Theme.of(context).colorScheme.primary.withOpacity(1),
+          elevation: 0.5,
+          surfaceTintColor: Colors.transparent,
           child: Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 4.0,
@@ -93,9 +92,9 @@ class CreateAccountButton extends StatelessWidget {
         ));
       },
       child: Text('Utwórz konto',
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.inversePrimary,
-            fontSize: 16,
+          style: TextStyles.textStyle1(
+            17,
+            Theme.of(context).colorScheme.inversePrimary,
           )),
     );
   }
@@ -117,33 +116,25 @@ class LogoImageContainer extends StatelessWidget {
         const SizedBox(height: 6),
         Text(
           'HOOKIT.',
-          style: TextStyles.textStyle2(
+          style: TextStyles.appBarStyle1(
             34,
             Theme.of(context).colorScheme.inversePrimary,
           ),
         ),
         const SizedBox(height: 32),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+        Column(
           children: [
-            Text(
-              'Witaj ponownie,',
-              style: TextStyles.textStyle1(
-                22,
-                Theme.of(context).colorScheme.tertiary,
-              ),
-              textAlign: TextAlign.left,
+            Icon(
+              Icons.waving_hand_outlined,
+              color: Theme.of(context).colorScheme.inversePrimary,
+              size: 40,
             ),
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
+            const SizedBox(height: 6),
             Text(
               'Zaloguj się!',
               style: TextStyles.textStyle2(
-                18,
-                Theme.of(context).colorScheme.inversePrimary,
+                22,
+                Theme.of(context).colorScheme.tertiary,
               ),
               textAlign: TextAlign.left,
             ),

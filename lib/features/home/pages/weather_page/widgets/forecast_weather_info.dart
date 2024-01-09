@@ -52,11 +52,10 @@ class _ForecastWeatherInfoState extends State<ForecastWeatherInfo> {
                       width: 90,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
-                        color: Theme.of(context).colorScheme.primary,
                         gradient: LinearGradient(
                           colors: [
-                            Colors.blue.shade50,
-                            Colors.blue.shade100,
+                            Theme.of(context).colorScheme.outline,
+                            Theme.of(context).colorScheme.outlineVariant,
                           ],
                           begin: Alignment.bottomLeft,
                           end: Alignment.topLeft,

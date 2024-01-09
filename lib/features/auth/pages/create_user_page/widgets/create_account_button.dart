@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/features/auth/cubit/auth_cubit.dart';
 
@@ -54,13 +55,11 @@ class CreateAccountButton extends StatelessWidget {
                     password: password!,
                   );
             },
-            child: Text(
-              'Zarejestruj się',
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.primary,
-                fontSize: 16,
-              ),
-            ),
+            child: Text('Zarejestruj się',
+                style: TextStyles.textStyle2(
+                  17,
+                  Theme.of(context).colorScheme.primary,
+                )),
           );
         },
       ),

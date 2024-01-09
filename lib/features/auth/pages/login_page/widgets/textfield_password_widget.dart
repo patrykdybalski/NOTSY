@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:primary_school/app/constans/fonts_style.dart';
 
 class TextFieldPassword extends StatefulWidget {
   const TextFieldPassword({
@@ -26,17 +27,7 @@ class _TextFieldPasswordState extends State<TextFieldPassword> {
     return Padding(
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 4),
       child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-              blurRadius: 1,
-              spreadRadius: 1,
-              offset: const Offset(0, 1.0),
-              color: Colors.grey.withOpacity(0.2),
-            )
-          ],
-        ),
+        color: Theme.of(context).colorScheme.primary.withOpacity(1),
         child: TextField(
           onChanged: widget.onPasswordChanged,
           keyboardType: TextInputType.text,
@@ -47,27 +38,53 @@ class _TextFieldPasswordState extends State<TextFieldPassword> {
             focusColor: Colors.amber,
             filled: true,
             hintText: 'Hasło',
+            hintStyle: TextStyles.textStyle1(
+              16,
+              Theme.of(context).colorScheme.inversePrimary,
+            ),
             prefixIcon: const Icon(Icons.key),
             prefixIconColor: MaterialStateColor.resolveWith((states) =>
                 states.contains(MaterialState.focused)
-                    ? Colors.amber
+                    ? Colors.amber.shade600
                     : Colors.grey),
             suffixIcon: IconButton(
-              icon: Icon(obscureText
-                  ? Icons.remove_red_eye_outlined
-                  : Icons.remove_red_eye), // Ikona do przycisku
+              icon: Icon(
+                obscureText
+                    ? Icons.remove_red_eye_outlined
+                    : Icons.remove_red_eye,
+              ),
               onPressed: () {
                 toggleObscureText();
               },
             ),
-            fillColor: Theme.of(context).colorScheme.background,
+            fillColor:
+                Theme.of(context).colorScheme.background.withOpacity(0.7),
             border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: BorderSide.none,
-            ),
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(
+                  color:
+                      Theme.of(context).colorScheme.background.withOpacity(0.8),
+                )),
             focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(
+                  color: Theme.of(context)
+                      .colorScheme
+                      .inversePrimary
+                      .withOpacity(0.1),
+                )),
+            disabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(
+                  color:
+                      Theme.of(context).colorScheme.background.withOpacity(0.7),
+                )),
+            enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide(
+                  color:
+                      Theme.of(context).colorScheme.background.withOpacity(0.9),
+                )),
           ),
         ),
       ),

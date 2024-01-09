@@ -33,18 +33,14 @@ class _CreatePagebodyState extends State<_CreatePagebody> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 20,
-          vertical: 0,
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(children: [
-           const SizedBox(height: 80),
+          const SizedBox(height: 80),
           const LogoImageContainer(),
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.5),
-              borderRadius: BorderRadius.circular(20),
-            ),
+          Card(
+            color: Theme.of(context).colorScheme.primary.withOpacity(1),
+            elevation: 0.5,
+            surfaceTintColor: Colors.transparent,
             child: Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 4.0,
@@ -91,13 +87,11 @@ class BackToLoginPageButton extends StatelessWidget {
       style: TextButton.styleFrom(
         foregroundColor: Theme.of(context).colorScheme.secondary,
       ),
-      child: Text(
-        'Mam już konto',
-        style: TextStyle(
-          color: Theme.of(context).colorScheme.inversePrimary,
-          fontSize: 16,
-        ),
-      ),
+      child: Text('Mam już konto',
+          style: TextStyles.textStyle1(
+            17,
+            Theme.of(context).colorScheme.inversePrimary,
+          )),
       onPressed: () {
         Navigator.of(context).pop();
       },
@@ -120,34 +114,26 @@ class LogoImageContainer extends StatelessWidget {
         ),
         const SizedBox(height: 6),
         Text(
-          'HOOKIT',
-          style: TextStyles.textStyle2(
+          'HOOKIT.',
+          style: TextStyles.appBarStyle1(
             34,
             Theme.of(context).colorScheme.inversePrimary,
           ),
         ),
         const SizedBox(height: 32),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+        Column(
           children: [
+            Icon(
+              Icons.group_add_rounded,
+              color: Theme.of(context).colorScheme.inversePrimary,
+              size: 40,
+            ),
+            const SizedBox(height: 6),
             Text(
-              'Uwtórz konto,',
-              style: TextStyles.textStyle1(
+              'Uwtórz konto!',
+              style: TextStyles.textStyle2(
                 22,
                 Theme.of(context).colorScheme.tertiary,
-              ),
-              textAlign: TextAlign.left,
-            ),
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Text(
-              'Zapraszamy!',
-              style: TextStyles.textStyle2(
-                18,
-                Theme.of(context).colorScheme.inversePrimary,
               ),
               textAlign: TextAlign.left,
             ),
