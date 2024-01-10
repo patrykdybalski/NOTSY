@@ -45,6 +45,7 @@ dependencies:
   flutter_svg: ^2.0.9
   provider: ^6.1.1
  
+ 
 
 dev_dependencies:
   flutter_test:
@@ -61,7 +62,15 @@ dev_dependencies:
   freezed: ^2.4.5
   retrofit_generator: ^8.0.3
   injectable_generator: ^2.4.1
+  flutter_launcher_icons: ^0.13.1
 
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/logo@0_5.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
