@@ -38,8 +38,8 @@ class _MySettingsState extends State<MySettings> {
           children: [
             Text(
               'Dark Mode',
-              style: TextStyles.appBarStyle1(
-                16,
+              style: TextStyles.textStyle2(
+                18,
                 Theme.of(context).colorScheme.inversePrimary,
               ),
             ),

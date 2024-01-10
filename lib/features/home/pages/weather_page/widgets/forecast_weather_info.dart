@@ -54,8 +54,14 @@ class _ForecastWeatherInfoState extends State<ForecastWeatherInfo> {
                         borderRadius: BorderRadius.circular(12),
                         gradient: LinearGradient(
                           colors: [
-                            Theme.of(context).colorScheme.outline,
-                            Theme.of(context).colorScheme.outlineVariant,
+                            Theme.of(context)
+                                .colorScheme
+                                .outline
+                                .withOpacity(0.7),
+                            Theme.of(context)
+                                .colorScheme
+                                .outlineVariant
+                                .withOpacity(0.7),
                           ],
                           begin: Alignment.bottomLeft,
                           end: Alignment.topLeft,

@@ -16,7 +16,7 @@ class ResetPasswordTextInformation extends StatelessWidget {
             Text(
               'Wyślij link do resetu hasła',
               style: TextStyles.textStyle2(
-                26,
+                24,
                 Theme.of(context).colorScheme.inversePrimary,
               ),
             ),

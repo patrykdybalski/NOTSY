@@ -46,7 +46,7 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Text(
                 state.errorMessage,
-                style: TextStyles.appBarStyle2(
+                style: TextStyles.appBarStyle1(
                   14,
                   Theme.of(context).colorScheme.inversePrimary,
                 ),

@@ -68,7 +68,7 @@ class ForgotPasswordPage extends StatelessWidget {
                   const ResetPasswordTextInformation(),
                   const SizedBox(height: 16),
                   EmailTextField(emailController: emailController),
-                  const SizedBox(height: 32),
+                  const SizedBox(height: 24),
                   ReserPasswordButton(emailController: emailController),
                   const SizedBox(height: 16),
                   const BackButtonWidget(),

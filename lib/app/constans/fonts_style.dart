@@ -6,18 +6,7 @@ class TextStyles {
     double size,
     Color color,
   ) {
-    return GoogleFonts.dmSerifText(
-      fontSize: size,
-      fontWeight: FontWeight.bold,
-      color: color,
-    );
-  }
-
-  static appBarStyle2(
-    double size,
-    Color color,
-  ) {
-    return GoogleFonts.dmSerifText(
+    return GoogleFonts.caveatBrush(
       fontSize: size,
       fontWeight: FontWeight.bold,
       color: color,
@@ -28,7 +17,7 @@ class TextStyles {
     double size,
     Color color,
   ) {
-    return GoogleFonts.roboto(
+    return GoogleFonts.noticiaText(
       fontSize: size,
       fontWeight: FontWeight.normal,
       color: color,
@@ -39,7 +28,7 @@ class TextStyles {
     double size,
     Color color,
   ) {
-    return GoogleFonts.roboto(
+    return GoogleFonts.noticiaText(
       fontSize: size,
       fontWeight: FontWeight.bold,
       color: color,

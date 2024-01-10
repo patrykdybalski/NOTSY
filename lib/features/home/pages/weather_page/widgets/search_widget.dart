@@ -96,8 +96,8 @@ class CheckWeatherButton extends StatelessWidget {
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Theme.of(context).colorScheme.tertiary,
-          elevation: 3,
-          shadowColor: Theme.of(context).colorScheme.inversePrimary,
+          elevation: 1,
+          shadowColor: Theme.of(context).colorScheme.tertiary,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(
               12.0,

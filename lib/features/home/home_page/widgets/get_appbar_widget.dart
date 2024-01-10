@@ -11,7 +11,7 @@ class HomePageWidgets {
         title: Text(
           text2,
           style: TextStyles.appBarStyle1(
-            28,
+            32,
             Theme.of(context).colorScheme.inversePrimary,
           ),
         ),

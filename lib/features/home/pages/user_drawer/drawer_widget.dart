@@ -20,12 +20,12 @@ class DrawerWidget extends StatelessWidget {
               children: [
                 const Image(
                   image: AssetImage('assets/images/Logo@0_75.png'),
-                  width: 100,
+                  width: 70,
                 ),
                 Text(
-                  'HooKit',
+                  'NOTSy',
                   style: TextStyles.appBarStyle1(
-                      30, Theme.of(context).colorScheme.inversePrimary),
+                      34, Theme.of(context).colorScheme.inversePrimary),
                 ),
               ],
             ),
@@ -48,8 +48,11 @@ class DrawerWidget extends StatelessWidget {
             ),
             onTap: () {
               Navigator.of(context).pop();
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: ((context) => const MySettings())));
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: ((context) => const MySettings()),
+                ),
+              );
             },
           ),
           DrawerTile(

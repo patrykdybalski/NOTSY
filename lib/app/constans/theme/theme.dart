@@ -9,8 +9,8 @@ ThemeData lightMode = ThemeData(
       primary: Colors.grey.shade200,
       secondary: Colors.grey.shade400,
       inversePrimary: Colors.grey.shade800,
-      tertiary: const Color.fromARGB(255, 5, 123, 196),
-      error: const Color(0xFF8F2B2B),
+      tertiary: Colors.blue.shade700,
+      error: Colors.red.shade600,
       outline: Colors.white24,
       outlineVariant: Colors.lightBlueAccent.shade100,
     ));
@@ -23,8 +23,8 @@ ThemeData darkMode = ThemeData(
       primary: Colors.grey.shade800,
       secondary: Colors.grey.shade700,
       inversePrimary: Colors.grey.shade400,
-      tertiary: const Color.fromARGB(255, 5, 123, 196),
-      error: const Color(0xFF8F2B2B),
-      outline: Colors.black26,
+      tertiary: Colors.blue.shade700,
+      error: Colors.red.shade600,
+      outline: Colors.blueGrey.shade500,
       outlineVariant: Colors.blueGrey.shade600,
     ));

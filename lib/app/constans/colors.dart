@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static List<Color> availableColors = const [
-    Color.fromARGB(255, 194, 5, 5),
-    Color.fromARGB(255, 190, 131, 5),
-    Color.fromARGB(255, 20, 193, 5),
-    Color.fromARGB(255, 127, 5, 193),
+  static List<Color> availableColors = [
+    Colors.green.shade600,
+    Colors.purple.shade600,
+    Colors.orange.shade600,
+    Colors.red.shade600,
   ];
 }

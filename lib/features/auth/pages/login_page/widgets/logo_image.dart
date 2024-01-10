@@ -12,13 +12,13 @@ class LogoImage extends StatelessWidget {
       children: [
         const Image(
           image: AssetImage('assets/images/logo@1.png'),
-          height: 100,
+          height: 70,
         ),
         const SizedBox(height: 6),
         Text(
-          'HOOKIT.',
+          'NOTSy',
           style: TextStyles.appBarStyle1(
-            34,
+            38,
             Theme.of(context).colorScheme.inversePrimary,
           ),
         ),
