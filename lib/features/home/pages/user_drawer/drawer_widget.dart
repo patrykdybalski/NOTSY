@@ -23,7 +23,7 @@ class DrawerWidget extends StatelessWidget {
                   width: 70,
                 ),
                 Text(
-                  'NOTSy',
+                  'NOTSY',
                   style: TextStyles.appBarStyle1(
                       34, Theme.of(context).colorScheme.inversePrimary),
                 ),

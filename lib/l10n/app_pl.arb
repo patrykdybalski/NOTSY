@@ -1,4 +1,38 @@
 {
-    "login": "Zaloguj się",
-    "ihaveaccount": "Masz już konto?"
+    ‘’logIn‘’ :  ‘’ Zaloguj się‘’,    
+    ‘’createAccount‘’ : ‘’Utwórz konto‘’,
+    ‘’register‘’ : ‘’ Zarejestruj się‘’,
+    ‘’iHaveAccount‘’ : ‘’Mam już konto‘’,
+    ‘’forgetPassword‘’ : ‘’Nie pamiętasz hasła?‘’,     
+    ‘’sendResetLink’’ : ‘’Wyślij link do resetu hasła‘’,    
+    ‘’giveEmailAddress‘’ : ‘’Podaj adres e-mail powiązany z kontem‘’
+    ‘’sendLink‘’ : ‘’Wyślij link‘’,   
+    ‘’back‘’ : ‘’Wróć‘’,
+    ‘’mainPage‘’ : ‘’Strona główna‘’,     
+    ‘’settings‘’ : ‘’Ustawienia‘’,
+    ‘’rate‘’ : ‘’Oceń nas‘’, 
+    ‘’logOut‘’ : ‘’Wyloguj‘’,
+    ‘’plans‘’ : ‘’Plany‘’,
+    ‘’theme‘’ : ‘’Temat‘’,    BUILD
+    ‘’details‘’ : ‘’Szczegóły‘’,     
+    ‘’selectDay‘’ : ‘’Wybierz dzień‘’,     
+    ‘’addTime‘’ : ‘’Dodaj godzinę‘’,     
+    ‘’cancel‘’ : ‘’Anuluj‘’,
+    ‘’save‘’ : ‘’Zapisz‘’,   
+    ‘’delete‘’ : ‘’Usuń‘’,
+    ‘’edit‘’ : ‘’Edytuj‘’,  
+    ‘’deleteSelectItem‘’ : ‘’Usunąć wybraną pozycję?‘’,    
+    ‘’markAsComplete‘’ : ‘’Oznaczyć jako ukończone?‘’,    
+    ‘’no‘’ : ‘’Nie‘’,     
+    ‘’yes‘’ : ‘’Tak‘’,    
+    ‘’notes‘’ : ‘’Notatki‘’,   
+    ‘’title‘’ : ‘’Tytuł‘’,     
+    ‘’enterContentNote‘’ : ‘’Wpisz treść notatki‘’,     
+    ‘’deleteNote‘’ : ‘’Usunąć notatkę?‘’,   
+    ‘’weather‘’ : ‘’Pogoda‘’,    
+    ‘’city‘’ : ‘’Miejscowość‘’,     
+    ‘’check‘’ : ‘’Sprawdź’’,    
+    ‘’enterThename‘’ : ‘’Podaj nazwę‘’,     
+    ‘’currently’’ : ‘’Aktualnie‘’  
+
 }

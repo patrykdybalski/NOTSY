@@ -1,4 +1,38 @@
-{
-    "login": "Log In",
-    "ihaveaccount": "I have account"
+{    
+    ‘’logIn‘’ :  ‘’ Log In‘’,    
+    ‘’createAccount‘’ : ‘’Create an account‘’,
+    ‘’register‘’ : ‘’Register’’,
+    ‘’iHaveAccount‘’ : ‘’I already have an account‘’,
+    ‘’forgetPassword‘’ : ‘’Don’t you remember the password?‘’,     
+    ‘’sendResetLink’’ : ‘’Send a link to reset your password‘’,    
+    ‘’giveEmailAddress‘’ : ‘’Enter the email address associated with your account  ‘’
+    ‘’sendLink‘’ : ‘’Send link‘’,   
+    ‘’back‘’ : ‘’Back‘’,
+    ‘’mainPage‘’ : ‘’Main page’,     
+    ‘’settings‘’ : ‘’Settings‘’,
+    ‘’rate‘’ : ‘’Rate me‘’, 
+    ‘’logOut‘’ : ‘’Log Out‘’,
+    ‘’plans‘’ : ‘’Plans‘’,
+    ‘’theme‘’ : ‘’Theme‘’,    
+    ‘’details‘’ : ‘’Details‘’,     
+    ‘’selectDay‘’ : ‘’Select day‘’,     
+    ‘’addTime‘’ : ‘’Select time ‘’,     
+    ‘’cancel‘’ : ‘’Cancel‘’,
+    ‘’save‘’ : ‘’Save‘’,   
+    ‘’delete‘’ : ‘’Delete‘’,
+    ‘’edit‘’ : ‘’Edit‘’,  
+    ‘’deleteSelectItem‘’ : ‘’Delete select item?’’,    
+    ‘’markAsComplete‘’ : ‘’Mark as complete?‘’,    
+    ‘’no‘’ : ‘’No‘’,     
+    ‘’yes‘’ : ‘’Yes‘’,    
+    ‘’notes‘’ : ‘’Notes‘’,   
+    ‘’title‘’ : ‘’Title‘’,     
+    ‘’enterContentNote‘’ : ‘’Enter content‘’,     
+    ‘’deleteNote‘’ : ‘’Delete note?‘’,   
+    ‘’weather‘’ : ‘’Weather‘’,    
+    ‘’city‘’ : ‘’City‘’,     
+    ‘’check‘’ : ‘’Check’’,    
+    ‘’enterThename‘’ : ‘’Enter the name‘’,     
+    ‘’currently’’ : ‘’Currently‘’
+
 }

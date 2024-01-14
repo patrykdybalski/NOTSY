@@ -6,7 +6,7 @@ class TextStyles {
     double size,
     Color color,
   ) {
-    return GoogleFonts.caveatBrush(
+    return GoogleFonts.mali(
       fontSize: size,
       fontWeight: FontWeight.bold,
       color: color,

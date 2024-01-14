@@ -16,7 +16,7 @@ class LogoImage extends StatelessWidget {
         ),
         const SizedBox(height: 6),
         Text(
-          'NOTSy',
+          'NOTSY',
           style: TextStyles.appBarStyle1(
             38,
             Theme.of(context).colorScheme.inversePrimary,
