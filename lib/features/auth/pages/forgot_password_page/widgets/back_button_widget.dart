@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BackButtonWidget extends StatelessWidget {
   const BackButtonWidget({
@@ -13,7 +14,7 @@ class BackButtonWidget extends StatelessWidget {
         Navigator.of(context).pop();
       },
       child: Text(
-        'Wróć',
+        AppLocalizations.of(context).back,
         style: TextStyles.textStyle2(
           17,
           Theme.of(context).colorScheme.tertiary,

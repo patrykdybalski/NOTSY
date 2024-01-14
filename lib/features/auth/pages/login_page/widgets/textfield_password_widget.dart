@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TextFieldPassword extends StatefulWidget {
   const TextFieldPassword({
@@ -37,7 +38,7 @@ class _TextFieldPasswordState extends State<TextFieldPassword> {
           decoration: InputDecoration(
             focusColor: Colors.amber,
             filled: true,
-            hintText: 'Hasło',
+            hintText: AppLocalizations.of(context).password,
             hintStyle: TextStyles.textStyle1(
               16,
               Theme.of(context).colorScheme.inversePrimary,

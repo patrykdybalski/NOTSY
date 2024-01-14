@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DayButton extends StatelessWidget {
   const DayButton({
@@ -34,7 +35,7 @@ class DayButton extends StatelessWidget {
         color: Theme.of(context).colorScheme.inversePrimary,
       ),
       label: Text(
-        selectedDateFormatted ?? 'Wybierz dzień',
+        selectedDateFormatted ?? AppLocalizations.of(context).selectDay,
         style: TextStyles.textStyle1(
           14,
           Theme.of(context).colorScheme.inversePrimary,

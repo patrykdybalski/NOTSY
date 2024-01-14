@@ -9,6 +9,7 @@ import 'package:primary_school/features/home/pages/event_page/screens/add_event_
 import 'package:primary_school/features/home/pages/event_page/screens/add_event_dialog/widgets/subtitle_widget/subtitle_widget.dart';
 import 'package:primary_school/features/home/pages/event_page/screens/add_event_dialog/widgets/time_button/time_button_widget.dart';
 import 'package:primary_school/features/home/pages/event_page/screens/add_event_dialog/widgets/title_widget/title_widget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddEventDialog extends StatefulWidget {
   const AddEventDialog({
@@ -96,7 +97,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text('Anuluj',
+                child: Text(AppLocalizations.of(context).cancel,
                     style: TextStyles.textStyle1(
                       17,
                       Theme.of(context).colorScheme.inversePrimary,
@@ -117,7 +118,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
                       );
                 },
                 child: Text(
-                  'Zapisz',
+                  AppLocalizations.of(context).save,
                   style: TextStyles.textStyle2(
                       17, Theme.of(context).colorScheme.tertiary),
                 ),

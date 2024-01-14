@@ -5,6 +5,7 @@ import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/domain/models/event_model/event_model.dart';
 import 'package:primary_school/features/home/pages/event_page/event_page/cubit/event_cubit.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SlidableActionWidgets {
   SlidableAction deleteAction(BuildContext context, EventModel eventModel) {
@@ -14,7 +15,9 @@ class SlidableActionWidgets {
           context: context,
           builder: ((context) {
             return AlertDialog(
-              title: const Text('Usunąć wybraną pozycję?'),
+              title: Text(
+                AppLocalizations.of(context).deleteSelectItem,
+              ),
               titleTextStyle: TextStyles.textStyle2(
                 20,
                 Theme.of(context).colorScheme.inversePrimary,
@@ -27,7 +30,7 @@ class SlidableActionWidgets {
                     Navigator.of(context).pop();
                   },
                   child: Text(
-                    'Nie',
+                    AppLocalizations.of(context).no,
                     style: TextStyles.textStyle1(
                       16,
                       Theme.of(context).colorScheme.inversePrimary,
@@ -46,7 +49,7 @@ class SlidableActionWidgets {
                           Navigator.of(context).pop();
                         },
                         child: Text(
-                          'Tak',
+                          AppLocalizations.of(context).yes,
                           style: TextStyles.textStyle2(
                             16,
                             Theme.of(context).colorScheme.inversePrimary,
@@ -63,7 +66,7 @@ class SlidableActionWidgets {
       },
       borderRadius: BorderRadius.circular(16),
       padding: const EdgeInsets.all(2),
-      label: 'Usuń',
+      label: AppLocalizations.of(context).delete,
       icon: Icons.task_alt_outlined,
       backgroundColor: Theme.of(context).colorScheme.background,
       foregroundColor: Theme.of(context).colorScheme.error,

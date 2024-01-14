@@ -22,9 +22,9 @@ ThemeData darkMode = ThemeData(
       background: Colors.grey.shade900,
       primary: Colors.grey.shade800,
       secondary: Colors.grey.shade700,
-      inversePrimary: Colors.grey.shade400,
-      tertiary: Colors.blue.shade700,
+      inversePrimary: Colors.white,
+      tertiary: Colors.blue.shade300,
       error: Colors.red.shade600,
-      outline: Colors.blueGrey.shade500,
-      outlineVariant: Colors.blueGrey.shade600,
+      outline: Colors.lightBlueAccent.shade200,
+      outlineVariant: Colors.lightBlueAccent.shade400,
     ));

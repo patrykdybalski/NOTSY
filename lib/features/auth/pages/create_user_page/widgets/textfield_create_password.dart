@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TextFieldCreatePassword extends StatefulWidget {
   const TextFieldCreatePassword({
@@ -37,7 +38,7 @@ class _TextFieldPasswordState extends State<TextFieldCreatePassword> {
             filled: true,
             fillColor:
                 Theme.of(context).colorScheme.background.withOpacity(0.7),
-            hintText: 'Hasło',
+            hintText: AppLocalizations.of(context).password,
             prefixIcon: const Icon(Icons.key),
             prefixIconColor: MaterialStateColor.resolveWith((states) =>
                 states.contains(MaterialState.focused)

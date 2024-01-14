@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/features/home/pages/event_page/screens/edit_event_screen/cubit/edit_event_cubit.dart';
 import 'package:primary_school/features/home/pages/event_page/screens/edit_event_screen/edit_event_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SaveEditButton extends StatelessWidget {
   const SaveEditButton({
@@ -40,7 +41,7 @@ class SaveEditButton extends StatelessWidget {
             );
       },
       child: Text(
-        'Zapisz',
+        AppLocalizations.of(context).save,
         style: TextStyles.textStyle2(
           17,
           Theme.of(context).colorScheme.tertiary,
@@ -61,7 +62,7 @@ class BackEditButton extends StatelessWidget {
       onPressed: () {
         Navigator.of(context).pop();
       },
-      child: Text('Anuluj',
+      child: Text(AppLocalizations.of(context).cancel,
           style: TextStyles.textStyle1(
             17,
             Theme.of(context).colorScheme.inversePrimary,

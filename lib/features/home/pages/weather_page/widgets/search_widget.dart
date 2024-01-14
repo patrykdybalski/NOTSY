@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/features/home/pages/weather_page/cubit/weather_cubit.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SearchWidget extends StatelessWidget {
   SearchWidget({
@@ -45,13 +46,13 @@ class CityTextController extends StatelessWidget {
           cursorColor: Theme.of(context).colorScheme.inversePrimary,
           decoration: InputDecoration(
             label: Text(
-              'Miejscowość',
+              AppLocalizations.of(context).city,
               style: TextStyles.textStyle1(
                 13,
                 Theme.of(context).colorScheme.inversePrimary,
               ),
             ),
-            hintText: 'Podaj nazwę ',
+            hintText: AppLocalizations.of(context).enterTheName,
             hintStyle: TextStyles.textStyle1(
               13,
               Theme.of(context).colorScheme.inversePrimary,
@@ -105,7 +106,7 @@ class CheckWeatherButton extends StatelessWidget {
           ),
         ),
         child: Text(
-          'Sprawdź',
+          AppLocalizations.of(context).check,
           style: TextStyles.textStyle2(
             14,
             Theme.of(context).colorScheme.primary,

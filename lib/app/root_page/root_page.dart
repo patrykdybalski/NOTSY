@@ -11,14 +11,21 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:primary_school/features/home/home_page/home_page.dart';
 import 'package:provider/provider.dart';
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+
+  static of(BuildContext context) {}
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: Config.debugShowCheckedModeBanner,
-      title: 'Last Check Only',
+      title: 'NOTSY',
       theme: Provider.of<ThemeProvider>(context).themeData,
       darkTheme: darkMode,
       localizationsDelegates: const [
@@ -32,6 +39,33 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+// class Dashboard extends StatelessWidget {
+//   const Dashboard({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Column(
+//       children: [
+//         TextButton(
+//           child: const Text("Set locale to German"),
+//           onPressed: () => MyApp.of(context)
+//               .setLocale(const Locale.fromSubtags(languageCode: 'pl')),
+//         ),
+//         TextButton(
+//           child: const Text("Set locale to English"),
+//           onPressed: () => MyApp.of(context)
+//               .setLocale(const Locale.fromSubtags(languageCode: 'en')),
+//         ),
+//         TextButton(
+//           child: const Text("Set locale to English"),
+//           onPressed: () => MyApp.of(context)
+//               .setLocale(const Locale.fromSubtags(languageCode: 'uk')),
+//         ),
+//       ],
+//     );
+//   }
+// }
 
 class RootPage extends StatelessWidget {
   const RootPage({

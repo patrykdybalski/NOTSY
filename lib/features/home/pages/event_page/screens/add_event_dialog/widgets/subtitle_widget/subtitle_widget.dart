@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SubtitleWidget extends StatelessWidget {
   const SubtitleWidget({
@@ -31,7 +32,7 @@ class SubtitleWidget extends StatelessWidget {
           Theme.of(context).colorScheme.inversePrimary,
         ),
         decoration: InputDecoration(
-          labelText: 'Szczegóły',
+          labelText: AppLocalizations.of(context).details,
           alignLabelWithHint: true,
           labelStyle: TextStyles.textStyle1(
             16,

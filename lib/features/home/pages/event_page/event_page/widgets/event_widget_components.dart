@@ -4,6 +4,7 @@ import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/features/home/pages/event_page/event_page/cubit/event_cubit.dart';
 import 'package:primary_school/features/home/pages/event_page/event_page/widgets/event_widget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TtileWidget extends StatelessWidget {
   const TtileWidget(
@@ -133,7 +134,7 @@ class _CheckBoxWidgetState extends State<CheckBoxWidget> {
               context: context,
               builder: (context) {
                 return AlertDialog(
-                  title: const Text('Potwierdzasz jako ukończone?'),
+                  title: Text(AppLocalizations.of(context).markAsComplete),
                   actionsAlignment: MainAxisAlignment.end,
                   titleTextStyle: TextStyles.textStyle2(
                     20,
@@ -150,7 +151,7 @@ class _CheckBoxWidgetState extends State<CheckBoxWidget> {
                         Navigator.of(context).pop();
                       },
                       child: Text(
-                        'Nie',
+                        AppLocalizations.of(context).no,
                         style: TextStyles.textStyle1(
                           16,
                           Theme.of(context).colorScheme.inversePrimary,
@@ -172,7 +173,7 @@ class _CheckBoxWidgetState extends State<CheckBoxWidget> {
                               });
                             },
                             child: Text(
-                              'Tak',
+                              AppLocalizations.of(context).yes,
                               style: TextStyles.textStyle1(
                                 16,
                                 Theme.of(context).colorScheme.tertiary,

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/app/injection_container.dart';
 import 'package:primary_school/features/home/pages/notes_page/screens/general_notes/cubit/note_cubit.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:primary_school/features/home/pages/notes_page/screens/general_notes/widgets/note_item.dart';
 
 class DeleteNotesDialog extends StatelessWidget {
@@ -22,7 +22,7 @@ class DeleteNotesDialog extends StatelessWidget {
         builder: (context, state) {
           return AlertDialog(
             backgroundColor: Theme.of(context).colorScheme.background,
-            title: const Text('Usunąć notatkę?'),
+            title: Text(AppLocalizations.of(context).deleteNote),
             titleTextStyle: TextStyles.textStyle2(
                 20, Theme.of(context).colorScheme.inversePrimary),
             elevation: 20,
@@ -32,7 +32,7 @@ class DeleteNotesDialog extends StatelessWidget {
                   Navigator.of(context).pop();
                 },
                 child: Text(
-                  'Nie',
+                  AppLocalizations.of(context).no,
                   style: TextStyles.textStyle2(
                       16, Theme.of(context).colorScheme.inversePrimary),
                 ),
@@ -43,7 +43,7 @@ class DeleteNotesDialog extends StatelessWidget {
                   Navigator.of(context).pop();
                 },
                 child: Text(
-                  'Tak',
+                  AppLocalizations.of(context).yes,
                   style: TextStyles.textStyle1(
                       16, Theme.of(context).colorScheme.inversePrimary),
                 ),

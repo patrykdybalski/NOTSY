@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TimeButton extends StatelessWidget {
   const TimeButton({
@@ -19,7 +20,7 @@ class TimeButton extends StatelessWidget {
         color: Theme.of(context).colorScheme.inversePrimary,
       ),
       label: Text(
-        selectedTimeFormatted ?? 'Dodaj godzinę',
+        selectedTimeFormatted ?? AppLocalizations.of(context).addTime,
         style: TextStyles.textStyle1(
           14,
           Theme.of(context).colorScheme.inversePrimary,

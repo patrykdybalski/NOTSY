@@ -3,6 +3,7 @@ import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/features/home/pages/user_drawer/widgets/drawer_tile.dart';
 import 'package:primary_school/features/home/pages/user_drawer/widgets/settings.dart';
 import 'package:primary_school/features/home/pages/user_drawer/widgets/sign_out_buttod.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({super.key});
@@ -31,7 +32,7 @@ class DrawerWidget extends StatelessWidget {
             ),
           ),
           DrawerTile(
-            title: 'Strona główna',
+            title: AppLocalizations.of(context).mainPage,
             leadnig: Icon(
               Icons.home,
               color: Theme.of(context).colorScheme.inversePrimary,
@@ -41,7 +42,7 @@ class DrawerWidget extends StatelessWidget {
             },
           ),
           DrawerTile(
-            title: 'Ustawienia',
+            title: AppLocalizations.of(context).settings,
             leadnig: Icon(
               Icons.settings,
               color: Theme.of(context).colorScheme.inversePrimary,
@@ -56,7 +57,7 @@ class DrawerWidget extends StatelessWidget {
             },
           ),
           DrawerTile(
-            title: 'Oceń nas',
+            title: AppLocalizations.of(context).rate,
             leadnig: Icon(
               Icons.swap_vertical_circle_rounded,
               color: Theme.of(context).colorScheme.inversePrimary,

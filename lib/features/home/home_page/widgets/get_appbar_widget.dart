@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/features/home/home_page/cubit/home_page_cubit.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 class HomePageWidgets {
@@ -24,11 +24,11 @@ class HomePageWidgets {
 
     switch (currentIndex) {
       case 0:
-        return appBar(text2: 'Plan');
+        return appBar(text2: AppLocalizations.of(context).plans);
       case 1:
-        return appBar(text2: 'Notatka');
+        return appBar(text2: AppLocalizations.of(context).notes);
       case 2:
-        return appBar(text2: 'Pogoda');
+        return appBar(text2: AppLocalizations.of(context).weather);
 
       default:
         return AppBar();
@@ -53,18 +53,18 @@ class HomePageWidgets {
       ),
       currentIndex: state.currentIndex,
       onTap: (index) => context.read<HomePageCubit>().changeIndex(index),
-      items: const [
+      items: [
         BottomNavigationBarItem(
-          label: 'Plany',
-          icon: Icon(Icons.calendar_month_outlined),
+          label: AppLocalizations.of(context).plans,
+          icon: const Icon(Icons.calendar_month_outlined),
         ),
         BottomNavigationBarItem(
-          label: 'Notatki',
-          icon: Icon(Icons.text_snippet_outlined),
+          label: AppLocalizations.of(context).notes,
+          icon: const Icon(Icons.text_snippet_outlined),
         ),
         BottomNavigationBarItem(
-          label: 'Pogoda',
-          icon: Icon(Icons.wb_cloudy_outlined),
+          label: AppLocalizations.of(context).weather,
+          icon: const Icon(Icons.wb_cloudy_outlined),
         ),
       ],
     );
@@ -76,7 +76,7 @@ class HomePageWidgets {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'Coś poszło nie tak!',
+            'Error',
             style: TextStyle(
               color: Theme.of(context).colorScheme.error,
             ),
@@ -86,7 +86,7 @@ class HomePageWidgets {
               context.read<HomePageCubit>().changeIndex(0);
             },
             child: Text(
-              'Powrót',
+              AppLocalizations.of(context).back,
               style: TextStyles.textStyle1(
                 14,
                 Theme.of(context).colorScheme.inversePrimary,

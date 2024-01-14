@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/features/auth/pages/create_user_page/create_user_page.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CreateAccountTextButton extends StatelessWidget {
   const CreateAccountTextButton({
@@ -18,7 +19,7 @@ class CreateAccountTextButton extends StatelessWidget {
           builder: (context) => const CreateUserPage(),
         ));
       },
-      child: Text('Utwórz konto',
+      child: Text(AppLocalizations.of(context).createAccount,
           style: TextStyles.textStyle1(
             17,
             Theme.of(context).colorScheme.tertiary,

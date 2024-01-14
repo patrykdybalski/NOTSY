@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LogoImage extends StatelessWidget {
   const LogoImage({
@@ -32,7 +33,7 @@ class LogoImage extends StatelessWidget {
             ),
             const SizedBox(height: 6),
             Text(
-              'Zaloguj się!',
+              AppLocalizations.of(context).login,
               style: TextStyles.textStyle2(
                 22,
                 Theme.of(context).colorScheme.tertiary,

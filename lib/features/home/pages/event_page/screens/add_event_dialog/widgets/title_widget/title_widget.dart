@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TitleWidget extends StatelessWidget {
   const TitleWidget({
@@ -29,7 +30,7 @@ class TitleWidget extends StatelessWidget {
         style: TextStyles.textStyle2(
             16, Theme.of(context).colorScheme.inversePrimary),
         decoration: InputDecoration(
-          labelText: 'Temat',
+          labelText: AppLocalizations.of(context).theme,
           labelStyle: TextStyles.textStyle2(
               16, Theme.of(context).colorScheme.inversePrimary),
           focusedBorder: OutlineInputBorder(

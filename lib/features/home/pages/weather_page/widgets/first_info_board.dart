@@ -3,6 +3,7 @@ import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/domain/models/weather_model/weather_model.dart';
 import 'package:primary_school/features/home/pages/weather_page/widgets/second_info_board.dart';
 import 'package:primary_school/features/home/pages/weather_page/widgets/third_info_board.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FirstInfoBoard extends StatelessWidget {
   const FirstInfoBoard(this.weatherModel, {super.key});
@@ -46,7 +47,7 @@ class FirstInfoBoard extends StatelessWidget {
                       size: 20,
                     ),
                     Text(
-                      ' Aktualnie',
+                      AppLocalizations.of(context).currently,
                       style: TextStyles.textStyle1(
                         16,
                         Theme.of(context).colorScheme.inversePrimary,
