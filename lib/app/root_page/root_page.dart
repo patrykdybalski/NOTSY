@@ -40,33 +40,6 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-// class Dashboard extends StatelessWidget {
-//   const Dashboard({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Column(
-//       children: [
-//         TextButton(
-//           child: const Text("Set locale to German"),
-//           onPressed: () => MyApp.of(context)
-//               .setLocale(const Locale.fromSubtags(languageCode: 'pl')),
-//         ),
-//         TextButton(
-//           child: const Text("Set locale to English"),
-//           onPressed: () => MyApp.of(context)
-//               .setLocale(const Locale.fromSubtags(languageCode: 'en')),
-//         ),
-//         TextButton(
-//           child: const Text("Set locale to English"),
-//           onPressed: () => MyApp.of(context)
-//               .setLocale(const Locale.fromSubtags(languageCode: 'uk')),
-//         ),
-//       ],
-//     );
-//   }
-// }
-
 class RootPage extends StatelessWidget {
   const RootPage({
     super.key,
