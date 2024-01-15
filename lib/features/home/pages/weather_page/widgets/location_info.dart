@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/domain/models/weather_model/weather_model.dart';
 
-class ThirdInfoBoard extends StatelessWidget {
-  const ThirdInfoBoard(this.weatherModel, {super.key});
+class LocationInfo extends StatelessWidget {
+  const LocationInfo(this.weatherModel, {super.key});
 
   final WeatherModel? weatherModel;
 

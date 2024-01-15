@@ -17,7 +17,7 @@ class TextStyles {
     double size,
     Color color,
   ) {
-    return GoogleFonts.noticiaText(
+    return GoogleFonts.lato(
       fontSize: size,
       fontWeight: FontWeight.normal,
       color: color,
@@ -28,7 +28,7 @@ class TextStyles {
     double size,
     Color color,
   ) {
-    return GoogleFonts.noticiaText(
+    return GoogleFonts.lato(
       fontSize: size,
       fontWeight: FontWeight.bold,
       color: color,

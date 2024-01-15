@@ -12,11 +12,10 @@ class InitialWeatherScreen extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 24),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
               height: 320,
-              width: 450,
+              width: 500,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 gradient: LinearGradient(
@@ -38,15 +37,8 @@ class InitialWeatherScreen extends StatelessWidget {
                   )
                 ],
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Image.asset(
-                    'assets/images/term.png',
-                    height: 200,
-                    width: 100,
-                  ),
-                ],
+              child: Image.asset(
+                'assets/images/initIcon.png',
               ),
             ),
             SearchWidget(),

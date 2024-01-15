@@ -43,7 +43,6 @@ class _NoteItemState extends State<NoteItem> {
       child: Card(
         color: Theme.of(context).colorScheme.primary.withOpacity(1),
         elevation: 1,
-        surfaceTintColor: Colors.transparent,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -76,7 +75,7 @@ class _NoteItemState extends State<NoteItem> {
                   widget.noteModel.subtitle,
                   overflow: TextOverflow.fade,
                   style: TextStyles.textStyle1(
-                    13,
+                    14,
                     Theme.of(context).colorScheme.inversePrimary,
                   ),
                 ),

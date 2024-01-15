@@ -1231,6 +1231,7 @@ Location _$LocationFromJson(Map<String, dynamic> json) {
 mixin _$Location {
   String get name => throw _privateConstructorUsedError;
   String get country => throw _privateConstructorUsedError;
+  String get localtime => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1243,7 +1244,7 @@ abstract class $LocationCopyWith<$Res> {
   factory $LocationCopyWith(Location value, $Res Function(Location) then) =
       _$LocationCopyWithImpl<$Res, Location>;
   @useResult
-  $Res call({String name, String country});
+  $Res call({String name, String country, String localtime});
 }
 
 /// @nodoc
@@ -1261,6 +1262,7 @@ class _$LocationCopyWithImpl<$Res, $Val extends Location>
   $Res call({
     Object? name = null,
     Object? country = null,
+    Object? localtime = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -1270,6 +1272,10 @@ class _$LocationCopyWithImpl<$Res, $Val extends Location>
       country: null == country
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
+              as String,
+      localtime: null == localtime
+          ? _value.localtime
+          : localtime // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -1283,7 +1289,7 @@ abstract class _$$LocationImplCopyWith<$Res>
       __$$LocationImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String country});
+  $Res call({String name, String country, String localtime});
 }
 
 /// @nodoc
@@ -1299,6 +1305,7 @@ class __$$LocationImplCopyWithImpl<$Res>
   $Res call({
     Object? name = null,
     Object? country = null,
+    Object? localtime = null,
   }) {
     return _then(_$LocationImpl(
       null == name
@@ -1309,6 +1316,10 @@ class __$$LocationImplCopyWithImpl<$Res>
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
               as String,
+      null == localtime
+          ? _value.localtime
+          : localtime // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -1316,7 +1327,7 @@ class __$$LocationImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$LocationImpl extends _Location {
-  _$LocationImpl(this.name, this.country) : super._();
+  _$LocationImpl(this.name, this.country, this.localtime) : super._();
 
   factory _$LocationImpl.fromJson(Map<String, dynamic> json) =>
       _$$LocationImplFromJson(json);
@@ -1325,10 +1336,12 @@ class _$LocationImpl extends _Location {
   final String name;
   @override
   final String country;
+  @override
+  final String localtime;
 
   @override
   String toString() {
-    return 'Location(name: $name, country: $country)';
+    return 'Location(name: $name, country: $country, localtime: $localtime)';
   }
 
   @override
@@ -1337,12 +1350,14 @@ class _$LocationImpl extends _Location {
         (other.runtimeType == runtimeType &&
             other is _$LocationImpl &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.country, country) || other.country == country));
+            (identical(other.country, country) || other.country == country) &&
+            (identical(other.localtime, localtime) ||
+                other.localtime == localtime));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, country);
+  int get hashCode => Object.hash(runtimeType, name, country, localtime);
 
   @JsonKey(ignore: true)
   @override
@@ -1359,7 +1374,9 @@ class _$LocationImpl extends _Location {
 }
 
 abstract class _Location extends Location {
-  factory _Location(final String name, final String country) = _$LocationImpl;
+  factory _Location(
+          final String name, final String country, final String localtime) =
+      _$LocationImpl;
   _Location._() : super._();
 
   factory _Location.fromJson(Map<String, dynamic> json) =
@@ -1369,6 +1386,8 @@ abstract class _Location extends Location {
   String get name;
   @override
   String get country;
+  @override
+  String get localtime;
   @override
   @JsonKey(ignore: true)
   _$$LocationImplCopyWith<_$LocationImpl> get copyWith =>

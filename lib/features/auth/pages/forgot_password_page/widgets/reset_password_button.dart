@@ -66,7 +66,7 @@ class ReserPasswordButton extends StatelessWidget {
             child: Text(
               AppLocalizations.of(context).sendLink,
               style: TextStyles.textStyle2(
-                17,
+                16,
                 Theme.of(context).colorScheme.primary,
               ),
             ),

@@ -84,7 +84,7 @@ class SelectedDateWidget extends StatelessWidget {
           style: isEventDateExpired
               ? TextStyles.textStyle2(14, Theme.of(context).colorScheme.error)
               : TextStyles.textStyle1(
-                  14,
+                  13,
                   Theme.of(context).colorScheme.inversePrimary,
                 ),
         ),
@@ -92,11 +92,11 @@ class SelectedDateWidget extends StatelessWidget {
           widget.eventModel.selectedTimeFormatted(),
           style: isEventDateExpired
               ? TextStyles.textStyle2(
-                  14,
+                  13,
                   Theme.of(context).colorScheme.error,
                 )
               : TextStyles.textStyle1(
-                  14,
+                  13,
                   Theme.of(context).colorScheme.inversePrimary,
                 ),
         ),

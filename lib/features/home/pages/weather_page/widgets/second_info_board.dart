@@ -23,7 +23,7 @@ class SecondInfoBoard extends StatelessWidget {
                   weatherModel?.current.windDir ?? 'null',
                   style: TextStyles.textStyle2(
                     14,
-                    Theme.of(context).colorScheme.error,
+                    Theme.of(context).colorScheme.inversePrimary,
                   ),
                 ),
               ],
@@ -37,7 +37,7 @@ class SecondInfoBoard extends StatelessWidget {
                   '${weatherModel?.current.cloud} %',
                   style: TextStyles.textStyle2(
                     14,
-                    Theme.of(context).colorScheme.error,
+                    Theme.of(context).colorScheme.inversePrimary,
                   ),
                 ),
               ],
@@ -55,7 +55,7 @@ class SecondInfoBoard extends StatelessWidget {
                   '${weatherModel?.current.windMph} km/h',
                   style: TextStyles.textStyle2(
                     14,
-                    Theme.of(context).colorScheme.error,
+                    Theme.of(context).colorScheme.inversePrimary,
                   ),
                 ),
               ],
@@ -69,7 +69,7 @@ class SecondInfoBoard extends StatelessWidget {
                   '${weatherModel?.current.precipMm} mm',
                   style: TextStyles.textStyle2(
                     14,
-                    Theme.of(context).colorScheme.error,
+                    Theme.of(context).colorScheme.inversePrimary,
                   ),
                 ),
               ],
@@ -87,7 +87,7 @@ class SecondInfoBoard extends StatelessWidget {
                   '${weatherModel?.current.pressureMb} hPa',
                   style: TextStyles.textStyle2(
                     14,
-                    Theme.of(context).colorScheme.error,
+                    Theme.of(context).colorScheme.inversePrimary,
                   ),
                 ),
               ],
@@ -101,7 +101,7 @@ class SecondInfoBoard extends StatelessWidget {
                   '${weatherModel?.current.humidity} %',
                   style: TextStyles.textStyle2(
                     14,
-                    Theme.of(context).colorScheme.error,
+                    Theme.of(context).colorScheme.inversePrimary,
                   ),
                 ),
               ],

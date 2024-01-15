@@ -14,7 +14,7 @@ class ResetPasswordTextInformation extends StatelessWidget {
         Text(
           AppLocalizations.of(context).sendResetLink,
           style: TextStyles.textStyle2(
-            17,
+            18,
             Theme.of(context).colorScheme.inversePrimary,
           ),
         ),

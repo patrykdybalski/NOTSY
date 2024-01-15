@@ -103,10 +103,12 @@ _$LocationImpl _$$LocationImplFromJson(Map<String, dynamic> json) =>
     _$LocationImpl(
       json['name'] as String,
       json['country'] as String,
+      json['localtime'] as String,
     );
 
 Map<String, dynamic> _$$LocationImplToJson(_$LocationImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'country': instance.country,
+      'localtime': instance.localtime,
     };

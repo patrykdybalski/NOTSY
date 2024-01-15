@@ -16,10 +16,10 @@ class TextFieldPassword extends StatefulWidget {
 
 class _TextFieldPasswordState extends State<TextFieldPassword> {
   bool obscureText = true;
-  // Początkowo hasło jest ukryte
+
   void toggleObscureText() {
     setState(() {
-      obscureText = !obscureText; // Zamienia wartość pomiędzy true i false
+      obscureText = !obscureText;
     });
   }
 

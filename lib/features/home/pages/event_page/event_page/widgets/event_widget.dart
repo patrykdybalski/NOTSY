@@ -29,8 +29,9 @@ class _EventWidgetState extends State<EventWidget> {
           initiallyExpanded: false,
           backgroundColor: Theme.of(context).colorScheme.secondary,
           collapsedBackgroundColor: Theme.of(context).colorScheme.primary,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12.0),
+          ),
           collapsedShape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12.0),
           ),

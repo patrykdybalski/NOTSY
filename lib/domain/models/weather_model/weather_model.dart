@@ -82,6 +82,7 @@ class Location with _$Location {
   factory Location(
     String name,
     String country,
+     String localtime
   ) = _Location;
 
   String get nameWithCountry {
@@ -93,15 +94,3 @@ class Location with _$Location {
 }
 
 
-//   WeatherModel.fromJson(Map<String, dynamic> json)
-//       : name = json['location']['name'],
-//         country = json['location']['country'],
-//         temperature = json['current']['temp_c'] + 0.0,
-//         cloudy = json['current']['cloud'] + 0.0,
-//         direction = json['current']['wind_dir'],
-//         wind = json['current']['wind_mph'] + 0.0,
-//         rain = json['current']['precip_mm'] + 0.0,
-//         barometr = json['current']['pressure_mb'] + 0.0,
-//         humidity = json['current']['humidity'] + 0.0,
-//         text = json['current']['condition']['text'];
-// }

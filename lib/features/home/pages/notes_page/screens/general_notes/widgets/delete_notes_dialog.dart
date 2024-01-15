@@ -34,7 +34,7 @@ class DeleteNotesDialog extends StatelessWidget {
                 child: Text(
                   AppLocalizations.of(context).no,
                   style: TextStyles.textStyle2(
-                      16, Theme.of(context).colorScheme.inversePrimary),
+                      15, Theme.of(context).colorScheme.inversePrimary),
                 ),
               ),
               TextButton(

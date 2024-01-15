@@ -2,12 +2,59 @@ import 'package:flutter/material.dart';
 import 'package:primary_school/app/constans/fonts_style.dart';
 import 'package:primary_school/domain/models/weather_model/weather_model.dart';
 import 'package:primary_school/features/home/pages/weather_page/widgets/second_info_board.dart';
-import 'package:primary_school/features/home/pages/weather_page/widgets/third_info_board.dart';
+import 'package:primary_school/features/home/pages/weather_page/widgets/location_info.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FirstInfoBoard extends StatelessWidget {
   const FirstInfoBoard(this.weatherModel, {super.key});
   final WeatherModel? weatherModel;
+  String getIconForName(String iconName, DateTime time) {
+    // Determine if it's day or night based on the time of day
+    bool isDayTime = time.hour >= 6 && time.hour < 18;
+    switch (iconName) {
+      case "Partly cloudy":
+      case "Overcast":
+        return isDayTime
+            ? 'assets/images/partlyCloudy.png'
+            : 'assets/images/nightCloud.png';
+
+      case "Sunny":
+      case "Clear":
+        return isDayTime ? 'assets/images/sunny.png' : 'assets/images/moon.png';
+
+      case "Light rain":
+      case "Light rain shower":
+        return isDayTime
+            ? 'assets/images/lightRain.png'
+            : 'assets/images/nightMidRain.png';
+
+      case "Moderate rain":
+        return isDayTime
+            ? 'assets/images/moderateRain.png'
+            : 'assets/images/nightHighRain.png';
+
+      case "Blizzard":
+        return isDayTime
+            ? 'assets/images/blizzard.png'
+            : 'assets/images/nightCloud.png';
+
+      case "Light snow":
+      case "Light snow showers":
+        return isDayTime
+            ? 'assets/images/snow.png'
+            : 'assets/images/nightSnow.png';
+
+      case "Moderate or heavy rain with thunder":
+        return isDayTime
+            ? 'assets/images/heavyWithThunder.png'
+            : 'assets/images/nightRainThunder.png';
+
+      default:
+        return isDayTime
+            ? 'assets/images/sunny.png'
+            : 'assets/images/nightMidRain.png';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,13 +88,14 @@ class FirstInfoBoard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Icon(
-                      Icons.access_time,
+                      Icons.access_time_outlined,
                       size: 20,
                     ),
                     Text(
-                      AppLocalizations.of(context).currently,
+                      ' ${AppLocalizations.of(context).currently}',
                       style: TextStyles.textStyle1(
                         16,
                         Theme.of(context).colorScheme.inversePrimary,
@@ -55,14 +103,17 @@ class FirstInfoBoard extends StatelessWidget {
                     ),
                   ],
                 ),
-                ThirdInfoBoard(weatherModel),
+                LocationInfo(weatherModel),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Image.asset(
-                  getIconForName(weatherModel?.current.condition.text),
+                  getIconForName(
+                    weatherModel!.current.condition.text,
+                    DateTime.parse(weatherModel!.location.localtime),
+                  ),
                   height: 90,
                 ),
                 SizedBox(
@@ -115,68 +166,5 @@ class FirstInfoBoard extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  getIconForName(String? iconName) {
-    switch (iconName) {
-      case "Partly cloudy":
-        {
-          return 'assets/images/partlyCloudy.png';
-        }
-
-      case "Sunny":
-        {
-          return 'assets/images/sunny.png';
-        }
-
-      case "Clear":
-        {
-          return 'assets/images/sunny.png';
-        }
-
-      case "Light rain":
-        {
-          return 'assets/images/lightRain.png';
-        }
-
-      case "Moderate rain":
-        {
-          return 'assets/images/moderateRain.png';
-        }
-
-      case "Blizzard":
-        {
-          return 'assets/images/blizzard.png';
-        }
-
-      case "Light rain shower":
-        {
-          return 'assets/images/lightRain.png';
-        }
-
-      case "Overcast":
-        {
-          return 'assets/images/partlyCloudy.png';
-        }
-
-      case "Light snow":
-        {
-          return 'assets/images/snow.png';
-        }
-      case "Light snow showers":
-        {
-          return 'assets/images/snow.png';
-        }
-
-      case "Moderate or heavy rain with thunder":
-        {
-          return 'assets/images/heavyWithThunder.png';
-        }
-
-      default:
-        {
-          return 'assets/images/sunny.png';
-        }
-    }
   }
 }
