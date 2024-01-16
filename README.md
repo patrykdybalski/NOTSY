@@ -1,16 +1,44 @@
-# primary_school
 
-A new Flutter project.
+![Logo](https://imgur.com/a/TcKPH8j)
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+# NOTSY
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+The NOTSY project is a fast and lightweight, simple packed, and user friendly tool that lets you record your plans, simple notes, and check the current weather along with a one-day weather forecast.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+## Screenshots
+
+![App Screenshot](https://i.ibb.co/1f9FVJB/login-light.jpg )
+![App Screenshot](https://i.ibb.co/1f9FVJB/login-light.jpg )
+
+
+
+## Authors
+
+- [@octokatherine](https://www.github.com/octokatherine)
+
+
+## Demo
+
+Insert gif or link to demo
+
+
+## Features
+
+- Light/dark mode toggle
+- Live previews
+- Fullscreen mode
+- Cross platform
+
+
+## Running Tests
+
+To run tests, run the following command
+
+```bash
+  npm run test
+```
+
+
