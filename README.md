@@ -10,8 +10,8 @@ The NOTSY project is a fast and lightweight, simple packed, and user friendly to
 
 ## Screenshots
 
-![App Screenshot](https://i.ibb.co/1f9FVJB/login-light.jpg )
-![App Screenshot](https://i.ibb.co/1f9FVJB/login-light.jpg )
+![App Screenshot](https://i.ibb.co/1f9FVJB/login-light.jpg)
+![App Screenshot](https://i.ibb.co/1f9FVJB/login-light.jpg)
 
 
 
