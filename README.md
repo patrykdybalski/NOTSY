@@ -8,40 +8,40 @@
 
 <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
 
-  <img src="https://i.ibb.co/m5nPvC9/screenshot-2024-01-16-08-36-13-81-12adbf5ac71b9ae50898fcc2db227a9c.jpg" alt="project-screenshot" width="330" height="650">
+  <img src="https://i.ibb.co/m5nPvC9/screenshot-2024-01-16-08-36-13-81-12adbf5ac71b9ae50898fcc2db227a9c.jpg" alt="project-screenshot" width="310" height="610">
 
-  <img src="https://i.ibb.co/bXr7f9r/screenshot-2024-01-16-08-40-33-42-12adbf5ac71b9ae50898fcc2db227a9c.jpg" alt="project-screenshot" width="330" height="650">
+  <img src="https://i.ibb.co/bXr7f9r/screenshot-2024-01-16-08-40-33-42-12adbf5ac71b9ae50898fcc2db227a9c.jpg" alt="project-screenshot" width="310" height="610">
 
-  <img src="https://i.ibb.co/mNw4j6P/screenshot-2024-01-16-08-37-52-37-12adbf5ac71b9ae50898fcc2db227a9c.jpg" alt="project-screenshot" width="330" height="650">
+  <img src="https://i.ibb.co/mNw4j6P/screenshot-2024-01-16-08-37-52-37-12adbf5ac71b9ae50898fcc2db227a9c.jpg" alt="project-screenshot" width="310" height="610">
 
 </div>
 
 <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
 
- <img src="https://i.ibb.co/qD4PNz4/screenshot-2024-01-16-21-25-01-73-12adbf5ac71b9ae50898fcc2db227a9c.jpg" alt="project-screenshot" width="330" height="650">
+ <img src="https://i.ibb.co/qD4PNz4/screenshot-2024-01-16-21-25-01-73-12adbf5ac71b9ae50898fcc2db227a9c.jpg" alt="project-screenshot" width="310" height="610">
 
-  <img src="https://i.ibb.co/hRr4zYg/screenshot-2024-01-16-21-25-12-59-12adbf5ac71b9ae50898fcc2db227a9c.jpg" alt="project-screenshot" width="330" height="650">
+  <img src="https://i.ibb.co/hRr4zYg/screenshot-2024-01-16-21-25-12-59-12adbf5ac71b9ae50898fcc2db227a9c.jpg" alt="project-screenshot" width="310" height="610">
    
-<img src="https://i.ibb.co/gRhZcw0/screenshot-2024-01-16-21-25-29-12-12adbf5ac71b9ae50898fcc2db227a9c.jpg" alt="project-screenshot" width="330" height="650">
+<img src="https://i.ibb.co/gRhZcw0/screenshot-2024-01-16-21-25-29-12-12adbf5ac71b9ae50898fcc2db227a9c.jpg" alt="project-screenshot" width="310" height="610">
 
 </div>
 <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
 
-  <img src="https://i.ibb.co/3yS1S5x/screenshot-2024-01-16-08-37-10-79-12adbf5ac71b9ae50898fcc2db227a9c.jpg" alt="project-screenshot" width="330" height="650">
+  <img src="https://i.ibb.co/3yS1S5x/screenshot-2024-01-16-08-37-10-79-12adbf5ac71b9ae50898fcc2db227a9c.jpg" alt="project-screenshot" width="310" height="610">
 
-  <img src="https://i.ibb.co/jGd2knQ/screenshot-2024-01-16-08-40-38-59-12adbf5ac71b9ae50898fcc2db227a9c.jpg" alt="project-screenshot" width="330" height="650">
+  <img src="https://i.ibb.co/jGd2knQ/screenshot-2024-01-16-08-40-38-59-12adbf5ac71b9ae50898fcc2db227a9c.jpg" alt="project-screenshot" width="310" height="610">
    
-<img src="https://i.ibb.co/8dxSpjd/screenshot-2024-01-16-08-37-46-71-12adbf5ac71b9ae50898fcc2db227a9c.jpg" alt="project-screenshot" width="330" height="650">
+<img src="https://i.ibb.co/8dxSpjd/screenshot-2024-01-16-08-37-46-71-12adbf5ac71b9ae50898fcc2db227a9c.jpg" alt="project-screenshot" width="310" height="610">
 
 </div>
 
 <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
 
-  <img src="https://i.ibb.co/mRFbN8x/screenshot-2024-01-16-08-34-52-80-12adbf5ac71b9ae50898fcc2db227a9c.jpg" alt="project-screenshot" width="330" height="650">
+  <img src="https://i.ibb.co/mRFbN8x/screenshot-2024-01-16-08-34-52-80-12adbf5ac71b9ae50898fcc2db227a9c.jpg" alt="project-screenshot" width="310" height="610">
 
-  <img src="https://i.ibb.co/GJjkZwC/screenshot-2024-01-16-09-34-05-10-12adbf5ac71b9ae50898fcc2db227a9c.jpg" alt="project-screenshot" width="330" height="650">
+  <img src="https://i.ibb.co/GJjkZwC/screenshot-2024-01-16-09-34-05-10-12adbf5ac71b9ae50898fcc2db227a9c.jpg" alt="project-screenshot" width="310" height="610">
  
-  <img src="https://i.ibb.co/28vS21j/419476946-865090581973255-2794194151675078937-n.jpg" alt="project-screenshot" width="330" height="650">
+  <img src="https://i.ibb.co/28vS21j/419476946-865090581973255-2794194151675078937-n.jpg" alt="project-screenshot" width="310" height="610">
 
 </div>
 
