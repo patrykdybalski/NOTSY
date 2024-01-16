@@ -8,7 +8,7 @@
 
 <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
 
-  <img src="https://i.ibb.co/m5nPvC9/screenshot-2024-01-16-08-36-13-81-12adbf5ac71b9ae50898fcc2db227a9c.jpg" alt="project-screenshot" width="280" height="530">
+  <img src="https://i.ibb.co/m5nPvC9/screenshot-2024-01-16-08-36-13-81-12adbf5ac71b9ae50898fcc2db227a9c.jpg" alt="project-screenshot" width="280" height="600">
 
   <img src="https://i.ibb.co/bXr7f9r/screenshot-2024-01-16-08-40-33-42-12adbf5ac71b9ae50898fcc2db227a9c.jpg" alt="project-screenshot" width="280" height="530">
 
