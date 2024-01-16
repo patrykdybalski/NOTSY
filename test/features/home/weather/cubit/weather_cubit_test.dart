@@ -23,7 +23,7 @@ void main() {
       const Forecast(forecastday: []));
   const String testCity = 'Warszawa';
   final testError = Exception('error');
-  const testErrorMessage = 'Exception: error';
+  const testErrorMessage = 'Wystąpił błąd';
 
   group('getWeatherModel', () {
     group('success', () {
@@ -58,7 +58,9 @@ void main() {
         expect: (() => {
               WeatherState(status: Status.loading),
               WeatherState(
-                  status: Status.error, errorMessage: testErrorMessage),
+                status: Status.error,
+                errorMessage: testErrorMessage,
+              ),
             }),
       );
     });
