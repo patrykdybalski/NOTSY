@@ -117,7 +117,7 @@ class _$HomePageStateImpl implements _HomePageState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HomePageStateImpl &&

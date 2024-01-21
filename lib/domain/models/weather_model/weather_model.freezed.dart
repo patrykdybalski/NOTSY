@@ -176,7 +176,7 @@ class _$WeatherModelImpl implements _WeatherModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$WeatherModelImpl &&
@@ -463,7 +463,7 @@ class _$CurrentImpl implements _Current {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CurrentImpl &&
@@ -636,7 +636,7 @@ class _$ConditionImpl implements _Condition {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ConditionImpl &&
@@ -781,7 +781,7 @@ class _$ForecastImpl implements _Forecast {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ForecastImpl &&
@@ -951,7 +951,7 @@ class _$ForecastdayImpl implements _Forecastday {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ForecastdayImpl &&
@@ -1164,7 +1164,7 @@ class _$HourImpl implements _Hour {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HourImpl &&
@@ -1345,7 +1345,7 @@ class _$LocationImpl extends _Location {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LocationImpl &&

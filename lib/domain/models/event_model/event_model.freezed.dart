@@ -171,7 +171,7 @@ class _$EventModelImpl extends _EventModel {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EventModelImpl &&
