@@ -57,15 +57,16 @@
 Here're some of the project's best features:
 
 *   Recording Plans and Notes
-*   Firebase Integration
+*   Firebase/FirebaseAuth Integration
 *   Dark Theme/Light Theme
 *   Checking Weather with Weather API
 *   Dynamic Weather Icons
-*   Working with Retrofit
+*   Internationalizing 
 *   Testing with Cubit Repository Model
 *   Using Freezed GetIt Retrofit
-*   Login and Registration in FirebaseAuth
 *   Clean Architecture
+*   Firebase App Distribution
+*   CI/CD with CodeMagic 
 *   Performance Optimizations
 
 <h2>🛠️ Installation Steps:</h2>
