@@ -51,8 +51,8 @@ class WeatherPage extends StatelessWidget {
 class WeatherBody extends StatelessWidget {
   const WeatherBody(
     this.weatherModel, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
   final WeatherModel? weatherModel;
 
   @override

@@ -92,11 +92,10 @@ class _EditNoteScreenState extends State<EditNoteScreen> {
 
 class _EditNotePageBody extends StatelessWidget {
   const _EditNotePageBody({
-    Key? key,
     required this.onTitleChanged,
     required this.onSubtitleChange,
     required this.noteModel,
-  }) : super(key: key);
+  });
 
   final Function(String?) onTitleChanged;
   final Function(String?) onSubtitleChange;

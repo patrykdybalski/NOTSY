@@ -4,11 +4,11 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddNoteScreenBody extends StatelessWidget {
   const AddNoteScreenBody({
-    Key? key,
+    super.key,
     required this.onTitleChanged,
     required this.onSubtitleChange,
     required this.selectedColor, // Dodano selectedColor
-  }) : super(key: key);
+  });
 
   final Function(String?) onTitleChanged;
   final Function(String?) onSubtitleChange;

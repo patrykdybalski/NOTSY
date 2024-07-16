@@ -3,7 +3,7 @@ import 'package:primary_school/features/home/pages/notes_page/screens/add_note_s
 import 'package:primary_school/features/home/pages/notes_page/screens/general_notes/general_notes.dart';
 
 class NotesPage extends StatefulWidget {
-  const NotesPage({Key? key}) : super(key: key);
+  const NotesPage({super.key});
 
   @override
   State<NotesPage> createState() => _NotesPageState();

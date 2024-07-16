@@ -133,14 +133,13 @@ class _AddEventDialogState extends State<AddEventDialog> {
 
 class _ContentDialog extends StatelessWidget {
   const _ContentDialog({
-    Key? key,
     required this.onTitleChanged,
     required this.onSubtitleChanged,
     required this.onDayChanged,
     required this.onTimeChanged,
     required this.selectedTimeFormatted,
     required this.selectedDateFormatted,
-  }) : super(key: key);
+  });
 
   final Function(String?) onTitleChanged;
   final Function(String?) onSubtitleChanged;

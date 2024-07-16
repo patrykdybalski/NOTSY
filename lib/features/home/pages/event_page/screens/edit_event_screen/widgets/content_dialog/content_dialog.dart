@@ -7,7 +7,7 @@ import 'package:primary_school/features/home/pages/event_page/screens/edit_event
 
 class ContentDialog extends StatelessWidget {
   const ContentDialog({
-    Key? key,
+    super.key,
     required this.onTitleChanged,
     required this.onSubtitleChanged,
     required this.onDayChanged,
@@ -15,7 +15,7 @@ class ContentDialog extends StatelessWidget {
     required this.selectedTimeFormatted,
     required this.selectedDateFormatted,
     required this.eventModel,
-  }) : super(key: key);
+  });
 
   final Function(String?) onTitleChanged;
   final Function(String?) onSubtitleChanged;

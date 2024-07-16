@@ -26,9 +26,9 @@ class SearchWidget extends StatelessWidget {
 
 class CityTextController extends StatelessWidget {
   const CityTextController({
-    Key? key,
+    super.key,
     required this.controller,
-  }) : super(key: key);
+  });
   final TextEditingController controller;
 
   @override
@@ -83,9 +83,9 @@ class CityTextController extends StatelessWidget {
 
 class CheckWeatherButton extends StatelessWidget {
   const CheckWeatherButton({
-    Key? key,
+    super.key,
     required this.controller,
-  }) : super(key: key);
+  });
 
   final TextEditingController controller;
 

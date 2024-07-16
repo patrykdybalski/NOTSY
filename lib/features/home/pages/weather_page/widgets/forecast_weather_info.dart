@@ -5,7 +5,7 @@ import 'package:primary_school/domain/models/weather_model/weather_model.dart';
 import 'package:primary_school/features/home/pages/weather_page/widgets/case_weather_condition.dart';
 
 class ForecastWeatherInfo extends StatefulWidget {
-  const ForecastWeatherInfo(this.weatherModel, {Key? key}) : super(key: key);
+  const ForecastWeatherInfo(this.weatherModel, {super.key});
 
   final WeatherModel weatherModel;
 
